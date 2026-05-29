@@ -1,3 +1,3 @@
 # AI World 
 Welcome to AI World from QFL! 
-Stayed Tuned !
+主网页入口 [My Pages]:./mypages/index.html"AI框架"
