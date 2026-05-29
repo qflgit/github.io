@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Knowledge Hub - 人工智能知识集成平台</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+  <!-- 动态粒子背景 -->
+  <div class="particles"></div>
+
+  <!-- 导航栏 -->
+  <header>
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">🧠</div>
+        AI Knowledge Hub
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">🏠 首页</a></li>
+        <li><a href="#topics">📚 知识库</a></li>
+        <li><a href="#about">ℹ️ 关于</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <h1>探索 <span>人工智能</span> 的无限可能</h1>
+    <p>汇集大模型、Agent、多模态、部署优化等前沿 AI 知识，打造你的个人 AI 知识库</p>
+    <div class="hero-badges">
+      <span class="badge">🤖 LLM</span>
+      <span class="badge">🎯 Agent</span>
+      <span class="badge">🎨 AIGC</span>
+      <span class="badge">⚡ 推理优化</span>
+      <span class="badge">🔒 AI 安全</span>
+    </div>
+  </section>
+
+  <!-- 搜索栏 -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="搜索 AI 知识点...">
+  </div>
+
+  <!-- 分类标签 -->
+  <div class="category-tabs" id="topics">
+    <button class="tab active" data-filter="all">全部</button>
+    <button class="tab" data-filter="foundation">🔬 基础技术</button>
+    <button class="tab" data-filter="agent">🤖 智能体</button>
+    <button class="tab" data-filter="multimodal">🎨 多模态</button>
+    <button class="tab" data-filter="engineering">⚙️ 工程实践</button>
+  </div>
+
+  <!-- 知识卡片网格 -->
+  <main class="content">
+    <div class="card-grid">
+      <!-- 卡片由 JS 动态生成，以下为初始示例 -->
+      <a class="card" href="subpages/llm.html" data-searchable>
+        <span class="card-tag tag-hot">hot</span>
+        <div class="card-icon">🧠</div>
+        <h3>大语言模型</h3>
+        <p>GPT、Claude、Kimi 等 LLM 原理与应用，从 Transformer 到 MoE 架构演进</p>
+        <div class="card-meta">
+          <span>📄 24 篇文章</span>
+          <span>⏱️ 更新 1 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/agent.html" data-searchable>
+        <span class="card-tag tag-new">new</span>
+        <div class="card-icon">🤖</div>
+        <h3>AI Agent</h3>
+        <p>智能体架构、工具调用、ReAct 模式与自主决策系统的设计与实现</p>
+        <div class="card-meta">
+          <span>📄 18 篇文章</span>
+          <span>⏱️ 更新 3 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/rag.html" data-searchable>
+        <div class="card-icon">🔍</div>
+        <h3>RAG 检索增强</h3>
+        <p>向量数据库、Embedding 模型、分块策略与知识库构建最佳实践</p>
+        <div class="card-meta">
+          <span>📄 15 篇文章</span>
+          <span>⏱️ 更新 5 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/diffusion.html" data-searchable>
+        <span class="card-tag tag-hot">hot</span>
+        <div class="card-icon">🎨</div>
+        <h3>扩散模型</h3>
+        <p>Stable Diffusion、图像生成、视频合成与可控生成技术</p>
+        <div class="card-meta">
+          <span>📄 12 篇文章</span>
+          <span>⏱️ 更新 1 周前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/finetune.html" data-searchable>
+        <div class="card-icon">⚙️</div>
+        <h3>模型微调</h3>
+        <p>LoRA、QLoRA、全参数微调、RLHF 与领域适配技术详解</p>
+        <div class="card-meta">
+          <span>📄 20 篇文章</span>
+          <span>⏱️ 更新 2 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/deploy.html" data-searchable>
+        <span class="card-tag tag-pro">pro</span>
+        <div class="card-icon">🚀</div>
+        <h3>模型部署</h3>
+        <p>vLLM、TensorRT、量化压缩、推理优化与生产环境部署方案</p>
+        <div class="card-meta">
+          <span>📄 16 篇文章</span>
+          <span>⏱️ 更新 4 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/mcp.html" data-searchable>
+        <span class="card-tag tag-new">new</span>
+        <div class="card-icon">🔗</div>
+        <h3>MCP 协议</h3>
+        <p>Model Context Protocol 工具集成标准与生态实践</p>
+        <div class="card-meta">
+          <span>📄 8 篇文章</span>
+          <span>⏱️ 更新 1 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/vision.html" data-searchable>
+        <div class="card-icon">👁️</div>
+        <h3>计算机视觉</h3>
+        <p>目标检测、OCR、图像理解、视频分析与多模态融合</p>
+        <div class="card-meta">
+          <span>📄 14 篇文章</span>
+          <span>⏱️ 更新 6 天前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/safety.html" data-searchable>
+        <div class="card-icon">🛡️</div>
+        <h3>AI 安全对齐</h3>
+        <p>RLHF、红队测试、偏见检测、内容审核与模型可解释性</p>
+        <div class="card-meta">
+          <span>📄 10 篇文章</span>
+          <span>⏱️ 更新 2 周前</span>
+        </div>
+      </a>
+
+      <a class="card" href="subpages/chip.html" data-searchable>
+        <span class="card-tag tag-pro">pro</span>
+        <div class="card-icon">💾</div>
+        <h3>AI 芯片架构</h3>
+        <p>NPU、GPU 集群调度、存算一体与边缘推理硬件方案</p>
+        <div class="card-meta">
+          <span>📄 9 篇文章</span>
+          <span>⏱️ 更新 3 周前</span>
+        </div>
+      </a>
+
+      <!-- 添加按钮 -->
+      <div class="card add-card" onclick="addNewTopic()">
+        <div class="add-icon">+</div>
+        <h3>添加新主题</h3>
+        <p>点击添加更多 AI 知识领域</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer id="about">
+    <p>🧠 <strong>AI Knowledge Hub</strong> — 探索人工智能的无限可能</p>
+    <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.8;">
+      基于 HTML + CSS + JavaScript 构建 • 可自由扩展的知识管理平台
+    </p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">
+      💡 提示：点击卡片进入子页面，点击"+"添加新主题
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

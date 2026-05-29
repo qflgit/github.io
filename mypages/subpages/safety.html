@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 安全对齐 - AI Knowledge Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .subpage-header { padding: 4rem 2rem 2rem; text-align: center; position: relative; z-index: 1; }
+    .subpage-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
+    .subpage-header h1 span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subpage-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    .article-list { max-width: 900px; margin: 0 auto; padding: 0 2rem 4rem; position: relative; z-index: 1; }
+    .article-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 0.5s ease-out backwards;
+    }
+    .article-item:hover {
+      transform: translateX(8px);
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow);
+    }
+    .article-num {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--gradient-1);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .article-content h4 { font-size: 1.1rem; margin-bottom: 0.3rem; font-weight: 700; }
+    .article-content p { color: var(--text-muted); font-size: 0.9rem; }
+
+    .add-article {
+      border: 2px dashed var(--border);
+      background: transparent;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+    .add-article:hover {
+      border-color: var(--primary-light);
+      color: var(--text);
+      background: rgba(99, 102, 241, 0.05);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .back-btn:hover {
+      background: var(--gradient-1);
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .subpage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      margin: 0.25rem;
+    }
+
+    .sub-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="particles"></div>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">🧠</div>
+        AI Knowledge Hub
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">🏠 首页</a></li>
+        <li><a href="../index.html#topics">📚 知识库</a></li>
+        <li><a href="#" class="active">🛡️ AI 安全对齐</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <a href="../index.html" class="back-btn">← 返回首页</a>
+
+  <section class="subpage-header">
+    <h1>🛡️ <span>AI 安全对齐</span></h1>
+    <p>RLHF、红队测试、偏见检测、内容审核与模型可解释性</p>
+    <div class="sub-nav" style="margin-top: 1.5rem;">
+      <span class="subpage-badge">📄 6 篇文章</span>
+      <span class="subpage-badge">🔖 可扩展模板</span>
+      <span class="subpage-badge">✏️ 点击编辑</span>
+    </div>
+  </section>
+
+  <section class="article-list">
+    <div class="article-item" onclick="editArticle(1)">
+      <div class="article-num">1</div>
+      <div class="article-content">
+        <h4>对齐技术概览</h4>
+        <p>RLHF、RLAIF、DPO 与 Constitutional AI</p>
+      </div>
+    </div>
+    <div class="article-item" onclick="editArticle(2)">
+      <div class="article-num">2</div>
+      <div class="article-content">
+        <h4>红队测试方法</h4>
+        <p>对抗提示、越狱攻击与防御策略</p>
+      </div>
+    </div>
+    <div class="article-item" onclick="editArticle(3)">
+      <div class="article-num">3</div>
+      <div class="article-content">
+        <h4>偏见与公平性</h4>
+        <p>数据偏见、算法公平与去偏技术</p>
+      </div>
+    </div>
+    <div class="article-item" onclick="editArticle(4)">
+      <div class="article-num">4</div>
+      <div class="article-content">
+        <h4>内容审核系统</h4>
+        <p>多层级过滤、AIGC 标识与合规方案</p>
+      </div>
+    </div>
+    <div class="article-item" onclick="editArticle(5)">
+      <div class="article-num">5</div>
+      <div class="article-content">
+        <h4>模型可解释性</h4>
+        <p>注意力可视化、LIME 与 SHAP 分析</p>
+      </div>
+    </div>
+    <div class="article-item" onclick="editArticle(6)">
+      <div class="article-num">6</div>
+      <div class="article-content">
+        <h4>隐私保护技术</h4>
+        <p>联邦学习、差分隐私与数据脱敏</p>
+      </div>
+    </div>
+    <div class="article-item add-article" onclick="addArticle()">
+      <div style="font-size: 1.5rem; width: 44px; text-align: center;">+</div>
+      <div class="article-content">
+        <h4>添加新文章</h4>
+        <p>点击添加更多 AI 安全对齐 相关内容</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>🧠 AI Knowledge Hub — AI 安全对齐 专题</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">使用此模板可自由扩展更多子话题与文章</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // 子页面独立功能
+    function editArticle(id) {
+      const titles = ['对齐技术概览', '红队测试方法', '偏见与公平性', '内容审核系统', '模型可解释性', '隐私保护技术'];
+      const newTitle = prompt('编辑文章标题：', titles[id-1]);
+      if (newTitle && newTitle !== titles[id-1]) {
+        alert('✅ 文章已更新为：' + newTitle + '（实际项目需连接后端保存）');
+      }
+    }
+
+    function addArticle() {
+      const title = prompt('请输入新文章标题：');
+      if (title) {
+        const desc = prompt('请输入文章描述：') || '暂无描述';
+        alert('✅ 文章「' + title + '」已添加！\n描述：' + desc + '\n\n（实际项目可连接后端持久化）');
+      }
+    }
+  </script>
+</body>
+</html>
