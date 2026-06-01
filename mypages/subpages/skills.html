@@ -123,9 +123,7 @@
     <h1>🔗 <span>技能集</span></h1>
     <p>技能增强与生态实践</p>
     <div class="sub-nav" style="margin-top: 1.5rem;">
-      <span class="subpage-badge">📄 6 篇文章</span>
-      <span class="subpage-badge">🔖 可扩展模板</span>
-      <span class="subpage-badge">✏️ 点击编辑</span>
+      <span class="subpage-badge">📄 3 篇文章</span>
     </div>
   </section>
 
@@ -137,46 +135,19 @@
         <p>Skills的定义</p>
       </div>
     </div>
+
     <div class="article-item" onclick="editArticle(2)">
       <div class="article-num">2</div>
-      <div class="article-content">
-        <h4>工具开发实战</h4>
-        <p>从零构建 Skills 与本地调试</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(3)">
-      <div class="article-num">3</div>
-      <div class="article-content">
-        <h4>IDE 集成方案</h4>
-        <p>Cursor、Claude Code 与 Windsurf 的 Skill 配置</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(4)">
-      <div class="article-num">4</div>
-      <div class="article-content">
-        <h4>安全权限模型</h4>
-        <p>工具授权、沙箱执行与审计日志</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(5)">
-      <div class="article-num">5</div>
       <div class="article-content">
         <h4>生态工具盘点</h4>
         <p>官方工具集、社区贡献与最佳实践</p>
       </div>
     </div>
-    <div class="article-item" onclick="editArticle(6)">
-      <div class="article-num">6</div>
+    <div class="article-item" onclick="editArticle(3)">
+      <div class="article-num">3</div>
       <div class="article-content">
-        <h4>与 Function Calling 对比</h4>
+        <h4>与 MCP 及 Function Calling 对比</h4>
         <p>标准差异、适用场景与迁移指南</p>
-      </div>
-    </div>
-    <div class="article-item add-article" onclick="addArticle()">
-      <div style="font-size: 1.5rem; width: 44px; text-align: center;">+</div>
-      <div class="article-content">
-        <h4>添加新文章</h4>
-        <p>点击添加更多 Skills 相关内容</p>
       </div>
     </div>
   </section>
@@ -190,20 +161,13 @@
   <script>
     // 子页面独立功能
     function editArticle(id) {
-      const titles = ['技能规范', '工具开发实战', 'IDE 集成方案', '安全权限模型', '生态工具盘点', '与 Function Calling 对比'];
+      const titles = ['技能规范', '生态工具盘点', '与 MCP 及 Function Calling 对比'];
       const newTitle = prompt('编辑文章标题：', titles[id-1]);
       if (newTitle && newTitle !== titles[id-1]) {
         alert('✅ 文章已更新为：' + newTitle + '（实际项目需连接后端保存）');
       }
     }
 
-    function addArticle() {
-      const title = prompt('请输入新文章标题：');
-      if (title) {
-        const desc = prompt('请输入文章描述：') || '暂无描述';
-        alert('✅ 文章「' + title + '」已添加！\n描述：' + desc + '\n\n（实际项目可连接后端持久化）');
-      }
-    }
   </script>
 </body>
 </html>
