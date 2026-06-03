@@ -1,0 +1,719 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>moe_deepseek_v4_explained</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='moe-混合专家模型深度解析以-deepseek-v4-为例'><span>MoE 混合专家模型深度解析：以 DeepSeek V4 为例</span></h1><p><span>本文系统介绍混合专家模型（Mixture of Experts, MoE）的核心原理，深入剖析稀疏激活机制、路由策略与负载均衡技术，并以 DeepSeek V4 为标杆案例，展示 MoE 架构如何在大模型时代实现&quot;规模与效率&quot;的最优平衡。</span></p><hr /><h2 id='一moe-架构概述'><span>一、MoE 架构概述</span></h2><h3 id='11-什么是混合专家模型'><span>1.1 什么是混合专家模型？</span></h3><p><span>混合专家模型（MoE）是一种将大规模神经网络分解为多个</span><strong><span>专家子网络（Experts）</span></strong><span>的架构设计。其核心思想是：</span><strong><span>不是所有参数都需要参与每一次计算，而是根据输入内容动态选择最相关的专家来处理</span></strong><span>。</span></p><p><strong><span>通俗比喻</span></strong><span>：</span></p><ul><li><p><strong><span>传统稠密模型（Dense Model）</span></strong><span> 像一家&quot;全能型综合医院&quot;，无论什么病都要全院所有科室一起会诊，资源消耗巨大。</span></p></li><li><p><strong><span>MoE 模型</span></strong><span> 像一家&quot;专科医院联盟&quot;，内部有数百甚至数千位专科医生（专家），每次根据病情只请最相关的几位专家会诊，既专业又高效。</span></p></li></ul><h3 id='12-为什么需要-moe'><span>1.2 为什么需要 MoE？</span></h3><p><span>大模型发展面临的核心矛盾：</span><strong><span>模型规模越大，能力越强，但推理成本也越高</span></strong><span>。</span></p><figure class='table-figure'><table><thead><tr><th><span>挑战</span></th><th><span>传统 Dense 模型</span></th><th><span>MoE 模型</span></th></tr></thead><tbody><tr><td><span>参数量扩展</span></td><td><span>线性增加计算量</span></td><td><span>总参数可无限扩展，计算量仅与激活参数相关</span></td></tr><tr><td><span>推理成本</span></td><td><span>与总参数量成正比</span></td><td><span>仅与激活的专家数量相关</span></td></tr><tr><td><span>多任务能力</span></td><td><span>所有任务共享同一套参数</span></td><td><span>不同专家可专精不同任务类型</span></td></tr><tr><td><span>训练效率</span></td><td><span>所有参数参与每次更新</span></td><td><span>仅激活专家参与梯度计算</span></td></tr></tbody></table></figure><p><span>MoE 通过在</span><strong><span>参数量</span></strong><span>和</span><strong><span>计算量</span></strong><span>之间解耦，实现了&quot;大力出奇迹&quot;与&quot;高效推理&quot;的双重目标。</span></p><hr /><h2 id='二moe-核心架构原理'><span>二、MoE 核心架构原理</span></h2><h3 id='21-基本结构'><span>2.1 基本结构</span></h3><p><span>MoE 架构将传统 Transformer 中的</span><strong><span>前馈网络（FFN）层</span></strong><span>替换为</span><strong><span>MoE 层</span></strong><span>，每个 MoE 层包含：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输入 Token --&gt; 门控网络（Gating Network / Router）</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  +---------------+---------------+</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  v &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; v &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; v</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">专家 1 &nbsp; &nbsp; &nbsp; &nbsp;  专家 2 &nbsp; &nbsp; &nbsp; &nbsp;  专家 N</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">（FFN子网络） &nbsp; （FFN子网络） &nbsp; （FFN子网络）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  +---------------+---------------+</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  v</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  加权聚合输出</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 276px;"></div><div class="CodeMirror-gutters" style="display: none; height: 276px;"></div></div></div></pre><p><strong><span>关键组件</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>专家网络（Experts）</span></strong><span>：N 个独立的 FFN 子网络，每个专家是一个小型神经网络</span></p></li><li><p><strong><span>门控网络（Gating Network / Router）</span></strong><span>：决定每个输入 token 应该由哪些专家处理，并分配权重</span></p></li><li><p><strong><span>Top-K 选择机制</span></strong><span>：每次只激活 K 个最相关的专家（K 通常为 2~8）</span></p></li></ol><h3 id='22-数学原理'><span>2.2 数学原理</span></h3><p><span>MoE 层的输出计算如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">y = sum(i=1 to N) G(x)_i * E_i(x)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>其中：</span></p><ul><li><p><strong><span>x</span></strong><span>：输入 token 的隐藏状态向量</span></p></li><li><p><strong><span>E_i(x)</span></strong><span>：第 i 个专家网络的输出</span></p></li><li><p><strong><span>G(x)_i</span></strong><span>：门控网络分配给第 i 个专家的权重</span></p></li></ul><p><strong><span>门控函数</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">G(x) = TopK(Softmax(W_g * x))</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>计算步骤：</span></p><ol start='' ><li><p><span>输入 x 与门控权重矩阵 W_g 相乘，得到每个专家的原始分数</span></p></li><li><p><span>通过 Softmax 归一化为概率分布</span></p></li><li><p><span>选择 Top-K 个最高分的专家</span></p></li><li><p><span>仅对这 K 个专家的输出进行加权求和</span></p></li></ol><p><strong><span>稀疏激活</span></strong><span>：未被选中的 (N-K) 个专家的计算完全被跳过，这就是 MoE 实现高效推理的关键。</span></p><hr /><h2 id='三稀疏激活机制详解'><span>三、稀疏激活机制详解</span></h2><h3 id='31-核心思想'><span>3.1 核心思想</span></h3><p><strong><span>稀疏激活（Sparse Activation）</span></strong><span> 是 MoE 的灵魂：在拥有万亿级总参数的同时，每次前向传播只激活一小部分参数。</span></p><h3 id='32-稀疏度与效率'><span>3.2 稀疏度与效率</span></h3><p><span>以 DeepSeek V4-Pro 为例：</span></p><figure class='table-figure'><table><thead><tr><th><span>指标</span></th><th><span>数值</span></th></tr></thead><tbody><tr><td><span>总参数量</span></td><td><strong><span>1.6 万亿（1.6T）</span></strong></td></tr><tr><td><span>专家数量</span></td><td><span>约 32,000 个</span></td></tr><tr><td><span>每次激活专家数</span></td><td><strong><span>6 个（Top-6）</span></strong></td></tr><tr><td><span>激活参数量</span></td><td><strong><span>490 亿（49B）</span></strong></td></tr><tr><td><span>稀疏度（激活率）</span></td><td><strong><span>约 3.06%</span></strong></td></tr></tbody></table></figure><p><span>这意味着：</span></p><ul><li><p><span>模型拥有 1.6 万亿参数的&quot;知识容量&quot;</span></p></li><li><p><span>但推理时实际计算量仅相当于一个 490 亿参数的模型</span></p></li><li><p><strong><span>计算效率提升约 32 倍</span></strong></p></li></ul><h3 id='33-稀疏激活的优势'><span>3.3 稀疏激活的优势</span></h3><ol start='' ><li><p><strong><span>推理成本大幅降低</span></strong><span>：实际 FLOPs 与激活参数成正比，而非总参数</span></p></li><li><p><strong><span>显存占用优化</span></strong><span>：仅需加载激活专家的权重到 GPU 显存</span></p></li><li><p><strong><span>训练效率提升</span></strong><span>：反向传播仅更新激活专家的参数</span></p></li><li><p><strong><span>知识容量扩展</span></strong><span>：总参数可无限增长，不增加单次推理成本</span></p></li></ol><h3 id='34-稀疏激活的挑战'><span>3.4 稀疏激活的挑战</span></h3><ol start='' ><li><p><strong><span>通信开销</span></strong><span>：分布式部署时，需要将 token 路由到持有目标专家的 GPU 节点</span></p></li><li><p><strong><span>负载均衡</span></strong><span>：避免某些专家过载、其他专家闲置</span></p></li><li><p><strong><span>内存碎片化</span></strong><span>：大量专家权重分布在不同设备，需要精细的内存管理</span></p></li></ol><hr /><h2 id='四路由策略详解'><span>四、路由策略详解</span></h2><h3 id='41-路由的核心作用'><span>4.1 路由的核心作用</span></h3><p><span>路由（Routing）是 MoE 的&quot;调度中枢&quot;，负责决定：</span></p><ul><li><p><strong><span>哪个 token 交给哪个专家处理</span></strong></p></li><li><p><strong><span>每个专家的权重是多少</span></strong></p></li></ul><p><span>路由质量直接决定 MoE 模型的性能上限——错误的路由会导致&quot;专家会诊&quot;变成&quot;庸医误诊&quot;。</span></p><h3 id='42-常见路由策略'><span>4.2 常见路由策略</span></h3><h4 id='421-top-k-路由最常用'><span>4.2.1 Top-K 路由（最常用）</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">top_k_routing</span>(<span class="cm-variable">x</span>, <span class="cm-variable">expert_scores</span>, <span class="cm-variable">k</span><span class="cm-operator">=</span><span class="cm-number">2</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># x: 输入向量 [batch, seq_len, hidden_dim]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># expert_scores: 门控网络输出 [batch, seq_len, num_experts]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 1. 计算每个专家的分数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">scores</span> <span class="cm-operator">=</span> <span class="cm-variable">softmax</span>(<span class="cm-variable">expert_scores</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 2. 选择 Top-K 个专家</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">topk_scores</span>, <span class="cm-variable">topk_indices</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">topk</span>(<span class="cm-variable">scores</span>, <span class="cm-variable">k</span>, <span class="cm-variable">dim</span><span class="cm-operator">=-</span><span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 3. 重新归一化权重</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">topk_scores</span> <span class="cm-operator">=</span> <span class="cm-variable">topk_scores</span> <span class="cm-operator">/</span> <span class="cm-variable">topk_scores</span>.<span class="cm-property">sum</span>(<span class="cm-variable">dim</span><span class="cm-operator">=-</span><span class="cm-number">1</span>, <span class="cm-variable">keepdim</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 4. 仅计算选中专家的输出</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">output</span> <span class="cm-operator">=</span> <span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">i</span> <span class="cm-keyword">in</span> <span class="cm-builtin">range</span>(<span class="cm-variable">k</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">expert_idx</span> <span class="cm-operator">=</span> <span class="cm-variable">topk_indices</span>[<span class="cm-operator">...</span>, <span class="cm-variable">i</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">expert_output</span> <span class="cm-operator">=</span> <span class="cm-variable">expert_networks</span>[<span class="cm-variable">expert_idx</span>](<span class="cm-variable">x</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">output</span> <span class="cm-operator">+=</span> <span class="cm-variable">topk_scores</span>[<span class="cm-operator">...</span>, <span class="cm-variable">i</span>:<span class="cm-variable">i</span><span class="cm-operator">+</span><span class="cm-number">1</span>] <span class="cm-operator">*</span> <span class="cm-variable">expert_output</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">output</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 484px;"></div><div class="CodeMirror-gutters" style="display: none; height: 484px;"></div></div></div></pre><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>简单高效，易于实现</span></p></li><li><p><span>K 值通常为 2~8，平衡性能与效率</span></p></li><li><p><span>所有 token 独立路由，无序列间依赖</span></p></li></ul><h4 id='422-专家选择路由expert-choice'><span>4.2.2 专家选择路由（Expert Choice）</span></h4><p><span>与 Top-K 相反：不是为每个 token 选择专家，而是</span><strong><span>为每个专家选择 token</span></strong><span>。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">expert_choice_routing</span>(<span class="cm-variable">x</span>, <span class="cm-variable">expert_scores</span>, <span class="cm-variable">capacity_factor</span><span class="cm-operator">=</span><span class="cm-number">1.0</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">x</span>.<span class="cm-property">shape</span>[<span class="cm-number">1</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_experts</span> <span class="cm-operator">=</span> <span class="cm-variable">expert_scores</span>.<span class="cm-property">shape</span>[<span class="cm-operator">-</span><span class="cm-number">1</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">capacity</span> <span class="cm-operator">=</span> <span class="cm-builtin">int</span>(<span class="cm-variable">num_tokens</span> <span class="cm-operator">/</span> <span class="cm-variable">num_experts</span> <span class="cm-operator">*</span> <span class="cm-variable">capacity_factor</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">scores</span> <span class="cm-operator">=</span> <span class="cm-variable">softmax</span>(<span class="cm-variable">expert_scores</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 每个专家选择分数最高的 capacity 个 token</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">expert_id</span> <span class="cm-keyword">in</span> <span class="cm-builtin">range</span>(<span class="cm-variable">num_experts</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">expert_scores_for_this</span> <span class="cm-operator">=</span> <span class="cm-variable">scores</span>[:, :, <span class="cm-variable">expert_id</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">topk_indices</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">topk</span>(<span class="cm-variable">expert_scores_for_this</span>, <span class="cm-variable">capacity</span>, <span class="cm-variable">dim</span><span class="cm-operator">=</span><span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment"># 将选中的 token 路由到该专家</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">output</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 323px;"></div><div class="CodeMirror-gutters" style="display: none; height: 323px;"></div></div></div></pre><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>天然保证负载均衡（每个专家处理固定数量 token）</span></p></li><li><p><span>但可能破坏因果约束（当前 token 可能看到未来 token 的路由信息）</span></p></li><li><p><span>不适合自回归语言模型</span></p></li></ul><h4 id='423-哈希路由hash-routing'><span>4.2.3 哈希路由（Hash Routing）</span></h4><p><span>DeepSeek V4 在前若干个 Transformer 模块中采用的策略：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">hash_routing</span>(<span class="cm-variable">token_id</span>, <span class="cm-variable">num_experts</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 基于 token ID 的预定义哈希函数确定目标专家</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 无需门控网络计算，零额外开销</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">expert_id</span> <span class="cm-operator">=</span> <span class="cm-builtin">hash</span>(<span class="cm-variable">token_id</span>) <span class="cm-operator">%</span> <span class="cm-variable">num_experts</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">expert_id</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>计算开销极低（无需门控网络前向传播）</span></p></li><li><p><span>路由决策与输入语义无关，适合底层特征提取</span></p></li><li><p><span>通常与其他路由策略混合使用</span></p></li></ul><h4 id='424-无损失负载均衡路由loss-free-balancing'><span>4.2.4 无损失负载均衡路由（Loss-Free Balancing）</span></h4><p><span>DeepSeek 系列的核心创新，在路由分数上添加</span><strong><span>动态偏置项</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">loss_free_routing</span>(<span class="cm-variable">x</span>, <span class="cm-variable">expert_scores</span>, <span class="cm-variable">expert_biases</span>, <span class="cm-variable">k</span><span class="cm-operator">=</span><span class="cm-number">2</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># expert_biases: 每个专家的偏置项，根据历史负载动态更新</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 添加偏置后的分数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">biased_scores</span> <span class="cm-operator">=</span> <span class="cm-variable">expert_scores</span> <span class="cm-operator">+</span> <span class="cm-variable">expert_biases</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Top-K 选择基于偏置分数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">topk_scores</span>, <span class="cm-variable">topk_indices</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">topk</span>(<span class="cm-variable">softmax</span>(<span class="cm-variable">biased_scores</span>), <span class="cm-variable">k</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 但最终权重使用原始分数（偏置仅影响路由决策，不影响输出权重）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">final_scores</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">gather</span>(<span class="cm-variable">softmax</span>(<span class="cm-variable">expert_scores</span>), <span class="cm-operator">-</span><span class="cm-number">1</span>, <span class="cm-variable">topk_indices</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">final_scores</span>, <span class="cm-variable">topk_indices</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 299px;"></div></div></div></pre><p><strong><span>偏置更新规则</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">对于每个训练批次：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  1. 统计每个专家分配到的 token 数 c_i</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  2. 计算平均负载 c_avg_i</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  3. 计算负载违规误差 e_i = c_avg_i - c_i</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  4. 更新偏置：b_i = b_i + alpha * sign(e_i)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; 如果专家过载（c_i &gt; c_avg_i）-&gt; 降低偏置 -&gt; 减少被选中概率</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; 如果专家欠载（c_i &lt; c_avg_i）-&gt; 提高偏置 -&gt; 增加被选中概率</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><strong><span>不引入干扰梯度</span></strong><span>：偏置项仅影响路由决策，不参与最终输出的梯度计算</span></p></li><li><p><strong><span>不破坏因果约束</span></strong><span>：基于历史批次统计，不泄露未来 token 信息</span></p></li><li><p><strong><span>与专家并行天然兼容</span></strong><span>：适合超大规模分布式训练</span></p></li></ul><hr /><h2 id='五负载均衡机制'><span>五、负载均衡机制</span></h2><h3 id='51-为什么负载均衡至关重要'><span>5.1 为什么负载均衡至关重要？</span></h3><p><span>MoE 面临的最大工程挑战是</span><strong><span>负载不均衡（Load Imbalance）</span></strong><span>：</span></p><ul><li><p><strong><span>专家崩溃（Expert Collapse）</span></strong><span>：少数热门专家被过度使用，大部分专家闲置</span></p></li><li><p><strong><span>计算资源浪费</span></strong><span>：GPU 节点等待过载专家完成计算</span></p></li><li><p><strong><span>模型容量浪费</span></strong><span>：闲置专家未被充分训练，模型整体能力下降</span></p></li><li><p><strong><span>通信瓶颈</span></strong><span>：token 集中到少数节点，All-to-All 通信拥堵</span></p></li></ul><h3 id='52-负载均衡策略对比'><span>5.2 负载均衡策略对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>策略</span></th><th><span>原理</span></th><th><span>优点</span></th><th><span>缺点</span></th></tr></thead><tbody><tr><td><strong><span>辅助损失（Auxiliary Loss）</span></strong></td><td><span>在训练目标中加入负载均衡损失项</span></td><td><span>实现简单</span></td><td><span>干扰主任务梯度，损害模型性能</span></td></tr><tr><td><strong><span>专家选择（Expert Choice）</span></strong></td><td><span>固定每个专家的 token 容量</span></td><td><span>天然均衡</span></td><td><span>破坏因果约束，不适合自回归模型</span></td></tr><tr><td><strong><span>无损失均衡（Loss-Free）</span></strong></td><td><span>动态偏置调整路由概率</span></td><td><span>不干扰训练，性能上限高</span></td><td><span>需要精细的超参数调优</span></td></tr><tr><td><strong><span>序列级均衡</span></strong></td><td><span>在序列维度上平衡负载</span></td><td><span>适合长文本场景</span></td><td><span>实现复杂</span></td></tr></tbody></table></figure><h3 id='53-deepseek-的无辅助损失均衡'><span>5.3 DeepSeek 的无辅助损失均衡</span></h3><p><span>DeepSeek V3/V4 采用的策略是</span><strong><span>无辅助损失的负载均衡（Loss-Free Load Balancing）</span></strong><span>，核心思想：</span></p><ol start='' ><li><p><strong><span>主训练目标纯净</span></strong><span>：语言建模损失不受任何负载均衡项干扰</span></p></li><li><p><strong><span>偏置项动态调节</span></strong><span>：通过专家级偏置实现负载均衡</span></p></li><li><p><strong><span>序列级补充</span></strong><span>：引入轻量级序列级平衡损失，避免单个序列内极端不均衡</span></p></li></ol><p><strong><span>效果</span></strong><span>：</span></p><ul><li><p><span>全局负载均衡度显著提升</span></p></li><li><p><span>模型性能上限高于辅助损失方案</span></p></li><li><p><span>在万卡集群上实现高效扩展</span></p></li></ul><h3 id='54-细粒度专家并行与通信优化'><span>5.4 细粒度专家并行与通信优化</span></h3><p><span>DeepSeek V4 在工程层面实现了</span><strong><span>细粒度通信-计算重叠</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">MoE 层计算流程：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">阶段 1: 调度（Dispatch） &nbsp;  --&gt; All-to-All 通信：将 token 发送到目标专家所在节点</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">阶段 2: 线性层 1（Linear-1） --&gt; 计算：专家前向传播第一部分</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">阶段 3: 合并（Combine） &nbsp; &nbsp;  --&gt; All-to-All 通信：收集各专家的输出</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">阶段 4: 线性层 2（Linear-2） --&gt; 计算：专家前向传播第二部分</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">关键洞察：通信总耗时 &lt; 计算总耗时</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-&gt; 将通信与计算融合为统一流水线</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-&gt; 通信延迟被隐藏在计算之下</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-&gt; 系统可容忍更低互连带宽</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 253px;"></div><div class="CodeMirror-gutters" style="display: none; height: 253px;"></div></div></div></pre><p><strong><span>效果</span></strong><span>：在 DeepSeek V4 中，通过融合内核实现通信与计算完全重叠，端到端性能提升显著。</span></p><hr /><h2 id='六deepseek-v4moe-架构的工程巅峰'><span>六、DeepSeek V4：MoE 架构的工程巅峰</span></h2><h3 id='61-模型规格'><span>6.1 模型规格</span></h3><figure class='table-figure'><table><thead><tr><th><span>规格</span></th><th><span>V4-Pro</span></th><th><span>V4-Flash</span></th></tr></thead><tbody><tr><td><strong><span>总参数量</span></strong></td><td><span>1.6 万亿</span></td><td><span>2840 亿</span></td></tr><tr><td><strong><span>激活参数量</span></strong></td><td><span>490 亿</span></td><td><span>130 亿</span></td></tr><tr><td><strong><span>专家数量</span></strong></td><td><span>约 32,000</span></td><td><span>约 8,000</span></td></tr><tr><td><strong><span>每次激活专家数</span></strong></td><td><span>6 个</span></td><td><span>6 个</span></td></tr><tr><td><strong><span>上下文窗口</span></strong></td><td><span>100 万 token</span></td><td><span>100 万 token</span></td></tr><tr><td><strong><span>训练数据</span></strong></td><td><span>33 万亿 token</span></td><td><span>32 万亿 token</span></td></tr><tr><td><strong><span>开源协议</span></strong></td><td><span>MIT</span></td><td><span>MIT</span></td></tr></tbody></table></figure><h3 id='62-架构创新'><span>6.2 架构创新</span></h3><h4 id='621-双轴稀疏架构'><span>6.2.1 双轴稀疏架构</span></h4><p><span>DeepSeek V4 在两个维度上同时实现稀疏化：</span></p><p><strong><span>维度一：专家维度稀疏（MoE 基础）</span></strong></p><ul><li><p><span>32,000 个专家，每次仅激活 6 个</span></p></li><li><p><span>采用 Top-6 选择机制，根据输入内容动态调整</span></p></li><li><p><span>无辅助损失负载均衡 + 轻量级序列级平衡损失</span></p></li></ul><p><strong><span>维度二：注意力维度稀疏（混合注意力）</span></strong></p><p><span>DeepSeek V4 不沿用标准 Dense Attention，而是将注意力拆分为两类，层间交替使用：</span></p><figure class='table-figure'><table><thead><tr><th><span>注意力类型</span></th><th><span>全称</span></th><th><span>机制</span></th><th><span>作用</span></th></tr></thead><tbody><tr><td><strong><span>CSA</span></strong></td><td><span>Compressed Sparse Attention</span></td><td><span>每 4 个 token 压缩成 1 个 KV entry，再用 Lightning Indexer 做 top-k 稀疏选择 + sliding window 保局部细节</span></td><td><span>兼顾局部依赖和全局检索</span></td></tr><tr><td><strong><span>HCA</span></strong></td><td><span>Heavily Compressed Attention</span></td><td><span>压缩率远大于 CSA（实际约 128:1），直接 dense attention 于压缩后的 stream</span></td><td><span>极端长序列下的成本控制</span></td></tr></tbody></table></figure><p><strong><span>效果</span></strong><span>：在 100 万 token 上下文下：</span></p><ul><li><p><span>V4-Pro 的单 token 推理 FLOPs 仅为 V3.2 的 </span><strong><span>27%</span></strong></p></li><li><p><span>KV Cache 仅为 V3.2 的 </span><strong><span>10%</span></strong></p></li><li><p><span>长文本处理从&quot;实验室玩具&quot;变为&quot;生产力工具&quot;</span></p></li></ul><h4 id='622-流形约束超连接mhc'><span>6.2.2 流形约束超连接（mHC）</span></h4><p><span>对传统残差连接（Residual Connection）的增强：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">传统残差：y = x + F(x)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mHC: &nbsp; &nbsp;  y = x + W * F(x) &nbsp; （W 为残差映射矩阵）</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>V4 将残差映射矩阵约束到</span><strong><span>双随机流形（Doubly Stochastic Manifold）</span></strong><span>上：</span></p><ul><li><p><span>谱范数受限</span></p></li><li><p><span>残差传播变为非扩张性（Non-expansive）</span></p></li><li><p><span>改善深层训练的数值稳定性</span></p></li></ul><h4 id='623-muon-优化器'><span>6.2.3 Muon 优化器</span></h4><p><span>在超大规模训练中采用 Muon 优化器替代传统 AdamW：</span></p><ul><li><p><span>大部分模块使用 Muon 作为主优化器</span></p></li><li><p><span>Embedding、Norm、Head 等部分保留 AdamW</span></p></li><li><p><span>配合混合 Newton-Schulz 正交化提升收敛和稳定性</span></p></li></ul><p><strong><span>挑战与解决</span></strong><span>：</span></p><ul><li><p><span>Muon 需要完整梯度矩阵，与 ZeRO 分布式策略冲突</span></p></li><li><p><span>解决方案：为 Muon 设计 ZeRO 分桶分配的混合策略</span></p></li><li><p><span>稠密参数：限制 ZeRO 并行性，采用背包算法均衡负载</span></p></li><li><p><span>MoE 参数：对每个专家独立优化，展平后均匀分配</span></p></li></ul><h3 id='63-性能表现'><span>6.3 性能表现</span></h3><h4 id='631-基准测试'><span>6.3.1 基准测试</span></h4><figure class='table-figure'><table><thead><tr><th><span>测试项</span></th><th><span>V4-Pro</span></th><th><span>竞品对比</span></th></tr></thead><tbody><tr><td><strong><span>HumanEval（编程）</span></strong></td><td><span>90%</span></td><td><span>GPT-5.2: 88%, Claude Opus 4.5: 88%</span></td></tr><tr><td><strong><span>SWE-Bench（软件工程）</span></strong></td><td><strong><span>83.7%</span></strong></td><td><span>全球首个突破 80%，稳居第一</span></td></tr><tr><td><strong><span>MMLU（多任务理解）</span></strong></td><td><span>84%~92%+</span></td><td><span>GPT-5.2: 82%, Claude Opus 4.5: 81%</span></td></tr><tr><td><strong><span>AIME 2026（数学）</span></strong></td><td><strong><span>99.4%</span></strong></td><td><span>近乎满分</span></td></tr><tr><td><strong><span>1M 上下文检索</span></strong></td><td><strong><span>97%~99.2%</span></strong></td><td><span>Claude 4.5 (200K): 92%</span></td></tr></tbody></table></figure><h4 id='632-推理效率'><span>6.3.2 推理效率</span></h4><figure class='table-figure'><table><thead><tr><th><span>指标</span></th><th><span>V4-Pro vs V3.2</span></th><th><span>V4-Flash</span></th></tr></thead><tbody><tr><td><span>推理速度</span></td><td><span>提升 35 倍</span></td><td><span>极高性价比</span></td></tr><tr><td><span>推理功耗</span></td><td><span>降低 40%</span></td><td><span>仅 1.2kW/卡</span></td></tr><tr><td><span>KV Cache (1M 上下文)</span></td><td><span>仅为 V3.2 的 10%</span></td><td><span>仅为 V3.2 的 7%</span></td></tr><tr><td><span>单服务器部署成本</span></td><td><span>下降 61%</span></td><td><span>更低</span></td></tr></tbody></table></figure><h4 id='633-成本优势'><span>6.3.3 成本优势</span></h4><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>输入价格（/百万 token）</span></th></tr></thead><tbody><tr><td><span>DeepSeek V4-Flash</span></td><td><strong><span>$0.14</span></strong></td></tr><tr><td><span>DeepSeek V4-Pro</span></td><td><strong><span>$1.00</span></strong></td></tr><tr><td><span>GPT-5.5</span></td><td><span>~$70.00</span></td></tr></tbody></table></figure><p><span>V4-Pro 价格约为 GPT-5.5 的 </span><strong><span>1/70</span></strong><span>。</span></p><hr /><h2 id='七moe-架构的好处总结'><span>七、MoE 架构的好处总结</span></h2><h3 id='71-以-deepseek-v4-为例的量化收益'><span>7.1 以 DeepSeek V4 为例的量化收益</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>传统 Dense 模型</span></th><th><span>DeepSeek V4 (MoE)</span></th><th><span>收益</span></th></tr></thead><tbody><tr><td><strong><span>知识容量</span></strong></td><td><span>数百亿参数</span></td><td><span>1.6 万亿参数</span></td><td><strong><span>32x</span></strong></td></tr><tr><td><strong><span>推理计算量</span></strong></td><td><span>与总参数成正比</span></td><td><span>仅 490 亿激活参数</span></td><td><strong><span>节省 97%</span></strong></td></tr><tr><td><strong><span>长文本支持</span></strong></td><td><span>128K~200K</span></td><td><span>1,000,000 token</span></td><td><strong><span>8x</span></strong></td></tr><tr><td><strong><span>推理速度</span></strong></td><td><span>基准</span></td><td><span>提升 35 倍</span></td><td><strong><span>35x</span></strong></td></tr><tr><td><strong><span>能耗</span></strong></td><td><span>基准</span></td><td><span>降低 40%</span></td><td><strong><span>40% down</span></strong></td></tr><tr><td><strong><span>部署成本</span></strong></td><td><span>基准</span></td><td><span>下降 61%</span></td><td><strong><span>61% down</span></strong></td></tr><tr><td><strong><span>API 价格</span></strong></td><td><span>GPT-5.5 级别</span></td><td><span>仅为 GPT-5.5 的 1/70</span></td><td><strong><span>成本骤降</span></strong></td></tr></tbody></table></figure><h3 id='72-moe-的核心优势'><span>7.2 MoE 的核心优势</span></h3><ol start='' ><li><p><strong><span>规模与效率解耦</span></strong></p><ul><li><p><span>总参数量决定模型&quot;知识容量&quot;</span></p></li><li><p><span>激活参数量决定&quot;推理成本&quot;</span></p></li><li><p><span>两者不再绑定，可独立优化</span></p></li></ul></li><li><p><strong><span>专业化分工</span></strong></p><ul><li><p><span>不同专家可学习不同类型的知识（代码、数学、文学、科学）</span></p></li><li><p><span>类似人类社会的&quot;专业分工&quot;，提升整体效率</span></p></li></ul></li><li><p><strong><span>动态适应能力</span></strong></p><ul><li><p><span>路由网络根据输入动态选择专家</span></p></li><li><p><span>简单查询用轻量专家，复杂问题调用深度专家</span></p></li><li><p><span>实现&quot;按需计算&quot;</span></p></li></ul></li><li><p><strong><span>训练稳定性</span></strong></p><ul><li><p><span>无辅助损失的负载均衡避免梯度干扰</span></p></li><li><p><span>流形约束超连接改善深层训练稳定性</span></p></li><li><p><span>适合超大规模（万亿参数）训练</span></p></li></ul></li><li><p><strong><span>硬件友好性</span></strong></p><ul><li><p><span>稀疏激活降低单次推理的显存占用</span></p></li><li><p><span>专家并行适合分布式部署</span></p></li><li><p><span>通信-计算重叠隐藏延迟</span></p></li></ul></li></ol><hr /><h2 id='八moe-技术发展趋势2025-2026'><span>八、MoE 技术发展趋势（2025-2026）</span></h2><ol start='' ><li><p><strong><span>细粒度专家 + 共享专家</span></strong><span>：成为主流范式，共享专家处理通用特征，路由专家处理特定任务</span></p></li><li><p><strong><span>门控函数演进</span></strong><span>：从 Softmax 向 Sigmoid 演进，在超大专家数量（256+）下计算更高效</span></p></li><li><p><strong><span>无辅助损失均衡</span></strong><span>：偏置项方案成为新趋势，消除辅助损失对主任务训练的干扰</span></p></li><li><p><strong><span>MoE + MLA 协同</span></strong><span>：多头潜在注意力（MLA）将 KV Cache 压缩至潜在向量，解决 MoE 超长上下文的显存瓶颈</span></p></li><li><p><strong><span>Wide-EP 超大专家并行</span></strong><span>：EP=32~256 在高带宽互联下成为可行选项，吞吐提升 1.8x</span></p></li><li><p><strong><span>MoE + 推测解码协同</span></strong><span>：多 Token 预测（MTP）与专家并行叠加，进一步提升解码吞吐</span></p></li><li><p><strong><span>Routing-Free MoE（2026 前沿）</span></strong><span>：消除中心化硬编码路由，用自适应机制替代，克服传统路由的&quot;刚性归纳偏置&quot;</span></p></li></ol><hr /><h2 id='九总结'><span>九、总结</span></h2><p><span>MoE（混合专家模型）通过</span><strong><span>稀疏激活</span></strong><span>和</span><strong><span>动态路由</span></strong><span>，实现了大模型&quot;规模&quot;与&quot;效率&quot;的革命性解耦。以 DeepSeek V4 为标杆，MoE 架构展示了以下核心价值：</span></p><ul><li><p><strong><span>万亿级知识容量</span></strong><span>：1.6T 总参数承载海量知识</span></p></li><li><p><strong><span>百亿级推理成本</span></strong><span>：仅激活 49B 参数，计算效率提升 32 倍</span></p></li><li><p><strong><span>百万级上下文</span></strong><span>：混合注意力机制让 1M token 长文本成为基础设施</span></p></li><li><p><strong><span>极致性价比</span></strong><span>：API 价格仅为闭源竞品的 1/70</span></p></li><li><p><strong><span>开源普惠</span></strong><span>：MIT 协议完全开源，推动技术民主化</span></p></li></ul><p><span>MoE 不仅是当前大模型扩展的主流方案，更是通往未来</span><strong><span>智能体化 AI</span></strong><span> 和</span><strong><span>端侧大模型</span></strong><span>的关键技术路径。随着路由策略、负载均衡和硬件协同的持续优化，MoE 将在效率、能力和成本三个维度上继续突破边界。</span></p></div></div>
+</body>
+</html>

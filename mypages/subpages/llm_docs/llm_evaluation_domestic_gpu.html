@@ -1,0 +1,626 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>llm_evaluation_domestic_gpu</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='大模型评估体系与国产gpu评测全景解析'><span>大模型评估体系与国产GPU评测全景解析</span></h1><p><span>本文系统介绍大语言模型（LLM）的标准化评估体系，涵盖知识推理、代码生成、数学求解、人类偏好等核心评测基准，并深入分析国内一些GPU芯片（华为昇腾、寒武纪、海光、壁仞、摩尔线程等）的评测结果与技术对比。</span></p><hr /><h2 id='一大模型评估体系总览'><span>一、大模型评估体系总览</span></h2><h3 id='11-评估体系的三层架构'><span>1.1 评估体系的三层架构</span></h3><p><span>当前大模型评估已形成&quot;静态基准 + 动态人类偏好 + 垂直场景&quot;的三层评估架构：</span></p><figure class='table-figure'><table><thead><tr><th><span>评估层级</span></th><th><span>代表基准</span></th><th><span>特点</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><strong><span>静态基准测试</span></strong></td><td><span>MMLU、HumanEval、GSM8K</span></td><td><span>可复现、客观、易横向对比</span></td><td><span>模型初筛、能力定位</span></td></tr><tr><td><strong><span>动态人类偏好评估</span></strong></td><td><span>Chatbot Arena、MT-Bench</span></td><td><span>贴近真实使用、持续更新</span></td><td><span>最终选型、用户体验</span></td></tr><tr><td><strong><span>垂直场景专项评测</span></strong></td><td><span>SWE-bench、MedQA、C-Eval</span></td><td><span>直接反映领域落地能力</span></td><td><span>行业部署、垂直选型</span></td></tr></tbody></table></figure><h3 id='12-评估的核心维度'><span>1.2 评估的核心维度</span></h3><figure class='table-figure'><table><thead><tr><th><span>测评维度</span></th><th><span>代表基准</span></th><th><span>评估内容</span></th></tr></thead><tbody><tr><td><span>综合知识</span></td><td><span>MMLU、MMLU-Pro、C-Eval</span></td><td><span>涵盖 57+ 学科的选择题，测试知识广度</span></td></tr><tr><td><span>推理能力</span></td><td><span>ARC-Challenge、HellaSwag</span></td><td><span>常识推理与情境判断</span></td></tr><tr><td><span>数学能力</span></td><td><span>GSM8K、MATH、AIME</span></td><td><span>小学到竞赛级数学题求解</span></td></tr><tr><td><span>代码能力</span></td><td><span>HumanEval、SWE-bench、LiveCodeBench</span></td><td><span>函数级代码生成到真实软件工程</span></td></tr><tr><td><span>指令遵循</span></td><td><span>MT-Bench、IFEval</span></td><td><span>多轮对话与复杂指令执行</span></td></tr><tr><td><span>人类偏好</span></td><td><span>Chatbot Arena (Arena AI)</span></td><td><span>真实用户盲测投票，Elo 积分排名</span></td></tr></tbody></table></figure><hr /><h2 id='二核心评测基准详解'><span>二、核心评测基准详解</span></h2><h3 id='21-mmlumassive-multitask-language-understanding'><span>2.1 MMLU（Massive Multitask Language Understanding）</span></h3><h4 id='211-基本介绍'><span>2.1.1 基本介绍</span></h4><p><span>MMLU 是测试模型</span><strong><span>知识广度</span></strong><span>的标准基准，覆盖 57 个学科领域，包括 STEM（科学、技术、工程、数学）、人文、社会科学以及法律、医学等专业领域。</span></p><p><strong><span>测试形式</span></strong><span>：4 选 1 选择题，共 14,042 道题</span>
+<strong><span>评估指标</span></strong><span>：准确率（Accuracy）</span>
+<strong><span>典型分数（2026）</span></strong><span>：前沿模型得分 87%~92%</span></p><h4 id='212-mmlu-pro升级版'><span>2.1.2 MMLU-Pro（升级版）</span></h4><p><span>MMLU-Pro 是 MMLU 的升级版本，针对原版的局限性进行了改进：</span></p><figure class='table-figure'><table><thead><tr><th><span>特性</span></th><th><span>MMLU</span></th><th><span>MMLU-Pro</span></th></tr></thead><tbody><tr><td><span>选项数量</span></td><td><span>4 个</span></td><td><span>10 个</span></td></tr><tr><td><span>题目难度</span></td><td><span>基础</span></td><td><span>更难</span></td></tr><tr><td><span>推理要求</span></td><td><span>直接选择</span></td><td><span>需要链式思维推理</span></td></tr><tr><td><span>典型分数（2026）</span></td><td><span>87%~92%</span></td><td><span>70%~80%</span></td></tr></tbody></table></figure><p><strong><span>关键洞察</span></strong><span>：MMLU-Pro 比 MMLU 低 15~20 分，揭示了标准 MMLU 可能高估模型的真实理解能力——模型可以通过排除明显错误答案来&quot;猜对&quot;，而非真正理解。</span></p><h4 id='213-局限性'><span>2.1.3 局限性</span></h4><ul><li><p><strong><span>选择题偏见</span></strong><span>：多选格式比开放式生成更容易</span></p></li><li><p><strong><span>数据污染</span></strong><span>：静态题目可能出现在训练数据中</span></p></li><li><p><strong><span>消除策略</span></strong><span>：模型可以通过排除法而非真正理解来答题</span></p></li></ul><hr /><h3 id='22-humaneval代码生成基准'><span>2.2 HumanEval（代码生成基准）</span></h3><h4 id='221-基本介绍'><span>2.2.1 基本介绍</span></h4><p><span>HumanEval 由 OpenAI 发布，是</span><strong><span>最广泛引用的代码生成基准</span></strong><span>，包含 164 道 Python 编程题。</span></p><p><strong><span>测试形式</span></strong><span>：</span></p><ul><li><p><span>给定函数签名（Signature）和文档字符串（Docstring）</span></p></li><li><p><span>模型需要补全函数实现</span></p></li><li><p><span>通过隐藏的单元测试验证正确性</span></p></li></ul><p><strong><span>评估指标</span></strong><span>：pass@k（k 次尝试中至少通过 1 次的比例）</span>
+<strong><span>主要关注</span></strong><span>：pass@1（第一次尝试就通过的比例）</span></p><h4 id='222-当前状态2026'><span>2.2.2 当前状态（2026）</span></h4><p><span>HumanEval 已</span><strong><span>接近饱和</span></strong><span>，前沿模型的 pass@1 普遍超过 90%：</span></p><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>HumanEval (pass@1)</span></th></tr></thead><tbody><tr><td><span>Claude Opus 4.6</span></td><td><span>~94%</span></td></tr><tr><td><span>GPT-5.4</span></td><td><span>~94.5%</span></td></tr><tr><td><span>DeepSeek V4</span></td><td><span>~94.8%</span></td></tr><tr><td><span>Gemini 3.1 Pro</span></td><td><span>~93%</span></td></tr><tr><td><span>Qwen 2.5 Coder 32B</span></td><td><span>~85%</span></td></tr></tbody></table></figure><p><strong><span>使用建议</span></strong><span>：HumanEval 应作为</span><strong><span>最低门槛</span></strong><span>（&gt;85% 才算合格），而非区分前沿模型的工具。</span></p><h4 id='223-升级版evalplus'><span>2.2.3 升级版：EvalPlus</span></h4><p><span>EvalPlus 将 HumanEval 的测试用例扩展了 </span><strong><span>80 倍</span></strong><span>，能捕捉到&quot;通过原始测试但在边界情况失败&quot;的解决方案，更加严格。</span></p><hr /><h3 id='23-swe-bench软件工程基准'><span>2.3 SWE-bench（软件工程基准）</span></h3><h4 id='231-基本介绍'><span>2.3.1 基本介绍</span></h4><p><span>SWE-bench 是当前</span><strong><span>最接近真实软件工程工作</span></strong><span>的基准测试，它测试模型解决真实 GitHub Issue 的能力。</span></p><p><strong><span>测试流程</span></strong><span>：</span></p><ol start='' ><li><p><span>给定一个真实的 GitHub Issue 描述</span></p></li><li><p><span>模型需要在真实开源代码库中导航</span></p></li><li><p><span>定位相关文件和代码位置</span></p></li><li><p><span>生成正确的代码修改（Patch）</span></p></li><li><p><span>通过代码库的完整测试套件验证</span></p></li></ol><p><strong><span>子集</span></strong><span>：</span></p><ul><li><p><strong><span>SWE-bench Lite</span></strong><span>：300 道精选题目</span></p></li><li><p><strong><span>SWE-bench Verified</span></strong><span>：人工验证可解的子集，更可靠</span></p></li></ul><h4 id='232-为什么-swe-bench-更重要'><span>2.3.2 为什么 SWE-bench 更重要</span></h4><p><span>SWE-bench 与 HumanEval 的差距揭示了模型能力的真实边界：</span></p><figure class='table-figure'><table><thead><tr><th><span>基准</span></th><th><span>前沿模型得分</span></th><th><span>难度定位</span></th></tr></thead><tbody><tr><td><span>HumanEval</span></td><td><span>90%~95%</span></td><td><span>面试级编程题，孤立函数</span></td></tr><tr><td><span>LiveCodeBench</span></td><td><span>69%~73%</span></td><td><span>竞赛级编程，防数据污染</span></td></tr><tr><td><span>SWE-bench Verified</span></td><td><span>40%~55%</span></td><td><span>真实软件工程，端到端</span></td></tr></tbody></table></figure><p><strong><span>关键洞察</span></strong><span>：模型在孤立函数生成上表现优异，但在真实代码库中定位问题、理解项目结构、遵循编码规范方面仍有巨大差距。</span></p><h4 id='233-2026-年最新数据'><span>2.3.3 2026 年最新数据</span></h4><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>SWE-bench Verified</span></th></tr></thead><tbody><tr><td><span>DeepSeek V4-Pro</span></td><td><strong><span>83.7%</span></strong><span>（全球首个突破 80%）</span></td></tr><tr><td><span>Claude Opus 4.5</span></td><td><span>~55%</span></td></tr><tr><td><span>GPT-5.2</span></td><td><span>~52%</span></td></tr></tbody></table></figure><hr /><h3 id='24-livecodebench防污染代码基准'><span>2.4 LiveCodeBench（防污染代码基准）</span></h3><h4 id='241-核心设计'><span>2.4.1 核心设计</span></h4><p><span>LiveCodeBench 解决了 HumanEval 的</span><strong><span>数据污染</span></strong><span>问题：</span></p><ul><li><p><span>题目从竞赛编程平台实时抓取</span></p></li><li><p><span>仅收集模型</span><strong><span>训练截止日期之后</span></strong><span>出现的问题</span></p></li><li><p><span>确保模型在训练时</span><strong><span>绝对没见过</span></strong><span>这些题目</span></p></li></ul><h4 id='242-2026-年数据'><span>2.4.2 2026 年数据</span></h4><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>LiveCodeBench</span></th></tr></thead><tbody><tr><td><span>DeepSeek V4</span></td><td><strong><span>73.1%</span></strong></td></tr><tr><td><span>Claude Opus 4.6</span></td><td><span>72.8%</span></td></tr><tr><td><span>GPT-5.4</span></td><td><span>71.3%</span></td></tr><tr><td><span>Gemini 3.1 Pro</span></td><td><span>69.5%</span></td></tr></tbody></table></figure><p><strong><span>使用建议</span></strong><span>：LiveCodeBench + SWE-bench 是评估代码能力的黄金组合，前者测算法推理，后者测工程实践。</span></p><hr /><h3 id='25-数学推理基准'><span>2.5 数学推理基准</span></h3><h4 id='251-gsm8k小学数学'><span>2.5.1 GSM8K（小学数学）</span></h4><ul><li><p><span>8,500 道小学水平应用题</span></p></li><li><p><span>测试基础数学推理链</span></p></li><li><p><strong><span>已饱和</span></strong><span>：前沿模型得分 95%+</span></p></li><li><p><span>用途：基础能力 sanity check</span></p></li></ul><h4 id='252-math竞赛数学'><span>2.5.2 MATH（竞赛数学）</span></h4><ul><li><p><span>12,500 道竞赛级数学题，涵盖代数、几何、数论、微积分</span></p></li><li><p><span>2020 年最优模型仅约 5%，2026 年前沿模型达 75%~90%</span></p></li><li><p><span>是衡量推理能力飞跃的最直观指标</span></p></li></ul><h4 id='253-aime美国数学邀请赛'><span>2.5.3 AIME（美国数学邀请赛）</span></h4><ul><li><p><span>更高难度的数学竞赛题</span></p></li><li><p><span>DeepSeek V4-Pro 在 AIME 2026 上达到 </span><strong><span>99.4%</span></strong><span>，近乎满分</span></p></li></ul><hr /><h3 id='26-gpqa博士级科学问答'><span>2.6 GPQA（博士级科学问答）</span></h3><h4 id='261-基本介绍'><span>2.6.1 基本介绍</span></h4><p><span>GPQA（Graduate-Level Google-Proof QA）是测试</span><strong><span>深层领域推理</span></strong><span>的基准：</span></p><ul><li><p><span>由物理学、生物学、化学领域的专家编写</span></p></li><li><p><span>题目设计为</span><strong><span>无法通过搜索直接找到答案</span></strong></p></li><li><p><span>领域专家准确率约 65%，非专家约 34%（接近随机）</span></p></li></ul><h4 id='262-典型分数2026'><span>2.6.2 典型分数（2026）</span></h4><p><span>前沿模型得分 </span><strong><span>55%~65%</span></strong><span>，已接近专家水平。</span></p><hr /><h3 id='27-chatbot-arena--arena-ai人类偏好评估'><span>2.7 Chatbot Arena / Arena AI（人类偏好评估）</span></h3><h4 id='271-核心机制'><span>2.7.1 核心机制</span></h4><ul><li><p><span>两个模型匿名对战，回答同一问题</span></p></li><li><p><span>真实用户投票选择更好的回答</span></p></li><li><p><span>使用 Elo 积分系统排名</span></p></li></ul><h4 id='272-为什么重要'><span>2.7.2 为什么重要</span></h4><ul><li><p><strong><span>难以刷榜</span></strong><span>：基于真实用户偏好，持续更新</span></p></li><li><p><strong><span>贴近实际</span></strong><span>：反映真实对话体验</span></p></li><li><p><strong><span>主观质量</span></strong><span>：捕捉客观基准无法衡量的&quot;感觉&quot;</span></p></li></ul><h4 id='273-2026-年排名参考'><span>2.7.3 2026 年排名参考</span></h4><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>Elo 分数</span></th><th><span>排名</span></th></tr></thead><tbody><tr><td><span>GPT-5.5</span></td><td><span>~1300+</span></td><td><span>#1</span></td></tr><tr><td><span>Claude Opus 4.6</span></td><td><span>~1280</span></td><td><span>#2</span></td></tr><tr><td><span>Gemini 3 Pro</span></td><td><span>~1250</span></td><td><span>#3</span></td></tr><tr><td><span>DeepSeek V4-Pro</span></td><td><span>~1240</span></td><td><span>#4</span></td></tr><tr><td><span>GPT-5.4</span></td><td><span>~1230</span></td><td><span>#5</span></td></tr></tbody></table></figure><hr /><h3 id='28-c-eval中文综合评估'><span>2.8 C-Eval（中文综合评估）</span></h3><h4 id='281-基本介绍'><span>2.8.1 基本介绍</span></h4><p><span>C-Eval 是专为</span><strong><span>中文语境</span></strong><span>设计的综合评测基准：</span></p><ul><li><p><span>覆盖 52 个中文学科</span></p></li><li><p><span>测试国内外大模型的中文能力</span></p></li><li><p><span>DeepSeek、Qwen 系列在 C-Eval 上表现突出</span></p></li></ul><hr /><h3 id='29-智能体基准'><span>2.9 智能体基准</span></h3><h4 id='291-gaia'><span>2.9.1 GAIA</span></h4><p><span>测试 AI 助手在真实世界任务中的多步推理、网页浏览、文件操作和工具使用能力。</span></p><figure class='table-figure'><table><thead><tr><th><span>难度等级</span></th><th><span>典型得分（2026）</span></th></tr></thead><tbody><tr><td><span>Level 1</span></td><td><span>50%~70%</span></td></tr><tr><td><span>Level 2</span></td><td><span>30%~50%</span></td></tr><tr><td><span>Level 3</span></td><td><span>10%~25%</span></td></tr></tbody></table></figure><h4 id='292-tau-bench'><span>2.9.2 TAU-bench</span></h4><p><span>评估智能体在模拟客户服务和企业场景中的可靠性，要求智能体与模拟用户交互并使用工具完成任务。</span></p><hr /><h2 id='三评测结果解读指南'><span>三、评测结果解读指南</span></h2><h3 id='31-红旗信号red-flags'><span>3.1 红旗信号（Red Flags）</span></h3><figure class='table-figure'><table><thead><tr><th><span>信号</span></th><th><span>含义</span></th></tr></thead><tbody><tr><td><span>只展示领先基准</span></td><td><span>被省略的基准可能表现不佳</span></td></tr><tr><td><span>老基准异常高</span></td><td><span>可能存在数据污染</span></td></tr><tr><td><span>提示词敏感</span></td><td><span>分数可能因提示工程虚高 5~10%</span></td></tr><tr><td><span>无垂直基准</span></td><td><span>通用能力不代表领域落地能力</span></td></tr></tbody></table></figure><h3 id='32-最佳实践'><span>3.2 最佳实践</span></h3><ol start='' ><li><p><strong><span>综合使用三类评估</span></strong><span>：静态基准筛选 + 人类偏好验证 + 垂直场景实测</span></p></li><li><p><strong><span>优先看重难基准</span></strong><span>：SWE-bench、GPQA、MMLU-Pro 的区分度远高于 GSM8K、HumanEval</span></p></li><li><p><strong><span>自建评测集</span></strong><span>：用实际业务数据测试，公共基准无法替代</span></p></li><li><p><strong><span>跟踪时间趋势</span></strong><span>：观察模型在持续更新的基准上的表现变化</span></p></li></ol><hr /><h2 id='四国产gpu芯片评测与对比'><span>四、国产GPU芯片评测与对比</span></h2><h3 id='41-国产ai芯片市场格局2026'><span>4.1 国产AI芯片市场格局（2026）</span></h3><p><span>根据 IDC 2025 年度报告，中国 AI 加速卡总出货约 400 万张，国产厂商合计 165 万张（占比 41%）。2026 年 Q1，多家企业营收同比增长超 150%。</span></p><h3 id='42-头部国产gpu技术路线对比'><span>4.2 头部国产GPU技术路线对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>厂商</span></th><th><span>主力型号</span></th><th><span>架构</span></th><th><span>适配框架</span></th><th><span>推理性能（H100=基准）</span></th><th><span>训练效率</span></th><th><span>国产化率</span></th></tr></thead><tbody><tr><td><strong><span>华为昇腾</span></strong></td><td><span>910B/910C/950PR</span></td><td><span>达芬奇3</span></td><td><span>MindSpore/CANN</span></td><td><strong><span>287%</span></strong></td><td><span>85%</span></td><td><strong><span>100%</span></strong></td></tr><tr><td><strong><span>寒武纪</span></strong></td><td><span>思元590/690</span></td><td><span>MLU290</span></td><td><span>PyTorch/BANG</span></td><td><span>120%</span></td><td><span>75%</span></td><td><span>95%</span></td></tr><tr><td><strong><span>海光信息</span></strong></td><td><span>DCU2/Z100/DCU-3G</span></td><td><span>类CUDA</span></td><td><span>ROCm/类CUDA</span></td><td><span>80%</span></td><td><span>72%</span></td><td><span>90%</span></td></tr><tr><td><strong><span>壁仞科技</span></strong></td><td><span>BR100/壁砺166</span></td><td><span>自研</span></td><td><span>类CUDA</span></td><td><span>512 TFLOPS(BF16)</span></td><td><span>-</span></td><td><span>-</span></td></tr><tr><td><strong><span>摩尔线程</span></strong></td><td><span>S5000/PH100</span></td><td><span>MUSA</span></td><td><span>PyTorch/MUSA</span></td><td><span>95%</span></td><td><span>68%</span></td><td><span>85%</span></td></tr><tr><td><strong><span>沐曦</span></strong></td><td><span>C500/MXC600</span></td><td><span>自研G</span></td><td><span>PyTorch/自研</span></td><td><span>110%</span></td><td><span>65%</span></td><td><span>88%</span></td></tr><tr><td><strong><span>天数智芯</span></strong></td><td><span>KCC-V100X</span></td><td><span>类CUDA</span></td><td><span>类CUDA</span></td><td><span>-</span></td><td><span>-</span></td><td><span>-</span></td></tr></tbody></table></figure><h3 id='43-各厂商深度解析'><span>4.3 各厂商深度解析</span></h3><h4 id='431-华为昇腾ascend'><span>4.3.1 华为昇腾（Ascend）</span></h4><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><strong><span>算力领先</span></strong><span>：昇腾 910B FP16 算力达 320 TFLOPS，远超 H20 的 148 TFLOPS；950PR 推理性能达 H100 的 287%</span></p></li><li><p><strong><span>生态完善</span></strong><span>：CANN 架构兼容 CUDA，支持 PyTorch、MindSpore 等主流框架</span></p></li><li><p><strong><span>国产化率 100%</span></strong><span>：从指令集到 IP 核完全自主</span></p></li><li><p><strong><span>量产能力</span></strong><span>：中芯国际 14nm 工艺良率超 90%，已量产 910C 芯片</span></p></li></ul><p><strong><span>软件生态</span></strong><span>：</span></p><ul><li><p><span>CANN（Compute Architecture for Neural Networks）：对标 CUDA 的国产计算架构</span></p></li><li><p><span>MindSpore：华为自研 AI 框架</span></p></li><li><p><span>兼容 PyTorch，降低开发者迁移成本</span></p></li></ul><p><strong><span>实测数据（DeepSeek V4-Flash，单卡 INT8）</span></strong><span>：</span></p><ul><li><p><span>推理速度：</span><strong><span>2,850 tokens/s</span></strong></p></li><li><p><span>首批适配时间：Day0（2025 Q4）</span></p></li><li><p><span>生产可用性：成熟</span></p></li></ul><h4 id='432-寒武纪cambricon'><span>4.3.2 寒武纪（Cambricon）</span></h4><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><strong><span>推理优化深度大</span></strong><span>：思元 590/690 INT8 算力 256+ TOPS，采用 Chiplet 技术</span></p></li><li><p><strong><span>特定场景超越</span></strong><span>：在金融等特定场景效率超过英伟达 H30</span></p></li><li><p><strong><span>语音/视觉专长</span></strong><span>：对 CNN 和 RNN 有针对性硬件优化</span></p></li><li><p><strong><span>盈利能力强</span></strong><span>：2025 年已实现规模化盈利，2026 Q1 营收 28.85 亿（同比 +160%）</span></p></li></ul><p><strong><span>软件栈</span></strong><span>：</span></p><ul><li><p><span>Neuware SDK + MagicMind 推理引擎</span></p></li><li><p><span>需要使用 Neuware 工具链进行算子转换</span></p></li></ul><p><strong><span>实测数据</span></strong><span>：</span></p><ul><li><p><span>推理速度：2,200 tokens/s（DeepSeek V4-Flash）</span></p></li><li><p><span>首批适配：Day0（2025 Q4）</span></p></li><li><p><span>生产可用性：小规模可用</span></p></li></ul><p><strong><span>局限</span></strong><span>：自研指令集迁移成本较高，生态开放度不及昇腾和海光</span></p><h4 id='433-海光信息hygon'><span>4.3.3 海光信息（Hygon）</span></h4><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><strong><span>类 CUDA 生态</span></strong><span>：DCU 采用类 CUDA 架构，迁移成本最低</span></p></li><li><p><strong><span>商业订单</span></strong><span>：因&quot;类 CUDA&quot;生态获得阿里巴巴等企业订单</span></p></li><li><p><strong><span>深算系列迭代</span></strong><span>：DCU2/Z100/DCU-3G 持续升级</span></p></li></ul><p><strong><span>实测数据</span></strong><span>：</span></p><ul><li><p><span>推理速度：1,800 tokens/s（DeepSeek V4-Flash）</span></p></li><li><p><span>首批适配：Day0（2025 Q4）</span></p></li><li><p><span>生产可用性：需进一步优化</span></p></li></ul><p><strong><span>2026 Q1 业绩</span></strong><span>：营收 40.34 亿（同比 +68%），深算二号出货增长</span></p><h4 id='434-壁仞科技biren'><span>4.3.4 壁仞科技（Biren）</span></h4><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><strong><span>峰值算力高</span></strong><span>：BR100 BF16 算力达 512 TFLOPS</span></p></li><li><p><strong><span>壁砺 166</span></strong><span>：通过国家级安全可靠测评（I 级）</span></p></li></ul><p><strong><span>挑战</span></strong><span>：</span></p><ul><li><p><span>生态建设相对滞后</span></p></li><li><p><span>大模型训练能力仍在验证中</span></p></li></ul><h4 id='435-摩尔线程moore-threads'><span>4.3.5 摩尔线程（Moore Threads）</span></h4><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><strong><span>通用 GPU 路线</span></strong><span>：自研 MUSA 架构，覆盖 AI 计算 + 图形渲染 + 视频编解码</span></p></li><li><p><strong><span>差异化场景</span></strong><span>：在 AI+图形融合场景（数字人、XR）有独特优势</span></p></li><li><p><strong><span>万卡集群</span></strong><span>：KUAE 系列万卡智算集群解决方案</span></p></li><li><p><strong><span>2026 Q1 业绩</span></strong><span>：营收 7.38 亿（同比 +155%），首次实现季度盈利</span></p></li></ul><p><strong><span>实测数据</span></strong><span>：</span></p><ul><li><p><span>推理速度：1,650 tokens/s（DeepSeek V4-Flash）</span></p></li><li><p><span>适配时间：2026 年 1 月</span></p></li><li><p><span>生产可用性：早期阶段</span></p></li></ul><h4 id='436-沐曦metax'><span>4.3.6 沐曦（MetaX）</span></h4><p><strong><span>核心优势</span></strong><span>：</span></p><ul><li><p><span>自研 G 架构</span></p></li><li><p><span>MXC600/PH100 通过国家级安全可靠测评</span></p></li><li><p><span>2026 Q1 营收 5.62 亿（同比 +75%），亏损环比收窄 76%</span></p></li></ul><p><strong><span>实测数据</span></strong><span>：</span></p><ul><li><p><span>推理速度：1,400 tokens/s</span></p></li><li><p><span>适配时间：2026 年 2 月</span></p></li><li><p><span>生产可用性：预览阶段</span></p></li></ul><h3 id='44-国产gpu实测性能对比deepseek-v4-flash单卡-int8'><span>4.4 国产GPU实测性能对比（DeepSeek V4-Flash，单卡 INT8）</span></h3><figure class='table-figure'><table><thead><tr><th><span>芯片平台</span></th><th><span>推理速度 (tokens/s)</span></th><th><span>功耗 (W)</span></th><th><span>内存占用 (GB)</span></th><th><span>支持精度</span></th><th><span>生产可用性</span></th></tr></thead><tbody><tr><td><strong><span>NVIDIA H200</span></strong></td><td><span>4,200</span></td><td><span>700</span></td><td><span>-</span></td><td><span>FP16/FP8</span></td><td><span>基线</span></td></tr><tr><td><strong><span>昇腾 910B</span></strong></td><td><strong><span>2,850</span></strong></td><td><span>310</span></td><td><span>8.3</span></td><td><span>FP16/FP32</span></td><td><span>成熟</span></td></tr><tr><td><strong><span>寒武纪 590</span></strong></td><td><span>2,200</span></td><td><span>185</span></td><td><span>7.8</span></td><td><span>FP16/INT8</span></td><td><span>小规模</span></td></tr><tr><td><strong><span>海光 DCU Z100</span></strong></td><td><span>1,800</span></td><td><span>195</span></td><td><span>9.1</span></td><td><span>FP32</span></td><td><span>需优化</span></td></tr><tr><td><strong><span>摩尔 S5000</span></strong></td><td><span>1,650</span></td><td><span>-</span></td><td><span>-</span></td><td><span>-</span></td><td><span>早期</span></td></tr><tr><td><strong><span>沐曦 C500</span></strong></td><td><span>1,400</span></td><td><span>-</span></td><td><span>-</span></td><td><span>-</span></td><td><span>预览</span></td></tr></tbody></table></figure><h3 id='45-国产gpu优化效果'><span>4.5 国产GPU优化效果</span></h3><h4 id='451-昇腾平台优化'><span>4.5.1 昇腾平台优化</span></h4><ul><li><p><span>图优化使推理速度提升 </span><strong><span>35%</span></strong></p></li><li><p><span>内存复用策略降低内存占用 </span><strong><span>20%</span></strong></p></li><li><p><span>混合精度训练提升吞吐量 </span><strong><span>2.5 倍</span></strong></p></li></ul><h4 id='452-寒武纪平台优化'><span>4.5.2 寒武纪平台优化</span></h4><ul><li><p><span>专用算子加速使计算效率提升 </span><strong><span>40%</span></strong></p></li><li><p><span>内存池技术减少数据传输时间 </span><strong><span>30%</span></strong></p></li><li><p><span>量化压缩使模型大小减少 </span><strong><span>50%</span></strong></p></li></ul><h3 id='46-国家级安全可靠测评2026年5月'><span>4.6 国家级安全可靠测评（2026年5月）</span></h3><p><span>2026 年 5 月 26 日，中国信息安全测评中心与国家保密科技测评中心首次将 AI 芯片纳入安全可靠测评体系，9 款芯片全部获评 </span><strong><span>I 级</span></strong><span>（最高等级）：</span></p><figure class='table-figure'><table><thead><tr><th><span>厂商</span></th><th><span>通过型号</span></th><th><span>类型</span></th></tr></thead><tbody><tr><td><span>华为海思</span></td><td><span>昇腾 310、昇腾 910</span></td><td><span>训练/推理</span></td></tr><tr><td><span>阿里平头哥</span></td><td><span>真武 M530、真武 M890</span></td><td><span>训练/推理</span></td></tr><tr><td><span>海光信息</span></td><td><span>DCU-3G</span></td><td><span>训练/推理</span></td></tr><tr><td><span>壁仞科技</span></td><td><span>壁砺 166</span></td><td><span>训练/推理</span></td></tr><tr><td><span>天数智芯</span></td><td><span>KCC-V100X</span></td><td><span>训练/推理</span></td></tr><tr><td><span>沐曦股份</span></td><td><span>MXC600</span></td><td><span>训练/推理</span></td></tr><tr><td><span>摩尔线程</span></td><td><span>PH100</span></td><td><span>训练/推理</span></td></tr></tbody></table></figure><p><strong><span>未通过本次测评</span></strong><span>：寒武纪、燧原科技、百度昆仑芯等（可能处于申请流程中或尚未提交）。</span></p><h3 id='47-国产gpu与英伟达对比'><span>4.7 国产GPU与英伟达对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>国产GPU</span></th><th><span>英伟达 H200</span></th></tr></thead><tbody><tr><td><strong><span>峰值算力</span></strong></td><td><span>部分超越（昇腾 950PR 287%）</span></td><td><span>基准</span></td></tr><tr><td><strong><span>软件生态</span></strong></td><td><span>CANN/类 CUDA，持续完善</span></td><td><span>CUDA，成熟（1200+ 框架）</span></td></tr><tr><td><strong><span>价格</span></strong></td><td><span>约为 H20 的 </span><strong><span>65%</span></strong></td><td><span>基准</span></td></tr><tr><td><strong><span>能效比</span></strong></td><td><span>突破 </span><strong><span>10 TFLOPS/W</span></strong><span>，较 H20 提升 18%</span></td><td><span>基准</span></td></tr><tr><td><strong><span>供应链安全</span></strong></td><td><span>自主可控</span></td><td><span>受出口管制</span></td></tr><tr><td><strong><span>先进制程</span></strong></td><td><span>以 7nm 为主</span></td><td><span>已进入 3nm</span></td></tr><tr><td><strong><span>维修生态</span></strong></td><td><span>原厂返修，MTTR 2~5 天</span></td><td><span>第三方成熟，MTTR ~4 小时</span></td></tr></tbody></table></figure><h3 id='48-国产tpu新势力中昊芯英'><span>4.8 国产TPU新势力：中昊芯英</span></h3><p><span>2026 年 5 月，中昊芯英发布自研 TPU 芯片并实现量产交付：</span></p><figure class='table-figure'><table><thead><tr><th><span>指标</span></th><th><span>TPU</span></th><th><span>GPU H100</span></th></tr></thead><tbody><tr><td><span>功耗</span></td><td><span>400W</span></td><td><span>700W</span></td></tr><tr><td><span>INT8 性能</span></td><td><span>512 TOPS</span></td><td><span>3,959 TOPS</span></td></tr><tr><td><span>能效比</span></td><td><strong><span>1.28 TOPS/W</span></strong></td><td><span>0.56 TOPS/W</span></td></tr><tr><td><span>提升倍数</span></td><td><strong><span>2.3×</span></strong></td><td><span>基准</span></td></tr></tbody></table></figure><p><span>天津移动 TPU 智算中心已正式投入运行，成为国产 TPU 商业化推广的首个标杆案例。</span></p><hr /><h2 id='五选型建议'><span>五、选型建议</span></h2><h3 id='51-大模型选型指南'><span>5.1 大模型选型指南</span></h3><figure class='table-figure'><table><thead><tr><th><span>使用场景</span></th><th><span>优先参考基准</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>通用对话</span></td><td><span>Arena AI Elo + MMLU-Pro</span></td><td><span>人类偏好 + 知识深度</span></td></tr><tr><td><span>代码生成</span></td><td><span>LiveCodeBench + SWE-bench</span></td><td><span>防污染 + 真实工程</span></td></tr><tr><td><span>数学推理</span></td><td><span>MATH + AIME</span></td><td><span>竞赛级难度</span></td></tr><tr><td><span>科学研究</span></td><td><span>GPQA Diamond</span></td><td><span>博士级推理</span></td></tr><tr><td><span>中文应用</span></td><td><span>C-Eval + 自建评测</span></td><td><span>中文语境专项</span></td></tr><tr><td><span>智能体</span></td><td><span>GAIA + TAU-bench</span></td><td><span>多步推理与工具使用</span></td></tr></tbody></table></figure><h3 id='52-国产gpu选型指南'><span>5.2 国产GPU选型指南</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>推荐方案</span></th><th><span>理由</span></th></tr></thead><tbody><tr><td><strong><span>大规模训练</span></strong></td><td><span>昇腾 950PR</span></td><td><span>训练效率 85%，生态最完善</span></td></tr><tr><td><strong><span>推理服务</span></strong></td><td><span>昇腾 910B/C 或 寒武纪 590</span></td><td><span>推理性能领先，性价比高</span></td></tr><tr><td><strong><span>快速迁移</span></strong></td><td><span>海光 DCU</span></td><td><span>类 CUDA 生态，迁移成本最低</span></td></tr><tr><td><strong><span>图形+AI融合</span></strong></td><td><span>摩尔线程 S5000</span></td><td><span>通用 GPU 路线，差异化场景</span></td></tr><tr><td><strong><span>边缘部署</span></strong></td><td><span>昇腾 310</span></td><td><span>低功耗，通过安全认证</span></td></tr><tr><td><strong><span>极致能效</span></strong></td><td><span>中昊芯英 TPU</span></td><td><span>能效比 2.3× 于 GPU</span></td></tr></tbody></table></figure><hr /><h2 id='六总结'><span>六、总结</span></h2><p><span>大模型评估体系已从单一基准发展为&quot;静态基准 + 动态偏好 + 垂直场景&quot;的多维评估网络。关键洞察包括：</span></p><ol start='' ><li><p><strong><span>基准饱和度</span></strong><span>：HumanEval、GSM8K 已饱和，应优先使用 SWE-bench、GPQA、MMLU-Pro 等难基准</span></p></li><li><p><strong><span>数据污染</span></strong><span>：LiveCodeBench 等动态基准有效解决了污染问题</span></p></li><li><p><strong><span>人类偏好</span></strong><span>：Arena AI 是评估对话体验的黄金标准</span></p></li><li><p><strong><span>垂直落地</span></strong><span>：通用基准高分不等于领域可用，必须结合实际业务数据测试</span></p></li></ol><p><span>国产GPU在 2026 年已形成&quot;昇腾领跑、寒武纪/海光跟进、壁仞/摩尔/沐曦差异化&quot;的竞争格局：</span></p><ul><li><p><strong><span>昇腾</span></strong><span>凭借 100% 国产化率和最完善生态占据主导地位</span></p></li><li><p><strong><span>寒武纪</span></strong><span>在推理场景和特定领域有深度优化</span></p></li><li><p><strong><span>海光</span></strong><span>以类 CUDA 生态获得最快迁移路径</span></p></li><li><p><strong><span>国产TPU</span></strong><span>以极致能效比开辟新赛道</span></p></li><li><p><strong><span>安全认证</span></strong><span>成为信创采购的硬性门槛</span></p></li></ul><p><span>国产芯片在算力性能上已快速追赶甚至在部分指标上超越国际竞品，但在软件生态成熟度、先进制程、维修体系等方面仍需持续投入。随着 DeepSeek 等开源模型专为国产芯片优化，国产 AI 算力基础设施正加速进入可用、好用的新阶段。</span></p></div></div>
+</body>
+</html>
