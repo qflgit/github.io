@@ -1,0 +1,623 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>MCP_Security_Permission_Model</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='mcp-安全权限模型指南'><span>MCP 安全权限模型指南</span></h1><blockquote><p><span>本文档系统介绍 Model Context Protocol (MCP) 的安全权限模型，涵盖工具授权、沙箱执行与审计日志三大核心安全机制。</span></p></blockquote><hr /><h2 id='目录'><span>目录</span></h2><ol start='' ><li><p><a href='#1-mcp-安全架构概述'><span>MCP 安全架构概述</span></a></p></li><li><p><a href='#2-工具授权模型'><span>工具授权模型</span></a></p></li><li><p><a href='#3-沙箱执行机制'><span>沙箱执行机制</span></a></p></li><li><p><a href='#4-审计日志体系'><span>审计日志体系</span></a></p></li><li><p><a href='#5-分层信任模型'><span>分层信任模型</span></a></p></li><li><p><a href='#6-安全成熟度模型'><span>安全成熟度模型</span></a></p></li><li><p><a href='#7-常见安全失败模式'><span>常见安全失败模式</span></a></p></li><li><p><a href='#8-最佳实践与实施建议'><span>最佳实践与实施建议</span></a></p></li></ol><hr /><h2 id='1-mcp-安全架构概述'><span>1. MCP 安全架构概述</span></h2><p><span>MCP 服务器位于 AI Agent、工具和数据系统之间的执行路径上，这一位置使其成为整个系统的</span><strong><span>控制平面</span></strong><span>。如果 MCP 服务器被攻击者攻破，他们将间接获得对工具执行、数据访问和系统行为的控制权。</span></p><p><span>MCP 安全设计必须像对待数据库引擎、API 网关和身份提供商一样严格。大多数 MCP 安全失败并非源于协议本身的弱点，而是来自：</span></p><ul><li><p><span>过度宽泛的权限</span></p></li><li><p><span>弱身份执行</span></p></li><li><p><span>缺失的运行时隔离</span></p></li><li><p><span>不足的审计可见性</span></p></li></ul><p><span>MCP 安全遵循传统分布式系统安全原则：</span><strong><span>先执行身份认证，再践行最小权限，隔离执行环境，记录一切操作</span></strong><span>。</span></p><hr /><h2 id='2-工具授权模型'><span>2. 工具授权模型</span></h2><h3 id='21-核心授权问题'><span>2.1 核心授权问题</span></h3><p><span>当 Agent 调用 MCP 服务器上的工具时，服务器必须回答两个问题：</span></p><ol start='' ><li><p><strong><span>这个客户端是否有权调用此工具？</span></strong><span> —— 由 MCP 授权机制（OAuth 2.1 + scopes）回答</span></p></li><li><p><strong><span>这次具体的调用（含具体参数）是否获得了指定人员的批准？</span></strong><span> —— 需要在 MCP 之上额外实现</span></p></li></ol><p><span>对于只读数据查询、搜索、摘要等低风险操作，问题 (1) 已足够。但对于涉及资金、基础设施变更、数据导出或不可逆操作的工具，问题 (2) 的答案是不可或缺的。</span></p><h3 id='22-工具分层授权模型'><span>2.2 工具分层授权模型</span></h3><p><span>按影响范围将工具分为三个层级：</span></p><figure class='table-figure'><table><thead><tr><th><span>层级</span></th><th><span>类型</span></th><th><span>授权要求</span></th><th><span>示例</span></th></tr></thead><tbody><tr><td><strong><span>Tier 0</span></strong></td><td><span>只读操作</span></td><td><span>Scope 级授权即可</span></td><td><span>搜索、检索、状态检查、数据查询</span></td></tr><tr><td><strong><span>Tier 1</span></strong></td><td><span>有限写入</span></td><td><span>Scope 授权 + 速率限制</span></td><td><span>创建草稿、发表评论、添加沙箱数据行</span></td></tr><tr><td><strong><span>Tier 2</span></strong></td><td><span>高风险操作</span></td><td><span>Scope 授权 + </span><strong><span>每次调用前人工审批</span></strong></td><td><span>资金转移、基础设施变更、权限修改、数据导出</span></td></tr></tbody></table></figure><p><strong><span>关键原则</span></strong><span>：不要将每个工具都视为 Tier 0（过于宽松），也不要将每个工具都视为 Tier 2（导致 Agent 集成不可用）。</span></p><h3 id='23-能力建模-capability-modeling'><span>2.3 能力建模 (Capability Modeling)</span></h3><p><span>每个 MCP 工具必须暴露</span><strong><span>狭窄且明确的能力边界</span></strong><span>。工具绝不能充当通用执行端点，因为宽泛的执行面会增加攻击影响面。</span></p><p><span>每个工具在注册前必须声明：</span></p><ul><li><p><strong><span>操作类型</span></strong><span>：读 / 写 / 管理</span></p></li><li><p><strong><span>数据范围</span></strong><span>：租户级、Schema 级或数据集级限制</span></p></li><li><p><strong><span>资源限制</span></strong><span>：每工具的 CPU、内存和执行时间上限</span></p></li><li><p><strong><span>外部副作用</span></strong><span>：网络调用或外部系统写入的显式声明</span></p></li></ul><p><span>能力定义必须在 MCP 服务器边界处强制执行，而非在工具代码内部。工具应假设权限检查已完成，不应独立做出信任决策。</span></p><h3 id='24-工具范围检查清单'><span>2.4 工具范围检查清单</span></h3><figure class='table-figure'><table><thead><tr><th><span>检查项</span></th><th><span>要求</span></th></tr></thead><tbody><tr><td><span>工具描述</span></td><td><span>命名工具应被调用的具体场景，而非仅描述功能</span></td></tr><tr><td><span>输入 Schema</span></td><td><span>使用最窄的适用类型 — 枚举优于字符串，有界整数优于无界整数</span></td></tr><tr><td><span>参数校验</span></td><td><span>不接受自由格式的 SQL、Shell 命令、文件路径或 URL（除非有显式白名单检查）</span></td></tr><tr><td><span>破坏性标记</span></td><td><span>状态变更工具携带 </span><code>isDestructive</code><span> 等元数据标志</span></td></tr><tr><td><span>调度安全</span></td><td><span>Handler 仅在封闭的操作集上调度，不从用户输入进行运行时方法分发</span></td></tr><tr><td><span>授权验证</span></td><td><span>在 Handler 主体运行前验证调用者的 Scope</span></td></tr><tr><td><span>版本控制</span></td><td><span>工具目录已版本化，变更需经过审查；新增工具是部署事件，而非热重载</span></td></tr></tbody></table></figure><h3 id='25-反模式万能工具-omnibus-tool'><span>2.5 反模式：万能工具 (Omnibus Tool)</span></h3><p><span>最典型的审计异味是名为 </span><code>execute</code><span>、</span><code>query</code><span>、</span><code>run</code><span> 或 </span><code>action</code><span> 的工具，只接受单个自由格式字符串参数。这种模式将工具目录缩减为</span><strong><span>一个</span></strong><span>具有最大爆炸半径的工具，使得：</span></p><ul><li><p><span>按工具授权变得不可能</span></p></li><li><p><span>审计日志无法解释</span></p></li><li><p><span>攻击面最大化</span></p></li></ul><p><strong><span>正确做法</span></strong><span>：拆分为狭窄工具，即使目录规模会增大。</span></p><hr /><h2 id='3-沙箱执行机制'><span>3. 沙箱执行机制</span></h2><h3 id='31-为什么需要沙箱'><span>3.1 为什么需要沙箱</span></h3><p><span>MCP 服务器经常按照 AI Agent 的指示执行代码或命令，这使其面临多种风险：</span></p><ul><li><p><span>提示注入导致执行恶意命令</span></p></li><li><p><span>工具返回的不可信数据重新进入 Agent 上下文</span></p></li><li><p><span>单个工具被攻破后横向移动</span></p></li></ul><p><span>如果没有沙箱或最小权限隔离，机密性风险是巨大的。</span></p><h3 id='32-沙箱实现层级'><span>3.2 沙箱实现层级</span></h3><figure class='table-figure'><table><thead><tr><th><span>层级</span></th><th><span>隔离方式</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><strong><span>进程级</span></strong></td><td><span>独立进程，无网络访问</span></td><td><span>低风险工具、快速原型</span></td></tr><tr><td><strong><span>容器级</span></strong></td><td><span>Docker 容器隔离</span></td><td><span>生产环境、内部企业工作负载</span></td></tr><tr><td><strong><span>VM / gVisor 级</span></strong></td><td><span>轻量级虚拟机隔离</span></td><td><span>多租户环境、不可信工具</span></td></tr><tr><td><strong><span>WASM 级</span></strong></td><td><span>WebAssembly 沙箱</span></td><td><span>实验性工具、零信任环境</span></td></tr></tbody></table></figure><h3 id='33-沙箱核心要求'><span>3.3 沙箱核心要求</span></h3><ul><li><p><strong><span>无互联网访问</span></strong><span>：每个任务在隔离容器中运行，防止跨任务干扰</span></p></li><li><p><strong><span>预填充 Mock 服务</span></strong><span>：使用预设夹具启动 Mock 服务，注入随机 API 错误以测试鲁棒性</span></p></li><li><p><strong><span>路径映射</span></strong><span>：自动映射可执行路径、配置路径和工作区路径，确保工具在容器内正常运行</span></p></li><li><p><strong><span>资源限制</span></strong><span>：每工具的 CPU、内存和执行时间上限，防止资源耗尽或拒绝服务</span></p></li><li><p><strong><span>网络分段</span></strong><span>：将 MCP 服务器隔离在专用网络段中，配置适当的防火墙规则</span></p></li></ul><h3 id='34-分层信任模型中的沙箱策略'><span>3.4 分层信任模型中的沙箱策略</span></h3><figure class='table-figure'><table><thead><tr><th><span>信任层级</span></th><th><span>沙箱策略</span></th></tr></thead><tbody><tr><td><strong><span>Tier 0 (不可信)</span></strong></td><td><span>实验性工具在临时、网络隔离的沙箱中运行（如 WebAssembly 或 gVisor 容器），无持久化主机文件系统访问</span></td></tr><tr><td><strong><span>Tier 1 (已验证)</span></strong></td><td><span>由已知实体签名的工具以标准权限运行，但高风险操作需用户确认 (HITL)</span></td></tr><tr><td><strong><span>Tier 2 (系统/核心)</span></strong></td><td><span>经过加固、形式化验证的工具以高自主性运行，但受持续运行时审计和异常检测约束</span></td></tr></tbody></table></figure><hr /><h2 id='4-审计日志体系'><span>4. 审计日志体系</span></h2><h3 id='41-审计日志的必要性'><span>4.1 审计日志的必要性</span></h3><p><span>没有审计可见性的安全在事件发生时必然失败。每次 MCP 工具调用都必须生成</span><strong><span>结构化审计记录</span></strong><span>。</span></p><p><span>审计日志不仅是技术需求，更是合规需求。仅记录工具名称和时间戳的日志满足狭窄的技术要求；而记录用户身份、Agent 身份、完整请求上下文、应用策略和输出内容的结构化日志则满足 SOC 2、HIPAA 和 GDPR 要求。</span></p><h3 id='42-审计日志必须包含的字段'><span>4.2 审计日志必须包含的字段</span></h3><figure class='table-figure'><table><thead><tr><th><span>字段</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>Agent 身份</span></td><td><span>发起调用的 AI Agent 标识</span></td></tr><tr><td><span>Token 身份</span></td><td><span>使用的认证令牌标识</span></td></tr><tr><td><span>工具名称</span></td><td><span>被调用的工具</span></td></tr><tr><td><span>能力调用</span></td><td><span>具体调用的能力/操作</span></td></tr><tr><td><span>执行参数</span></td><td><span>传入的参数（需对 PII 进行脱敏）</span></td></tr><tr><td><span>执行时长</span></td><td><span>工具执行耗时</span></td></tr><tr><td><span>资源使用</span></td><td><span>CPU、内存等资源消耗</span></td></tr><tr><td><span>执行结果</span></td><td><span>成功/失败及返回内容摘要</span></td></tr><tr><td><span>时间戳</span></td><td><span>精确到毫秒的事件时间</span></td></tr><tr><td><span>会话标识</span></td><td><span>关联同一工作流的所有调用</span></td></tr></tbody></table></figure><h3 id='43-pii-脱敏要求'><span>4.3 PII 脱敏要求</span></h3><p><span>审计日志中</span><strong><span>必须</span></strong><span>对敏感信息进行脱敏处理。详细的 JSON-RPC 日志会逐字捕获参数值 —— 电子邮件地址、作为参数传递的 API 密钥、客户姓名。</span></p><p><strong><span>脱敏原则</span></strong><span>：</span></p><ul><li><p><span>在结构化日志层进行脱敏，而非在日志接收端</span></p></li><li><p><span>绝不在后处理阶段脱敏</span></p></li><li><p><span>使用标记化替换（如 </span><code>EMAIL_REDACTED</code><span>、</span><code>API_KEY_REDACTED</code><span>）</span></p></li></ul><h3 id='44-日志保留与合规'><span>4.4 日志保留与合规</span></h3><ul><li><p><span>日志应保留在</span><strong><span>自有环境</span></strong><span>中，而非第三方 SaaS 系统</span></p></li><li><p><span>与 SIEM 平台集成，关联 MCP 事件与身份行为和网络流量</span></p></li><li><p><span>支持实时查询和按需导出</span></p></li><li><p><span>保留期限应符合行业合规要求（如金融行业通常要求 7 年）</span></p></li></ul><h3 id='45-异常检测'><span>4.5 异常检测</span></h3><p><span>审计日志应支持检测以下异常模式：</span></p><ul><li><p><span>不寻常的工具访问序列</span></p></li><li><p><span>权限提升尝试</span></p></li><li><p><span>数据外泄指标</span></p></li><li><p><span>隐形 Agent 活动（LLM 处理但不向用户显示的操作）</span></p></li><li><p><span>特定工具的频率突增（如从正常速率突然飙升到每秒数千次请求）</span></p></li></ul><hr /><h2 id='5-分层信任模型'><span>5. 分层信任模型</span></h2><p><span>MCP 生态系统面临&quot;安全税&quot;风险 —— 即过度控制可能扼杀开放创新。行业正在向</span><strong><span>分层信任模型</span></strong><span>演进：</span></p><h3 id='51-三层信任架构'><span>5.1 三层信任架构</span></h3><figure class='table-figure'><table><thead><tr><th><span>层级</span></th><th><span>信任级别</span></th><th><span>运行环境</span></th><th><span>权限</span></th><th><span>审批要求</span></th></tr></thead><tbody><tr><td><strong><span>Tier 0</span></strong></td><td><span>不可信</span></td><td><span>临时沙箱（WASM / gVisor）</span></td><td><span>无持久化文件系统访问</span></td><td><span>自动执行</span></td></tr><tr><td><strong><span>Tier 1</span></strong></td><td><span>已验证</span></td><td><span>标准容器</span></td><td><span>标准权限</span></td><td><span>高风险操作需人工确认 (HITL)</span></td></tr><tr><td><strong><span>Tier 2</span></strong></td><td><span>系统/核心</span></td><td><span>硬化环境</span></td><td><span>高自主性</span></td><td><span>持续运行时审计 + 异常检测</span></td></tr></tbody></table></figure><h3 id='52-信任模型实施要点'><span>5.2 信任模型实施要点</span></h3><ul><li><p><strong><span>数字签名</span></strong><span>：工具必须由已知实体签名，客户端验证工具代码或定义是否匹配已知良好哈希</span></p></li><li><p><strong><span>版本锁定</span></strong><span>：锁定特定 MCP 服务器版本，任何变更触发管理员告警</span></p></li><li><p><strong><span>集中式能力注册表</span></strong><span>：控制工具暴露和权限，防止未授权工具注册</span></p></li><li><p><strong><span>供应链监控</span></strong><span>：跟踪版本、监控开源工具的提交历史，建立内部批准的 MCP 连接器注册表</span></p></li></ul><hr /><h2 id='6-安全成熟度模型'><span>6. 安全成熟度模型</span></h2><h3 id='61-level-1-----基础阶段'><span>6.1 Level 1 — 基础阶段</span></h3><p><strong><span>特征</span></strong><span>：</span></p><ul><li><p><span>仅基于令牌的认证</span></p></li><li><p><span>系统范围内的宽泛工具权限</span></p></li><li><p><span>无运行时隔离或沙箱</span></p></li><li><p><span>有限或无审计可见性</span></p></li><li><p><span>Token 泄露时爆炸半径极大</span></p></li></ul><p><strong><span>适用场景</span></strong><span>：原型和早期内部部署</span></p><h3 id='62-level-2-----生产就绪'><span>6.2 Level 2 — 生产就绪</span></h3><p><strong><span>特征</span></strong><span>：</span></p><ul><li><p><span>令牌 + 能力强制执行</span></p></li><li><p><span>容器级运行时隔离</span></p></li><li><p><span>基本的工具执行审计日志</span></p></li><li><p><span>通过限定权限减少爆炸半径</span></p></li><li><p><span>仍易受供应链和身份欺骗风险</span></p></li></ul><p><strong><span>适用场景</span></strong><span>：处理内部企业工作负载的生产系统</span></p><h3 id='63-level-3-----企业级成熟'><span>6.3 Level 3 — 企业级成熟</span></h3><p><strong><span>特征</span></strong><span>：</span></p><ul><li><p><span>mTLS + 基于令牌的用户和租户范围授权</span></p></li><li><p><span>工具构件签名和验证</span></p></li><li><p><span>集中式能力注册表</span></p></li><li><p><span>工具全生命周期的完整审计可见性</span></p></li><li><p><span>有效防止网络内部横向移动</span></p></li></ul><p><strong><span>适用场景</span></strong><span>：受监管环境和大规模多租户部署</span></p><hr /><h2 id='7-常见安全失败模式'><span>7. 常见安全失败模式</span></h2><h3 id='71-认证与授权失败'><span>7.1 认证与授权失败</span></h3><figure class='table-figure'><table><thead><tr><th><span>失败模式</span></th><th><span>风险描述</span></th></tr></thead><tbody><tr><td><span>无认证即暴露工具</span></td><td><span>远程 Streamable HTTP 服务器未实现 OAuth 2.1 + PKCE，端点实际上对任何可达者公开</span></td></tr><tr><td><span>过度宽泛权限</span></td><td><span>工具未按能力建模，单个工具拥有系统级权限</span></td></tr><tr><td><span>管理工具使用运行时 Token</span></td><td><span>管理工具可通过运行时 Token 访问，导致权限提升风险</span></td></tr><tr><td><span>Token 跨租户复用</span></td><td><span>同一 Token 用于多个租户，破坏租户隔离</span></td></tr><tr><td><span>长期有效 Token</span></td><td><span>无轮换或过期强制执行，Token 泄露后长期有效</span></td></tr></tbody></table></figure><h3 id='72-执行环境失败'><span>7.2 执行环境失败</span></h3><figure class='table-figure'><table><thead><tr><th><span>失败模式</span></th><th><span>风险描述</span></th></tr></thead><tbody><tr><td><span>沙箱隔离在性能测试期间禁用且未恢复</span></td><td><span>生产环境以无隔离状态运行</span></td></tr><tr><td><span>工具允许无限制出站网络访问</span></td><td><span>数据外泄风险</span></td></tr><tr><td><span>工具返回不可信数据未过滤</span></td><td><span>提示注入向量通过工具响应重新进入 Agent 上下文</span></td></tr><tr><td><span>缺乏供应链验证</span></td><td><span>恶意代码通过社区工具注入</span></td></tr></tbody></table></figure><h3 id='73-审计与日志失败'><span>7.3 审计与日志失败</span></h3><figure class='table-figure'><table><thead><tr><th><span>失败模式</span></th><th><span>风险描述</span></th></tr></thead><tbody><tr><td><span>审计日志缺少 PII 脱敏</span></td><td><span>敏感数据在日志中明文存储</span></td></tr><tr><td><span>无结构化日志</span></td><td><span>无法满足合规要求和事件重建</span></td></tr><tr><td><span>日志存储在第三方 SaaS</span></td><td><span>无法按需完整提取，可能受数据处理限制冲突</span></td></tr><tr><td><span>无异常检测</span></td><td><span>攻击活动在大量日志中被淹没</span></td></tr></tbody></table></figure><hr /><h2 id='8-最佳实践与实施建议'><span>8. 最佳实践与实施建议</span></h2><h3 id='81-架构层面'><span>8.1 架构层面</span></h3><ol start='' ><li><p><strong><span>部署集中式 MCP 网关</span></strong><span>：作为所有 MCP 通信的代理，强制执行已批准 MCP 服务器的白名单、集中访问控制和审计、检查所有工具调用</span></p></li><li><p><strong><span>实施最小权限访问</span></strong><span>：将用户角色映射到具体工具能力，使用能力级权限范围替代宽泛范围 Token</span></p></li><li><p><strong><span>网络隔离</span></strong><span>：将 MCP 服务器隔离在专用网络段，配置防火墙规则限制爆炸半径</span></p></li></ol><h3 id='82-开发阶段'><span>8.2 开发阶段</span></h3><ol start='' ><li><p><strong><span>静态应用安全测试 (SAST)</span></strong><span>：在构建流水线中集成 SAST</span></p></li><li><p><strong><span>软件成分分析 (SCA)</span></strong><span>：识别依赖中的漏洞</span></p></li><li><p><strong><span>安全编码实践</span></strong><span>：特别关注输入验证和命令执行</span></p></li><li><p><strong><span>组件签名</span></strong><span>：对所有 MCP 组件进行数字签名确保完整性</span></p></li></ol><h3 id='83-部署阶段'><span>8.3 部署阶段</span></h3><ol start='' ><li><p><strong><span>沙箱环境运行</span></strong><span>：以最小所需权限运行 MCP 服务器</span></p></li><li><p><strong><span>全面日志记录</span></strong><span>：记录所有 MCP 服务器操作</span></p></li><li><p><strong><span>定期漏洞管理</span></strong><span>：对 MCP 组件进行定期漏洞扫描</span></p></li><li><p><strong><span>网络分段</span></strong><span>：限制被攻破服务器的爆炸半径</span></p></li></ol><h3 id='84-运营阶段'><span>8.4 运营阶段</span></h3><ol start='' ><li><p><strong><span>行为监控</span></strong><span>：监控 MCP 服务器的异常活动</span></p></li><li><p><strong><span>敏感操作确认</span></strong><span>：对敏感操作实施用户确认</span></p></li><li><p><strong><span>定期审计</span></strong><span>：每季度重新审计，与 SOC2 控制对齐</span></p></li><li><p><strong><span>事件响应</span></strong><span>：制定专门针对 MCP 相关安全事件的响应程序</span></p></li></ol><h3 id='85-实施路线图'><span>8.5 实施路线图</span></h3><figure class='table-figure'><table><thead><tr><th><span>时间框架</span></th><th><span>行动项</span></th></tr></thead><tbody><tr><td><strong><span>30 天内</span></strong></td><td><span>清点现有 MCP 部署，实施认证服务器连接，建立审计日志</span></td></tr><tr><td><strong><span>90 天内</span></strong></td><td><span>部署网关架构和审批工作流</span></td></tr><tr><td><strong><span>180 天内</span></strong></td><td><span>建立全面的监控和治理框架</span></td></tr></tbody></table></figure><hr /><h2 id='附录相关资源'><span>附录：相关资源</span></h2><ul><li><p><a href='https://modelcontextprotocol.io/'><span>MCP 官方安全规范</span></a></p></li><li><p><a href='https://owasp.org/'><span>OWASP MCP Top 10</span></a></p></li><li><p><a href='https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1'><span>OAuth 2.1 + PKCE 规范</span></a></p></li><li><p><a href='https://gvisor.dev/'><span>gVisor 容器运行时</span></a></p></li><li><p><a href='https://www.openpolicyagent.org/'><span>Open Policy Agent (OPA)</span></a></p></li></ul><hr /><p>&nbsp;</p></div></div>
+</body>
+</html>

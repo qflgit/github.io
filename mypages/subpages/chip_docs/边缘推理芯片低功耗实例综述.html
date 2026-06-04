@@ -1,0 +1,704 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>边缘推理芯片低功耗实例综述</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='边缘推理芯片低功耗实例综述'><span>边缘推理芯片低功耗实例综述</span></h1><h2 id='目录'><span>目录</span></h2><ul><li><p><a href='#1-概述'><span>1. 概述</span></a></p></li><li><p><a href='#2-主流边缘推理芯片实例'><span>2. 主流边缘推理芯片实例</span></a></p><ul><li><p><a href='#21-nvidia-jetson系列'><span>2.1 NVIDIA Jetson系列</span></a></p></li><li><p><a href='#22-瑞芯微-rk3588'><span>2.2 瑞芯微 RK3588</span></a></p></li><li><p><a href='#23-瑞芯微-rk3576'><span>2.3 瑞芯微 RK3576</span></a></p></li><li><p><a href='#24-hailo-8'><span>2.4 Hailo-8</span></a></p></li><li><p><a href='#25-google-edge-tpu-coral'><span>2.5 Google Edge TPU (Coral)</span></a></p></li><li><p><a href='#26-高通-rb5--rb3'><span>2.6 高通 RB5 / RB3</span></a></p></li><li><p><a href='#27-nxp-imx-8m-plus'><span>2.7 NXP i.MX 8M Plus</span></a></p></li><li><p><a href='#28-地平线-征程系列'><span>2.8 地平线 征程系列</span></a></p></li><li><p><a href='#29-寒武纪-mlu220'><span>2.9 寒武纪 MLU220</span></a></p></li><li><p><a href='#210-全志-v853'><span>2.10 全志 V853</span></a></p></li><li><p><a href='#211-其他新兴方案'><span>2.11 其他新兴方案</span></a></p></li></ul></li><li><p><a href='#3-芯片性能与功耗对比'><span>3. 芯片性能与功耗对比</span></a></p></li><li><p><a href='#4-部署方案详解'><span>4. 部署方案详解</span></a></p><ul><li><p><a href='#41-nvidia-jetson部署方案'><span>4.1 NVIDIA Jetson部署方案</span></a></p></li><li><p><a href='#42-rk3588rk3576部署方案'><span>4.2 RK3588/RK3576部署方案</span></a></p></li><li><p><a href='#43-hailo-8部署方案'><span>4.3 Hailo-8部署方案</span></a></p></li><li><p><a href='#44-google-edge-tpu部署方案'><span>4.4 Google Edge TPU部署方案</span></a></p></li><li><p><a href='#45-通用部署流程'><span>4.5 通用部署流程</span></a></p></li></ul></li><li><p><a href='#5-市场应用场景'><span>5. 市场应用场景</span></a></p><ul><li><p><a href='#51-工业自动化与机器视觉'><span>5.1 工业自动化与机器视觉</span></a></p></li><li><p><a href='#52-智能安防与视频监控'><span>5.2 智能安防与视频监控</span></a></p></li><li><p><a href='#53-具身智能与机器人'><span>5.3 具身智能与机器人</span></a></p></li><li><p><a href='#54-智能座舱与车载系统'><span>5.4 智能座舱与车载系统</span></a></p></li><li><p><a href='#55-智能家居与iot'><span>5.5 智能家居与IoT</span></a></p></li><li><p><a href='#56-零售与商业分析'><span>5.6 零售与商业分析</span></a></p></li><li><p><a href='#57-医疗与健康监测'><span>5.7 医疗与健康监测</span></a></p></li><li><p><a href='#58-无人机与arvr'><span>5.8 无人机与AR/VR</span></a></p></li></ul></li><li><p><a href='#6-选型建议'><span>6. 选型建议</span></a></p></li><li><p><a href='#7-发展趋势'><span>7. 发展趋势</span></a></p></li></ul><hr /><h2 id='1-概述'><span>1. 概述</span></h2><p><span>边缘AI推理芯片是指在设备端（而非云端）执行人工智能模型推理任务的专用或通用处理器。随着AI模型复杂度的提升和数据隐私需求的增强，边缘推理已成为AI落地的主流方向。低功耗是边缘推理芯片的核心诉求之一，因为边缘设备往往受限于电池容量、散热条件和部署环境。</span></p><p><span>2026年，边缘推理芯片市场呈现百花齐放态势，从NVIDIA Jetson系列的高性能方案到Google Edge TPU的超低功耗方案，从国产瑞芯微RK3588的性价比路线到Hailo-8的专用加速器，各类产品覆盖了从毫瓦级到数十瓦级的广泛功耗区间。</span></p><hr /><h2 id='2-主流边缘推理芯片实例'><span>2. 主流边缘推理芯片实例</span></h2><h3 id='21-nvidia-jetson系列'><span>2.1 NVIDIA Jetson系列</span></h3><h4 id='jetson-agx-orin'><span>Jetson AGX Orin</span></h4><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>275 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>10-60W（可配置）</span></td></tr><tr><td><span>CPU</span></td><td><span>12核Arm Cortex-A78AE</span></td></tr><tr><td><span>GPU</span></td><td><span>Ampere架构，2048 CUDA核心</span></td></tr><tr><td><span>内存</span></td><td><span>最高64GB LPDDR5</span></td></tr><tr><td><span>软件生态</span></td><td><span>JetPack、CUDA、TensorRT、Isaac、DeepStream</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>当前边缘AI模块中算力最高的产品</span></p></li><li><p><span>支持从数据中心GPU到边缘设备的无缝模型迁移</span></p></li><li><p><span>完整的CUDA生态，开发效率高</span></p></li><li><p><span>功耗可调，低功耗模式适合电池供电的移动机器人</span></p></li><li><p><span>适合生成式AI、多传感器融合等高负载场景</span></p></li></ul><h4 id='jetson-orin-nano'><span>Jetson Orin Nano</span></h4><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>40 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>5W / 7W / 15W（三档可调）</span></td></tr><tr><td><span>CPU</span></td><td><span>6核Arm Cortex-A78AE</span></td></tr><tr><td><span>内存</span></td><td><span>8GB LPDDR5</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>性价比突出的入门级方案</span></p></li><li><p><span>功耗模式灵活，5W模式适合超低功耗场景</span></p></li><li><p><span>适合实时视觉和AI推理任务</span></p></li><li><p><span>与Jetson AGX Orin软件完全兼容</span></p></li></ul><h4 id='jetson-orin-nx'><span>Jetson Orin NX</span></h4><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>100 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>10-25W</span></td></tr><tr><td><span>内存</span></td><td><span>16GB LPDDR5</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>介于Nano和AGX之间的性能甜点</span></p></li><li><p><span>在具身智能机器人中广泛应用（如智元机器人灵犀X2高算力板）</span></p></li></ul><h3 id='22-瑞芯微-rk3588'><span>2.2 瑞芯微 RK3588</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>6 TOPS（INT8，3核NPU）</span></td></tr><tr><td><span>功耗</span></td><td><span>8-15W</span></td></tr><tr><td><span>CPU</span></td><td><span>4×Cortex-A76 + 4×Cortex-A55（Big.Little架构）</span></td></tr><tr><td><span>GPU</span></td><td><span>Mali-G610 MP4</span></td></tr><tr><td><span>制程</span></td><td><span>8nm</span></td></tr><tr><td><span>内存</span></td><td><span>最高32GB LPDDR4/5</span></td></tr><tr><td><span>视频</span></td><td><span>8K视频解码，支持8K@60fps</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>国产替代的主力芯片，性价比极高</span></p></li><li><p><span>支持麒麟系统、鸿蒙OS、Android 12多系统并行</span></p></li><li><p><span>丰富的工业接口：PCIe 3.0×4、SATA 3.0、双Type-C、多路RS-485、CAN总线</span></p></li><li><p><span>在10W以内功耗下可实现多路摄像头采集与4屏输出</span></p></li><li><p><span>支持TensorFlow Lite和ONNX模型量化部署</span></p></li><li><p><span>实际推理性能：YOLOv5s（INT8）可达54+ FPS，ResNet18可达244 FPS</span></p></li><li><p><span>在具身智能机器人领域正逐步替代Jetson Xavier（如智元机器人灵犀X2基础算力板采用双RK3588，功耗降低7W）</span></p></li></ul><p><strong><span>局限</span></strong><span>：</span></p><ul><li><p><span>无硬件加密模块，不满足金融级安全认证</span></p></li><li><p><span>40℃环境持续满载时CPU会降频15%</span></p></li><li><p><span>8+64G版本eMMC频繁读写后会出现延迟抖动</span></p></li></ul><h3 id='23-瑞芯微-rk3576'><span>2.3 瑞芯微 RK3576</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>6 TOPS（与RK3588相同NPU）</span></td></tr><tr><td><span>功耗</span></td><td><span>低于RK3588</span></td></tr><tr><td><span>CPU</span></td><td><span>性能略低于RK3588</span></td></tr><tr><td><span>内存</span></td><td><span>支持容量低于RK3588</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>与RK3588共享相同的NPU架构，AI推理性能相当</span></p></li><li><p><span>功耗和成本更低，适合预算敏感型项目</span></p></li><li><p><span>2026年Ubuntu 24.04支持已改善</span></p></li><li><p><span>适合不需要RK3588全部CPU吞吐量和内存容量的场景</span></p></li></ul><h3 id='24-hailo-8'><span>2.4 Hailo-8</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>26 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>2.5-3W</span></td></tr><tr><td><span>架构</span></td><td><span>专用AI加速器（非SoC）</span></td></tr><tr><td><span>接口</span></td><td><span>M.2、PCIe、mPCIe等多种形态</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>极高的能效比（约10 TOPS/W）</span></p></li><li><p><span>专为视觉AI优化</span></p></li><li><p><span>可作为协处理器附加到现有系统</span></p></li><li><p><span>适合智能摄像头、车载ADAS等始终在线的视频处理场景</span></p></li><li><p><span>单设备可处理多路视频流</span></p></li></ul><h3 id='25-google-edge-tpu-coral'><span>2.5 Google Edge TPU (Coral)</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>4 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>约2W</span></td></tr><tr><td><span>软件</span></td><td><span>TensorFlow Lite，仅支持INT8量化模型</span></td></tr><tr><td><span>形态</span></td><td><span>USB加速器、M.2模块、SoM、开发板</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>功耗最低的实用AI加速器之一</span></p></li><li><p><span>通过USB即可为现有系统添加AI能力</span></p></li><li><p><span>生态简单，但仅限于TensorFlow Lite</span></p></li><li><p><span>需要模型量化至INT8</span></p></li><li><p><span>对非TPU优化操作性能下降显著</span></p></li><li><p><span>适合电池供电的IoT设备和嵌入式系统</span></p></li></ul><h3 id='26-高通-rb5--rb3'><span>2.6 高通 RB5 / RB3</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格（RB5）</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>15 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>5-15W</span></td></tr><tr><td><span>特色</span></td><td><span>集成5G连接</span></td></tr><tr><td><span>应用</span></td><td><span>5G机器人、边缘AI设备</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>原生5G连接能力</span></p></li><li><p><span>适合需要高带宽低延迟通信的移动设备</span></p></li><li><p><span>在机器人领域与Jetson形成竞争</span></p></li></ul><h3 id='27-nxp-imx-8m-plus'><span>2.7 NXP i.MX 8M Plus</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>2.3 TOPS</span></td></tr><tr><td><span>功耗</span></td><td><span>3-8W</span></td></tr><tr><td><span>特色</span></td><td><span>工业级安全认证、实时处理</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>强调工业级安全性和实时性</span></p></li><li><p><span>适合工厂自动化、工业网关</span></p></li><li><p><span>与Hailo-8等外部加速器搭配使用可扩展AI能力</span></p></li></ul><h3 id='28-地平线-征程系列'><span>2.8 地平线 征程系列</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>征程5</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>128 TOPS</span></td></tr><tr><td><span>应用</span></td><td><span>自动驾驶、智能座舱</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>专为汽车场景设计</span></p></li><li><p><span>通过车规级认证</span></p></li><li><p><span>在国内自动驾驶领域市场份额领先</span></p></li></ul><h3 id='29-寒武纪-mlu220'><span>2.9 寒武纪 MLU220</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>8 TOPS</span></td></tr><tr><td><span>应用</span></td><td><span>边缘推理、智能边缘服务器</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>国产AI芯片代表</span></p></li><li><p><span>面向边缘服务器和工业场景</span></p></li><li><p><span>支持多种深度学习框架</span></p></li></ul><h3 id='210-全志-v853'><span>2.10 全志 V853</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>规格</span></th></tr></thead><tbody><tr><td><span>AI算力</span></td><td><span>1.2 TOPS</span></td></tr><tr><td><span>应用</span></td><td><span>智能摄像头</span></td></tr></tbody></table></figure><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>超低功耗、超低成本</span></p></li><li><p><span>专为智能摄像头优化</span></p></li><li><p><span>适合大规模部署的安防监控场景</span></p></li></ul><h3 id='211-其他新兴方案'><span>2.11 其他新兴方案</span></h3><figure class='table-figure'><table><thead><tr><th><span>芯片</span></th><th><span>算力</span></th><th><span>功耗</span></th><th><span>特色</span></th></tr></thead><tbody><tr><td><span>SiMa.ai MLSoC</span></td><td><span>50+ TOPS</span></td><td><span>&lt;5W</span></td><td><span>高算力低功耗平衡</span></td></tr><tr><td><span>Axelera Metis</span></td><td><span>214 TOPS</span></td><td><span>20-40W</span></td><td><span>数字存内计算架构</span></td></tr><tr><td><span>EdgeCortix SAKURA</span></td><td><span>60 TOPS</span></td><td><span>&lt;10W</span></td><td><span>边缘服务器</span></td></tr><tr><td><span>Kneron KL730</span></td><td><span>7 TOPS</span></td><td><span>0.5-2W</span></td><td><span>智能家居、IoT</span></td></tr><tr><td><span>Ambarella CV5</span></td><td><span>20+ TOPS</span></td><td><span>2.5-5W</span></td><td><span>AI摄像头、车载</span></td></tr><tr><td><span>GrAI Matter GrAI VIP</span></td><td><span>10-30 TOPS</span></td><td><span>0.5-2W</span></td><td><span>超低功耗视觉</span></td></tr><tr><td><span>Renesas RZ/V2L</span></td><td><span>1.0 TOPS</span></td><td><span>1.5-3W</span></td><td><span>工业级超低功耗</span></td></tr><tr><td><span>BeagleBone AI-64 (TDA4VM)</span></td><td><span>~8 TOPS</span></td><td><span>-</span></td><td><span>汽车级、功能安全认证</span></td></tr></tbody></table></figure><hr /><h2 id='3-芯片性能与功耗对比'><span>3. 芯片性能与功耗对比</span></h2><h3 id='性能-功耗矩阵'><span>性能-功耗矩阵</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">高算力 (&gt;50 TOPS) &nbsp; &nbsp; &nbsp; &nbsp;  中算力 (15-30 TOPS) &nbsp; &nbsp; &nbsp;  低算力 (&lt;10 TOPS)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─ Jetson AGX Orin &nbsp; &nbsp; &nbsp; &nbsp; ├─ Hailo-8 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ RK3588 (6 TOPS)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  275 TOPS / 10-60W &nbsp; &nbsp; &nbsp; │  26 TOPS / 2.5-3W &nbsp; &nbsp; &nbsp;  │  8-15W</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─ Axelera Metis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ Ambarella CV5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ Kneron KL730</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  214 TOPS / 20-40W &nbsp; &nbsp; &nbsp; │  20+ TOPS / 2.5-5W &nbsp; &nbsp; &nbsp; │  7 TOPS / 0.5-2W</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─ EdgeCortix SAKURA &nbsp; &nbsp; &nbsp; ├─ Qualcomm RB5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ├─ Google Edge TPU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  60 TOPS / &lt;10W &nbsp; &nbsp; &nbsp; &nbsp;  │  15 TOPS / 5-15W &nbsp; &nbsp; &nbsp; &nbsp; │  4 TOPS / 2W</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─ SiMa.ai MLSoC &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ├─ NXP i.MX 8M Plus</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  50+ TOPS / &lt;5W &nbsp; &nbsp; &nbsp; &nbsp;  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │  2.3 TOPS / 3-8W</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ 全志 V853</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │  1.2 TOPS / &lt;1W</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 346px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></pre><h3 id='能效比排名topsw'><span>能效比排名（TOPS/W）</span></h3><figure class='table-figure'><table><thead><tr><th><span>排名</span></th><th><span>芯片</span></th><th><span>能效比</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>GrAI Matter GrAI VIP</span></td><td><span>~20-60</span></td></tr><tr><td><span>2</span></td><td><span>Kneron KL730</span></td><td><span>~3.5-14</span></td></tr><tr><td><span>3</span></td><td><span>Google Edge TPU</span></td><td><span>~2</span></td></tr><tr><td><span>4</span></td><td><span>Hailo-8</span></td><td><span>~8.7-10.4</span></td></tr><tr><td><span>5</span></td><td><span>SiMa.ai MLSoC</span></td><td><span>&gt;10</span></td></tr><tr><td><span>6</span></td><td><span>RK3588</span></td><td><span>~0.4-0.75</span></td></tr><tr><td><span>7</span></td><td><span>Jetson AGX Orin</span></td><td><span>~4.6-27.5</span></td></tr><tr><td><span>8</span></td><td><span>Jetson Orin Nano</span></td><td><span>~2.7-8</span></td></tr></tbody></table></figure><hr /><h2 id='4-部署方案详解'><span>4. 部署方案详解</span></h2><h3 id='41-nvidia-jetson部署方案'><span>4.1 NVIDIA Jetson部署方案</span></h3><p><strong><span>软件栈</span></strong><span>：</span></p><ul><li><p><strong><span>JetPack SDK</span></strong><span>：包含CUDA、cuDNN、TensorRT、OpenCV等全套工具</span></p></li><li><p><strong><span>TensorRT</span></strong><span>：模型优化和推理加速引擎，支持INT8/FP16量化</span></p></li><li><p><strong><span>Isaac</span></strong><span>：机器人开发平台</span></p></li><li><p><strong><span>DeepStream</span></strong><span>：视频分析流水线框架</span></p></li><li><p><strong><span>Triton Inference Server</span></strong><span>：边缘端模型服务部署</span></p></li></ul><p><strong><span>部署流程</span></strong><span>：</span></p><ol start='' ><li><p><span>在x86服务器上使用PyTorch/TensorFlow训练模型</span></p></li><li><p><span>导出为ONNX格式</span></p></li><li><p><span>使用TensorRT进行优化和量化（FP16/INT8）</span></p></li><li><p><span>生成TensorRT引擎文件（.trt或.plan）</span></p></li><li><p><span>部署到Jetson设备执行推理</span></p></li></ol><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>与数据中心NVIDIA GPU完全兼容，模型迁移零成本</span></p></li><li><p><span>生态最成熟，文档和社区支持完善</span></p></li><li><p><span>支持多模型并发、动态批处理</span></p></li></ul><p><strong><span>典型配置</span></strong><span>：</span></p><ul><li><p><strong><span>5W模式</span></strong><span>：适合电池供电的移动机器人，性能适当降低</span></p></li><li><p><strong><span>15W模式</span></strong><span>：Jetson Orin Nano标准模式，平衡性能与功耗</span></p></li><li><p><strong><span>60W模式</span></strong><span>：Jetson AGX Orin最大性能，适合多路视频分析</span></p></li></ul><h3 id='42-rk3588rk3576部署方案'><span>4.2 RK3588/RK3576部署方案</span></h3><p><strong><span>软件栈</span></strong><span>：</span></p><ul><li><p><strong><span>RKNN-Toolkit2</span></strong><span>：瑞芯微官方模型转换和部署工具</span></p></li><li><p><span>支持框架：ONNX、TensorFlow Lite、PyTorch、Caffe</span></p></li><li><p><span>操作系统：Ubuntu、Debian、麒麟、鸿蒙OS、Android 12</span></p></li></ul><p><strong><span>部署流程</span></strong><span>：</span></p><ol start='' ><li><p><span>训练模型（PyTorch/TensorFlow）</span></p></li><li><p><span>导出为ONNX格式</span></p></li><li><p><span>使用RKNN-Toolkit2进行模型转换和INT8量化</span></p></li><li><p><span>生成.rknn模型文件</span></p></li><li><p><span>在设备上调用RKNN API执行推理</span></p></li></ol><p><strong><span>实际性能参考</span></strong><span>：</span></p><ul><li><p><span>YOLOv5s（INT8，1080p）：54+ FPS</span></p></li><li><p><span>YOLOv8：NPU加速明显优于CPU-only执行</span></p></li><li><p><span>ResNet18：244 FPS</span></p></li><li><p><span>1B-7B参数LLM：16GB LPDDR5可运行量化版本</span></p></li></ul><p><strong><span>多系统并行方案</span></strong><span>：</span></p><ul><li><p><span>Linux做实时控制</span></p></li><li><p><span>鸿蒙OS跑人机交互界面</span></p></li><li><p><span>Android调用AI模型推理</span></p></li><li><p><span>三者通过共享内存与IPC通信，无需外接协处理器</span></p></li></ul><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>成本仅为Jetson的1/5到1/3</span></p></li><li><p><span>工业接口丰富（12路RS-485、CAN总线等）</span></p></li><li><p><span>国产化供应链安全</span></p></li><li><p><span>系统崩溃率低于0.3次/周（工业AGV实测）</span></p></li></ul><h3 id='43-hailo-8部署方案'><span>4.3 Hailo-8部署方案</span></h3><p><strong><span>软件栈</span></strong><span>：</span></p><ul><li><p><strong><span>HailoRT</span></strong><span>：运行时库</span></p></li><li><p><strong><span>TAPPAS</span></strong><span>：视频分析应用框架</span></p></li><li><p><strong><span>Dataflow Compiler</span></strong><span>：模型编译器</span></p></li></ul><p><strong><span>部署流程</span></strong><span>：</span></p><ol start='' ><li><p><span>训练模型并导出为ONNX</span></p></li><li><p><span>使用Dataflow Compiler进行编译和优化</span></p></li><li><p><span>生成Hailo模型文件</span></p></li><li><p><span>通过PCIe/M.2接口连接到主系统</span></p></li><li><p><span>主CPU负责预处理/后处理，Hailo-8负责推理加速</span></p></li></ol><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>作为协处理器使用，不替代主CPU</span></p></li><li><p><span>专为视频流处理优化</span></p></li><li><p><span>单芯片可处理多路1080p视频实时分析</span></p></li></ul><h3 id='44-google-edge-tpu部署方案'><span>4.4 Google Edge TPU部署方案</span></h3><p><strong><span>软件栈</span></strong><span>：</span></p><ul><li><p><strong><span>TensorFlow Lite</span></strong><span>：唯一支持的框架</span></p></li><li><p><strong><span>Edge TPU Compiler</span></strong><span>：模型编译器</span></p></li><li><p><strong><span>Coral API</span></strong><span>：Python/C++推理接口</span></p></li></ul><p><strong><span>部署流程</span></strong><span>：</span></p><ol start='' ><li><p><span>训练TensorFlow模型</span></p></li><li><p><span>转换为TensorFlow Lite格式</span></p></li><li><p><span>进行INT8全量化（Edge TPU要求）</span></p></li><li><p><span>使用Edge TPU Compiler编译</span></p></li><li><p><span>部署到Coral设备</span></p></li></ol><p><strong><span>限制</span></strong><span>：</span></p><ul><li><p><span>仅支持TensorFlow Lite</span></p></li><li><p><span>必须全量化至INT8</span></p></li><li><p><span>部分操作（如某些激活函数）不被支持，需回退到CPU执行</span></p></li></ul><h3 id='45-通用部署流程'><span>4.5 通用部署流程</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模型训练（云端/工作站）</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模型导出（ONNX / TFLite / PyTorch）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模型优化（量化、剪枝、蒸馏）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">目标平台编译（TensorRT / RKNN / HailoRT / Edge TPU Compiler）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">边缘设备部署（推理服务 / 嵌入式应用 / 容器化）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">性能监控与持续优化</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 253px;"></div><div class="CodeMirror-gutters" style="display: none; height: 253px;"></div></div></div></pre><p><strong><span>量化策略</span></strong><span>：</span></p><ul><li><p><strong><span>INT8量化</span></strong><span>：最常用的边缘部署方案，模型大小减半，推理速度提升2-4倍</span></p></li><li><p><strong><span>FP16量化</span></strong><span>：精度损失更小，适合对精度敏感的场景</span></p></li><li><p><strong><span>混合精度</span></strong><span>：部分层INT8，部分层FP16，平衡精度与速度</span></p></li><li><p><strong><span>动态量化</span></strong><span>：运行时根据输入动态选择精度</span></p></li></ul><hr /><h2 id='5-市场应用场景'><span>5. 市场应用场景</span></h2><h3 id='51-工业自动化与机器视觉'><span>5.1 工业自动化与机器视觉</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>产品缺陷检测（AOI）</span></p></li><li><p><span>流水线异常品拦截</span></p></li><li><p><span>视觉定位与引导</span></p></li><li><p><span>预测性维护</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>RK3588</span></strong><span>：12路RS-485串口+CAN总线+I2C传感器集群环境下系统崩溃率低于0.3次/周，适合工业AGV和自动化设备</span></p></li><li><p><strong><span>NXP i.MX 8M Plus</span></strong><span>：工业级安全认证，适合功能安全要求高的场景</span></p></li><li><p><strong><span>Jetson Orin Nano</span></strong><span>：40 TOPS算力支持复杂视觉模型实时推理</span></p></li></ul><p><strong><span>部署案例</span></strong><span>：</span></p><ul><li><p><span>某工业AGV厂商采用RK3588，同时处理语音唤醒、红外测距和电机PID闭环，无需额外MCU</span></p></li><li><p><span>YOLOv5s模型压缩至4MB，在1080p@15fps下保持92%识别准确率，用于分拣流水线异常品拦截</span></p></li></ul><h3 id='52-智能安防与视频监控'><span>5.2 智能安防与视频监控</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>人脸识别与行为分析</span></p></li><li><p><span>入侵检测与周界防范</span></p></li><li><p><span>车牌识别</span></p></li><li><p><span>人群密度分析</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>Hailo-8</span></strong><span>：26 TOPS算力仅2.5-3W功耗，适合始终在线的多路摄像头分析</span></p></li><li><p><strong><span>RK3588</span></strong><span>：支持4路摄像头同时输入，6 TOPS NPU处理人脸检测绰绰有余</span></p></li><li><p><strong><span>全志V853</span></strong><span>：1.2 TOPS超低功耗，适合大规模部署的低端摄像头</span></p></li></ul><p><strong><span>部署案例</span></strong><span>：</span></p><ul><li><p><span>智能摄像头集成NPU后可在本地完成人脸识别，无需上传视频到云端，保护隐私</span></p></li><li><p><span>多摄像头边缘网关使用RK3588进行AI预处理，只将结构化数据上传云端</span></p></li></ul><h3 id='53-具身智能与机器人'><span>5.3 具身智能与机器人</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>人形机器人主控</span></p></li><li><p><span>服务机器人导航与交互</span></p></li><li><p><span>工业机器人运动控制</span></p></li><li><p><span>多模态感知融合</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>Jetson AGX Orin</span></strong><span>：275 TOPS支持大模型本地部署，多传感器融合</span></p></li><li><p><strong><span>Jetson Orin NX</span></strong><span>：100 TOPS平衡性能与功耗，适合中高端机器人</span></p></li><li><p><strong><span>RK3588</span></strong><span>：智元机器人灵犀X2基础算力板采用双RK3588替代Jetson Xavier，功耗降低7W</span></p></li></ul><p><strong><span>部署案例</span></strong><span>：</span></p><ul><li><p><span>智元机器人灵犀X2：</span></p><ul><li><p><span>基础算力板：双RK3588（运动控制+感知融合）</span></p></li><li><p><span>高算力板：Jetson Orin NX（169 TOPS，大模型推理）</span></p></li><li><p><span>大脑：自研GO-1大模型（VLM+MoE架构）</span></p></li><li><p><span>小脑：Xyber-Edge控制器，144核异构，450Hz实时闭环控制</span></p></li></ul></li></ul><h3 id='54-智能座舱与车载系统'><span>5.4 智能座舱与车载系统</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>驾驶员疲劳监测</span></p></li><li><p><span>手势识别与语音交互</span></p></li><li><p><span>车内乘员监控</span></p></li><li><p><span>AR-HUD</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>地平线征程5</span></strong><span>：128 TOPS，车规级认证，国内自动驾驶主流方案</span></p></li><li><p><strong><span>高通RB5</span></strong><span>：集成5G，适合车联网应用</span></p></li><li><p><strong><span>Ambarella CV5</span></strong><span>：2.5-5W超低功耗，适合车内摄像头</span></p></li><li><p><strong><span>BeagleBone AI-64 (TDA4VM)</span></strong><span>：汽车级功能安全认证</span></p></li></ul><h3 id='55-智能家居与iot'><span>5.5 智能家居与IoT</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>语音助手与语音唤醒</span></p></li><li><p><span>智能门锁人脸识别</span></p></li><li><p><span>空调/灯光智能控制</span></p></li><li><p><span>老人/儿童看护</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>Google Edge TPU</span></strong><span>：2W功耗，USB即插即用，适合现有设备升级</span></p></li><li><p><strong><span>Kneron KL730</span></strong><span>：0.5-2W超低功耗，适合电池供电设备</span></p></li><li><p><strong><span>Renesas RZ/V2L</span></strong><span>：1.0 TOPS / 1.5-3W，工业级可靠性</span></p></li></ul><p><strong><span>部署案例</span></strong><span>：</span></p><ul><li><p><span>智能门锁集成Kneron KL730，本地完成人脸识别，0.5秒解锁，无需联网</span></p></li><li><p><span>智能音箱使用Edge TPU实现离线语音唤醒和命令识别</span></p></li></ul><h3 id='56-零售与商业分析'><span>5.6 零售与商业分析</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>客流统计与热力图</span></p></li><li><p><span>货架缺货检测</span></p></li><li><p><span>自助结算（视觉识别）</span></p></li><li><p><span>顾客行为分析</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>Hailo-8</span></strong><span>：多路视频流实时分析</span></p></li><li><p><strong><span>RK3588</span></strong><span>：成本敏感型部署首选</span></p></li><li><p><strong><span>Axelera Metis</span></strong><span>：214 TOPS支持密集摄像头部署</span></p></li></ul><h3 id='57-医疗与健康监测'><span>5.7 医疗与健康监测</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>医学影像辅助诊断</span></p></li><li><p><span>可穿戴设备健康监测</span></p></li><li><p><span>手术机器人视觉引导</span></p></li><li><p><span>远程患者监控</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>Jetson AGX Orin</span></strong><span>：高精度医学影像分析</span></p></li><li><p><strong><span>SiMa.ai MLSoC</span></strong><span>：50+ TOPS / &lt;5W，适合便携式医疗设备</span></p></li><li><p><strong><span>低功耗MCU+NPU</span></strong><span>：适合可穿戴设备持续监测</span></p></li></ul><h3 id='58-无人机与arvr'><span>5.8 无人机与AR/VR</span></h3><p><strong><span>典型应用</span></strong><span>：</span></p><ul><li><p><span>无人机目标跟踪与避障</span></p></li><li><p><span>AR眼镜空间定位</span></p></li><li><p><span>VR手势识别</span></p></li><li><p><span>航拍实时分析</span></p></li></ul><p><strong><span>推荐芯片</span></strong><span>：</span></p><ul><li><p><strong><span>Jetson Orin Nano</span></strong><span>：5W模式适合电池供电的无人机</span></p></li><li><p><strong><span>Intel Movidius Myriad X</span></strong><span>：4 TOPS / 5W，平衡性能与重量</span></p></li><li><p><strong><span>SiMa.ai MLSoC</span></strong><span>：&lt;5W高算力，适合AR眼镜</span></p></li></ul><hr /><h2 id='6-选型建议'><span>6. 选型建议</span></h2><h3 id='按应用场景选型'><span>按应用场景选型</span></h3><figure class='table-figure'><table><thead><tr><th><span>应用场景</span></th><th><span>首选方案</span></th><th><span>备选方案</span></th><th><span>关键考量</span></th></tr></thead><tbody><tr><td><span>高负载机器人/自动驾驶</span></td><td><span>Jetson AGX Orin</span></td><td><span>地平线征程5</span></td><td><span>算力、多传感器融合、生态</span></td></tr><tr><td><span>中端机器人/工业视觉</span></td><td><span>Jetson Orin NX</span></td><td><span>RK3588</span></td><td><span>性能与成本平衡</span></td></tr><tr><td><span>低成本工业控制</span></td><td><span>RK3588</span></td><td><span>RK3576</span></td><td><span>接口丰富度、国产化、价格</span></td></tr><tr><td><span>智能摄像头/安防</span></td><td><span>Hailo-8</span></td><td><span>全志V853</span></td><td><span>功耗、视频处理能力</span></td></tr><tr><td><span>电池供电IoT</span></td><td><span>Google Edge TPU</span></td><td><span>Kneron KL730</span></td><td><span>功耗、成本、易用性</span></td></tr><tr><td><span>车载系统</span></td><td><span>地平线征程5</span></td><td><span>高通RB5</span></td><td><span>车规认证、功能安全</span></td></tr><tr><td><span>多路视频分析</span></td><td><span>Axelera Metis</span></td><td><span>Hailo-8</span></td><td><span>吞吐量、每路成本</span></td></tr><tr><td><span>开发原型/教育</span></td><td><span>Jetson Orin Nano</span></td><td><span>Orange Pi 5 Plus (RK3588)</span></td><td><span>社区支持、文档完善度</span></td></tr></tbody></table></figure><h3 id='按功耗预算选型'><span>按功耗预算选型</span></h3><figure class='table-figure'><table><thead><tr><th><span>功耗预算</span></th><th><span>推荐芯片</span></th></tr></thead><tbody><tr><td><span>&lt;1W</span></td><td><span>全志V853、Polyn NASP（&lt;100μW）</span></td></tr><tr><td><span>1-3W</span></td><td><span>Google Edge TPU、Kneron KL730、Renesas RZ/V2L</span></td></tr><tr><td><span>3-8W</span></td><td><span>Hailo-8、NXP i.MX 8M Plus、Jetson Orin Nano（5W模式）</span></td></tr><tr><td><span>8-15W</span></td><td><span>RK3588、RK3576、Qualcomm RB5</span></td></tr><tr><td><span>15-30W</span></td><td><span>Jetson Orin NX、Jetson Orin Nano（15W模式）</span></td></tr><tr><td><span>30-60W</span></td><td><span>Jetson AGX Orin、Axelera Metis</span></td></tr></tbody></table></figure><h3 id='按成本选型'><span>按成本选型</span></h3><figure class='table-figure'><table><thead><tr><th><span>成本区间</span></th><th><span>推荐方案</span></th></tr></thead><tbody><tr><td><span>&lt;50美元</span></td><td><span>全志V853、Google Edge TPU（USB版）</span></td></tr><tr><td><span>50-150美元</span></td><td><span>RK3588开发板、Orange Pi 5 Plus</span></td></tr><tr><td><span>150-500美元</span></td><td><span>Jetson Orin Nano、Hailo-8（M.2版）</span></td></tr><tr><td><span>500-1000美元</span></td><td><span>Jetson Orin NX、RK3588工业级核心板</span></td></tr><tr><td><span>&gt;1000美元</span></td><td><span>Jetson AGX Orin、地平线征程5</span></td></tr></tbody></table></figure><hr /><h2 id='7-发展趋势'><span>7. 发展趋势</span></h2><h3 id='71-算力持续提升'><span>7.1 算力持续提升</span></h3><ul><li><p><span>2026年主流边缘芯片算力已从几年前的1-2 TOPS提升至6-40 TOPS</span></p></li><li><p><span>高端产品（Jetson AGX Orin）已达275 TOPS</span></p></li><li><p><span>预计2027-2028年将出现500+ TOPS的边缘方案</span></p></li></ul><h3 id='72-功耗持续降低'><span>7.2 功耗持续降低</span></h3><ul><li><p><span>每TOPS功耗逐年下降</span></p></li><li><p><span>新型架构（如存内计算、神经拟态）有望将功耗降低1-2个数量级</span></p></li><li><p><span>Polyn NASP芯片已实现&lt;100μW的推理功耗</span></p></li></ul><h3 id='73-大模型边缘化'><span>7.3 大模型边缘化</span></h3><ul><li><p><span>1B-7B参数的量化LLM已可在RK3588（16GB内存）上运行</span></p></li><li><p><span>Jetson AGX Orin支持更大模型的本地部署</span></p></li><li><p><span>端云协同成为主流：简单任务本地处理，复杂任务上云</span></p></li></ul><h3 id='74-国产化加速'><span>7.4 国产化加速</span></h3><ul><li><p><span>RK3588在工业领域正逐步替代Jetson系列</span></p></li><li><p><span>超过70%的企业将&quot;全国产化&quot;作为硬件选型首要条件</span></p></li><li><p><span>国产芯片在性价比和供应链安全方面优势明显</span></p></li></ul><h3 id='75-软件生态成熟'><span>7.5 软件生态成熟</span></h3><ul><li><p><span>RKNN-Toolkit2、TensorRT等工具链持续完善</span></p></li><li><p><span>模型一键转换和部署成为标配</span></p></li><li><p><span>容器化部署（Docker/Kubernetes）向边缘延伸</span></p></li></ul><h3 id='76-多模态融合'><span>7.6 多模态融合</span></h3><ul><li><p><span>边缘芯片从单一视觉处理向视觉+语音+传感器多模态演进</span></p></li><li><p><span>具身智能推动芯片向&quot;全栈式平台&quot;转型</span></p></li><li><p><span>芯片厂商从&quot;单一SoC厂商&quot;向&quot;算法+芯片+工具链&quot;一体化提供商转型</span></p></li></ul><h3 id='77-安全与隐私'><span>7.7 安全与隐私</span></h3><ul><li><p><span>本地推理减少数据上传，保护隐私</span></p></li><li><p><span>硬件级安全模块成为高端芯片标配</span></p></li><li><p><span>联邦学习在边缘设备上的应用探索</span></p></li></ul><hr /><h2 id='总结'><span>总结</span></h2><p><span>2026年的边缘推理芯片市场呈现多元化竞争格局：</span></p><ul><li><p><strong><span>NVIDIA Jetson系列</span></strong><span>凭借强大的算力和成熟的CUDA生态，继续主导高端机器人和自动驾驶市场</span></p></li><li><p><strong><span>瑞芯微RK3588</span></strong><span>以极高的性价比和丰富的工业接口，成为国产替代的首选，在工业自动化和具身智能领域快速渗透</span></p></li><li><p><strong><span>Hailo-8</span></strong><span>和</span><strong><span>Google Edge TPU</span></strong><span>分别在视频分析和超低功耗IoT领域占据优势</span></p></li><li><p><strong><span>地平线征程系列</span></strong><span>在车载市场建立壁垒</span></p></li></ul><p><span>选型时需综合考虑算力需求、功耗预算、成本约束、软件生态、供应链安全等因素。对于需要快速原型开发和最大灵活性的场景，Jetson系列仍是首选；对于成本敏感、需要丰富工业接口的国产化项目，RK3588/RK3576是极具竞争力的选择；对于电池供电的IoT设备，Google Edge TPU和Kneron KL730提供了最佳的能效比。</span></p><p><span>随着AI模型持续向边缘迁移，边缘推理芯片将在算力、能效、易用性三个维度持续进化，成为AI落地的核心基础设施。</span></p></div></div>
+</body>
+</html>

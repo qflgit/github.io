@@ -3,207 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agent - AI Knowledge Hub</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>智能体代理</title>
   <style>
-    .subpage-header { padding: 4rem 2rem 2rem; text-align: center; position: relative; z-index: 1; }
-    .subpage-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
-    .subpage-header h1 span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .subpage-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-    .article-list { max-width: 900px; margin: 0 auto; padding: 0 2rem 4rem; position: relative; z-index: 1; }
-    .article-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      transition: all 0.3s;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      animation: fadeInUp 0.5s ease-out backwards;
-    }
-    .article-item:hover {
-      transform: translateX(8px);
-      border-color: var(--primary-light);
-      box-shadow: var(--shadow);
-    }
-    .article-num {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--gradient-1);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .article-content h4 { font-size: 1.1rem; margin-bottom: 0.3rem; font-weight: 700; }
-    .article-content p { color: var(--text-muted); font-size: 0.9rem; }
-
-    .add-article {
-      border: 2px dashed var(--border);
-      background: transparent;
       justify-content: center;
-      color: var(--text-muted);
+      color: #fff;
     }
-    .add-article:hover {
-      border-color: var(--primary-light);
-      color: var(--text);
-      background: rgba(99, 102, 241, 0.05);
+    .container {
+      text-align: center;
+      padding: 2rem;
     }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      margin: 2rem;
-      position: relative;
-      z-index: 1;
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #e94560, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .back-btn:hover {
-      background: var(--gradient-1);
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+    .subtitle {
+      color: #a0a0a0;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
     }
-
-    .subpage-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-      margin: 0.25rem;
-    }
-
-    .sub-nav {
+    .agents-grid {
       display: flex;
+      gap: 2rem;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      padding: 1rem 2rem;
-      position: relative;
-      z-index: 1;
+    }
+    .agent-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      min-width: 220px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .agent-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.1);
+      border-color: #e94560;
+      box-shadow: 0 20px 40px rgba(233,69,96,0.2);
+    }
+    .agent-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .agent-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .agent-desc {
+      font-size: 0.9rem;
+      color: #a0a0a0;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 3rem;
+      color: #666;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
-  <div class="particles"></div>
+  <div class="container">
+    <h1>智能体</h1>
+    <p class="subtitle">点击卡片查看详细智能体文档</p>
 
-  <header>
-    <nav>
-      <div class="logo">
-        <div class="logo-icon">🧠</div>
-        AI Knowledge Hub
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">🏠 首页</a></li>
-        <li><a href="../index.html#topics">📚 知识库</a></li>
-        <li><a href="#" class="active">🤖 AI Agent</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="agents-grid">
+      <a href="agent_docs/ReAct_Reasoning_Pattern.html" class="agent-card">
+        <div class="agent-icon">🚀</div>
+        <div class="agent-title">React</div>
+        <div class="agent-desc">React 推理模式</div>
+      </a>
 
-  <a href="../index.html" class="back-btn">← 返回首页</a>
+      <a href="agent_docs/Agent_Architecture_Design.html" class="agent-card">
+        <div class="agent-icon">🤖</div>
+        <div class="agent-title">AI Agent 架构</div>
+        <div class="agent-desc">智能体架构设计</div>
+      </a>
 
-  <section class="subpage-header">
-    <h1>🤖 <span>AI Agent</span></h1>
-    <p>智能体架构、工具调用、ReAct 模式与自主决策系统的设计与实现</p>
-    <div class="sub-nav" style="margin-top: 1.5rem;">
-      <span class="subpage-badge">📄 6 篇文章</span>
-      <span class="subpage-badge">🔖 可扩展模板</span>
-      <span class="subpage-badge">✏️ 点击编辑</span>
-    </div>
-  </section>
+      <a href="agent_docs/Agent_Tool_Call_Mechanism.html" class="agent-card">
+        <div class="agent-icon">🎨</div>
+        <div class="agent-title">工具调用机制</div>
+        <div class="agent-desc">智能体如何调用外部工具</div>
+      </a>
+      
+      <a href="agent_docs/Multi_Agent_Collaboration.html" class="agent-card">
+        <div class="agent-icon">🎨</div>
+        <div class="agent-title">多智能体协作</div>
+        <div class="agent-desc">多个智能体如何协同工作</div>
+      </a>
 
-  <section class="article-list">
-    <div class="article-item" onclick="editArticle(1)">
-      <div class="article-num">1</div>
-      <div class="article-content">
-        <h4>Agent 架构设计</h4>
-        <p>规划、记忆、工具调用与反馈循环的核心组件</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(2)">
-      <div class="article-num">2</div>
-      <div class="article-content">
-        <h4>ReAct 推理模式</h4>
-        <p>推理与行动交替的链式思维实现</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(3)">
-      <div class="article-num">3</div>
-      <div class="article-content">
-        <h4>工具调用机制</h4>
-        <p>Function Calling、MCP 与 API 集成方案</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(4)">
-      <div class="article-num">4</div>
-      <div class="article-content">
-        <h4>多 Agent 协作</h4>
-        <p>Agent Swarm、角色分工与任务编排</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(5)">
-      <div class="article-num">5</div>
-      <div class="article-content">
-        <h4>记忆系统设计</h4>
-        <p>短期记忆、长期记忆与向量存储方案</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(6)">
-      <div class="article-num">6</div>
-      <div class="article-content">
-        <h4>自主决策边界</h4>
-        <p>安全约束、人类确认与权限控制</p>
-      </div>
-    </div>
-    <div class="article-item add-article" onclick="addArticle()">
-      <div style="font-size: 1.5rem; width: 44px; text-align: center;">+</div>
-      <div class="article-content">
-        <h4>添加新文章</h4>
-        <p>点击添加更多 AI Agent 相关内容</p>
-      </div>
-    </div>
-  </section>
+      <a href="agent_docs/Agent_Memory_System.html" class="agent-card">
+        <div class="agent-icon">🎨</div>
+        <div class="agent-title">智能体记忆系统</div>
+        <div class="agent-desc">智能体如何存储和检索信息</div>
+      </a>
 
-  <footer>
-    <p>🧠 AI Knowledge Hub — AI Agent 专题</p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;">使用此模板可自由扩展更多子话题与文章</p>
-  </footer>
+      <a href="agent_docs/Agent_autonomy_boundaries.html" class="agent-card">
+        <div class="agent-icon">🎨</div>
+        <div class="agent-title">智能体自主边界</div>
+        <div class="agent-desc">智能体的权限和限制</div>
+      </a>
 
-  <script src="../script.js"></script>
-  <script>
-    // 子页面独立功能
-    function editArticle(id) {
-      const titles = ['Agent 架构设计', 'ReAct 推理模式', '工具调用机制', '多 Agent 协作', '记忆系统设计', '自主决策边界'];
-      const newTitle = prompt('编辑文章标题：', titles[id-1]);
-      if (newTitle && newTitle !== titles[id-1]) {
-        alert('✅ 文章已更新为：' + newTitle + '（实际项目需连接后端保存）');
-      }
-    }
+    </div>
 
-    function addArticle() {
-      const title = prompt('请输入新文章标题：');
-      if (title) {
-        const desc = prompt('请输入文章描述：') || '暂无描述';
-        alert('✅ 文章「' + title + '」已添加！\n描述：' + desc + '\n\n（实际项目可连接后端持久化）');
-      }
-    }
-  </script>
+    <footer>本地智能体文档中心 · 点击任意卡片开始阅读</footer>
+  </div>
 </body>
 </html>

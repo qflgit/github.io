@@ -1,0 +1,708 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>MCP_vs_FunctionCall_Skill_Comparison</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='mcp-与-function-callskill-对比指南'><span>MCP 与 Function Call、Skill 对比指南</span></h1><blockquote><p><span>本文档系统对比 Model Context Protocol (MCP)、Function Calling 与 Skill 三者的架构差异、适用场景与迁移路径，帮助开发者在 AI Agent 技术选型中做出正确决策。</span></p></blockquote><hr /><h2 id='目录'><span>目录</span></h2><ol start='' ><li><p><a href='#1-核心概念速览'><span>核心概念速览</span></a></p></li><li><p><a href='#2-三者层级关系'><span>三者层级关系</span></a></p></li><li><p><a href='#3-标准差异对比'><span>标准差异对比</span></a></p></li><li><p><a href='#4-架构差异详解'><span>架构差异详解</span></a></p></li><li><p><a href='#5-适用场景分析'><span>适用场景分析</span></a></p></li><li><p><a href='#6-迁移指南'><span>迁移指南</span></a></p></li><li><p><a href='#7-常见误区'><span>常见误区</span></a></p></li><li><p><a href='#8-选型决策框架'><span>选型决策框架</span></a></p></li></ol><hr /><h2 id='1-核心概念速览'><span>1. 核心概念速览</span></h2><h3 id='11-function-calling'><span>1.1 Function Calling</span></h3><p><strong><span>定义</span></strong><span>：Function Calling 是 LLM 的内置能力，让模型能够生成结构化 JSON 输出，表达&quot;我要调用这个函数、参数是这些&quot;。</span></p><p><strong><span>本质</span></strong><span>：模型与函数之间的单次调用格式规范，是 AI Agent 触发外部动作的最底层&quot;语言&quot;。</span></p><p><strong><span>典型实现</span></strong><span>：OpenAI Chat Completions API 的 </span><code>tools</code><span> 参数、Anthropic Messages API 的 </span><code>tool_use</code><span>。</span></p><h3 id='12-mcp-model-context-protocol'><span>1.2 MCP (Model Context Protocol)</span></h3><p><strong><span>定义</span></strong><span>：MCP 是一个开放标准协议，定义了 AI 客户端与工具服务之间如何发现、连接和调用工具。</span></p><p><strong><span>本质</span></strong><span>：在 Function Calling 之上做工具标准化封装，让工具从&quot;应用内的代码片段&quot;变成&quot;独立的标准化服务&quot;。</span></p><p><strong><span>治理</span></strong><span>：2025 年 12 月由 Anthropic 捐赠给 Linux 基金会旗下的 Agentic AI Foundation (AAIF)。</span></p><h3 id='13-skill'><span>1.3 Skill</span></h3><p><strong><span>定义</span></strong><span>：Skill 是将使用工具完成特定任务的知识和流程封装成的可复用模块。</span></p><p><strong><span>本质</span></strong><span>：在 MCP 之上的流程编排层，定义&quot;用这些工具按什么流程完成任务&quot;。</span></p><p><strong><span>典型实现</span></strong><span>：Claude Code 的 TaskMaster、各类 Agent 框架中的 Skill 定义。</span></p><h3 id='14-一句话总结'><span>1.4 一句话总结</span></h3><figure class='table-figure'><table><thead><tr><th><span>概念</span></th><th><span>一句话定位</span></th><th><span>类比</span></th></tr></thead><tbody><tr><td><strong><span>Function Calling</span></strong></td><td><span>模型触发函数调用的&quot;语言&quot;</span></td><td><span>手 — 能拿刀、能点火</span></td></tr><tr><td><strong><span>MCP</span></strong></td><td><span>工具标准化封装和发现协议</span></td><td><span>厨房 — 厨具和食材随时可用</span></td></tr><tr><td><strong><span>Skill</span></strong></td><td><span>使用工具完成任务的流程模板</span></td><td><span>菜谱 — 先热锅凉油、再下料翻炒</span></td></tr></tbody></table></figure><hr /><h2 id='2-三者层级关系'><span>2. 三者层级关系</span></h2><h3 id='21-架构分层'><span>2.1 架构分层</span></h3><p><span>三者不是并列的竞争方案，而是从底到顶的三层架构：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌─────────────────────────────────────────────┐</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  Skill 层 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  (流程编排、知识封装、任务模板) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  Agent 按 Skill 定义的标准流程执行任务 &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─────────────────────────────────────────────┤</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  MCP 层 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  (工具标准化、服务发现、跨模型复用) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  Client 连接 Server 自动发现可用工具 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─────────────────────────────────────────────┤</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  Function Calling 层 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  (模型触发调用的底层协议) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  模型输出 tool_calls JSON 触发具体调用 &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─────────────────────────────────────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 299px;"></div></div></div></pre><h3 id='22-通信角色'><span>2.2 通信角色</span></h3><figure class='table-figure'><table><thead><tr><th><span>层级</span></th><th><span>通信双方</span></th><th><span>解决的问题</span></th></tr></thead><tbody><tr><td><strong><span>Function Calling</span></strong></td><td><span>模型 ↔ 宿主程序</span></td><td><span>&quot;模型怎么触发函数调用&quot;</span></td></tr><tr><td><strong><span>MCP</span></strong></td><td><span>MCP Client ↔ MCP Server</span></td><td><span>&quot;工具怎么标准化暴露和发现&quot;</span></td></tr><tr><td><strong><span>Skill</span></strong></td><td><span>Agent ↔ Skill 模块</span></td><td><span>&quot;拿到工具后按什么流程完成任务&quot;</span></td></tr></tbody></table></figure><h3 id='23-完整调用链'><span>2.3 完整调用链</span></h3><p><span>以一个&quot;分析销售数据并生成报告&quot;的任务为例：</span></p><ol start='' ><li><p><strong><span>Skill 层</span></strong><span>：Agent 发现&quot;数据分析报告&quot;Skill，加载 SKILL.md 中的三步流程（取数据 → 做分析 → 写报告）</span></p></li><li><p><strong><span>MCP 层</span></strong><span>：Agent 的 MCP Client 已连接数据库 Server 和 Python 执行器 Server，自动知道 </span><code>query_database</code><span> 和 </span><code>run_python</code><span> 可用</span></p></li><li><p><strong><span>Function Calling 层</span></strong><span>：模型判断需要查数据库，输出 </span><code>tool_calls: query_database(sql=&quot;...&quot;)</code><span>，MCP Client 路由到数据库 Server 执行</span></p></li></ol><hr /><h2 id='3-标准差异对比'><span>3. 标准差异对比</span></h2><h3 id='31-mcp-vs-function-calling-全面对比'><span>3.1 MCP vs Function Calling 全面对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>MCP</span></th><th><span>Function Calling</span></th></tr></thead><tbody><tr><td><strong><span>协议性质</span></strong></td><td><span>开放标准 (AAIF 治理)</span></td><td><span>厂商专有 (OpenAI / Anthropic / Google 各自不同)</span></td></tr><tr><td><strong><span>模型兼容性</span></strong></td><td><span>任何支持 MCP 的模型 (Claude, GPT-4o, Gemini, 本地 LLM)</span></td><td><span>仅限对应厂商模型</span></td></tr><tr><td><strong><span>传输层</span></strong></td><td><span>JSON-RPC 2.0 over stdio / SSE / HTTP streaming</span></td><td><span>HTTPS REST API (JSON payloads)</span></td></tr><tr><td><strong><span>工具定义格式</span></strong></td><td><span>MCP schema (tools, resources, prompts)</span></td><td><span>JSON Schema in &#39;tools&#39; array</span></td></tr><tr><td><strong><span>工具发现</span></strong></td><td><span>动态：运行时自动发现</span></td><td><span>静态：每次请求手动传入</span></td></tr><tr><td><strong><span>可扩展性</span></strong></td><td><span>模块化：添加工具不改 Agent 代码</span></td><td><span>线性退化：每增一个工具增加 Token 开销</span></td></tr><tr><td><strong><span>供应商锁定</span></strong></td><td><span>低 — 换模型无需重写工具</span></td><td><span>高 — 绑定特定厂商 API</span></td></tr><tr><td><strong><span>生态成熟度</span></strong></td><td><span>快速增长；13,000+ 社区服务器</span></td><td><span>成熟；多年生产使用</span></td></tr><tr><td><strong><span>设置复杂度</span></strong></td><td><span>中等 (MCP server + client 接线)</span></td><td><span>低 (单次 API 调用)</span></td></tr><tr><td><strong><span>延迟开销</span></strong></td><td><span>本地 &lt; 50ms，远程可测量</span></td><td><span>无额外网络跳数</span></td></tr><tr><td><strong><span>安全模型</span></strong></td><td><span>凭据隔离在 Server 端</span></td><td><span>API Key 在 Agent 运行时</span></td></tr><tr><td><strong><span>并行调用</span></strong></td><td><span>Server 端批处理 + Client 并发</span></td><td><code>parallel_tool_calls</code><span> 标志</span></td></tr><tr><td><strong><span>流式支持</span></strong></td><td><span>SSE + chunked HTTP</span></td><td><code>stream: true</code></td></tr><tr><td><strong><span>成本模型</span></strong></td><td><span>工具基础设施自运维；模型费用分离</span></td><td><span>按 Token 计费</span></td></tr></tbody></table></figure><h3 id='32-mcp-vs-function-calling-核心差异'><span>3.2 MCP vs Function Calling 核心差异</span></h3><p><strong><span>架构差异</span></strong><span>：</span></p><ul><li><p><span>Function Calling 在模型请求-响应周期内运行，工具逻辑嵌入应用</span></p></li><li><p><span>MCP 创建独立层，工具在独立 Server 上运行，通过标准化协议通信</span></p></li></ul><p><strong><span>可扩展性差异</span></strong><span>：</span></p><ul><li><p><span>Function Calling 每次请求发送所有工具 Schema，开销随工具数线性增长</span></p></li><li><p><span>MCP 按需加载，可扩展到数百工具而不增加 Prompt 大小</span></p></li></ul><p><strong><span>供应商可移植性</span></strong><span>：</span></p><ul><li><p><span>OpenAI、Anthropic、Google 的 Function Calling 格式各不相同，切换需重写 Schema</span></p></li><li><p><span>MCP 是供应商无关的，一个 Server 可被任何兼容 Client 使用</span></p></li></ul><p><strong><span>安全差异</span></strong><span>：</span></p><ul><li><p><span>Function Calling 将 API Key 存储在 Agent 运行时</span></p></li><li><p><span>MCP 将凭据隔离在 Server 端，降低合规风险</span></p></li></ul><h3 id='33-skill-的独特定位'><span>3.3 Skill 的独特定位</span></h3><figure class='table-figure'><table><thead><tr><th><span>特性</span></th><th><span>Skill</span></th><th><span>MCP</span></th><th><span>Function Calling</span></th></tr></thead><tbody><tr><td><strong><span>粒度</span></strong></td><td><span>粗粒度（整个任务流程）</span></td><td><span>中粒度（单个工具）</span></td><td><span>细粒度（单次调用）</span></td></tr><tr><td><strong><span>复用对象</span></strong></td><td><span>任务知识和流程</span></td><td><span>工具实现</span></td><td><span>调用格式</span></td></tr><tr><td><strong><span>是否依赖下层</span></strong></td><td><span>依赖 MCP 和 Function Calling</span></td><td><span>依赖 Function Calling</span></td><td><span>不依赖上层</span></td></tr><tr><td><strong><span>典型载体</span></strong></td><td><span>SKILL.md、Prompt 模板</span></td><td><span>MCP Server 进程</span></td><td><span>JSON Schema</span></td></tr><tr><td><strong><span>变更频率</span></strong></td><td><span>低（业务流程相对稳定）</span></td><td><span>中（工具迭代）</span></td><td><span>低（协议稳定）</span></td></tr></tbody></table></figure><hr /><h2 id='4-架构差异详解'><span>4. 架构差异详解</span></h2><h3 id='41-function-calling-的执行循环'><span>4.1 Function Calling 的执行循环</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">应用进程内：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──────────────────────────────────────────┐</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  1. 定义工具 JSON Schema &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  2. 将 Schema 放入 API 请求 tools 参数 &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  3. 模型返回 tool_calls JSON &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  4. 应用读取响应，本地执行函数 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  5. 将结果以 tool 消息形式回传模型 &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└──────────────────────────────────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><p><span>所有环节在一个进程内完成：工具 Schema、执行逻辑、凭据、错误处理都内嵌在应用中。</span></p><h3 id='42-mcp-的客户端-服务器模型'><span>4.2 MCP 的客户端-服务器模型</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌─────────────┐ &nbsp; &nbsp;  JSON-RPC 2.0 &nbsp; &nbsp; &nbsp; ┌─────────────┐</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  MCP Host &nbsp; │  ←──────────────────→  │  MCP Server │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  (AI 应用) &nbsp; │ &nbsp; (stdio / SSE / HTTP)  │  (工具服务)  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  MCP Client │  ── tools/list ──────→  │  工具发现 &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  (连接管理)  │  ←─ 工具列表 ─────────  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │  ── tools/call ──────→  │  工具执行 &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │  ←─ 执行结果 ─────────  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─────────────┘ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └─────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>三个组件参与：</span></p><ul><li><p><strong><span>MCP Host</span></strong><span>：AI 应用（如 Claude Desktop、Cursor、VS Code）</span></p></li><li><p><strong><span>MCP Client</span></strong><span>：维护与 Server 的连接</span></p></li><li><p><strong><span>MCP Server</span></strong><span>：独立进程，暴露 tools、resources、prompts</span></p></li></ul><h3 id='43-skill-的编排模型'><span>4.3 Skill 的编排模型</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Agent 启动时扫描 Skill 列表</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">用户提出任务 → Agent 匹配相关 Skill</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">加载 SKILL.md（执行指令、脚本、模板）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">按 Skill 定义流程分步执行</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">每步需要工具时 → 通过 MCP 发现 → 通过 Function Calling 触发</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>Skill 内部可能涉及多个步骤、调用多个 MCP 工具，是一个完整的&quot;操作手册&quot;。</span></p><hr /><h2 id='5-适用场景分析'><span>5. 适用场景分析</span></h2><h3 id='51-function-calling-最佳场景'><span>5.1 Function Calling 最佳场景</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>原因</span></th></tr></thead><tbody><tr><td><strong><span>快速原型</span></strong></td><td><span>几行代码即可接入，无需额外基础设施</span></td></tr><tr><td><strong><span>单模型部署</span></strong></td><td><span>已确定使用 OpenAI / Anthropic，无切换计划</span></td></tr><tr><td><strong><span>简单 Bot</span></strong></td><td><span>1-3 个动作（查股价、查订单、开关设备）</span></td></tr><tr><td><strong><span>OpenAI Assistants API</span></strong></td><td><span>深度集成场景</span></td></tr><tr><td><strong><span>延迟敏感</span></strong></td><td><span>单次调用无额外网络跳数</span></td></tr><tr><td><strong><span>小团队</span></strong></td><td><span>无运维 MCP Server 的资源</span></td></tr></tbody></table></figure><h3 id='52-mcp-最佳场景'><span>5.2 MCP 最佳场景</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>原因</span></th></tr></thead><tbody><tr><td><strong><span>多模型策略</span></strong></td><td><span>需要跨 Claude、GPT-4o、Gemini 复用工具</span></td></tr><tr><td><strong><span>多工具系统</span></strong></td><td><span>10+ 工具，Function Calling 的 Token 开销不可接受</span></td></tr><tr><td><strong><span>企业部署</span></strong></td><td><span>安全、治理、工具可扩展性是优先级</span></td></tr><tr><td><strong><span>社区工具复用</span></strong></td><td><span>已有 13,000+ 社区服务器可直接接入</span></td></tr><tr><td><strong><span>供应商去锁定</span></strong></td><td><span>组织政策禁止单一厂商依赖</span></td></tr><tr><td><strong><span>工具独立迭代</span></strong></td><td><span>工具更新不应要求 Agent 代码变更</span></td></tr><tr><td><strong><span>AI 电话 Agent</span></strong></td><td><span>需要多后端集成、动态添加能力</span></td></tr></tbody></table></figure><h3 id='53-skill-最佳场景'><span>5.3 Skill 最佳场景</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>原因</span></th></tr></thead><tbody><tr><td><strong><span>复杂任务标准化</span></strong></td><td><span>&quot;代码审查&quot;、&quot;数据分析报告&quot;等需要固定流程</span></td></tr><tr><td><strong><span>团队知识沉淀</span></strong></td><td><span>将最佳实践封装为可复用模块</span></td></tr><tr><td><strong><span>跨 Agent 复用</span></strong></td><td><span>同一 Skill 可被不同 Agent 加载执行</span></td></tr><tr><td><strong><span>质量一致性</span></strong></td><td><span>确保不同 Agent 执行同一任务时遵循相同标准</span></td></tr><tr><td><strong><span>低代码编排</span></strong></td><td><span>非技术人员可通过编辑 SKILL.md 定义流程</span></td></tr></tbody></table></figure><h3 id='54-场景对照表'><span>5.4 场景对照表</span></h3><figure class='table-figure'><table><thead><tr><th><span>如果你需要...</span></th><th><span>选择</span></th></tr></thead><tbody><tr><td><span>最快路径验证一个想法</span></td><td><span>Function Calling</span></td></tr><tr><td><span>3 天内上线生产</span></td><td><span>Function Calling</span></td></tr><tr><td><span>跨模型复用同一套工具</span></td><td><span>MCP</span></td></tr><tr><td><span>管理 20+ 工具</span></td><td><span>MCP</span></td></tr><tr><td><span>企业级安全与审计</span></td><td><span>MCP</span></td></tr><tr><td><span>标准化&quot;代码审查&quot;流程</span></td><td><span>Skill + MCP</span></td></tr><tr><td><span>让非技术人员定义 Agent 行为</span></td><td><span>Skill</span></td></tr><tr><td><span>同时支持 Claude 和 GPT-4o</span></td><td><span>MCP</span></td></tr></tbody></table></figure><hr /><h2 id='6-迁移指南'><span>6. 迁移指南</span></h2><h3 id='61-迁移前提评估'><span>6.1 迁移前提评估</span></h3><p><span>在启动迁移前，评估以下维度：</span></p><figure class='table-figure'><table><thead><tr><th><span>评估项</span></th><th><span>Function Calling 现状</span></th><th><span>MCP 目标状态</span></th></tr></thead><tbody><tr><td><span>工具数量</span></td><td><span>&lt; 5 个</span></td><td><span>可平滑迁移</span></td></tr><tr><td><span>工具数量</span></td><td><span>5-15 个</span></td><td><span>建议迁移，收益明显</span></td></tr><tr><td><span>工具数量</span></td><td><span>&gt; 15 个</span></td><td><span>强烈建议迁移</span></td></tr><tr><td><span>模型策略</span></td><td><span>单一 OpenAI</span></td><td><span>可暂缓</span></td></tr><tr><td><span>模型策略</span></td><td><span>多模型实验</span></td><td><span>应立即迁移</span></td></tr><tr><td><span>团队规模</span></td><td><span>&lt; 3 人</span></td><td><span>评估运维成本</span></td></tr><tr><td><span>团队规模</span></td><td><span>有平台/基础设施团队</span></td><td><span>迁移成本可忽略</span></td></tr><tr><td><span>安全要求</span></td><td><span>内部工具</span></td><td><span>可逐步迁移</span></td></tr><tr><td><span>安全要求</span></td><td><span>生产级/合规要求</span></td><td><span>应优先迁移</span></td></tr></tbody></table></figure><h3 id='62-四阶段迁移路径'><span>6.2 四阶段迁移路径</span></h3><h4 id='phase-1-双轨运行-第-1-2-周'><span>Phase 1: 双轨运行 (第 1-2 周)</span></h4><ul><li><p><span>保留现有 Function Calling 集成正常运行</span></p></li><li><p><span>在旁路部署 MCP Gateway 或首个 MCP Server</span></p></li><li><p><span>选择 1-2 个非关键工具作为试点迁移</span></p></li><li><p><span>验证 MCP Client 与现有系统的兼容性</span></p></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 双轨运行示例：同时支持两种模式</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">async</span> <span class="cm-keyword">def</span> <span class="cm-def">call_tool</span>(<span class="cm-variable">tool_name</span>, <span class="cm-variable">params</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">tool_name</span> <span class="cm-keyword">in</span> <span class="cm-variable">mcp_tools</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-keyword">await</span> <span class="cm-variable">mcp_client</span>.<span class="cm-property">call</span>(<span class="cm-variable">tool_name</span>, <span class="cm-variable">params</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">else</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-keyword">await</span> <span class="cm-variable">legacy_function_call</span>(<span class="cm-variable">tool_name</span>, <span class="cm-variable">params</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><h4 id='phase-2-mcp-gateway-部署-第-3-4-周'><span>Phase 2: MCP Gateway 部署 (第 3-4 周)</span></h4><ul><li><p><span>部署 MCP Gateway（如 IBM ContextForge、MetaMCP）</span></p></li><li><p><span>将新集成统一路由到 MCP 层</span></p></li><li><p><span>在 Gateway 层实现统一的认证、审计和访问控制</span></p></li><li><p><span>保持 Function Calling 作为关键路径的 Fallback</span></p></li></ul><h4 id='phase-3-渐进式迁移-第-2-个月'><span>Phase 3: 渐进式迁移 (第 2 个月)</span></h4><ul><li><p><span>逐个迁移现有工具到 MCP Server</span></p></li><li><p><span>每次迁移一个工具后立即测试</span></p></li><li><p><span>维护 Function Calling 的 Fallback 路径</span></p></li><li><p><span>记录迁移过程中的问题和解决方案</span></p></li></ul><p><strong><span>迁移单个工具的步骤</span></strong><span>：</span></p><ol start='' ><li><p><span>将工具逻辑从应用内提取到独立进程</span></p></li><li><p><span>用 MCP SDK 包装为 MCP Server（stdio 或 SSE 模式）</span></p></li><li><p><span>在 MCP Client 中注册新 Server</span></p></li><li><p><span>验证工具发现、调用和返回结果</span></p></li><li><p><span>更新应用代码，从直接调用改为 MCP Client 调用</span></p></li><li><p><span>运行回归测试</span></p></li><li><p><span>下线旧 Function Calling 实现</span></p></li></ol><h4 id='phase-4-全面采用-第-3-个月'><span>Phase 4: 全面采用 (第 3 个月)</span></h4><ul><li><p><span>停用遗留 Function Calling 集成</span></p></li><li><p><span>启用 MCP-only 特性（如 Resources、Prompts、动态发现）</span></p></li><li><p><span>建立内部 MCP Server 注册表</span></p></li><li><p><span>制定 MCP Server 开发和发布规范</span></p></li></ul><h3 id='63-代码迁移示例'><span>6.3 代码迁移示例</span></h3><p><strong><span>迁移前 (Function Calling)</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 工具定义内嵌在应用中</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tools</span> <span class="cm-operator">=</span> [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"type"</span>: <span class="cm-string">"function"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"function"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"name"</span>: <span class="cm-string">"query_database"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"description"</span>: <span class="cm-string">"查询数据库"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"parameters"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"type"</span>: <span class="cm-string">"object"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"properties"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"sql"</span>: {<span class="cm-string">"type"</span>: <span class="cm-string">"string"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"required"</span>: [<span class="cm-string">"sql"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 执行逻辑也内嵌</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">async</span> <span class="cm-keyword">def</span> <span class="cm-def">query_database</span>(<span class="cm-variable">sql</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">conn</span> <span class="cm-operator">=</span> <span class="cm-keyword">await</span> <span class="cm-variable">get_db_connection</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">result</span> <span class="cm-operator">=</span> <span class="cm-keyword">await</span> <span class="cm-variable">conn</span>.<span class="cm-property">fetch</span>(<span class="cm-variable">sql</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">result</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 530px;"></div><div class="CodeMirror-gutters" style="display: none; height: 530px;"></div></div></div></pre><p><strong><span>迁移后 (MCP Server)</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 独立 MCP Server (server.py)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">mcp</span>.<span class="cm-property">server</span> <span class="cm-keyword">import</span> <span class="cm-variable">Server</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">mcp</span>.<span class="cm-property">types</span> <span class="cm-keyword">import</span> <span class="cm-variable">TextContent</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">app</span> <span class="cm-operator">=</span> <span class="cm-variable">Server</span>(<span class="cm-string">"database-server"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">@app</span>.<span class="cm-property">call_tool</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">async</span> <span class="cm-keyword">def</span> <span class="cm-def">query_database</span>(<span class="cm-variable">arguments</span>: <span class="cm-builtin">dict</span>) <span class="cm-operator">-&gt;</span> <span class="cm-builtin">list</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">sql</span> <span class="cm-operator">=</span> <span class="cm-variable">arguments</span>[<span class="cm-string">"sql"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># 输入校验</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-keyword">not</span> <span class="cm-variable">validate_sql</span>(<span class="cm-variable">sql</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">raise</span> <span class="cm-variable">ValueError</span>(<span class="cm-string">"Invalid SQL"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">conn</span> <span class="cm-operator">=</span> <span class="cm-keyword">await</span> <span class="cm-variable">get_db_connection</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">result</span> <span class="cm-operator">=</span> <span class="cm-keyword">await</span> <span class="cm-variable">conn</span>.<span class="cm-property">fetch</span>(<span class="cm-variable">sql</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> [<span class="cm-variable">TextContent</span>(<span class="cm-builtin">type</span><span class="cm-operator">=</span><span class="cm-string">"text"</span>, <span class="cm-variable">text</span><span class="cm-operator">=</span><span class="cm-builtin">str</span>(<span class="cm-variable">result</span>))]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 应用侧只需连接 Server</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># mcp_client.connect("npx", ["-y", "@my-org/database-mcp"])</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 415px;"></div><div class="CodeMirror-gutters" style="display: none; height: 415px;"></div></div></div></pre><h3 id='64-迁移注意事项'><span>6.4 迁移注意事项</span></h3><figure class='table-figure'><table><thead><tr><th><span>注意事项</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>不要一次性重写</span></strong></td><td><span>保持双轨运行，逐步替换</span></td></tr><tr><td><strong><span>版本锁定</span></strong></td><td><span>生产环境锁定 MCP Server 版本</span></td></tr><tr><td><strong><span>安全加固</span></strong></td><td><span>每个 MCP Server 都需要认证、输入校验、TLS</span></td></tr><tr><td><strong><span>监控埋点</span></strong></td><td><span>在 MCP 层补充审计日志</span></td></tr><tr><td><strong><span>团队培训</span></strong></td><td><span>确保团队理解 MCP 的客户端-服务器架构</span></td></tr><tr><td><strong><span>性能基准</span></strong></td><td><span>迁移前后对比延迟指标</span></td></tr></tbody></table></figure><hr /><h2 id='7-常见误区'><span>7. 常见误区</span></h2><h3 id='误区-1将三者视为竞争方案'><span>误区 1：将三者视为竞争方案</span></h3><p><strong><span>错误认知</span></strong><span>：Function Calling、MCP、Skill 是三个平行的竞争方案，选一个即可。</span></p><p><strong><span>正确理解</span></strong><span>：三者是互补的三层架构。Function Calling 是底层语言，MCP 是中间层协议，Skill 是上层流程封装。完整的 Agent 系统通常三层都需要。</span></p><h3 id='误区-2认为-mcp-会取代-function-calling'><span>误区 2：认为 MCP 会取代 Function Calling</span></h3><p><strong><span>错误认知</span></strong><span>：MCP 是 Function Calling 的替代品。</span></p><p><strong><span>正确理解</span></strong><span>：MCP 内部仍然使用 Function Calling。模型生成结构化请求的方式不变，MCP 只是标准化了请求的路由和执行。两者是&quot;基础设施 vs 底层机制&quot;的关系。</span></p><h3 id='误区-3认为-function-calling-已被弃用'><span>误区 3：认为 Function Calling 已被弃用</span></h3><p><strong><span>错误认知</span></strong><span>：MCP 崛起意味着 OpenAI Function Calling 正在被淘汰。</span></p><p><strong><span>正确理解</span></strong><span>：OpenAI 持续投资 Function Calling，增加了 </span><code>strict</code><span> 模式、改进了并行调用可靠性、更深地集成到 Assistants API。它仍是全球最广泛使用的 LLM API 工具调用机制。</span></p><h3 id='误区-4低估-mcp-server-的安全风险'><span>误区 4：低估 MCP Server 的安全风险</span></h3><p><strong><span>错误认知</span></strong><span>：MCP Server 只是配置文件，无需关注安全。</span></p><p><strong><span>正确理解</span></strong><span>：每个 MCP Server 都是网络进程，有自己的攻击面。需要认证、输入校验、TLS、沙箱隔离。跳过这些步骤会使工具调用 Agent 成为系统中最薄弱的环节。</span></p><h3 id='误区-5过度设计工具-schema'><span>误区 5：过度设计工具 Schema</span></h3><p><strong><span>错误认知</span></strong><span>：工具 Schema 越全面越好。</span></p><p><strong><span>正确理解</span></strong><span>：无论使用 Function Calling 还是 MCP，小而聚焦的工具配合精确的 Schema 才能产生更好的模型行为。大而全的工具 Schema 会增加模型调用错误工具或传入畸形参数的概率。</span></p><h3 id='误区-6选择-mcp-仅因为它更现代'><span>误区 6：选择 MCP 仅因为它&quot;更现代&quot;</span></h3><p><strong><span>错误认知</span></strong><span>：MCP 更新、更有势头，所以应该选它。</span></p><p><strong><span>正确理解</span></strong><span>：&quot;更新&quot;不是使用场景。如果没有具体的可移植性或多模型需求，维护 MCP Server 基础设施只会增加复杂度而没有实际收益。选择 MCP 需要有具体理由。</span></p><hr /><h2 id='8-选型决策框架'><span>8. 选型决策框架</span></h2><h3 id='81-决策树'><span>8.1 决策树</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">开始</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ├─ 是否已确定单一模型供应商且长期不变？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp;  ├─ 是 → 工具数量 &lt; 5？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp;  │ &nbsp; &nbsp; &nbsp;  ├─ 是 → Function Calling (快速上线)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp;  │ &nbsp; &nbsp; &nbsp;  └─ 否 → 评估 Token 开销是否可接受</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp;  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ 是 → Function Calling</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp;  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └─ 否 → MCP</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp;  └─ 否 → 是否需要跨模型复用工具？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ 是 → MCP</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └─ 否 → 是否有企业级安全/治理要求？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ├─ 是 → MCP</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  └─ 否 → 团队是否有运维能力？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├─ 是 → MCP (未来-proof)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └─ 否 → Function Calling</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  └─ 是否需要标准化复杂任务流程？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ├─ 是 → Skill + MCP</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; └─ 否 → 按上述路径选择</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 438px;"></div><div class="CodeMirror-gutters" style="display: none; height: 438px;"></div></div></div></pre><h3 id='82-组合使用策略'><span>8.2 组合使用策略</span></h3><p><strong><span>策略 1：Function Calling + MCP 并存</span></strong></p><ul><li><p><span>Function Calling 用于 OpenAI-only 生产负载</span></p></li><li><p><span>MCP 用于新 Agent 原型和多模型实验</span></p></li><li><p><span>两者在组合层面不互斥</span></p></li></ul><p><strong><span>策略 2：MCP + Skill 完整栈</span></strong></p><ul><li><p><span>MCP 提供工具基础设施</span></p></li><li><p><span>Skill 提供流程编排</span></p></li><li><p><span>Function Calling 作为底层触发机制（透明使用）</span></p></li></ul><p><strong><span>策略 3：渐进式演进</span></strong></p><ul><li><p><span>第 1 阶段：纯 Function Calling（验证业务价值）</span></p></li><li><p><span>第 2 阶段：Function Calling + 少量 MCP Server（试点）</span></p></li><li><p><span>第 3 阶段：MCP Gateway + 全面迁移（规模化）</span></p></li><li><p><span>第 4 阶段：Skill 层 + MCP 基础设施（成熟治理）</span></p></li></ul><h3 id='83-关键决策因素权重'><span>8.3 关键决策因素权重</span></h3><figure class='table-figure'><table><thead><tr><th><span>因素</span></th><th><span>权重</span></th><th><span>Function Calling</span></th><th><span>MCP</span></th></tr></thead><tbody><tr><td><span>上线速度</span></td><td><span>高</span></td><td><span>✅✅✅</span></td><td><span>✅</span></td></tr><tr><td><span>跨模型可移植性</span></td><td><span>高</span></td><td><span>❌</span></td><td><span>✅✅✅</span></td></tr><tr><td><span>工具可扩展性</span></td><td><span>高</span></td><td><span>❌</span></td><td><span>✅✅✅</span></td></tr><tr><td><span>安全隔离</span></td><td><span>高</span></td><td><span>❌</span></td><td><span>✅✅✅</span></td></tr><tr><td><span>运维成本</span></td><td><span>中</span></td><td><span>✅✅✅</span></td><td><span>✅</span></td></tr><tr><td><span>生态成熟度</span></td><td><span>中</span></td><td><span>✅✅✅</span></td><td><span>✅✅</span></td></tr><tr><td><span>延迟敏感度</span></td><td><span>中</span></td><td><span>✅✅✅</span></td><td><span>✅✅</span></td></tr><tr><td><span>团队规模</span></td><td><span>低</span></td><td><span>✅✅</span></td><td><span>✅✅✅</span></td></tr></tbody></table></figure><hr /><h2 id='附录相关资源'><span>附录：相关资源</span></h2><ul><li><p><a href='https://modelcontextprotocol.io/'><span>MCP 官方文档</span></a></p></li><li><p><a href='https://platform.openai.com/docs/guides/function-calling'><span>OpenAI Function Calling 文档</span></a></p></li><li><p><a href='https://docs.anthropic.com/en/docs/build-with-claude/tool-use'><span>Anthropic Tool Use 文档</span></a></p></li><li><p><a href='https://github.com/modelcontextprotocol/typescript-sdk'><span>MCP TypeScript SDK</span></a></p></li><li><p><a href='https://github.com/modelcontextprotocol/python-sdk'><span>MCP Python SDK</span></a></p></li><li><p><a href='https://github.com/punkpeye/awesome-mcp-servers'><span>Awesome MCP Servers</span></a></p></li></ul><hr /><p>&nbsp;</p></div></div>
+</body>
+</html>

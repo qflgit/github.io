@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>RAG基础架构与最新技术综述</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='rag基础架构与最新技术综述'><span>RAG基础架构与最新技术综述</span></h1><h2 id='目录'><span>目录</span></h2><ul><li><p><a href='#1-rag概述'><span>1. RAG概述</span></a></p></li><li><p><a href='#2-rag基础架构'><span>2. RAG基础架构</span></a></p><ul><li><p><a href='#21-核心组件'><span>2.1 核心组件</span></a></p></li><li><p><a href='#22-标准工作流程'><span>2.2 标准工作流程</span></a></p></li><li><p><a href='#23-检索器与重排序的协同工作流'><span>2.3 检索器与重排序的协同工作流</span></a></p></li></ul></li><li><p><a href='#3-检索器技术详解'><span>3. 检索器技术详解</span></a></p><ul><li><p><a href='#31-稀疏检索'><span>3.1 稀疏检索</span></a></p></li><li><p><a href='#32-密集检索'><span>3.2 密集检索</span></a></p></li><li><p><a href='#33-混合检索'><span>3.3 混合检索</span></a></p></li><li><p><a href='#34-查询预处理'><span>3.4 查询预处理</span></a></p></li></ul></li><li><p><a href='#4-重排序技术详解'><span>4. 重排序技术详解</span></a></p><ul><li><p><a href='#41-重排序的必要性'><span>4.1 重排序的必要性</span></a></p></li><li><p><a href='#42-交叉编码器重排序'><span>4.2 交叉编码器重排序</span></a></p></li><li><p><a href='#43-上下文感知重排序'><span>4.3 上下文感知重排序</span></a></p></li><li><p><a href='#44-依赖感知重排序'><span>4.4 依赖感知重排序</span></a></p></li></ul></li><li><p><a href='#5-rag技术演进'><span>5. RAG技术演进</span></a></p><ul><li><p><a href='#51-naive-rag'><span>5.1 Naive RAG</span></a></p></li><li><p><a href='#52-advanced-rag'><span>5.2 Advanced RAG</span></a></p></li><li><p><a href='#53-modular-rag'><span>5.3 Modular RAG</span></a></p></li><li><p><a href='#54-agentic-rag'><span>5.4 Agentic RAG</span></a></p></li></ul></li><li><p><a href='#6-2026年最新技术'><span>6. 2026年最新技术</span></a></p><ul><li><p><a href='#61-多模态ragmm-rag'><span>6.1 多模态RAG（MM-RAG）</span></a></p></li><li><p><a href='#62-graphrag'><span>6.2 GraphRAG</span></a></p></li><li><p><a href='#63-自适应rag'><span>6.3 自适应RAG</span></a></p></li><li><p><a href='#64-分层rag'><span>6.4 分层RAG</span></a></p></li><li><p><a href='#65-自我反思ragself-rag'><span>6.5 自我反思RAG（Self-RAG）</span></a></p></li><li><p><a href='#66-contextual-retrieval'><span>6.6 Contextual Retrieval</span></a></p></li><li><p><a href='#67-rag-as-memory'><span>6.7 RAG-as-Memory</span></a></p></li><li><p><a href='#68-覆盖感知检索'><span>6.8 覆盖感知检索</span></a></p></li></ul></li><li><p><a href='#7-企业级rag部署方案'><span>7. 企业级RAG部署方案</span></a></p></li><li><p><a href='#8-性能评估与优化'><span>8. 性能评估与优化</span></a></p></li><li><p><a href='#9-发展趋势与展望'><span>9. 发展趋势与展望</span></a></p></li></ul><hr /><h2 id='1-rag概述'><span>1. RAG概述</span></h2><p><span>检索增强生成（Retrieval-Augmented Generation, RAG）是一种将外部知识检索与大型语言模型（LLM）生成相结合的技术范式。其核心思想是：在LLM生成回答之前，先从外部知识库中检索相关文档或片段，将这些检索结果作为上下文注入到提示中，从而引导LLM生成更准确、更可靠、更具事实依据的回答。</span></p><p><span>RAG的价值在于：</span></p><ul><li><p><strong><span>缓解幻觉</span></strong><span>：LLM基于检索到的真实文档生成，减少编造事实</span></p></li><li><p><strong><span>知识更新</span></strong><span>：无需重新训练模型即可更新知识库</span></p></li><li><p><strong><span>可溯源</span></strong><span>：回答可追溯至具体文档来源</span></p></li><li><p><strong><span>成本效益</span></strong><span>：相比微调大模型，RAG部署成本更低</span></p></li></ul><hr /><h2 id='2-rag基础架构'><span>2. RAG基础架构</span></h2><h3 id='21-核心组件'><span>2.1 核心组件</span></h3><p><span>一个完整的RAG系统包含以下核心组件：</span></p><figure class='table-figure'><table><thead><tr><th><span>组件</span></th><th><span>功能</span></th><th><span>典型技术</span></th></tr></thead><tbody><tr><td><strong><span>文档加载器</span></strong></td><td><span>从各种来源加载文档</span></td><td><span>LangChain Document Loaders, Unstructured</span></td></tr><tr><td><strong><span>文本分割器</span></strong></td><td><span>将长文档切分为可管理的片段</span></td><td><span>RecursiveCharacterTextSplitter, Semantic Chunking</span></td></tr><tr><td><strong><span>嵌入模型</span></strong></td><td><span>将文本转换为向量表示</span></td><td><span>OpenAI text-embedding-3, BGE, E5, GTE</span></td></tr><tr><td><strong><span>向量数据库</span></strong></td><td><span>存储和检索向量</span></td><td><span>Milvus, Pinecone, Weaviate, Chroma, Qdrant</span></td></tr><tr><td><strong><span>检索器</span></strong></td><td><span>从知识库中检索相关文档</span></td><td><span>Dense, Sparse, Hybrid</span></td></tr><tr><td><strong><span>重排序器</span></strong></td><td><span>对检索结果进行精排</span></td><td><span>Cross-Encoder, ColBERT, EBCAR</span></td></tr><tr><td><strong><span>LLM生成器</span></strong></td><td><span>基于检索上下文生成回答</span></td><td><span>GPT-4, Claude, Llama, Qwen</span></td></tr><tr><td><strong><span>评估器</span></strong></td><td><span>评估RAG系统质量</span></td><td><span>RAGAS, ARES, TruLens</span></td></tr></tbody></table></figure><h3 id='22-标准工作流程'><span>2.2 标准工作流程</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">用户查询</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[查询预处理]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 查询重写（Query Rewriting）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 查询扩展（Query Expansion）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 查询分解（Query Decomposition）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[检索阶段]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 向量检索（Dense Retrieval）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 关键词检索（Sparse Retrieval）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 混合检索（Hybrid Retrieval）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[重排序阶段]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 粗排（Top-K召回）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 精排（Cross-Encoder Reranking）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 上下文感知排序</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[上下文构建]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 文档压缩（Context Compression）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 冲突解决（Conflict Resolution）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 布局优化（Layout Optimization）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[生成阶段]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - LLM基于检索上下文生成回答</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 引用标注（Citation）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[后处理]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 答案验证（Self-Verification）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  - 幻觉检测（Hallucination Detection）</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 668px;"></div><div class="CodeMirror-gutters" style="display: none; height: 668px;"></div></div></div></pre><h3 id='23-检索器与重排序的协同工作流'><span>2.3 检索器与重排序的协同工作流</span></h3><p><span>检索器与重排序器的协同是RAG系统的核心，其工作流程分为两个阶段：</span></p><p><strong><span>第一阶段：检索（Recall）</span></strong></p><ul><li><p><span>目标：高召回率，尽可能不遗漏相关文档</span></p></li><li><p><span>方法：使用轻量级双编码器（Bi-Encoder）或BM25进行大规模召回</span></p></li><li><p><span>输出：Top-K候选文档（通常K=50~100）</span></p></li></ul><p><strong><span>第二阶段：重排序（Reranking）</span></strong></p><ul><li><p><span>目标：高精度，将最相关的文档排在前面</span></p></li><li><p><span>方法：使用计算成本更高的交叉编码器（Cross-Encoder）或LLM进行精排</span></p></li><li><p><span>输出：Top-N最终文档（通常N=5~10）</span></p></li></ul><p><strong><span>协同优势</span></strong><span>：</span></p><ul><li><p><span>检索阶段注重速度，重排序阶段注重精度</span></p></li><li><p><span>两阶段分离使系统可扩展：可以先用快速检索器过滤大量文档，再用昂贵模型精排少量候选</span></p></li><li><p><span>重排序可以纠正检索阶段的错误，提升最终质量</span></p></li></ul><p><strong><span>典型配置</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 检索 + 重排序协同示例</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">langchain</span>.<span class="cm-property">retrievers</span> <span class="cm-keyword">import</span> <span class="cm-variable">ContextualCompressionRetriever</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">langchain</span>.<span class="cm-property">retrievers</span>.<span class="cm-property">document_compressors</span> <span class="cm-keyword">import</span> <span class="cm-variable">CrossEncoderReranker</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 1. 检索阶段（快速召回）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">retriever</span> <span class="cm-operator">=</span> <span class="cm-variable">vectorstore</span>.<span class="cm-property">as_retriever</span>(<span class="cm-variable">search_kwargs</span><span class="cm-operator">=</span>{<span class="cm-string">"k"</span>: <span class="cm-number">50</span>})</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 2. 重排序阶段（精排）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">compressor</span> <span class="cm-operator">=</span> <span class="cm-variable">CrossEncoderReranker</span>(<span class="cm-variable">model</span><span class="cm-operator">=</span><span class="cm-string">"BAAI/bge-reranker-large"</span>, <span class="cm-variable">top_n</span><span class="cm-operator">=</span><span class="cm-number">5</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">compression_retriever</span> <span class="cm-operator">=</span> <span class="cm-variable">ContextualCompressionRetriever</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">base_compressor</span><span class="cm-operator">=</span><span class="cm-variable">compressor</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">base_retriever</span><span class="cm-operator">=</span><span class="cm-variable">retriever</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 3. 生成</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">results</span> <span class="cm-operator">=</span> <span class="cm-variable">compression_retriever</span>.<span class="cm-property">get_relevant_documents</span>(<span class="cm-variable">query</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">answer</span> <span class="cm-operator">=</span> <span class="cm-variable">llm</span>.<span class="cm-property">generate</span>(<span class="cm-variable">context</span><span class="cm-operator">=</span><span class="cm-variable">results</span>, <span class="cm-variable">query</span><span class="cm-operator">=</span><span class="cm-variable">query</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 392px;"></div><div class="CodeMirror-gutters" style="display: none; height: 392px;"></div></div></div></pre><hr /><h2 id='3-检索器技术详解'><span>3. 检索器技术详解</span></h2><h3 id='31-稀疏检索'><span>3.1 稀疏检索</span></h3><p><strong><span>BM25（Best Match 25）</span></strong></p><ul><li><p><span>基于词频和逆文档频率的经典信息检索算法</span></p></li><li><p><span>擅长精确词汇匹配，计算效率高</span></p></li><li><p><span>对罕见实体和术语匹配效果好</span></p></li><li><p><span>无法理解语义相似性（如&quot;汽车&quot;和&quot;轿车&quot;）</span></p></li></ul><p><strong><span>TF-IDF</span></strong></p><ul><li><p><span>词频-逆文档频率加权</span></p></li><li><p><span>简单高效，但效果不如BM25</span></p></li></ul><h3 id='32-密集检索'><span>3.2 密集检索</span></h3><p><strong><span>双编码器（Bi-Encoder）</span></strong></p><ul><li><p><span>使用预训练语言模型（如BERT、Sentence-BERT）将查询和文档分别编码为向量</span></p></li><li><p><span>通过余弦相似度或点积计算相关性</span></p></li><li><p><span>速度快，可预先计算文档向量</span></p></li><li><p><span>但查询和文档独立编码，交互信息有限</span></p></li></ul><p><strong><span>主流嵌入模型</span></strong><span>：</span></p><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>维度</span></th><th><span>特点</span></th></tr></thead><tbody><tr><td><span>text-embedding-3-large</span></td><td><span>3072</span></td><td><span>OpenAI最新，多语言支持</span></td></tr><tr><td><span>BGE-M3</span></td><td><span>1024</span></td><td><span>多语言、多粒度、多任务</span></td></tr><tr><td><span>E5-mistral-7b-instruct</span></td><td><span>4096</span></td><td><span>指令微调，检索效果优异</span></td></tr><tr><td><span>GTE-large</span></td><td><span>1024</span></td><td><span>阿里开源，中文效果好</span></td></tr><tr><td><span>ColBERT</span></td><td><span>128</span></td><td><span>后期交互，兼顾效率和精度</span></td></tr></tbody></table></figure><h3 id='33-混合检索'><span>3.3 混合检索</span></h3><p><strong><span>Reciprocal Rank Fusion（RRF）</span></strong></p><ul><li><p><span>将稀疏检索和密集检索的结果融合</span></p></li><li><p><span>公式：score = Σ 1/(k + rank)，k通常为60</span></p></li><li><p><span>综合了词汇匹配和语义理解的优势</span></p></li><li><p><span>当前RAG系统的主流范式</span></p></li></ul><p><strong><span>加权融合</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 混合检索示例</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">sparse_results</span> <span class="cm-operator">=</span> <span class="cm-variable">bm25_retriever</span>.<span class="cm-property">retrieve</span>(<span class="cm-variable">query</span>, <span class="cm-variable">k</span><span class="cm-operator">=</span><span class="cm-number">50</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dense_results</span> <span class="cm-operator">=</span> <span class="cm-variable">vector_retriever</span>.<span class="cm-property">retrieve</span>(<span class="cm-variable">query</span>, <span class="cm-variable">k</span><span class="cm-operator">=</span><span class="cm-number">50</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># RRF融合</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">fused_results</span> <span class="cm-operator">=</span> <span class="cm-variable">reciprocal_rank_fusion</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-variable">sparse_results</span>, <span class="cm-variable">dense_results</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">k</span><span class="cm-operator">=</span><span class="cm-number">60</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><h3 id='34-查询预处理'><span>3.4 查询预处理</span></h3><p><strong><span>查询重写（Query Rewriting）</span></strong></p><ul><li><p><span>修复歧义、解析代词、对齐索引内容</span></p></li><li><p><span>使查询更清晰，提高检索匹配度</span></p></li></ul><p><strong><span>查询扩展（Query Expansion）</span></strong></p><ul><li><p><span>使用LLM生成相关查询变体</span></p></li><li><p><span>增加检索覆盖面</span></p></li></ul><p><strong><span>查询分解（Query Decomposition）</span></strong></p><ul><li><p><span>将复杂多跳问题分解为顺序子查询</span></p></li><li><p><span>每个子查询独立检索</span></p></li><li><p><span>适合复杂推理场景</span></p></li></ul><p><strong><span>HyDE（Hypothetical Document Embeddings）</span></strong></p><ul><li><p><span>生成合成答案作为查询</span></p></li><li><p><span>弥合查询与文档之间的语义差距</span></p></li><li><p><span>在零样本检索中效果显著</span></p></li></ul><hr /><h2 id='4-重排序技术详解'><span>4. 重排序技术详解</span></h2><h3 id='41-重排序的必要性'><span>4.1 重排序的必要性</span></h3><p><span>检索器（尤其是双编码器）存在以下局限：</span></p><ul><li><p><span>查询和文档独立编码，缺乏细粒度交互</span></p></li><li><p><span>对长文档的局部相关性判断不足</span></p></li><li><p><span>无法处理跨段落推理（如共指消解、实体消歧）</span></p></li></ul><p><span>重排序器通过更精细的交互建模来解决这些问题。</span></p><h3 id='42-交叉编码器重排序'><span>4.2 交叉编码器重排序</span></h3><p><strong><span>原理</span></strong><span>：将查询和文档拼接后输入单个Transformer模型，通过自注意力机制实现细粒度交互。</span></p><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>查询和文档深度交互，精度显著高于双编码器</span></p></li><li><p><span>可以捕捉复杂的语义关系</span></p></li></ul><p><strong><span>劣势</span></strong><span>：</span></p><ul><li><p><span>计算成本高，无法预先计算</span></p></li><li><p><span>每次查询需要实时编码所有候选文档</span></p></li><li><p><span>通常用于Top-K候选的精排（K=50~100）</span></p></li></ul><p><strong><span>主流重排序模型</span></strong><span>：</span></p><figure class='table-figure'><table><thead><tr><th><span>模型</span></th><th><span>特点</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><span>BAAI/bge-reranker-large</span></td><td><span>中文优化，开源</span></td><td><span>中文RAG系统</span></td></tr><tr><td><span>BAAI/bge-reranker-v2-m3</span></td><td><span>多语言支持</span></td><td><span>多语言场景</span></td></tr><tr><td><span>cohere-rerank</span></td><td><span>商业API，效果优秀</span></td><td><span>企业级应用</span></td></tr><tr><td><span>jina-reranker-v2</span></td><td><span>支持多语言</span></td><td><span>通用场景</span></td></tr><tr><td><span>ColBERT</span></td><td><span>后期交互，高效</span></td><td><span>大规模检索</span></td></tr></tbody></table></figure><h3 id='43-上下文感知重排序'><span>4.3 上下文感知重排序</span></h3><p><strong><span>EBCAR（Embedding-Based Context-Aware Reranker）</span></strong></p><ul><li><p><span>直接在检索到的片段嵌入上操作</span></p></li><li><p><span>通过结构信息和混合注意力机制增强跨段落理解</span></p></li><li><p><span>捕获文档间的高级交互和文档内的低级关系</span></p></li><li><p><span>在ConTEB基准上证明对跨段落推理有效</span></p></li><li><p><span>轻量级框架，准确率和效率兼顾</span></p></li></ul><p><strong><span>技术特点</span></strong><span>：</span></p><ul><li><p><span>利用 passages 的结构信息</span></p></li><li><p><span>混合注意力机制：跨文档交互 + 文档内关系</span></p></li><li><p><span>无需昂贵的LLM推理，基于嵌入即可实现</span></p></li></ul><h3 id='44-依赖感知重排序'><span>4.4 依赖感知重排序</span></h3><p><strong><span>PankRAG的依赖感知重排序机制</span></strong></p><ul><li><p><span>利用已解析的子问题依赖关系来增强和验证当前未解析子问题的检索内容</span></p></li><li><p><span>通过全局感知层次解析路径捕获并行和递进关系</span></p></li><li><p><span>引导LLM通过层次推理路径解析查询</span></p></li><li><p><span>在复杂查询中，子问题之间存在依赖关系，重排序时考虑这些依赖可提升整体回答质量</span></p></li></ul><hr /><h2 id='5-rag技术演进'><span>5. RAG技术演进</span></h2><h3 id='51-naive-rag'><span>5.1 Naive RAG</span></h3><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>基础向量检索 + 直接生成</span></p></li><li><p><span>简单三段式：索引 → 检索 → 生成</span></p></li><li><p><span>无查询优化、无重排序、无上下文处理</span></p></li></ul><p><strong><span>局限</span></strong><span>：</span></p><ul><li><p><span>检索质量直接决定生成质量</span></p></li><li><p><span>对复杂查询效果差</span></p></li><li><p><span>容易引入噪声文档</span></p></li><li><p><span>上下文窗口浪费严重</span></p></li></ul><h3 id='52-advanced-rag'><span>5.2 Advanced RAG</span></h3><p><strong><span>改进点</span></strong><span>：</span></p><ul><li><p><strong><span>查询优化</span></strong><span>：重写、扩展、分解</span></p></li><li><p><strong><span>重排序</span></strong><span>：Cross-Encoder精排</span></p></li><li><p><strong><span>上下文压缩</span></strong><span>：去除冗余信息</span></p></li><li><p><strong><span>混合检索</span></strong><span>：BM25 + 向量融合</span></p></li><li><p><strong><span>元数据过滤</span></strong><span>：利用文档元数据提升检索精度</span></p></li></ul><p><strong><span>效果</span></strong><span>：相比Naive RAG，召回率提升15-25%，幻觉率降低30-40%。</span></p><h3 id='53-modular-rag'><span>5.3 Modular RAG</span></h3><p><strong><span>特点</span></strong><span>：</span></p><ul><li><p><span>多路召回 + 融合</span></p></li><li><p><span>模块化设计，各组件可独立优化和替换</span></p></li><li><p><span>支持多种检索策略并行执行</span></p></li></ul><p><strong><span>典型模块</span></strong><span>：</span></p><ul><li><p><span>向量检索模块</span></p></li><li><p><span>关键词检索模块</span></p></li><li><p><span>图检索模块</span></p></li><li><p><span>结构化数据查询模块</span></p></li><li><p><span>时序检索模块</span></p></li><li><p><span>跨模态检索模块</span></p></li></ul><h3 id='54-agentic-rag'><span>5.4 Agentic RAG</span></h3><p><strong><span>核心思想</span></strong><span>：检索不再是固定动作，而是动态决策过程。系统根据查询复杂度、模型置信度、历史交互自动调整检索策略。</span></p><p><strong><span>典型架构</span></strong><span>：</span></p><ul><li><p><strong><span>Query Router</span></strong><span>：将查询分类为事实型/推理型/闲聊型，路由到不同处理管道</span></p></li><li><p><strong><span>Confidence Gating</span></strong><span>：LLM自评估置信度，低置信度触发多路检索，高置信度直接生成</span></p></li><li><p><strong><span>Iterative Refinement</span></strong><span>：检索结果矛盾时，自动发起澄清追问或二次检索</span></p></li><li><p><strong><span>Self-Verification</span></strong><span>：生成后自我验证，发现错误自动重新检索和生成</span></p></li></ul><p><strong><span>价值</span></strong><span>：延迟与准确率的帕累托最优，企业级Agent的标配组件。</span></p><hr /><h2 id='6-2026年最新技术'><span>6. 2026年最新技术</span></h2><h3 id='61-多模态ragmm-rag'><span>6.1 多模态RAG（MM-RAG）</span></h3><p><strong><span>核心思想</span></strong><span>：打破&quot;文本即一切&quot;的假设，将PDF扫描件、架构图、数据表格、音频纪要纳入统一检索空间。</span></p><p><strong><span>技术路径</span></strong><span>：</span></p><ul><li><p><span>使用多模态编码器（如SigLIP、Qwen2-VL、InternVL）将图像/表格转为统一语义向量</span></p></li><li><p><span>结合OCR与版面分析（Layout Parser）保留空间结构</span></p></li><li><p><span>检索时采用跨模态相似度匹配</span></p></li><li><p><span>生成时注入视觉上下文</span></p></li></ul><p><strong><span>端到端多模态方案</span></strong><span>：</span></p><ul><li><p><span>阿里巴巴Qwen3-VL-Embedding：2048维统一向量空间，文本、图片、图文混合内容共享同一表示</span></p></li><li><p><span>动态分辨率支持，自适应处理不同尺寸图片</span></p></li><li><p><span>Instruction-aware encoding：支持任务指令引导</span></p></li></ul><p><strong><span>代码示例（ColPali）</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">colpali_engine</span>.<span class="cm-property">models</span> <span class="cm-keyword">import</span> <span class="cm-variable">ColPali</span>, <span class="cm-variable">ColPaliProcessor</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 将PDF页面转为图像，直接编码为向量</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">page_embeddings</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span>.<span class="cm-property">encode_images</span>(<span class="cm-variable">pdf_pages</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">query_embedding</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span>.<span class="cm-property">encode_queries</span>([<span class="cm-variable">user_query</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 无需解析文本，直接对PDF页面图像做向量检索</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><p><strong><span>适用场景</span></strong><span>：金融研报、医疗影像报告、工业设备手册、产品说明书。</span></p><h3 id='62-graphrag'><span>6.2 GraphRAG</span></h3><p><strong><span>核心思想</span></strong><span>：将文档解析为知识图谱（实体-关系网络），支持多跳推理和复杂关系查询。</span></p><p><strong><span>技术实现</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>实体与关系提取</span></strong><span>：从文档中提取实体和关系</span></p></li><li><p><strong><span>知识图谱构建</span></strong><span>：构建实体-关系网络</span></p></li><li><p><strong><span>社区摘要</span></strong><span>：使用Leiden算法生成知识域的高层摘要</span></p></li><li><p><strong><span>查询时</span></strong><span>：结合图结构进行局部搜索或全局搜索</span></p></li></ol><p><strong><span>微软GraphRAG实现</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">graphrag</span>.<span class="cm-property">index</span> <span class="cm-keyword">import</span> <span class="cm-variable">run_pipeline</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 提取实体和关系</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">entities</span>, <span class="cm-variable">relations</span> <span class="cm-operator">=</span> <span class="cm-variable">extractor</span>.<span class="cm-property">extract</span>(<span class="cm-variable">documents</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 构建社区摘要（Leiden算法）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">communities</span> <span class="cm-operator">=</span> <span class="cm-variable">community_builder</span>.<span class="cm-property">build</span>(<span class="cm-variable">entities</span>, <span class="cm-variable">relations</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 查询时结合图结构检索</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">results</span> <span class="cm-operator">=</span> <span class="cm-variable">graphrag_search</span>.<span class="cm-property">local_search</span>(<span class="cm-variable">query</span>, <span class="cm-variable">context_size</span><span class="cm-operator">=</span><span class="cm-number">5000</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>支持多跳推理（&quot;A的老板的老板是谁？&quot;）</span></p></li><li><p><span>社区摘要提供全局视角</span></p></li><li><p><span>适合法律文档、医疗知识库、代码库分析</span></p></li></ul><p><strong><span>PankRAG增强</span></strong><span>：</span></p><ul><li><p><span>全局感知层次解析路径：捕获并行和递进关系</span></p></li><li><p><span>依赖感知重排序：利用子问题依赖关系验证检索内容</span></p></li><li><p><span>在复杂查询中显著优于传统GraphRAG</span></p></li></ul><h3 id='63-自适应rag'><span>6.3 自适应RAG</span></h3><p><strong><span>核心思想</span></strong><span>：检索不再是固定动作，而是根据查询特征动态决策。</span></p><p><strong><span>技术组件</span></strong><span>：</span></p><ul><li><p><strong><span>Query Router</span></strong><span>：分类查询类型（事实型/推理型/闲聊型）</span></p></li><li><p><strong><span>Confidence Gating</span></strong><span>：LLM自评估置信度，动态触发检索</span></p></li><li><p><strong><span>Iterative Refinement</span></strong><span>：检索结果矛盾时自动二次检索</span></p></li><li><p><strong><span>Self-RAG</span></strong><span>：通过反射token动态判断是否需要检索</span></p></li></ul><p><strong><span>Self-RAG机制</span></strong><span>：</span></p><ul><li><p><code>[Retrieve]</code><span> token：判断是否需要检索</span></p></li><li><p><code>[IsRel]</code><span> token：判断检索结果是否相关</span></p></li><li><p><code>[IsSup]</code><span> token：判断生成内容是否有依据</span></p></li><li><p><span>效果：比普通RAG幻觉率降低40%</span></p></li></ul><h3 id='64-分层rag'><span>6.4 分层RAG</span></h3><p><strong><span>核心思想</span></strong><span>：从&quot;平铺切块&quot;升级为&quot;树状索引&quot;。先检索文档大纲/摘要层，定位到具体章节，再细粒度提取片段。</span></p><p><strong><span>实现方式</span></strong><span>：</span></p><ul><li><p><strong><span>双级向量库</span></strong><span>：Summary层 + Chunk层</span></p></li><li><p><strong><span>树索引（Tree Index）</span></strong><span>：文档结构化为树状索引</span></p></li><li><p><strong><span>LLM自动摘要路由</span></strong><span>：基于摘要进行粗粒度定位</span></p></li></ul><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>显著降低无效Token输入，节省推理成本</span></p></li><li><p><span>保留长文档的宏观语义结构</span></p></li><li><p><span>解决&quot;大海捞针&quot;与上下文窗口浪费问题</span></p></li></ul><h3 id='65-自我反思ragself-rag'><span>6.5 自我反思RAG（Self-RAG）</span></h3><p><strong><span>核心思想</span></strong><span>：模型在生成过程中动态判断检索和生成质量。</span></p><p><strong><span>工作流程</span></strong><span>：</span></p><ol start='' ><li><p><span>生成</span><code>[Retrieve]</code><span> token，判断是否需要检索</span></p></li><li><p><span>如需检索，执行检索并生成</span><code>[IsRel]</code><span> token判断相关性</span></p></li><li><p><span>基于检索内容生成回答，生成</span><code>[IsSup]</code><span> token判断是否有依据</span></p></li><li><p><span>如不满足条件，触发重新检索或自我修正</span></p></li></ol><p><strong><span>效果</span></strong><span>：比普通RAG幻觉率降低40%。</span></p><h3 id='66-contextual-retrieval'><span>6.6 Contextual Retrieval</span></h3><p><strong><span>核心思想</span></strong><span>：Anthropic在2025年提出，在文档分块前先用LLM为每个chunk生成上下文描述。</span></p><p><strong><span>示例</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">原始chunk：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">"公司的Q3净利润为1.2亿元，同比增长35%。"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">加入上下文后的chunk：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">"这段内容来自XX公司2025年Q3财报（2025-10-30发布）。</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">公司的Q3净利润为1.2亿元，同比增长35%。"</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><p><strong><span>效果</span></strong><span>：</span></p><ul><li><p><span>召回失败率降低约49%</span></p></li><li><p><span>配合Reranker可降低67%</span></p></li><li><p><span>显著提升长文档中的细粒度检索精度</span></p></li></ul><h3 id='67-rag-as-memory'><span>6.7 RAG-as-Memory</span></h3><p><strong><span>核心思想</span></strong><span>：将RAG作为Agent的长期记忆系统。</span></p><p><strong><span>工作流程</span></strong><span>：</span></p><ol start='' ><li><p><span>每次对话结束后，将关键信息写入知识库</span></p></li><li><p><span>下次对话时检索历史记忆</span></p></li><li><p><span>实现真正的&quot;记得你是谁&quot;的个性化交互</span></p></li></ol><p><strong><span>技术实现</span></strong><span>：</span></p><ul><li><p><span>记忆分层：短期记忆（对话历史）+ 长期记忆（知识库）</span></p></li><li><p><span>记忆更新：ADD/UPDATE/DELETE/NOOP操作</span></p></li><li><p><span>混合检索：语义搜索 + 图检索 + 时序检索</span></p></li></ul><p><strong><span>VikingMem系统</span></strong><span>：</span></p><ul><li><p><span>结构化事件检索用于长期记忆</span></p></li><li><p><span>结合向量检索、图记忆、模块化记忆</span></p></li><li><p><span>在LOCOMO和LongMemEval数据集上验证效果</span></p></li></ul><h3 id='68-覆盖感知检索'><span>6.8 覆盖感知检索</span></h3><p><strong><span>核心思想</span></strong><span>：标准检索器优化的是单个文档的排名，而非确保全面覆盖所有子信息需求。在长文本RAG场景中，覆盖性检索至关重要。</span></p><p><strong><span>技术方法</span></strong><span>：</span></p><ul><li><p><strong><span>nugget-level评估</span></strong><span>：超越文档级相关性判断，评估事实覆盖度</span></p></li><li><p><strong><span>α-nDCG</span></strong><span>：衡量检索结果的覆盖率和多样性</span></p></li><li><p><strong><span>多查询检索</span></strong><span>：生成多个查询嵌入以获取多样化视角</span></p></li><li><p><strong><span>Maximal Marginal Relevance（MMR）</span></strong><span>：在相关性和多样性之间平衡</span></p></li></ul><p><strong><span>Search for Coverage框架</span></strong><span>：</span></p><ul><li><p><span>学习覆盖感知检索</span></p></li><li><p><span>增强子问题可回答性</span></p></li><li><p><span>通过子问题分解确保全面覆盖</span></p></li></ul><hr /><h2 id='7-企业级rag部署方案'><span>7. 企业级RAG部署方案</span></h2><h3 id='71-元数据增强rag'><span>7.1 元数据增强RAG</span></h3><p><strong><span>核心思想</span></strong><span>：使用LLM动态生成有意义的文档片段元数据，提升语义表示和检索精度。</span></p><p><strong><span>实验结果</span></strong><span>（3×3实验矩阵）：</span></p><ul><li><p><span>递归分块 + TF-IDF加权嵌入：82.5%精度</span></p></li><li><p><span>简单分块 + 前缀融合：NDCG 0.813（最强排序质量）</span></p></li><li><p><span>元数据增强方法始终优于纯内容基线</span></p></li><li><p><span>P95延迟保持在30ms以内</span></p></li></ul><p><strong><span>实施步骤</span></strong><span>：</span></p><ol start='' ><li><p><span>文档分块（语义分块/递归分块/简单分块）</span></p></li><li><p><span>LLM生成元数据（标题、摘要、关键词、时间戳）</span></p></li><li><p><span>元数据与内容融合嵌入</span></p></li><li><p><span>混合检索 + 交叉编码器重排序</span></p></li></ol><h3 id='72-紧凑线索选择compselect'><span>7.2 紧凑线索选择（CompSelect）</span></h3><p><strong><span>核心思想</span></strong><span>：LLM受益于精确、紧凑、结构化的输入，而非完整段落。通过最小充分线索集实现高效推理。</span></p><p><strong><span>三阶段机制</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>线索提取器</span></strong><span>：使用包含答案的句子作为微调目标，提取充分潜在线索</span></p></li><li><p><strong><span>重排序器</span></strong><span>：基于真实LLM反馈训练，优先排序有效线索</span></p></li><li><p><strong><span>截断器</span></strong><span>：使用包含最小充分线索的截断文本作为微调目标，实现高效推理</span></p></li></ol><p><strong><span>效果</span></strong><span>：提升性能的同时降低总延迟和在线延迟，对不可靠检索具有鲁棒性。</span></p><h3 id='73-降噪优先检索'><span>7.3 降噪优先检索</span></h3><p><strong><span>核心思想</span></strong><span>：LLM导向的信息检索应以降噪为首要目标。</span></p><p><strong><span>降噪技术分类</span></strong><span>：</span></p><ul><li><p><strong><span>选择与剪枝</span></strong><span>：MMR、DPP、Speculative selection、FILCO</span></p></li><li><p><strong><span>上下文压缩</span></strong><span>：LLMLingua、LongLLMLingua、RECOMP、Gist Tokens</span></p></li><li><p><strong><span>布局优化</span></strong><span>：位置校准、拓扑感知重排序、OP-RAG</span></p></li><li><p><strong><span>冲突解决</span></strong><span>：Chain-of-Note、Astute RAG、ConflictBank</span></p></li></ul><hr /><h2 id='8-性能评估与优化'><span>8. 性能评估与优化</span></h2><h3 id='81-评估指标'><span>8.1 评估指标</span></h3><figure class='table-figure'><table><thead><tr><th><span>指标</span></th><th><span>含义</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><span>召回率（Recall）</span></td><td><span>相关文档被检索到的比例</span></td><td><span>检索阶段评估</span></td></tr><tr><td><span>精确率（Precision）</span></td><td><span>检索结果中相关文档的比例</span></td><td><span>检索阶段评估</span></td></tr><tr><td><span>NDCG</span></td><td><span>归一化折损累积增益</span></td><td><span>排序质量评估</span></td></tr><tr><td><span>MRR</span></td><td><span>平均倒数排名</span></td><td><span>单答案场景</span></td></tr><tr><td><span>答案相关性</span></td><td><span>生成答案与问题的相关性</span></td><td><span>端到端评估</span></td></tr><tr><td><span>忠实度</span></td><td><span>答案与检索文档的一致性</span></td><td><span>幻觉检测</span></td></tr><tr><td><span>上下文召回率</span></td><td><span>生成答案所需信息在上下文中的覆盖度</span></td><td><span>RAGAS</span></td></tr><tr><td><span>上下文精确率</span></td><td><span>上下文中相关信息的比例</span></td><td><span>RAGAS</span></td></tr></tbody></table></figure><h3 id='82-性能优化策略'><span>8.2 性能优化策略</span></h3><p><strong><span>检索优化</span></strong><span>：</span></p><ul><li><p><span>混合检索（BM25 + Dense）</span></p></li><li><p><span>查询重写和扩展</span></p></li><li><p><span>元数据过滤</span></p></li><li><p><span>分层索引</span></p></li></ul><p><strong><span>重排序优化</span></strong><span>：</span></p><ul><li><p><span>交叉编码器精排</span></p></li><li><p><span>上下文感知重排序</span></p></li><li><p><span>依赖感知重排序</span></p></li><li><p><span>多路召回融合</span></p></li></ul><p><strong><span>生成优化</span></strong><span>：</span></p><ul><li><p><span>上下文压缩（LLMLingua-2）</span></p></li><li><p><span>冲突解决</span></p></li><li><p><span>引用标注</span></p></li><li><p><span>自我验证</span></p></li></ul><p><strong><span>系统优化</span></strong><span>：</span></p><ul><li><p><span>缓存机制（查询缓存、嵌入缓存）</span></p></li><li><p><span>异步检索</span></p></li><li><p><span>批量处理</span></p></li><li><p><span>索引分区</span></p></li></ul><hr /><h2 id='9-发展趋势与展望'><span>9. 发展趋势与展望</span></h2><h3 id='91-技术演进路径'><span>9.1 技术演进路径</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Naive RAG (2023)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Advanced RAG (2024) — 查询重写 + 重排序</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Modular RAG (2025) — 多路召回 + 融合</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Agentic RAG (2026) — 动态检索 + 自我反思 + 多模态</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Cognitive Memory Agent (未来) — 自进化索引 + 内生推理记忆</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><h3 id='92-2026年关键能力对比'><span>9.2 2026年关键能力对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>能力维度</span></th><th><span>2025 RAG</span></th><th><span>2026 Agentic RAG</span></th><th><span>提升幅度</span></th></tr></thead><tbody><tr><td><span>上下文长度</span></td><td><span>128K</span></td><td><span>1M+</span></td><td><span>8x</span></td></tr><tr><td><span>多模态支持</span></td><td><span>文本</span></td><td><span>图文音视频</span></td><td><span>全模态</span></td></tr><tr><td><span>检索方式</span></td><td><span>向量相似</span></td><td><span>Graph+向量混合</span></td><td><span>多策略</span></td></tr><tr><td><span>推理能力</span></td><td><span>无</span></td><td><span>多跳推理</span></td><td><span>新增</span></td></tr><tr><td><span>自适应性</span></td><td><span>静态</span></td><td><span>动态优化</span></td><td><span>自进化</span></td></tr><tr><td><span>召回率</span></td><td><span>65-75%</span></td><td><span>85-92%</span></td><td><span>+20%</span></td></tr></tbody></table></figure><h3 id='93-未来方向'><span>9.3 未来方向</span></h3><p><strong><span>1. 自进化索引</span></strong></p><ul><li><p><span>文档入库自动构建图谱 + 层级 + 多模态对齐</span></p></li><li><p><span>无需人工切分</span></p></li></ul><p><strong><span>2. 内生推理记忆</span></strong></p><ul><li><p><span>检索不再是独立模块，而是模型注意力机制的一部分</span></p></li><li><p><span>检索与生成深度融合</span></p></li></ul><p><strong><span>3. 持续学习闭环</span></strong></p><ul><li><p><span>用户反馈自动修正检索权重与上下文偏好</span></p></li><li><p><span>实现&quot;越用越准&quot;</span></p></li></ul><p><strong><span>4. 可解释性增强</span></strong></p><ul><li><p><span>不仅返回答案，更展示&quot;检索路径-置信度-矛盾点溯源&quot;</span></p></li><li><p><span>提升用户信任度</span></p></li></ul><p><strong><span>5. RAG与MCP集成</span></strong></p><ul><li><p><span>MCP（Model Context Protocol）让RAG可以像调工具一样被Agent调用</span></p></li><li><p><span>实现知识检索的标准化接口</span></p></li></ul><h3 id='94-终极形态'><span>9.4 终极形态</span></h3><p><span>RAG正在与Memory、Planning、Tool-Use融合，演变为</span><strong><span>&quot;认知型记忆代理（Cognitive Memory Agent）&quot;</span></strong><span>。未来的知识增强系统将具备：</span></p><ul><li><p><span>自进化索引能力</span></p></li><li><p><span>内生推理记忆</span></p></li><li><p><span>持续学习闭环</span></p></li><li><p><span>可解释性增强</span></p></li></ul><p><span>RAG不会消失，它会隐入架构底层，成为大模型&quot;思考&quot;的默认基础设施。</span></p><hr /><h2 id='总结'><span>总结</span></h2><p><span>RAG技术从2023年的朴素检索已演进至2026年的Agentic RAG，核心进步体现在：</span></p><p><strong><span>检索与重排序协同</span></strong><span>：</span></p><ul><li><p><span>检索器负责高召回率快速召回（双编码器/BM25）</span></p></li><li><p><span>重排序器负责高精度精排（交叉编码器/上下文感知/依赖感知）</span></p></li><li><p><span>两阶段分离实现效率与精度的平衡</span></p></li></ul><p><strong><span>2026年最新技术</span></strong><span>：</span></p><ul><li><p><strong><span>多模态RAG</span></strong><span>：打破文本限制，支持图文音视频统一检索</span></p></li><li><p><strong><span>GraphRAG</span></strong><span>：知识图谱增强，支持多跳推理</span></p></li><li><p><strong><span>自适应RAG</span></strong><span>：动态检索决策，Self-RAG降低幻觉40%</span></p></li><li><p><strong><span>分层RAG</span></strong><span>：树状索引解决长文档检索难题</span></p></li><li><p><strong><span>Contextual Retrieval</span></strong><span>：上下文增强分块，召回失败率降低49%</span></p></li><li><p><strong><span>RAG-as-Memory</span></strong><span>：将RAG作为Agent长期记忆系统</span></p></li></ul><p><span>企业级部署建议从Reranker开始升级，逐步引入混合检索和HyDE，再考虑构建Agentic能力。RAG正从独立技术演化为大模型认知基础设施的核心组件。</span></p></div></div>
+</body>
+</html>

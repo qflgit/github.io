@@ -1,0 +1,727 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>llm_quantization_guide</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='大模型量化技术详解'><span>大模型量化技术详解</span></h1><h2 id='目录'><span>目录</span></h2><ol start='' ><li><p><a href='#1-量化基础概念'><span>量化基础概念</span></a></p></li><li><p><a href='#2-int8--int4-量化'><span>INT8 / INT4 量化</span></a></p></li><li><p><a href='#3-gptq基于hessian的逐层量化'><span>GPTQ：基于Hessian的逐层量化</span></a></p></li><li><p><a href='#4-awq激活感知权重量化'><span>AWQ：激活感知权重量化</span></a></p></li><li><p><a href='#5-smoothquant激活异常值平滑迁移'><span>SmoothQuant：激活异常值平滑迁移</span></a></p></li><li><p><a href='#6-横向对比与选型指南'><span>横向对比与选型指南</span></a></p></li><li><p><a href='#7-工程实践与代码示例'><span>工程实践与代码示例</span></a></p></li></ol><hr /><h2 id='1-量化基础概念'><span>1. 量化基础概念</span></h2><h3 id='11-为什么需要量化'><span>1.1 为什么需要量化</span></h3><p><span>大语言模型（LLM）的参数规模呈指数级增长——从 GPT-2 的 15 亿参数，到 LLaMA-3.1-405B 的 4050 亿参数，再到 DeepSeek-V3 的 6710 亿参数。然而，GPU 显存容量的增长速度远不及模型规模的扩张速度。</span></p><p><span>以 FP16 精度存储 70B 模型需要约 </span><strong><span>140GB 显存</span></strong><span>，而一块 H100 SXM5 的显存仅为 80GB。量化技术通过降低模型数值精度，将 FP16/FP32 权重和激活值映射到低比特整数空间（如 INT8/INT4），可将模型显存压缩至原先的 1/2 至 1/4，同时利用硬件加速实现 1.5-3 倍的推理速度提升。</span></p><h3 id='12-量化对象'><span>1.2 量化对象</span></h3><p><span>在 LLM 部署推理中，量化对象主要包括三类：</span></p><ul><li><p><strong><span>权重量化（Weight Quantization）</span></strong><span>：仅对模型权重进行量化，常见格式为 W4A16（权重 INT4，激活 FP16）或 W8A16（权重 INT8，激活 FP16）</span></p></li><li><p><strong><span>激活量化（Activation Quantization）</span></strong><span>：对前向传播中的激活值进行量化，常见格式为 W8A8（权重和激活均为 INT8）</span></p></li><li><p><strong><span>KV Cache 量化</span></strong><span>：对 Attention 机制中的 Key/Value 缓存进行量化，缓解长上下文推理时的显存瓶颈</span></p></li></ul><h3 id='13-精度格式对比'><span>1.3 精度格式对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>精度类型</span></th><th><span>单参数字节数</span></th><th><span>70B模型显存占用</span></th><th><span>质量损失</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><span>FP32</span></td><td><span>4 字节</span></td><td><span>280 GB</span></td><td><span>无</span></td><td><span>高精度科研</span></td></tr><tr><td><span>FP16/BF16</span></td><td><span>2 字节</span></td><td><span>140 GB</span></td><td><span>极小</span></td><td><span>云端部署基线</span></td></tr><tr><td><span>FP8</span></td><td><span>1 字节</span></td><td><span>70 GB</span></td><td><span>&lt; 0.1%</span></td><td><span>H100+ 生产标准</span></td></tr><tr><td><span>INT8</span></td><td><span>1 字节</span></td><td><span>70 GB</span></td><td><span>&lt; 0.5%</span></td><td><span>均衡选择</span></td></tr><tr><td><span>INT4</span></td><td><span>0.5 字节</span></td><td><span>35 GB</span></td><td><span>1-3%</span></td><td><span>极致压缩/本地部署</span></td></tr></tbody></table></figure><hr /><h2 id='2-int8--int4-量化'><span>2. INT8 / INT4 量化</span></h2><h3 id='21-int8-量化'><span>2.1 INT8 量化</span></h3><p><span>INT8 量化将 FP16/BF16 的权重或激活值映射到 8 位整数空间 </span><code>[-128, 127]</code><span>，存储空间减半。其实现方式主要有两种：</span></p><p><strong><span>对称量化（Symmetric Quantization）</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">scale = max(abs(tensor)) / 127</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">quantized = round(tensor / scale)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dequantized = quantized * scale</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p><strong><span>非对称量化（Asymmetric Quantization）</span></strong><span>：引入零点（zero-point）处理非零中心分布：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">scale = (max(tensor) - min(tensor)) / 255</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">zero_point = round(-min(tensor) / scale)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">quantized = round(tensor / scale) + zero_point</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p><span>INT8 量化的核心挑战在于激活值的异常值（outliers）——Transformer 中的某些通道会呈现极大的激活幅度，导致整体 scale 过大，普通数值被压缩到很小的范围，造成精度损失。</span></p><h3 id='22-int4-量化'><span>2.2 INT4 量化</span></h3><p><span>INT4 量化将数值映射到 4 位整数空间 </span><code>[-8, 7]</code><span>，存储空间仅为 FP16 的 1/4。由于表示范围极其有限，INT4 必须采用</span><strong><span>分组量化（Group-wise Quantization）</span></strong><span>策略：</span></p><ul><li><p><span>将权重矩阵按列（或块）划分为若干组（常见 group_size = 32/64/128）</span></p></li><li><p><span>每组独立计算 scale 和 zero_point</span></p></li><li><p><span>组内共享量化参数，组间保持独立</span></p></li></ul><p><span>INT4 的精度损失通常比 INT8 更明显（1-3%），但在大多数任务上仍然可用，是消费级 GPU（24GB 显存）运行 70B 模型的唯一可行方案。</span></p><hr /><h2 id='3-gptq基于-hessian-的逐层量化'><span>3. GPTQ：基于 Hessian 的逐层量化</span></h2><h3 id='31-核心思想'><span>3.1 核心思想</span></h3><p><span>GPTQ（Generative Pre-trained Transformer Quantization）的思想根植于 1990 年代的&quot;最优脑损伤&quot;（Optimal Brain Damage）理论——利用 Hessian 矩阵来量化每个参数对损失的影响，从而有针对性地压缩对结果影响最小的权重。</span></p><p><strong><span>论文</span></strong><span>：</span><em><span>GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers</span></em><span>（Frantar et al., 2022, ETH Zurich）</span></p><h3 id='32-数学原理'><span>3.2 数学原理</span></h3><p><span>对于某层权重矩阵 </span><code>W ∈ R^(d_out × d_in)</code><span>，设输入激活为 </span><code>X</code><span>，则量化后的重构误差为：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">E = ||WX - ŴX||²₂</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>其中 </span><code>Ŵ</code><span> 为量化后的权重。GPTQ 的目标是找到最优 </span><code>Ŵ</code><span> 使得 </span><code>E</code><span> 最小，同时约束 </span><code>Ŵ</code><span> 为低精度整数。</span></p><p><strong><span>关键步骤</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>收集校准数据</span></strong><span>：从训练集中取少量样本（通常 128 个）作为校准集</span></p></li><li><p><strong><span>计算 Hessian 矩阵</span></strong><span>：</span><code>H = 2XX^T ∈ R^(d_in × d_in)</code></p></li><li><p><strong><span>逐列量化</span></strong><span>：将权重矩阵按列依次量化，量化第 q 列后，利用 H 计算误差并</span><strong><span>更新剩余列</span></strong><span>以补偿</span></p></li></ol><p><strong><span>核心更新公式</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">delta_W</span>[<span class="cm-variable">q</span><span class="cm-operator">+</span><span class="cm-number">1</span>:] <span class="cm-operator">-=</span> <span class="cm-variable">err_q</span> <span class="cm-operator">*</span> <span class="cm-variable">H</span>[<span class="cm-variable">q</span>, <span class="cm-variable">q</span><span class="cm-operator">+</span><span class="cm-number">1</span>:] <span class="cm-operator">/</span> <span class="cm-variable">H</span>[<span class="cm-variable">q</span>, <span class="cm-variable">q</span>]</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><ol start='4' ><li><p><strong><span>Lazy Batching</span></strong><span>：将 128 列作为一批并行处理，避免逐列 GPU 同步开销</span></p></li><li><p><strong><span>Cholesky 分解预处理</span></strong><span>：对 H 的逆矩阵做 Cholesky 分解，提升数值稳定性</span></p></li></ol><h3 id='33-特点与局限'><span>3.3 特点与局限</span></h3><ul><li><p><strong><span>优点</span></strong><span>：无需重新训练（PTQ），支持 INT4/INT8，压缩率高</span></p></li><li><p><strong><span>局限</span></strong><span>：</span></p><ul><li><p><span>主要压缩权重，激活值保持 FP16（W4A16），无法减少激活显存</span></p></li><li><p><span>量化过程需要计算 Hessian 矩阵，对超大模型（&gt;100B）内存开销较大</span></p></li><li><p><span>早期实现不提供计算加速（仅减少显存），需配合 Marlin/ExLlamaV2 等内核实现加速</span></p></li></ul></li></ul><hr /><h2 id='4-awq激活感知权重量化'><span>4. AWQ：激活感知权重量化</span></h2><h3 id='41-核心思想'><span>4.1 核心思想</span></h3><p><span>AWQ（Activation-aware Weight Quantization）的核心洞见是：</span><strong><span>并非所有权重通道同等重要</span></strong><span>。那些对应大激活幅度的权重通道对模型输出影响更大，应当给予更高保护。</span></p><p><strong><span>论文</span></strong><span>：</span><em><span>AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration</span></em><span>（Lin et al., 2023, MIT）</span></p><h3 id='42-技术原理'><span>4.2 技术原理</span></h3><p><span>AWQ 通过</span><strong><span>逐通道缩放（Channel-wise Scaling）</span></strong><span>来保护重要权重：</span></p><ol start='' ><li><p><strong><span>激活感知</span></strong><span>：分析输入激活的分布，识别出具有大异常值的通道</span></p></li><li><p><strong><span>重要性加权</span></strong><span>：为不同通道分配不同的量化保护级别——对应大激活的通道使用更精细的量化粒度</span></p></li><li><p><strong><span>硬件友好</span></strong><span>：缩放因子被设计为 2 的幂次（如 1, 2, 4, 8...），可通过位运算实现，不引入额外计算开销</span></p></li></ol><p><strong><span>量化公式</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 原始线性层</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Y = X · W</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 引入逐通道缩放因子 s（激活感知）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Y = (X · diag(s)) · (diag(s)^(-1) · W) = X' · W'</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 对 W' 进行 INT4 量化，s 在推理时预先融合到权重中</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><h3 id='43-与-gptq-的关键差异'><span>4.3 与 GPTQ 的关键差异</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>GPTQ</span></th><th><span>AWQ</span></th></tr></thead><tbody><tr><td><span>核心策略</span></td><td><span>基于 Hessian 的误差补偿</span></td><td><span>基于激活感知的通道保护</span></td></tr><tr><td><span>重要权重处理</span></td><td><span>统一量化，通过更新剩余列补偿</span></td><td><span>主动识别并保护重要通道</span></td></tr><tr><td><span>速度优化</span></td><td><span>依赖外部内核（Marlin/ExLlamaV2）</span></td><td><span>原生支持 GEMM/GEMV 高效内核</span></td></tr><tr><td><span>精度损失</span></td><td><span>中等（W4A16 约 3-4%）</span></td><td><span>较小（W4A16 约 2-3%）</span></td></tr><tr><td><span>硬件适配</span></td><td><span>通用 GPU</span></td><td><span>对 NVIDIA Tensor Core 优化更好</span></td></tr></tbody></table></figure><h3 id='44-实际表现'><span>4.4 实际表现</span></h3><p><span>在 Llama-3-70B 上的实测数据：</span></p><ul><li><p><span>AWQ (W4A16)：PPL 6.84，MMLU 66.2%（相比 FP16 下降 3.4%）</span></p></li><li><p><span>GPTQ (W4A16)：PPL 6.90，MMLU 65.8%（相比 FP16 下降 3.9%）</span></p></li></ul><p><span>AWQ 在精度上略优于 GPTQ，且推理速度通常更快（尤其在 H100 上使用 Marlin-AWQ 内核时）。</span></p><hr /><h2 id='5-smoothquant激活异常值平滑迁移'><span>5. SmoothQuant：激活异常值平滑迁移</span></h2><h3 id='51-问题背景'><span>5.1 问题背景</span></h3><p><span>INT8 量化的最大难点在于</span><strong><span>激活值</span></strong><span>而非权重。Transformer 中的激活分布存在严重的异常值（outliers）——少数通道的激活幅度是普通通道的 20-100 倍，导致整体量化尺度被拉大，大部分数值被压缩到极低精度。</span></p><h3 id='52-核心思想难度迁移'><span>5.2 核心思想：难度迁移</span></h3><p><span>SmoothQuant 的洞见极具优雅性：</span><strong><span>激活值难以量化，但权重容易量化；可以将激活值的&quot;难度&quot;通过等效变换迁移给权重</span></strong><span>。</span></p><p><strong><span>论文</span></strong><span>：</span><em><span>SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models</span></em><span>（Xiao et al., 2023, MIT）</span></p><p><span>对于线性层 </span><code>y = x · W</code><span>，引入逐通道平滑因子 </span><code>s ∈ R^(C_in)</code><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">y = (x · diag(s)^(-1)) · (diag(s) · W) = x' · W'</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>通过选取合适的 </span><code>s</code><span>，使得：</span></p><ul><li><p><code>x&#39;</code><span>（新激活）的异常值被抑制，易于 INT8 量化</span></p></li><li><p><code>W&#39;</code><span>（新权重）虽然数值范围增大，但仍可被 INT8 表示</span></p></li></ul><p><strong><span>平滑因子计算公式</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">s_j = max(|x_j|)^α / max(|W_j|)^(1-α),  α ∈ [0, 1]</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><ul><li><p><code>α = 1</code><span>：所有难度转移给权重，激活量化最简单</span></p></li><li><p><code>α = 0</code><span>：保持不变</span></p></li><li><p><code>α = 0.5</code><span>：难度平均分配（实践中常用，平衡精度与效率）</span></p></li></ul><h3 id='53-w8a8-推理加速'><span>5.3 W8A8 推理加速</span></h3><p><span>SmoothQuant 实现真正的 </span><strong><span>W8A8 量化</span></strong><span>（权重和激活均为 INT8），其加速来源于：</span></p><ul><li><p><strong><span>INT8 张量核心的矩阵乘法计算加速</span></strong><span>：相比 FP16，INT8 矩阵乘法吞吐量翻倍</span></p></li><li><p><strong><span>内存带宽减半</span></strong><span>：权重和激活均为 1 字节，减少数据搬运量</span></p></li></ul><p><span>特别适合：</span></p><ul><li><p><strong><span>预填充（Prefill）阶段</span></strong><span>：处理长序列时 batch size 大，计算密集型</span></p></li><li><p><strong><span>大批量推理</span></strong><span>：吞吐量优先场景</span></p></li></ul><p><span>在 OPT-175B 上：W8A8 相比 FP16，内存节省 2 倍，吞吐量提升约 </span><strong><span>1.65 倍</span></strong><span>，精度几乎无损失。</span></p><h3 id='54-离线吸收'><span>5.4 离线吸收</span></h3><p><span>平滑变换 </span><code>W&#39; = diag(s) · W</code><span> 可在推理前预先计算并存储（类似 Batch Normalization Folding），推理时无额外开销。激活的缩放 </span><code>x&#39; = x · diag(s)^(-1)</code><span> 可在运行时动态完成，计算量极小。</span></p><hr /><h2 id='6-横向对比与选型指南'><span>6. 横向对比与选型指南</span></h2><h3 id='61-算法特性对比'><span>6.1 算法特性对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>算法</span></th><th><span>年份</span></th><th><span>量化对象</span></th><th><span>核心技术</span></th><th><span>主要格式</span></th><th><span>精度损失</span></th><th><span>速度提升</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><strong><span>GPTQ</span></strong></td><td><span>2022</span></td><td><span>权重</span></td><td><span>Hessian OBQ 误差补偿</span></td><td><span>W4A16 / W8A16</span></td><td><span>中</span></td><td><span>中</span></td><td><span>通用 PTQ，显存压缩</span></td></tr><tr><td><strong><span>AWQ</span></strong></td><td><span>2023</span></td><td><span>权重</span></td><td><span>激活感知通道缩放</span></td><td><span>W4A16 / W8A16</span></td><td><span>小</span></td><td><span>高</span></td><td><span>生产部署，精度优先</span></td></tr><tr><td><strong><span>SmoothQuant</span></strong></td><td><span>2022</span></td><td><span>权重+激活</span></td><td><span>激活异常值平滑迁移</span></td><td><span>W8A8</span></td><td><span>极小</span></td><td><span>高</span></td><td><span>大批量推理，计算加速</span></td></tr><tr><td><strong><span>LLM.int8()</span></strong></td><td><span>2022</span></td><td><span>权重</span></td><td><span>混合精度分解</span></td><td><span>W8A16</span></td><td><span>小</span></td><td><span>中</span></td><td><span>动态范围保护</span></td></tr><tr><td><strong><span>FP8</span></strong></td><td><span>2023</span></td><td><span>权重+激活</span></td><td><span>硬件原生浮点格式</span></td><td><span>W8A8</span></td><td><span>极小</span></td><td><span>极高</span></td><td><span>H100+ 生产标准</span></td></tr></tbody></table></figure><h3 id='62-精度性能实测llama-3-70ba100'><span>6.2 精度性能实测（Llama-3-70B，A100）</span></h3><figure class='table-figure'><table><thead><tr><th><span>方案</span></th><th><span>格式</span></th><th><span>困惑度 PPL（↓）</span></th><th><span>MMLU（%，↑）</span></th><th><span>显存（GB）</span></th></tr></thead><tbody><tr><td><span>FP16 基线</span></td><td><span>-</span></td><td><span>6.56</span></td><td><span>68.5%</span></td><td><span>138.2</span></td></tr><tr><td><span>FP8（E4M3）</span></td><td><span>W8A8</span></td><td><span>6.63</span></td><td><span>67.9% (-0.9%)</span></td><td><span>69.1</span></td></tr><tr><td><strong><span>SmoothQuant W8A8</span></strong></td><td><span>W8A8</span></td><td><span>6.70</span></td><td><span>67.1% (-2.1%)</span></td><td><span>69.1</span></td></tr><tr><td><strong><span>AWQ (W4A16)</span></strong></td><td><span>W4</span></td><td><span>6.84</span></td><td><span>66.2% (-3.4%)</span></td><td><span>34.5</span></td></tr><tr><td><strong><span>GPTQ (W4A16)</span></strong></td><td><span>W4</span></td><td><span>6.90</span></td><td><span>65.8% (-3.9%)</span></td><td><span>34.5</span></td></tr><tr><td><span>朴素 INT4</span></td><td><span>W4</span></td><td><span>8.20</span></td><td><span>60.2% (-12.1%)</span></td><td><span>34.5</span></td></tr></tbody></table></figure><h3 id='63-推理吞吐量对比llama-31-8bh100'><span>6.3 推理吞吐量对比（Llama-3.1-8B，H100）</span></h3><figure class='table-figure'><table><thead><tr><th><span>方案</span></th><th><span>输出吞吐量（tok/s）</span></th><th><span>相比 FP16</span></th></tr></thead><tbody><tr><td><span>TensorRT-LLM FP8</span></td><td><span>~1000+</span></td><td><span>+117%</span></td></tr><tr><td><strong><span>Marlin-AWQ</span></strong></td><td><strong><span>741</span></strong></td><td><span>+61%</span></td></tr><tr><td><span>Marlin-GPTQ</span></td><td><span>712</span></td><td><span>+54%</span></td></tr><tr><td><span>FP16 基线</span></td><td><span>461</span></td><td><span>基准</span></td></tr><tr><td><span>INT8 (bitsandbytes)</span></td><td><span>168</span></td><td><span>-64%</span></td></tr><tr><td><span>GGUF (CPU)</span></td><td><span>93</span></td><td><span>-80%</span></td></tr></tbody></table></figure><h3 id='64-选型决策树'><span>6.4 选型决策树</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">你的 GPU 是 H100/H200/B200？</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── 是 → 优先考虑 FP8 (vLLM / TensorRT-LLM)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; └── 需要极致性能？→ TensorRT-LLM FP8</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; └── 需要通用性？→ vLLM FP8</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└── 否（A100/3090/4090 等）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ├── 显存够放 FP16 模型？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  │ &nbsp; ├── 是 → 使用 FP16 或 BF16，无需量化</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  │ &nbsp; └── 否 → 进入权重量化</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ├── 4-bit 权重量化</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  │ &nbsp; ├── 追求速度 → AWQ + Marlin 内核</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  │ &nbsp; ├── 追求精度 → AWQ（MLSys 2024 最佳论文）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  │ &nbsp; ├── 离线 / 不受 vLLM 约束 → GPTQ + ExLlamaV2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  │ &nbsp; └── CPU / 边缘设备 → GGUF + llama.cpp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  └── 8-bit 量化（大批量、计算密集）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  └── SmoothQuant W8A8 → 平衡精度与计算加速</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 346px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></pre><h3 id='65-场景化推荐'><span>6.5 场景化推荐</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>推荐方案</span></th><th><span>理由</span></th></tr></thead><tbody><tr><td><span>云端生产部署（H100+）</span></td><td><span>FP8 / SmoothQuant W8A8</span></td><td><span>硬件原生支持，精度损失极小</span></td></tr><tr><td><span>云端生产部署（A100）</span></td><td><span>AWQ W4A16</span></td><td><span>精度优于 GPTQ，速度接近 FP16</span></td></tr><tr><td><span>消费级 GPU（24GB）</span></td><td><span>AWQ / GPTQ W4A16</span></td><td><span>70B 模型可单卡运行</span></td></tr><tr><td><span>本地开发/笔记本</span></td><td><span>GGUF Q4_K_M</span></td><td><span>CPU 友好，Ollama 一键运行</span></td></tr><tr><td><span>长上下文推理</span></td><td><span>SmoothQuant + KV Cache INT8</span></td><td><span>同时压缩权重和 KV Cache</span></td></tr><tr><td><span>极致速度（吞吐量优先）</span></td><td><span>SmoothQuant W8A8</span></td><td><span>INT8 张量核心矩阵乘法加速</span></td></tr></tbody></table></figure><hr /><h2 id='7-工程实践与代码示例'><span>7. 工程实践与代码示例</span></h2><h3 id='71-使用-autoawq-量化模型'><span>7.1 使用 AutoAWQ 量化模型</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># pip install autoawq</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">awq</span> <span class="cm-keyword">import</span> <span class="cm-variable">AutoAWQForCausalLM</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">transformers</span> <span class="cm-keyword">import</span> <span class="cm-variable">AutoTokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model_path</span> <span class="cm-operator">=</span> <span class="cm-string">"meta-llama/Llama-3.1-8B-Instruct"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">quant_path</span> <span class="cm-operator">=</span> <span class="cm-string">"./llama3.1-8b-awq-w4"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 加载模型和 tokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoTokenizer</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_path</span>, <span class="cm-variable">trust_remote_code</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoAWQForCausalLM</span>.<span class="cm-property">from_pretrained</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">model_path</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">low_cpu_mem_usage</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">use_cache</span><span class="cm-operator">=</span><span class="cm-keyword">False</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># AWQ 量化配置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">quant_config</span> <span class="cm-operator">=</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"zero_point"</span>: <span class="cm-keyword">True</span>, &nbsp; &nbsp;<span class="cm-comment"># 非对称量化</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"q_group_size"</span>: <span class="cm-number">128</span>, &nbsp; <span class="cm-comment"># 分组大小，平衡精度和速度</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"w_bit"</span>: <span class="cm-number">4</span>, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-comment"># 4 位量化</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"version"</span>: <span class="cm-string">"GEMM"</span>, &nbsp; &nbsp;<span class="cm-comment"># 可选 GEMM/GEMV</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 准备校准数据</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">datasets</span> <span class="cm-keyword">import</span> <span class="cm-variable">load_dataset</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">data</span> <span class="cm-operator">=</span> <span class="cm-variable">load_dataset</span>(<span class="cm-string">"pileval"</span>, <span class="cm-variable">split</span><span class="cm-operator">=</span><span class="cm-string">"validation"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">calib_data</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>(<span class="cm-string">"\n\n"</span>.<span class="cm-property">join</span>(<span class="cm-variable">data</span>[:<span class="cm-number">128</span>][<span class="cm-string">"text"</span>]), <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 执行量化（约 5-10 分钟，8B 模型单卡 A100）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span>.<span class="cm-property">quantize</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokenizer</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">quant_config</span><span class="cm-operator">=</span><span class="cm-variable">quant_config</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">calib_data</span><span class="cm-operator">=</span><span class="cm-variable">calib_data</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 保存量化模型</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span>.<span class="cm-property">save_quantized</span>(<span class="cm-variable">quant_path</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tokenizer</span>.<span class="cm-property">save_pretrained</span>(<span class="cm-variable">quant_path</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-string">f"量化完成！保存至 </span>{<span class="cm-variable">quant_path</span>}<span class="cm-string">"</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 898px;"></div><div class="CodeMirror-gutters" style="display: none; height: 898px;"></div></div></div></pre><h3 id='72-使用-autogptq-量化模型'><span>7.2 使用 AutoGPTQ 量化模型</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># pip install auto-gptq</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">auto_gptq</span> <span class="cm-keyword">import</span> <span class="cm-variable">AutoGPTQForCausalLM</span>, <span class="cm-variable">BaseQuantizeConfig</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">transformers</span> <span class="cm-keyword">import</span> <span class="cm-variable">AutoTokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">torch</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model_path</span> <span class="cm-operator">=</span> <span class="cm-string">"meta-llama/Llama-3.1-8B-Instruct"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># GPTQ 量化配置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">quantize_config</span> <span class="cm-operator">=</span> <span class="cm-variable">BaseQuantizeConfig</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">bits</span><span class="cm-operator">=</span><span class="cm-number">4</span>, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment"># 量化位宽</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">group_size</span><span class="cm-operator">=</span><span class="cm-number">128</span>, &nbsp; &nbsp; &nbsp;<span class="cm-comment"># 分组量化，每 128 个参数一个 scale</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">damp_percent</span><span class="cm-operator">=</span><span class="cm-number">0.01</span>, &nbsp;<span class="cm-comment"># Hessian 矩阵正则化系数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">desc_act</span><span class="cm-operator">=</span><span class="cm-keyword">False</span>, &nbsp; &nbsp; <span class="cm-comment"># 是否按激活降序排列权重（精度更高但更慢）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">sym</span><span class="cm-operator">=</span><span class="cm-keyword">False</span>, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment"># 非对称量化（zero_point != 0）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoTokenizer</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_path</span>, <span class="cm-variable">use_fast</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoGPTQForCausalLM</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_path</span>, <span class="cm-variable">quantize_config</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 准备校准数据（建议 128 条，覆盖各种文本类型）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">examples</span> <span class="cm-operator">=</span> [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokenizer</span>(<span class="cm-string">"GPTQ is a quantization method for LLMs"</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokenizer</span>(<span class="cm-string">"The Transformer architecture uses attention mechanism"</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># ... 更多样本</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 执行量化（8B 模型约需 15 分钟）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span>.<span class="cm-property">quantize</span>(<span class="cm-variable">examples</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 保存</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span>.<span class="cm-property">save_quantized</span>(<span class="cm-string">"./llama3.1-8b-gptq-4bit"</span>, <span class="cm-variable">use_safetensors</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 737px;"></div><div class="CodeMirror-gutters" style="display: none; height: 737px;"></div></div></div></pre><h3 id='73-使用-vllm-加载-awq-量化模型推理'><span>7.3 使用 vLLM 加载 AWQ 量化模型推理</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">vllm</span> <span class="cm-keyword">import</span> <span class="cm-variable">LLM</span>, <span class="cm-variable">SamplingParams</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 加载 AWQ 量化模型（自动检测量化格式）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">llm</span> <span class="cm-operator">=</span> <span class="cm-variable">LLM</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">model</span><span class="cm-operator">=</span><span class="cm-string">"./llama3.1-8b-awq-w4"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">quantization</span><span class="cm-operator">=</span><span class="cm-string">"awq"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dtype</span><span class="cm-operator">=</span><span class="cm-string">"float16"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">gpu_memory_utilization</span><span class="cm-operator">=</span><span class="cm-number">0.85</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">max_model_len</span><span class="cm-operator">=</span><span class="cm-number">8192</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">sampling_params</span> <span class="cm-operator">=</span> <span class="cm-variable">SamplingParams</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">temperature</span><span class="cm-operator">=</span><span class="cm-number">0.7</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">top_p</span><span class="cm-operator">=</span><span class="cm-number">0.9</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">max_tokens</span><span class="cm-operator">=</span><span class="cm-number">512</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">prompts</span> <span class="cm-operator">=</span> [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"请解释 Transformer 中的注意力机制"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"什么是量化感知训练？"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable">llm</span>.<span class="cm-property">generate</span>(<span class="cm-variable">prompts</span>, <span class="cm-variable">sampling_params</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">output</span> <span class="cm-keyword">in</span> <span class="cm-variable">outputs</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"Prompt: </span>{<span class="cm-variable">output</span>.<span class="cm-property">prompt</span><span class="cm-operator">!</span><span class="cm-variable">r</span>}<span class="cm-string">"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"Generated: </span>{<span class="cm-variable">output</span>.<span class="cm-property">outputs</span>[<span class="cm-number">0</span>].<span class="cm-property">text</span><span class="cm-operator">!</span><span class="cm-variable">r</span>}<span class="cm-string">\n"</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 599px;"></div><div class="CodeMirror-gutters" style="display: none; height: 599px;"></div></div></div></pre><h3 id='74-smoothquant-量化示例'><span>7.4 SmoothQuant 量化示例</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># pip install smoothquant</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">smoothquant</span>.<span class="cm-property">smooth</span> <span class="cm-keyword">import</span> <span class="cm-variable">smooth_lm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">smoothquant</span>.<span class="cm-property">calibration</span> <span class="cm-keyword">import</span> <span class="cm-variable">get_act_scales</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">transformers</span> <span class="cm-keyword">import</span> <span class="cm-variable">AutoModelForCausalLM</span>, <span class="cm-variable">AutoTokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">torch</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model_path</span> <span class="cm-operator">=</span> <span class="cm-string">"facebook/opt-6.7b"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoTokenizer</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_path</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoModelForCausalLM</span>.<span class="cm-property">from_pretrained</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">model_path</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">torch_dtype</span><span class="cm-operator">=</span><span class="cm-variable">torch</span>.<span class="cm-property">float16</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">device_map</span><span class="cm-operator">=</span><span class="cm-string">"auto"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 第一步：收集激活统计量（用于确定平滑因子）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">act_scales</span> <span class="cm-operator">=</span> <span class="cm-variable">get_act_scales</span>(<span class="cm-variable">model</span>, <span class="cm-variable">tokenizer</span>, <span class="cm-variable">dataset</span>, <span class="cm-variable">num_samples</span><span class="cm-operator">=</span><span class="cm-number">512</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 第二步：应用平滑变换（修改权重，将激活难度迁移到权重）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">smooth_lm</span>(<span class="cm-variable">model</span>, <span class="cm-variable">act_scales</span>, <span class="cm-variable">alpha</span><span class="cm-operator">=</span><span class="cm-number">0.5</span>) &nbsp;<span class="cm-comment"># alpha=0.5 为平衡点</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 第三步：W8A8 量化</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">smoothquant</span>.<span class="cm-property">fake_quant</span> <span class="cm-keyword">import</span> <span class="cm-variable">quantize_opt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">model_w8a8</span> <span class="cm-operator">=</span> <span class="cm-variable">quantize_opt</span>(<span class="cm-variable">model</span>, <span class="cm-variable">weight_quant</span><span class="cm-operator">=</span><span class="cm-string">"per_channel"</span>, <span class="cm-variable">act_quant</span><span class="cm-operator">=</span><span class="cm-string">"per_token"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 推理（速度接近原生 INT8 张量核心）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>(<span class="cm-string">"Hello, SmoothQuant!"</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>).<span class="cm-property">to</span>(<span class="cm-string">"cuda"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable">model_w8a8</span>.<span class="cm-property">generate</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>, <span class="cm-variable">max_new_tokens</span><span class="cm-operator">=</span><span class="cm-number">50</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">tokenizer</span>.<span class="cm-property">decode</span>(<span class="cm-variable">outputs</span>[<span class="cm-number">0</span>]))</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 668px;"></div><div class="CodeMirror-gutters" style="display: none; height: 668px;"></div></div></div></pre><hr /><h2 id='8-量化局限性及注意事项'><span>8. 量化局限性及注意事项</span></h2><h3 id='81-精度敏感场景'><span>8.1 精度敏感场景</span></h3><p><span>以下场景量化需谨慎，建议使用更高精度（INT8 而非 INT4，或保留 FP16）：</span></p><ul><li><p><strong><span>数学推理任务</span></strong><span>：量化对精确计算影响更大，数值误差会累积</span></p></li><li><p><strong><span>代码生成</span></strong><span>：语法细节错误可能增加，括号匹配、缩进等容易出错</span></p></li><li><p><strong><span>低资源语言</span></strong><span>：训练数据少的语言精度损失更大</span></p></li><li><p><strong><span>超小模型（&lt;7B）</span></strong><span>：量化收益有限，精度损失相对更大</span></p></li></ul><h3 id='82-幻觉hallucination风险'><span>8.2 幻觉（Hallucination）风险</span></h3><p><span>研究表明，随着精度下降，模型幻觉率会上升，尤其在罕见实体和数值事实上。高 stakes 部署应使用更高精度或采用量化感知缓解策略。</span></p><h3 id='83-评估建议'><span>8.3 评估建议</span></h3><p><span>不要仅依赖 Benchmark 分数（如 MMLU、C-Eval），应在</span><strong><span>业务真实数据集</span></strong><span>上进行：</span></p><ul><li><p><span>困惑度（Perplexity）测试</span></p></li><li><p><span>端到端任务准确率测试</span></p></li><li><p><span>人工抽检输出质量</span></p></li></ul><hr /><h2 id='9-总结'><span>9. 总结</span></h2><figure class='table-figure'><table><thead><tr><th><span>技术</span></th><th><span>一句话概括</span></th><th><span>最佳适用</span></th></tr></thead><tbody><tr><td><strong><span>INT8/INT4</span></strong></td><td><span>基础低比特整数表示，分组量化缓解精度损失</span></td><td><span>所有量化方案的基础格式</span></td></tr><tr><td><strong><span>GPTQ</span></strong></td><td><span>基于 Hessian 矩阵的逐层误差补偿量化</span></td><td><span>通用 PTQ，追求压缩率</span></td></tr><tr><td><strong><span>AWQ</span></strong></td><td><span>保护重要权重通道的激活感知量化</span></td><td><span>生产部署，精度优先</span></td></tr><tr><td><strong><span>SmoothQuant</span></strong></td><td><span>将激活量化难度迁移给权重的 W8A8 方案</span></td><td><span>大批量推理，计算加速</span></td></tr></tbody></table></figure><p><span>量化技术让大模型从&quot;云端专属&quot;变成了&quot;本地可用&quot;。2026 年，主流量化方案已经相当成熟：AWQ/GPTQ 用于 GPU 推理，GGUF+Ollama 用于 CPU/本地部署，SmoothQuant W8A8 用于大批量生产推理。选择适合场景的量化方案，是 AI 工程师降低部署成本、扩展应用边界的必备技能。</span></p></div></div>
+</body>
+</html>

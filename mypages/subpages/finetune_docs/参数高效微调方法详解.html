@@ -1,0 +1,707 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>参数高效微调方法详解</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='参数高效微调方法详解'><span>参数高效微调方法详解</span></h1><h2 id='一概述'><span>一、概述</span></h2><p><span>参数高效微调（Parameter-Efficient Fine-Tuning, PEFT）是一类在保持预训练模型大部分参数冻结的前提下，仅通过引入少量额外参数或选择性地更新少量参数来适配下游任务的方法。与全参数微调相比，PEFT 显著降低了计算资源需求和存储开销，同时有效缓解了灾难性遗忘问题。</span></p><h3 id='11-为什么需要-peft'><span>1.1 为什么需要 PEFT</span></h3><figure class='table-figure'><table><thead><tr><th><span>挑战</span></th><th><span>全参数微调</span></th><th><span>PEFT</span></th></tr></thead><tbody><tr><td><strong><span>显存需求</span></strong></td><td><span>12~16× 模型参数量</span></td><td><span>1~2× 模型参数量</span></td></tr><tr><td><strong><span>训练时间</span></strong></td><td><span>长（更新全部参数）</span></td><td><span>短（仅更新少量参数）</span></td></tr><tr><td><strong><span>存储开销</span></strong></td><td><span>每个任务需存储完整模型</span></td><td><span>仅存储少量适配器权重</span></td></tr><tr><td><strong><span>灾难性遗忘</span></strong></td><td><span>严重（覆盖预训练知识）</span></td><td><span>轻微（基座权重冻结）</span></td></tr><tr><td><strong><span>多任务部署</span></strong></td><td><span>N 个任务需 N 个完整模型</span></td><td><span>N 个任务共享基座 + N 个轻量适配器</span></td></tr></tbody></table></figure><h3 id='12-peft-方法分类'><span>1.2 PEFT 方法分类</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PEFT 方法</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── 添加式方法（Additive）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├── 适配器方法：Adapter、AdapterFusion</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├── 软提示方法：Prefix Tuning、P-Tuning、Prompt Tuning</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └── 低秩方法：LoRA、DoRA、QLoRA</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── 选择式方法（Selective）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├── 层选择：BitFit（仅偏置项）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └── 参数选择：DiffPruning、FishMask</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└── 重参数化方法（Reparameterization）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ├── 低秩分解：LoRA、AdaLoRA</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  └── 结构化分解：KronA、SVD-based</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 253px;"></div><div class="CodeMirror-gutters" style="display: none; height: 253px;"></div></div></div></pre><hr /><h2 id='二loralow-rank-adaptation'><span>二、LoRA（Low-Rank Adaptation）</span></h2><h3 id='21-核心思想'><span>2.1 核心思想</span></h3><p><span>LoRA 基于一个关键假设：</span><strong><span>模型权重在微调过程中的变化具有低秩结构</span></strong><span>。即权重更新矩阵 ΔW 可以表示为两个低秩矩阵的乘积：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">W' = W + ΔW = W + BA</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>其中：</span></p><ul><li><p><span>W ∈ R^{d×k}：预训练权重矩阵（冻结）</span></p></li><li><p><span>B ∈ R^{d×r}：低秩矩阵（可训练）</span></p></li><li><p><span>A ∈ R^{r×k}：低秩矩阵（可训练）</span></p></li><li><p><span>r &lt;&lt; min(d, k)：秩远小于原始维度</span></p></li></ul><h3 id='22-训练机制'><span>2.2 训练机制</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输入 x</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ├──→ W × x（冻结，预训练权重）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  └──→ B × A × x（可训练，低秩增量）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; 输出 = W×x + α/r × B×A×x</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><ul><li><p><strong><span>A 初始化</span></strong><span>：随机高斯初始化</span></p></li><li><p><strong><span>B 初始化</span></strong><span>：零初始化（确保训练开始时 ΔW = 0，即从预训练状态开始）</span></p></li><li><p><strong><span>缩放因子</span></strong><span>：α/r（通常 α = 2r）</span></p></li></ul><h3 id='23-为什么有效'><span>2.3 为什么有效</span></h3><ul><li><p><strong><span>过度参数化假设</span></strong><span>：预训练模型具有过度参数化的特性，权重矩阵的&quot;有效秩&quot;远低于其名义维度</span></p></li><li><p><strong><span>任务特定子空间</span></strong><span>：微调只需在权重空间的一个低维子空间内调整即可适配新任务</span></p></li><li><p><strong><span>梯度高效</span></strong><span>：反向传播只需通过 B 和 A，计算量远小于更新完整 W</span></p></li></ul><h3 id='24-关键超参数'><span>2.4 关键超参数</span></h3><figure class='table-figure'><table><thead><tr><th><span>参数</span></th><th><span>含义</span></th><th><span>典型值</span></th><th><span>影响</span></th></tr></thead><tbody><tr><td><strong><span>r（秩）</span></strong></td><td><span>低秩矩阵的维度</span></td><td><span>8, 16, 32, 64</span></td><td><span>越大表达能力越强，但参数和计算量增加</span></td></tr><tr><td><strong><span>alpha（缩放因子）</span></strong></td><td><span>控制 LoRA 输出的缩放比例</span></td><td><span>16, 32, 64, 128</span></td><td><span>通常设为 2×r</span></td></tr><tr><td><strong><span>target_modules</span></strong></td><td><span>应用 LoRA 的目标模块</span></td><td><span>q_proj, v_proj 等</span></td><td><span>覆盖越多模块效果越好，但参数增加</span></td></tr><tr><td><strong><span>dropout</span></strong></td><td><span>LoRA 路径的 dropout 率</span></td><td><span>0.0, 0.05, 0.1</span></td><td><span>防止过拟合</span></td></tr><tr><td><strong><span>bias</span></strong></td><td><span>是否训练偏置项</span></td><td><span>&quot;none&quot;, &quot;all&quot;, &quot;lora_only&quot;</span></td><td><span>通常设为 &quot;none&quot;</span></td></tr></tbody></table></figure><h3 id='25-目标模块选择策略'><span>2.5 目标模块选择策略</span></h3><figure class='table-figure'><table><thead><tr><th><span>策略</span></th><th><span>目标模块</span></th><th><span>可训练参数</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><strong><span>最小集合</span></strong></td><td><span>q_proj, v_proj</span></td><td><span>~0.06%</span></td><td><span>快速实验、资源极度受限</span></td></tr><tr><td><strong><span>标准集合</span></strong></td><td><span>q_proj, k_proj, v_proj, o_proj</span></td><td><span>~0.12%</span></td><td><span>通用场景（推荐起点）</span></td></tr><tr><td><strong><span>扩展集合</span></strong></td><td><span>上述 + gate_proj, up_proj, down_proj</span></td><td><span>~0.24%</span></td><td><span>复杂任务</span></td></tr><tr><td><strong><span>全部线性层</span></strong></td><td><span>all-linear</span></td><td><span>~0.49%</span></td><td><span>追求最佳效果</span></td></tr></tbody></table></figure><h3 id='26-lora-变体'><span>2.6 LoRA 变体</span></h3><h4 id='261-qlora'><span>2.6.1 QLoRA</span></h4><p><span>将 LoRA 与 4-bit 量化结合：</span></p><ul><li><p><span>基座模型以 4-bit NF4 格式存储</span></p></li><li><p><span>计算时动态解量化到 BF16</span></p></li><li><p><span>分页优化器防止 OOM</span></p></li><li><p><span>7B 模型仅需 ~8GB 显存</span></p></li></ul><p><span>详见《QLoRA 量化微调详解》文档。</span></p><h4 id='262-doraweight-decomposed-lora'><span>2.6.2 DoRA（Weight-Decomposed LoRA）</span></h4><p><span>将权重分解为幅度和方向两个分量：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">W' = m × (W/||W|| + ΔW_direction)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><ul><li><p><span>m：可训练幅度标量</span></p></li><li><p><span>ΔW_direction：LoRA 低秩方向更新</span></p></li><li><p><span>更精细地控制权重更新，效果优于标准 LoRA</span></p></li></ul><h4 id='263-adaloraadaptive-lora'><span>2.6.3 AdaLoRA（Adaptive LoRA）</span></h4><p><span>动态调整各层的秩：</span></p><ul><li><p><span>基于奇异值分解（SVD）初始化</span></p></li><li><p><span>训练过程中根据重要性评分剪枝不重要的奇异值</span></p></li><li><p><span>自动为不同层分配不同的有效秩</span></p></li><li><p><span>在相同参数预算下效果优于固定秩 LoRA</span></p></li></ul><h4 id='264-rslorarank-stabilized-lora'><span>2.6.4 rsLoRA（Rank-Stabilized LoRA）</span></h4><p><span>解决大秩 LoRA 的训练稳定性问题：</span></p><ul><li><p><span>缩放因子从 α/r 改为 α/√r</span></p></li><li><p><span>允许使用更大的秩（如 r=512, 1024）而不损失稳定性</span></p></li><li><p><span>适合需要强表达能力的复杂任务</span></p></li></ul><hr /><h2 id='三adapter适配器'><span>三、Adapter（适配器）</span></h2><h3 id='31-核心思想'><span>3.1 核心思想</span></h3><p><span>Adapter 在 Transformer 的每个子层中插入小型神经网络模块（瓶颈结构），仅训练这些插入模块，冻结原始预训练参数。</span></p><h3 id='32-架构设计'><span>3.2 架构设计</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">原始 Transformer 层：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  x → [Self-Attention] → x' → [Feed-Forward] → output</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">插入 Adapter 后：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  x → [Self-Attention] → x' → [Adapter] → x'' → [Feed-Forward] → x''' → [Adapter] → output</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Adapter 内部结构：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  input → Linear(d→m) → ReLU/GELU → Linear(m→d) → output</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  └────────────┘</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; bottleneck</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (m &lt;&lt; d)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 276px;"></div><div class="CodeMirror-gutters" style="display: none; height: 276px;"></div></div></div></pre><ul><li><p><strong><span>下投影</span></strong><span>：d → m（将高维特征压缩到低维瓶颈）</span></p></li><li><p><strong><span>非线性激活</span></strong><span>：ReLU 或 GELU</span></p></li><li><p><strong><span>上投影</span></strong><span>：m → d（恢复原始维度）</span></p></li><li><p><strong><span>残差连接</span></strong><span>：Adapter 输出与输入相加</span></p></li></ul><h3 id='33-两种插入位置'><span>3.3 两种插入位置</span></h3><figure class='table-figure'><table><thead><tr><th><span>位置</span></th><th><span>名称</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>注意力层后</span></strong></td><td><span>Parallel/Sequential Adapter</span></td><td><span>在 Self-Attention 输出后插入</span></td></tr><tr><td><strong><span>前馈层后</span></strong></td><td><span>Feed-Forward Adapter</span></td><td><span>在 Feed-Forward 输出后插入</span></td></tr></tbody></table></figure><p><span>通常在每个 Transformer 层的两个子层后都插入 Adapter。</span></p><h3 id='34-参数效率'><span>3.4 参数效率</span></h3><ul><li><p><span>瓶颈维度 m 通常设为原始维度 d 的 1/64 ~ 1/4</span></p></li><li><p><span>例如 d=4096, m=64 时，每个 Adapter 仅需约 0.5M 参数</span></p></li><li><p><span>一个 24 层的模型，总 Adapter 参数约 12M（占原模型 0.3%）</span></p></li></ul><h3 id='35-特点与局限'><span>3.5 特点与局限</span></h3><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>模块独立：每个任务的 Adapter 完全独立，便于多任务切换</span></p></li><li><p><span>推理灵活：可动态加载/卸载不同任务的 Adapter</span></p></li><li><p><span>训练稳定：Adapter 的残差结构保证训练初期输出接近恒等映射</span></p></li></ul><p><strong><span>局限</span></strong><span>：</span></p><ul><li><p><span>推理延迟：前向传播需额外经过 Adapter 模块，增加推理时间</span></p></li><li><p><span>层间耦合：Adapter 插入位置固定，无法灵活调整影响范围</span></p></li><li><p><span>信息瓶颈：瓶颈维度 m 过小可能限制表达能力</span></p></li></ul><hr /><h2 id='四prefix-tuning前缀微调'><span>四、Prefix Tuning（前缀微调）</span></h2><h3 id='41-核心思想'><span>4.1 核心思想</span></h3><p><span>Prefix Tuning 不修改网络权重，而是在每个 Transformer 层的</span><strong><span>注意力键（Key）和值（Value）前添加可训练的前缀向量</span></strong><span>。这些前缀向量作为&quot;软提示&quot;（Soft Prompt），引导模型生成任务特定的输出。</span></p><h3 id='42-架构设计'><span>4.2 架构设计</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">标准注意力机制：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Q = X × W_Q, K = X × W_K, V = X × W_V</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Attention(Q, K, V) = softmax(QK^T/√d) × V</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Prefix Tuning：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  K = [P_K; X × W_K]  # 前缀键 + 原始键</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  V = [P_V; X × W_V]  # 前缀值 + 原始值</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Attention(Q, K, V) = softmax(Q[P_K;K]^T/√d) × [P_V;V]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><p><span>其中 P_K 和 P_V 是可训练的前缀参数，维度为 [prefix_length, d]。</span></p><h3 id='43-重参数化技巧'><span>4.3 重参数化技巧</span></h3><p><span>直接优化前缀参数效果不佳，Prefix Tuning 引入重参数化：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">P_K = MLP(P'_K)  # 通过小型 MLP 生成实际前缀</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">P_V = MLP(P'_V)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><ul><li><p><span>P&#39;</span><em><span>K 和 P&#39;</span></em><span>V 是低维可训练参数</span></p></li><li><p><span>MLP 在训练后丢弃，仅保存生成的 P_K 和 P_V</span></p></li><li><p><span>目的：稳定训练，避免前缀参数直接优化时的性能下降</span></p></li></ul><h3 id='44-与-prompt-tuning-的区别'><span>4.4 与 Prompt Tuning 的区别</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>Prompt Tuning</span></th><th><span>Prefix Tuning</span></th></tr></thead><tbody><tr><td><strong><span>插入位置</span></strong></td><td><span>仅输入层（Embedding 层）</span></td><td><span>每层 Attention 的 K、V</span></td></tr><tr><td><strong><span>影响范围</span></strong></td><td><span>浅层，仅影响输入表示</span></td><td><span>深层，影响所有层的注意力计算</span></td></tr><tr><td><strong><span>参数位置</span></strong></td><td><span>输入 token 嵌入</span></td><td><span>注意力键值对</span></td></tr><tr><td><strong><span>表达能力</span></strong></td><td><span>较弱，适合简单任务</span></td><td><span>较强，适合复杂任务</span></td></tr><tr><td><strong><span>参数量</span></strong></td><td><span>更少（仅输入层）</span></td><td><span>更多（每层都有）</span></td></tr></tbody></table></figure><h3 id='45-p-tuning-v2'><span>4.5 P-Tuning v2</span></h3><p><span>Prefix Tuning 的改进版本，主要优化：</span></p><ul><li><p><strong><span>深层提示</span></strong><span>：不仅在 K、V 前添加前缀，还在每层都添加可训练的提示向量</span></p></li><li><p><strong><span>多任务共享</span></strong><span>：不同任务共享部分提示参数，仅任务特定部分独立</span></p></li><li><p><strong><span>去除重参数化</span></strong><span>：直接使用可训练参数，简化实现</span></p></li><li><p><strong><span>更好的 NLU 性能</span></strong><span>：在分类、抽取等 NLU 任务上效果优于原始 Prefix Tuning</span></p></li></ul><hr /><h2 id='五方法对比分析'><span>五、方法对比分析</span></h2><h3 id='51-核心机制对比'><span>5.1 核心机制对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>LoRA</span></th><th><span>Adapter</span></th><th><span>Prefix Tuning</span></th></tr></thead><tbody><tr><td><strong><span>修改对象</span></strong></td><td><span>权重矩阵（W → W + BA）</span></td><td><span>插入新模块（瓶颈 MLP）</span></td><td><span>注意力键值对（添加前缀）</span></td></tr><tr><td><strong><span>参数位置</span></strong></td><td><span>与原权重同位置</span></td><td><span>层间插入</span></td><td><span>注意力 K、V 前</span></td></tr><tr><td><strong><span>可训练比例</span></strong></td><td><span>0.1% ~ 1%</span></td><td><span>0.3% ~ 5%</span></td><td><span>0.1% ~ 1%</span></td></tr><tr><td><strong><span>推理开销</span></strong></td><td><span>无（可合并到原权重）</span></td><td><span>有（需经过 Adapter）</span></td><td><span>有（需拼接前缀）</span></td></tr><tr><td><strong><span>多任务切换</span></strong></td><td><span>需加载不同 LoRA 权重</span></td><td><span>可动态加载/卸载 Adapter</span></td><td><span>需加载不同前缀</span></td></tr><tr><td><strong><span>训练稳定性</span></strong></td><td><span>高</span></td><td><span>高</span></td><td><span>中（需重参数化）</span></td></tr></tbody></table></figure><h3 id='52-性能对比'><span>5.2 性能对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>任务类型</span></th><th><span>LoRA</span></th><th><span>Adapter</span></th><th><span>Prefix Tuning</span></th></tr></thead><tbody><tr><td><strong><span>文本生成</span></strong></td><td><span>★★★★★</span></td><td><span>★★★★</span></td><td><span>★★★</span></td></tr><tr><td><strong><span>文本分类</span></strong></td><td><span>★★★★</span></td><td><span>★★★★</span></td><td><span>★★★★★</span></td></tr><tr><td><strong><span>序列标注</span></strong></td><td><span>★★★★</span></td><td><span>★★★</span></td><td><span>★★★★★</span></td></tr><tr><td><strong><span>问答系统</span></strong></td><td><span>★★★★★</span></td><td><span>★★★★</span></td><td><span>★★★★</span></td></tr><tr><td><strong><span>多轮对话</span></strong></td><td><span>★★★★★</span></td><td><span>★★★</span></td><td><span>★★★</span></td></tr><tr><td><strong><span>代码生成</span></strong></td><td><span>★★★★★</span></td><td><span>★★★★</span></td><td><span>★★★</span></td></tr></tbody></table></figure><h3 id='53-资源效率对比'><span>5.3 资源效率对比</span></h3><p><span>假设 7B 模型（FP16，约 14GB 显存）：</span></p><figure class='table-figure'><table><thead><tr><th><span>方法</span></th><th><span>可训练参数</span></th><th><span>训练显存</span></th><th><span>推理显存</span></th><th><span>存储/任务</span></th></tr></thead><tbody><tr><td><strong><span>全参数微调</span></strong></td><td><span>7B (100%)</span></td><td><span>~112GB</span></td><td><span>~14GB</span></td><td><span>~14GB</span></td></tr><tr><td><strong><span>LoRA (r=16)</span></strong></td><td><span>~35M (0.5%)</span></td><td><span>~20GB</span></td><td><span>~14GB</span></td><td><span>~70MB</span></td></tr><tr><td><strong><span>QLoRA (r=16)</span></strong></td><td><span>~35M (0.5%)</span></td><td><span>~10GB</span></td><td><span>~4GB (4-bit)</span></td><td><span>~70MB</span></td></tr><tr><td><strong><span>Adapter (m=64)</span></strong></td><td><span>~12M (0.17%)</span></td><td><span>~18GB</span></td><td><span>~15GB</span></td><td><span>~24MB</span></td></tr><tr><td><strong><span>Prefix Tuning</span></strong></td><td><span>~20M (0.3%)</span></td><td><span>~18GB</span></td><td><span>~15GB</span></td><td><span>~40MB</span></td></tr></tbody></table></figure><h3 id='54-选择决策树'><span>5.4 选择决策树</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">开始</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ├── 推理延迟敏感（生产环境）？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp;  └── 是 → LoRA（可合并，零推理开销）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ├── 需要多任务动态切换？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp;  └── 是 → Adapter（模块独立，热插拔）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ├── NLU 任务（分类/抽取/序列标注）？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp;  └── 是 → Prefix Tuning / P-Tuning v2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ├── 显存极度受限（&lt;12GB）？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp;  └── 是 → QLoRA（4-bit 量化 + LoRA）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ├── 追求最佳效果且预算充足？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │ &nbsp; &nbsp;  └── 是 → DoRA / AdaLoRA（LoRA 进阶变体）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  └── 通用场景、快速迭代？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; └── LoRA（r=16, alpha=32）—— 2026 年默认选择</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 438px;"></div><div class="CodeMirror-gutters" style="display: none; height: 438px;"></div></div></div></pre><hr /><h2 id='六2026-年实践指南'><span>六、2026 年实践指南</span></h2><h3 id='61-推荐配置'><span>6.1 推荐配置</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>推荐方法</span></th><th><span>配置</span></th></tr></thead><tbody><tr><td><strong><span>快速实验/原型</span></strong></td><td><span>LoRA</span></td><td><span>r=8, alpha=16, target_modules=q_proj,v_proj</span></td></tr><tr><td><strong><span>标准微调（默认）</span></strong></td><td><span>LoRA</span></td><td><span>r=16, alpha=32, target_modules=all-linear</span></td></tr><tr><td><strong><span>生产部署</span></strong></td><td><span>LoRA + 合并</span></td><td><span>r=32, alpha=64, 训练后 merge_and_unload()</span></td></tr><tr><td><strong><span>消费级 GPU</span></strong></td><td><span>QLoRA</span></td><td><span>r=16, alpha=32, 4-bit NF4, paged_adamw_8bit</span></td></tr><tr><td><strong><span>复杂多任务</span></strong></td><td><span>Adapter</span></td><td><span>bottleneck_dim=64, 每层插入</span></td></tr><tr><td><strong><span>NLU 任务</span></strong></td><td><span>P-Tuning v2</span></td><td><span>prefix_length=100, 深层提示</span></td></tr><tr><td><strong><span>追求极致效果</span></strong></td><td><span>DoRA</span></td><td><span>r=64, alpha=128, use_dora=True</span></td></tr></tbody></table></figure><h3 id='62-关键注意事项'><span>6.2 关键注意事项</span></h3><ol start='' ><li><p><strong><span>学习率</span></strong><span>：PEFT 方法的学习率通常比全参数微调高 5~10 倍（LoRA 常用 1e-4 ~ 2e-4）</span></p></li><li><p><strong><span>训练轮数</span></strong><span>：PEFT 通常 1~3 个 epoch 即可，避免过拟合</span></p></li><li><p><strong><span>数据质量</span></strong><span>：PEFT 对数据质量更敏感，低质量数据容易过拟合到适配器</span></p></li><li><p><strong><span>基座选择</span></strong><span>：PEFT 效果高度依赖基座模型质量，基座能力弱则 PEFT 提升有限</span></p></li><li><p><strong><span>评估指标</span></strong><span>：应同时监控训练集和验证集指标，防止适配器过拟合</span></p></li></ol><h3 id='63-组合使用'><span>6.3 组合使用</span></h3><p><span>实践中常将多种 PEFT 方法组合：</span></p><ul><li><p><strong><span>LoRA + Prefix Tuning</span></strong><span>：LoRA 更新权重，Prefix Tuning 引导注意力，互补增强</span></p></li><li><p><strong><span>Adapter + LoRA</span></strong><span>：Adapter 处理任务特定变换，LoRA 微调注意力机制</span></p></li><li><p><strong><span>QLoRA + DoRA</span></strong><span>：量化基座 + 分解式低秩更新，资源受限下的最佳效果方案</span></p></li></ul><hr /><h2 id='七总结'><span>七、总结</span></h2><figure class='table-figure'><table><thead><tr><th><span>方法</span></th><th><span>核心机制</span></th><th><span>优势</span></th><th><span>局限</span></th><th><span>最佳场景</span></th></tr></thead><tbody><tr><td><strong><span>LoRA</span></strong></td><td><span>低秩权重增量 W+BA</span></td><td><span>简单高效、无推理开销、可合并</span></td><td><span>秩选择需调优</span></td><td><span>通用场景默认选择</span></td></tr><tr><td><strong><span>Adapter</span></strong></td><td><span>瓶颈 MLP 插入</span></td><td><span>模块独立、多任务切换灵活</span></td><td><span>推理延迟增加</span></td><td><span>多任务动态切换</span></td></tr><tr><td><strong><span>Prefix Tuning</span></strong></td><td><span>注意力 K/V 前缀</span></td><td><span>深层影响、NLU 效果好</span></td><td><span>训练需重参数化</span></td><td><span>分类/抽取等 NLU 任务</span></td></tr><tr><td><strong><span>QLoRA</span></strong></td><td><span>4-bit 量化 + LoRA</span></td><td><span>显存需求极低</span></td><td><span>训练速度略慢</span></td><td><span>消费级 GPU</span></td></tr><tr><td><strong><span>DoRA</span></strong></td><td><span>权重分解为幅度+方向</span></td><td><span>更精细控制、效果更好</span></td><td><span>参数量略增</span></td><td><span>追求极致效果</span></td></tr><tr><td><strong><span>AdaLoRA</span></strong></td><td><span>自适应秩分配</span></td><td><span>自动优化秩分配</span></td><td><span>实现较复杂</span></td><td><span>复杂任务、自动调优</span></td></tr></tbody></table></figure><p><span>参数高效微调的本质是在&quot;表达能力&quot;与&quot;资源效率&quot;之间寻找最优平衡点。LoRA 凭借其简洁性、高效性和零推理开销，已成为 2026 年最广泛采用的 PEFT 方法。而 Adapter 和 Prefix Tuning 在特定场景（多任务切换、NLU 任务）中仍具有不可替代的价值。理解各方法的核心机制和适用边界，是选择最优微调策略的关键。</span></p></div></div>
+</body>
+</html>

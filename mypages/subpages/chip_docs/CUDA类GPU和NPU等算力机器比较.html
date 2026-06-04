@@ -1,0 +1,712 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>CUDA类GPU和NPU等算力机器比较</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='国内外-nputpu专用-ai-芯片商业应用与-gpu-对比分析'><span>国内外 NPU/TPU/专用 AI 芯片商业应用与 GPU 对比分析</span></h1><p><span>本文系统梳理国内外主流 NPU、TPU 及专用 AI 芯片（ASIC）的技术路线、商业部署现状，深入分析其与 GPU 在架构、性能、生态、成本等维度的优缺点，为 AI 算力选型提供决策参考。</span></p><hr /><h2 id='一专用-ai-芯片全景概览'><span>一、专用 AI 芯片全景概览</span></h2><h3 id='11-芯片分类与定位'><span>1.1 芯片分类与定位</span></h3><p><span>当前 AI 计算芯片已形成&quot;数据中心训练/推理 + 边缘端推理 + 端侧设备&quot;的三层架构：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">数据中心层（训练 + 大规模推理）</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── GPU: NVIDIA H100/H200/B200（通用，生态最强）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── TPU: Google TPU v5/v6（云端专用，Google 独占）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── NPU: 华为昇腾 910B/910C/950（国产替代，政策驱动）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── ASIC: Amazon Trainium2、Microsoft Maia（云厂商自研）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└── 国产: 寒武纪思元 590、壁砺 BR100、海光 DCU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">边缘/服务器层（推理为主）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── NPU: 寒武纪思元 370、壁砺 BR104</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── TPU: Google Edge TPU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└── FPGA: Intel Stratix、Xilinx Versal</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">端侧设备层（手机/PC/IoT）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── NPU: Apple Neural Engine（M4/A18）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── NPU: Qualcomm Hexagon（Snapdragon 8 Gen 3）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── NPU: Intel NPU 4（Core Ultra 300）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├── NPU: AMD XDNA2（Ryzen AI 300）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└── NPU: 联发科 APU、三星 Exynos NPU</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 415px;"></div><div class="CodeMirror-gutters" style="display: none; height: 415px;"></div></div></div></pre><h3 id='12-市场格局2026'><span>1.2 市场格局（2026）</span></h3><figure class='table-figure'><table><thead><tr><th><span>细分市场</span></th><th><span>主导者</span></th><th><span>市场份额</span></th><th><span>年增长率</span></th></tr></thead><tbody><tr><td><span>数据中心训练</span></td><td><span>NVIDIA GPU</span></td><td><span>~80%</span></td><td><span>25%</span></td></tr><tr><td><span>数据中心推理</span></td><td><span>NVIDIA GPU + TPU + 国产NPU</span></td><td><span>GPU 60%, TPU 15%, 其他 25%</span></td><td><span>35%</span></td></tr><tr><td><span>边缘推理</span></td><td><span>寒武纪/壁砺/昇腾</span></td><td><span>国产 40%, NVIDIA 35%</span></td><td><span>50%</span></td></tr><tr><td><span>端侧 NPU</span></td><td><span>Apple/Qualcomm/Intel/AMD</span></td><td><span>四家合计 85%</span></td><td><span>45%</span></td></tr><tr><td><span>汽车芯片</span></td><td><span>NVIDIA Orin/Thor + Mobileye</span></td><td><span>NVIDIA 35%, Mobileye 25%</span></td><td><span>30%</span></td></tr></tbody></table></figure><p><span>全球 NPU 市场规模：2025 年 24.5 亿美元，预计 2034 年达 147.8 亿美元，CAGR 21.3%。</span></p><hr /><h2 id='二google-tpu云端-asic-的标杆'><span>二、Google TPU：云端 ASIC 的标杆</span></h2><h3 id='21-技术架构'><span>2.1 技术架构</span></h3><p><span>TPU（Tensor Processing Unit）是 Google 自 2015 年起开发的专用 AI 加速器，采用</span><strong><span>脉动阵列（Systolic Array）</span></strong><span>架构：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">脉动阵列核心思想：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  数据像"脉搏"一样在计算单元间流动</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  每个计算单元（PE）只做乘加运算</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  数据从一端流入，结果从另一端流出</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  最大限度减少内存访问</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">TPU v4 Pod 架构：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 4,096 个 TPU v4 芯片</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 通过光学电路交换机（OCS）互联</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 总带宽 6 TB/s</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 支持稀疏计算（2:4 结构化稀疏）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">TPU v6 Trillium（2026）：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 相比 v5e：推理吞吐提升 3 倍以上</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 能效提升 67%</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 单 Pod 可互联 9,216 个 TPU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 光学电路交换机实现机架级全互联</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 392px;"></div><div class="CodeMirror-gutters" style="display: none; height: 392px;"></div></div></div></pre><h3 id='22-商业部署现状'><span>2.2 商业部署现状</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>部署方式</span></strong></td><td><span>仅通过 Google Cloud 提供，无私有化部署</span></td></tr><tr><td><strong><span>主要用户</span></strong></td><td><span>Google 内部（搜索、YouTube、Gmail、翻译）、GCP 客户</span></td></tr><tr><td><strong><span>定价模式</span></strong></td><td><span>Cloud TPU 按小时计费（v4: $3.22/h, v5p: $4.20/h）</span></td></tr><tr><td><strong><span>框架支持</span></strong></td><td><span>TensorFlow（原生）、JAX（原生）、PyTorch（通过 XLA）</span></td></tr><tr><td><strong><span>2025 出货量</span></strong></td><td><span>预计 150~200 万片</span></td></tr></tbody></table></figure><h3 id='23-与-gpu-对比'><span>2.3 与 GPU 对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>Google TPU</span></th><th><span>NVIDIA GPU</span></th></tr></thead><tbody><tr><td><strong><span>架构</span></strong></td><td><span>脉动阵列 ASIC</span></td><td><span>CUDA Core + Tensor Core</span></td></tr><tr><td><strong><span>通用性</span></strong></td><td><span>低（仅限 AI 矩阵运算）</span></td><td><span>高（图形、科学计算、AI 全支持）</span></td></tr><tr><td><strong><span>能效比</span></strong></td><td><strong><span>极高</span></strong><span>（训练能效领先 GPU）</span></td><td><span>高（Blackwell 大幅提升）</span></td></tr><tr><td><strong><span>软件生态</span></strong></td><td><span>TensorFlow/JAX 深度优化</span></td><td><span>CUDA 生态，1200+ 框架</span></td></tr><tr><td><strong><span>部署灵活性</span></strong></td><td><span>仅限 GCP，无私有化</span></td><td><span>云/本地/边缘全场景</span></td></tr><tr><td><strong><span>成本</span></strong></td><td><span>训练成本低于 GPU 20~30%</span></td><td><span>单价高，但生态锁定</span></td></tr><tr><td><strong><span>扩展性</span></strong></td><td><span>Pod 级扩展（4096~9216 芯片）</span></td><td><span>NVLink 机架级（72~576 GPU）</span></td></tr><tr><td><strong><span>推理延迟</span></strong></td><td><span>批处理优化，单请求延迟较高</span></td><td><span>低延迟优化，适合实时推理</span></td></tr></tbody></table></figure><p><strong><span>TPU 核心优势</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>极致能效</span></strong><span>：脉动阵列 + HBM 高带宽，训练每瓦性能领先</span></p></li><li><p><strong><span>规模扩展</span></strong><span>：光学交换机实现万卡级互联，适合超大规模训练</span></p></li><li><p><strong><span>与 Google 生态深度绑定</span></strong><span>：搜索、广告、YouTube 等内部业务全量使用</span></p></li></ol><p><strong><span>TPU 核心劣势</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>封闭生态</span></strong><span>：仅限 GCP，无法私有化部署</span></p></li><li><p><strong><span>框架依赖</span></strong><span>：TensorFlow/JAX 优先，PyTorch 支持通过 XLA 间接实现</span></p></li><li><p><strong><span>灵活性差</span></strong><span>：不支持非标准算子，模型适配成本高</span></p></li><li><p><strong><span>推理场景弱</span></strong><span>：批处理优化导致单请求延迟高，不适合实时服务</span></p></li></ol><hr /><h2 id='三apple-neural-engine端侧-ai-的王者'><span>三、Apple Neural Engine：端侧 AI 的王者</span></h2><h3 id='31-技术架构'><span>3.1 技术架构</span></h3><p><span>Apple Neural Engine（ANE）是集成在 Apple Silicon（M 系列/A 系列）中的专用 NPU：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">M4 Neural Engine 规格：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 16 核心</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 38 TOPS（INT8）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 统一内存架构（CPU/GPU/NPU 共享内存）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - M4 Max：128 GB 统一内存，546 GB/s 带宽</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">架构演进：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  A11 Bionic (2017): 0.6 TOPS</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  M1 (2020): 11 TOPS</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  M2 (2022): 15.8 TOPS</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  M3 (2023): 18 TOPS</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  M4 (2024): 38 TOPS（2× M3）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  M5 (预计 2025): 45+ TOPS</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 299px;"></div></div></div></pre><h3 id='32-商业部署现状'><span>3.2 商业部署现状</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>部署设备</span></strong></td><td><span>iPhone（A 系列）、Mac（M 系列）、iPad、Vision Pro</span></td></tr><tr><td><strong><span>激活场景</span></strong></td><td><span>Face ID、实时翻译、Siri、照片分类、视频分析、本地 LLM</span></td></tr><tr><td><strong><span>开发者接口</span></strong></td><td><span>Core ML（原生）、MLX（开源，Python 框架）</span></td></tr><tr><td><strong><span>本地 LLM 能力</span></strong></td><td><span>M4 Max 可运行 70B+ 参数模型，M4 标准版可运行 7~13B</span></td></tr></tbody></table></figure><h3 id='33-与-gpu-对比'><span>3.3 与 GPU 对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>Apple Neural Engine</span></th><th><span>NVIDIA GPU（端侧对比）</span></th></tr></thead><tbody><tr><td><strong><span>定位</span></strong></td><td><span>端侧推理专用</span></td><td><span>数据中心/工作站</span></td></tr><tr><td><strong><span>功耗</span></strong></td><td><strong><span>极低</span></strong><span>（M4 整机 5~30W）</span></td><td><span>高（单卡 300~1000W）</span></td></tr><tr><td><strong><span>内存</span></strong></td><td><span>统一内存（最高 128 GB）</span></td><td><span>独立显存（最高 192 GB HBM3e）</span></td></tr><tr><td><strong><span>带宽</span></strong></td><td><span>546 GB/s（M4 Max）</span></td><td><span>3~5 TB/s（H100/B200）</span></td></tr><tr><td><strong><span>生态</span></strong></td><td><span>Core ML + MLX，macOS 深度集成</span></td><td><span>CUDA，跨平台</span></td></tr><tr><td><strong><span>模型支持</span></strong></td><td><span>标准架构优化好，自定义算子受限</span></td><td><span>全架构支持</span></td></tr><tr><td><strong><span>隐私</span></strong></td><td><strong><span>本地处理，数据不出设备</span></strong></td><td><span>需上传云端</span></td></tr><tr><td><strong><span>成本</span></strong></td><td><span>买设备即得，无额外费用</span></td><td><span>硬件 + 电力 + 运维</span></td></tr></tbody></table></figure><p><strong><span>ANE 核心优势</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>极致能效</span></strong><span>：端侧推理功耗仅为 GPU 的 1/100~1/1000</span></p></li><li><p><strong><span>隐私保护</span></strong><span>：数据完全本地处理，不上传云端</span></p></li><li><p><strong><span>统一内存</span></strong><span>：CPU/GPU/NPU 共享内存，零拷贝数据传输</span></p></li><li><p><strong><span>生态闭环</span></strong><span>：Core ML 与 macOS/iOS 深度集成，开发者体验流畅</span></p></li></ol><p><strong><span>ANE 核心劣势</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>仅限 Apple 设备</span></strong><span>：无法用于非 Apple 生态</span></p></li><li><p><strong><span>训练能力弱</span></strong><span>：仅支持推理，无法训练大模型</span></p></li><li><p><strong><span>算力天花板</span></strong><span>：38 TOPS 远低于数据中心 GPU（20 PetaFLOPS = 20,000,000 TOPS）</span></p></li><li><p><strong><span>灵活性差</span></strong><span>：非标准算子需回退到 CPU/GPU 执行</span></p></li></ol><hr /><h2 id='四华为昇腾国产算力的中坚力量'><span>四、华为昇腾：国产算力的中坚力量</span></h2><h3 id='41-技术架构'><span>4.1 技术架构</span></h3><p><span>昇腾（Ascend）系列采用华为自研的</span><strong><span>达芬奇（Da Vinci）架构</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">达芬奇架构核心：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 3D Cube 计算单元：专门优化矩阵乘法</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 向量计算单元：处理激活函数等向量运算</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 标量计算单元：控制流和逻辑运算</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 支持 FP16/FP32/INT8/INT4</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">昇腾 910B：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - FP16 算力：320 TFLOPS（超过 H20 的 148 TFLOPS）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - HBM2e：64 GB</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 功耗：310W</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 制程：中芯国际 7nm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">昇腾 910C（2025）：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 通过 Chiplet 技术提升良率</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 大规模部署于国内智算中心</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">昇腾 950PR（2026）：</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 推理性能达 H100 的 287%</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 训练效率 85%</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  - 国产化率 100%</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 461px;"></div><div class="CodeMirror-gutters" style="display: none; height: 461px;"></div></div></div></pre><h3 id='42-商业部署现状'><span>4.2 商业部署现状</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>部署规模</span></strong></td><td><span>2026 年计划生产 60 万枚 910C，是 2025 年的两倍</span></td></tr><tr><td><strong><span>总出货量</span></strong></td><td><span>2026 年昇腾系列总产量目标 160 万枚</span></td></tr><tr><td><strong><span>主要客户</span></strong></td><td><span>国内智算中心、电信运营商、金融机构、科研院所</span></td></tr><tr><td><strong><span>软件栈</span></strong></td><td><span>CANN（对标 CUDA）、MindSpore（自研框架）、兼容 PyTorch</span></td></tr><tr><td><strong><span>价格</span></strong></td><td><span>约为 H20 的 65%</span></td></tr></tbody></table></figure><h3 id='43-与-gpu-对比'><span>4.3 与 GPU 对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>华为昇腾</span></th><th><span>NVIDIA GPU</span></th></tr></thead><tbody><tr><td><strong><span>架构</span></strong></td><td><span>达芬奇 3D Cube</span></td><td><span>CUDA Core + Tensor Core</span></td></tr><tr><td><strong><span>制程</span></strong></td><td><span>中芯国际 7nm/14nm</span></td><td><span>TSMC 4nm/3nm</span></td></tr><tr><td><strong><span>峰值算力</span></strong></td><td><span>910B: 320 TFLOPS(FP16)</span></td><td><span>H100: 989 TFLOPS(FP16)</span></td></tr><tr><td><strong><span>训练效率</span></strong></td><td><span>85%（对比 H100）</span></td><td><span>基准</span></td></tr><tr><td><strong><span>推理性能</span></strong></td><td><span>950PR: H100 的 287%</span></td><td><span>基准</span></td></tr><tr><td><strong><span>软件生态</span></strong></td><td><span>CANN + MindSpore，兼容 PyTorch</span></td><td><span>CUDA，1200+ 框架</span></td></tr><tr><td><strong><span>国产化率</span></strong></td><td><strong><span>100%</span></strong></td><td><span>0%（受出口管制）</span></td></tr><tr><td><strong><span>供应链</span></strong></td><td><span>自主可控</span></td><td><span>受美国出口管制限制</span></td></tr><tr><td><strong><span>价格</span></strong></td><td><span>H20 的 65%</span></td><td><span>基准</span></td></tr><tr><td><strong><span>先进制程</span></strong></td><td><span>7nm（受限）</span></td><td><span>4nm/3nm</span></td></tr><tr><td><strong><span>维修生态</span></strong></td><td><span>原厂返修，MTTR 2~5 天</span></td><td><span>第三方成熟，MTTR ~4 小时</span></td></tr></tbody></table></figure><p><strong><span>昇腾核心优势</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>完全自主可控</span></strong><span>：从指令集到 IP 核 100% 国产，不受出口管制</span></p></li><li><p><strong><span>性价比</span></strong><span>：价格约为 H20 的 65%，推理性能超越 H100</span></p></li><li><p><strong><span>政策驱动</span></strong><span>：国内智算中心大规模采购，2026 年目标 160 万枚</span></p></li><li><p><strong><span>生态完善</span></strong><span>：CANN 兼容 CUDA，MindSpore 对标 PyTorch</span></p></li></ol><p><strong><span>昇腾核心劣势</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>制程受限</span></strong><span>：中芯国际 7nm  vs  TSMC 4nm/3nm，晶体管密度差距 2.3 倍</span></p></li><li><p><strong><span>训练效率</span></strong><span>：85% 对比 H100，仍有 15% 差距</span></p></li><li><p><strong><span>软件生态</span></strong><span>：CANN 成熟度不及 CUDA，第三方库支持有限</span></p></li><li><p><strong><span>维修体系</span></strong><span>：MTTR 2~5 天，远慢于 NVIDIA 的 4 小时</span></p></li></ol><hr /><h2 id='五其他国产-npuasic'><span>五、其他国产 NPU/ASIC</span></h2><h3 id='51-寒武纪cambricon'><span>5.1 寒武纪（Cambricon）</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>主力产品</span></strong></td><td><span>思元 590/690（推理）、思元 370（边缘）</span></td></tr><tr><td><strong><span>架构</span></strong></td><td><span>MLU（机器学习单元），Chiplet 技术</span></td></tr><tr><td><strong><span>INT8 算力</span></strong></td><td><span>256+ TOPS</span></td></tr><tr><td><strong><span>商业应用</span></strong></td><td><span>金融、智慧城市、自动驾驶</span></td></tr><tr><td><strong><span>2026 Q1 营收</span></strong></td><td><span>28.85 亿元（同比 +160%），已规模化盈利</span></td></tr><tr><td><strong><span>软件栈</span></strong></td><td><span>Neuware SDK + MagicMind 推理引擎</span></td></tr></tbody></table></figure><p><strong><span>与 GPU 对比</span></strong><span>：</span></p><ul><li><p><strong><span>优势</span></strong><span>：推理能效比高，特定场景（金融）效率超 H30；已实现盈利</span></p></li><li><p><strong><span>劣势</span></strong><span>：自研指令集迁移成本高；生态开放度不及昇腾和海光</span></p></li></ul><h3 id='52-海光信息hygon'><span>5.2 海光信息（Hygon）</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>主力产品</span></strong></td><td><span>DCU2、Z100、DCU-3G</span></td></tr><tr><td><strong><span>架构</span></strong></td><td><span>类 CUDA（兼容 ROCm）</span></td></tr><tr><td><strong><span>商业应用</span></strong></td><td><span>阿里巴巴等企业订单</span></td></tr><tr><td><strong><span>2026 Q1 营收</span></strong></td><td><span>40.34 亿元（同比 +68%）</span></td></tr><tr><td><strong><span>核心优势</span></strong></td><td><span>类 CUDA 生态，迁移成本最低</span></td></tr></tbody></table></figure><p><strong><span>与 GPU 对比</span></strong><span>：</span></p><ul><li><p><strong><span>优势</span></strong><span>：生态兼容性好，商业订单稳定</span></p></li><li><p><strong><span>劣势</span></strong><span>：训练效率 72%，推理性能 80%，与 NVIDIA 仍有差距</span></p></li></ul><h3 id='53-壁仞科技biren'><span>5.3 壁仞科技（Biren）</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>主力产品</span></strong></td><td><span>BR100、壁砺 166</span></td></tr><tr><td><strong><span>BF16 算力</span></strong></td><td><span>512 TFLOPS</span></td></tr><tr><td><strong><span>安全认证</span></strong></td><td><span>通过国家级安全可靠测评（I 级）</span></td></tr><tr><td><strong><span>挑战</span></strong></td><td><span>生态建设相对滞后，大模型训练能力待验证</span></td></tr></tbody></table></figure><h3 id='54-摩尔线程moore-threads'><span>5.4 摩尔线程（Moore Threads）</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>主力产品</span></strong></td><td><span>S5000、PH100</span></td></tr><tr><td><strong><span>架构</span></strong></td><td><span>MUSA（通用 GPU）</span></td></tr><tr><td><strong><span>差异化</span></strong></td><td><span>AI + 图形渲染 + 视频编解码</span></td></tr><tr><td><strong><span>2026 Q1 营收</span></strong></td><td><span>7.38 亿元（同比 +155%），首次季度盈利</span></td></tr><tr><td><strong><span>万卡集群</span></strong></td><td><span>KUAE 系列智算集群</span></td></tr></tbody></table></figure><p><strong><span>与 GPU 对比</span></strong><span>：</span></p><ul><li><p><strong><span>优势</span></strong><span>：通用 GPU 路线，覆盖 AI+图形融合场景（数字人、XR）</span></p></li><li><p><strong><span>劣势</span></strong><span>：AI 性能与专用 NPU 有差距，生态仍在建设中</span></p></li></ul><h3 id='55-登临科技高凛ks系列'><span>5.5 登临科技（高凛KS系列）</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>产品</span></strong></td><td><span>自研 GPU 芯片（第二代），兼容CUDA</span></td></tr><tr><td><strong><span>功耗</span></strong></td><td><span>25W</span></td></tr><tr><td><strong><span>内存</span></strong></td><td><span>8/16/32/64GB/128GB</span></td></tr><tr><td><strong><span>能效比</span></strong></td><td><span>3倍于英伟达主流GPU（T4）</span></td></tr><tr><td><strong><span>商业部署</span></strong></td><td><span>智慧城市，教育，工业视觉，智算中心，系统集成等高并发场景的推理，如每卡100条视频</span></td></tr><tr><td><strong><span>指标意义</span></strong></td><td><span>国产 GPU 在智慧城市最先落地的边缘端推理产品；单机8卡（KS58）部署Kimi2.6大模型</span></td></tr></tbody></table></figure><h3 id='56-中昊芯英国产-tpu-新势力'><span>5.6 中昊芯英（国产 TPU 新势力）</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>产品</span></strong></td><td><span>自研 TPU 芯片</span></td></tr><tr><td><strong><span>功耗</span></strong></td><td><span>400W（对比 H100 的 700W）</span></td></tr><tr><td><strong><span>INT8 性能</span></strong></td><td><span>512 TOPS</span></td></tr><tr><td><strong><span>能效比</span></strong></td><td><strong><span>1.28 TOPS/W</span></strong><span>（H100 为 0.56 TOPS/W，提升 2.3 倍）</span></td></tr><tr><td><strong><span>商业部署</span></strong></td><td><span>天津移动 TPU 智算中心已投入运行</span></td></tr><tr><td><strong><span>意义</span></strong></td><td><span>国产 TPU 商业化推广的首个标杆案例</span></td></tr></tbody></table></figure><hr /><h2 id='六云厂商自研-asic'><span>六、云厂商自研 ASIC</span></h2><h3 id='61-amazon-trainium2--inferentia3'><span>6.1 Amazon Trainium2 / Inferentia3</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>定位</span></strong></td><td><span>AWS 自研训练/推理芯片</span></td></tr><tr><td><strong><span>架构</span></strong></td><td><span>NeuronCore，支持 FP16/BF16/INT8</span></td></tr><tr><td><strong><span>商业应用</span></strong></td><td><span>AWS Trainium2 实例（trn2.48xlarge）</span></td></tr><tr><td><strong><span>与 GPU 对比</span></strong></td><td><span>训练成本比 GPU 低 30~50%，但生态有限</span></td></tr></tbody></table></figure><h3 id='62-microsoft-maia-100--cobalt-100'><span>6.2 Microsoft Maia 100 / Cobalt 100</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>定位</span></strong></td><td><span>Azure 自研 AI 加速器 + Arm CPU</span></td></tr><tr><td><strong><span>商业应用</span></strong></td><td><span>Azure Maia 实例</span></td></tr><tr><td><strong><span>与 GPU 对比</span></strong></td><td><span>云训练替代度低~中，推理场景更有竞争力</span></td></tr></tbody></table></figure><h3 id='63-meta-mtia'><span>6.3 Meta MTIA</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>详情</span></th></tr></thead><tbody><tr><td><strong><span>定位</span></strong></td><td><span>Meta 自研推荐系统和 GenAI 推理芯片</span></td></tr><tr><td><strong><span>演进</span></strong></td><td><span>MTIA 400 → XPU（2026~2027）</span></td></tr><tr><td><strong><span>更新周期</span></strong></td><td><span>2 年 4 代，比 NVIDIA 更快</span></td></tr><tr><td><strong><span>商业应用</span></strong></td><td><span>Facebook/Instagram 推荐系统、GenAI 推理</span></td></tr><tr><td><strong><span>与 GPU 对比</span></strong></td><td><span>推理领域替代度中~高，训练领域仍依赖 GPU</span></td></tr></tbody></table></figure><p><strong><span>云厂商自研 ASIC 的共同点</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>目标</span></strong><span>：降低对 NVIDIA 的依赖，优化特定工作负载成本</span></p></li><li><p><strong><span>策略</span></strong><span>：从推理切入，逐步扩展至训练</span></p></li><li><p><strong><span>生态</span></strong><span>：与自有云服务深度绑定，不对外销售</span></p></li><li><p><strong><span>效果</span></strong><span>：2025 年 Google+Amazon ASIC 出货量已达 NVIDIA GPU 的 40~60%</span></p></li></ol><hr /><h2 id='七端侧-npu-四巨头对比'><span>七、端侧 NPU 四巨头对比</span></h2><h3 id='71-2026-年端侧-npu-格局'><span>7.1 2026 年端侧 NPU 格局</span></h3><figure class='table-figure'><table><thead><tr><th><span>厂商</span></th><th><span>产品</span></th><th><span>TOPS</span></th><th><span>核心优势</span></th><th><span>主要应用</span></th></tr></thead><tbody><tr><td><strong><span>Apple</span></strong></td><td><span>M4 Neural Engine</span></td><td><span>38</span></td><td><span>统一内存、生态闭环、隐私</span></td><td><span>Mac/iPhone 本地 AI</span></td></tr><tr><td><strong><span>Qualcomm</span></strong></td><td><span>Hexagon (Snapdragon 8 Gen 3)</span></td><td><span>45</span></td><td><span>Windows ARM 笔记本、移动</span></td><td><span>三星/小米旗舰手机</span></td></tr><tr><td><strong><span>Intel</span></strong></td><td><span>NPU 4 (Core Ultra 300)</span></td><td><span>48</span></td><td><span>Windows 生态、OpenVINO</span></td><td><span>AI PC、企业笔记本</span></td></tr><tr><td><strong><span>AMD</span></strong></td><td><span>XDNA2 (Ryzen AI 300/400)</span></td><td><span>50</span></td><td><span>性价比、ROCm 支持</span></td><td><span>游戏本、工作站</span></td></tr></tbody></table></figure><h3 id='72-端侧-npu-vs-数据中心-gpu'><span>7.2 端侧 NPU vs 数据中心 GPU</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>端侧 NPU</span></th><th><span>数据中心 GPU</span></th></tr></thead><tbody><tr><td><strong><span>算力</span></strong></td><td><span>38~50 TOPS</span></td><td><span>20,000,000+ TOPS（20 PetaFLOPS）</span></td></tr><tr><td><strong><span>功耗</span></strong></td><td><span>5~30W</span></td><td><span>300~1000W</span></td></tr><tr><td><strong><span>内存</span></strong></td><td><span>最高 128 GB（统一内存）</span></td><td><span>最高 192 GB HBM3e</span></td></tr><tr><td><strong><span>带宽</span></strong></td><td><span>120~546 GB/s</span></td><td><span>3~5 TB/s</span></td></tr><tr><td><strong><span>适用模型</span></strong></td><td><span>7B~70B 参数（本地）</span></td><td><span>任意规模（云端）</span></td></tr><tr><td><strong><span>延迟</span></strong></td><td><strong><span>极低</span></strong><span>（本地处理）</span></td><td><span>网络延迟 + 计算延迟</span></td></tr><tr><td><strong><span>隐私</span></strong></td><td><strong><span>数据不出设备</span></strong></td><td><span>需上传云端</span></td></tr><tr><td><strong><span>成本</span></strong></td><td><span>买设备即得</span></td><td><span>硬件 + 电力 + 运维</span></td></tr><tr><td><strong><span>场景</span></strong></td><td><span>实时翻译、本地 LLM、Face ID</span></td><td><span>大模型训练、批量推理</span></td></tr></tbody></table></figure><p><strong><span>端侧 NPU 核心洞察</span></strong><span>：</span></p><ul><li><p><span>TOPS 指标具有误导性，</span><strong><span>内存带宽</span></strong><span>才是 LLM 推理的关键瓶颈</span></p></li><li><p><span>Apple M4 Max 的 546 GB/s 带宽使其能运行 70B+ 模型，而 Windows NPU 通常仅支持 13~30B</span></p></li><li><p><span>编译器成熟度（Core ML vs OpenVINO vs ONNX Runtime）决定实际性能</span></p></li></ul><hr /><h2 id='八专用芯片-vs-gpu全维度对比'><span>八、专用芯片 vs GPU：全维度对比</span></h2><h3 id='81-架构对比'><span>8.1 架构对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>ASIC/NPU/TPU</span></th><th><span>GPU</span></th></tr></thead><tbody><tr><td><strong><span>设计目标</span></strong></td><td><span>专为 AI 矩阵运算优化</span></td><td><span>通用并行计算</span></td></tr><tr><td><strong><span>灵活性</span></strong></td><td><span>低（固定功能）</span></td><td><strong><span>高</span></strong><span>（可编程）</span></td></tr><tr><td><strong><span>能效比</span></strong></td><td><strong><span>极高</span></strong><span>（专用电路）</span></td><td><span>高（通用电路有 overhead）</span></td></tr><tr><td><strong><span>峰值算力</span></strong></td><td><span>针对特定运算优化</span></td><td><span>通用算力高</span></td></tr><tr><td><strong><span>内存架构</span></strong></td><td><span>通常 HBM 高带宽</span></td><td><span>HBM/GDDR 可选</span></td></tr><tr><td><strong><span>扩展性</span></strong></td><td><span>依赖厂商设计</span></td><td><span>NVLink/PCIe 标准化</span></td></tr></tbody></table></figure><h3 id='82-软件生态对比'><span>8.2 软件生态对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>ASIC/NPU/TPU</span></th><th><span>GPU</span></th></tr></thead><tbody><tr><td><strong><span>编程模型</span></strong></td><td><span>厂商专用 SDK</span></td><td><strong><span>CUDA（行业标准）</span></strong></td></tr><tr><td><strong><span>框架支持</span></strong></td><td><span>有限（TensorFlow/JAX 优先）</span></td><td><strong><span>全框架支持</span></strong></td></tr><tr><td><strong><span>开发者数量</span></strong></td><td><span>少</span></td><td><strong><span>数百万</span></strong></td></tr><tr><td><strong><span>第三方库</span></strong></td><td><span>少</span></td><td><strong><span>海量（cuDNN、cuBLAS 等）</span></strong></td></tr><tr><td><strong><span>迁移成本</span></strong></td><td><span>高（需重写/适配）</span></td><td><strong><span>低</span></strong></td></tr><tr><td><strong><span>学习曲线</span></strong></td><td><span>陡峭</span></td><td><strong><span>平缓</span></strong></td></tr></tbody></table></figure><h3 id='83-商业应用对比'><span>8.3 商业应用对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>推荐方案</span></th><th><span>理由</span></th></tr></thead><tbody><tr><td><strong><span>超大规模训练（万亿参数）</span></strong></td><td><span>NVIDIA GPU / Google TPU</span></td><td><span>生态成熟，扩展性强</span></td></tr><tr><td><strong><span>云端推理服务（高并发）</span></strong></td><td><span>NVIDIA GPU / 自研 ASIC</span></td><td><span>低延迟，生态完善</span></td></tr><tr><td><strong><span>端侧实时 AI（手机/PC）</span></strong></td><td><strong><span>NPU</span></strong><span>（Apple/Qualcomm/Intel）</span></td><td><span>低功耗，隐私保护</span></td></tr><tr><td><strong><span>国产替代（政策驱动）</span></strong></td><td><strong><span>昇腾/寒武纪/海光</span></strong></td><td><span>自主可控，供应链安全</span></td></tr><tr><td><strong><span>特定领域优化（推荐系统）</span></strong></td><td><strong><span>自研 ASIC</span></strong><span>（Meta MTIA 等）</span></td><td><span>针对特定 workload 极致优化</span></td></tr><tr><td><strong><span>边缘推理（工厂/零售）</span></strong></td><td><strong><span>寒武纪/壁砺/昇腾边缘版</span></strong></td><td><span>低功耗，本地化部署</span></td></tr><tr><td><strong><span>成本敏感型推理</span></strong></td><td><strong><span>国产 NPU/ASIC</span></strong></td><td><span>价格为 GPU 的 40~65%</span></td></tr></tbody></table></figure><h3 id='84-成本对比tco-分析'><span>8.4 成本对比（TCO 分析）</span></h3><figure class='table-figure'><table><thead><tr><th><span>成本项</span></th><th><span>ASIC/NPU</span></th><th><span>GPU</span></th></tr></thead><tbody><tr><td><strong><span>硬件采购</span></strong></td><td><span>较低（40~65% of GPU）</span></td><td><span>高</span></td></tr><tr><td><strong><span>电力消耗</span></strong></td><td><strong><span>低</span></strong><span>（能效比高 2~3 倍）</span></td><td><span>高</span></td></tr><tr><td><strong><span>软件许可</span></strong></td><td><span>通常免费</span></td><td><span>CUDA 生态免费，但工具链有付费版</span></td></tr><tr><td><strong><span>迁移/适配</span></strong></td><td><strong><span>高</span></strong><span>（6~12 个月工程投入）</span></td><td><span>低</span></td></tr><tr><td><strong><span>运维人员</span></strong></td><td><span>需专门培训</span></td><td><span>人才充足</span></td></tr><tr><td><strong><span>3 年 TCO</span></strong></td><td><span>大规模部署后可能更低</span></td><td><span>初期投入高，但生态成熟</span></td></tr></tbody></table></figure><hr /><h2 id='九选型决策框架'><span>九、选型决策框架</span></h2><h3 id='91-决策树'><span>9.1 决策树</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">你的核心约束是什么？</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─&gt; 必须私有化部署且受出口管制影响？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └─&gt; 国产替代路线</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; ├─&gt; 需要训练大模型 ──&gt; 昇腾 910B/910C/950</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; ├─&gt; 以推理为主 ──&gt; 寒武纪 590 / 壁砺 166</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; └─&gt; 需要快速迁移 ──&gt; 海光 DCU（类 CUDA）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─&gt; 已经在 Google Cloud 上？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └─&gt; TPU v5/v6（成本最低，生态最深）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─&gt; 端侧设备（手机/PC/IoT）？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├─&gt; Apple 生态 ──&gt; Neural Engine（M4/A18）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├─&gt; Windows PC ──&gt; Intel NPU 4 或 AMD XDNA2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├─&gt; Android 手机 ──&gt; Qualcomm Hexagon</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └─&gt; 需要跨平台 ──&gt; 选择支持 ONNX Runtime 的 NPU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─&gt; 超大规模训练（&gt;100B 参数）？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├─&gt; 预算充足 + 生态优先 ──&gt; NVIDIA H100/B200</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └─&gt; 成本敏感 + 愿意适配 ──&gt; Google TPU v5p/v6</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─&gt; 高并发推理服务？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├─&gt; 延迟敏感（&lt;50ms）──&gt; NVIDIA GPU（TensorRT 优化）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; ├─&gt; 成本优先（批处理）──&gt; 自研 ASIC / 国产 NPU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └─&gt; 中等延迟可接受 ──&gt; Google TPU（批处理优化）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─&gt; 特定 workload 优化（推荐/广告）？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; └─&gt; 自研 ASIC（Meta MTIA、Amazon Inferentia 等）</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─&gt; 边缘/IoT 场景？</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ├─&gt; 低功耗（&lt;5W）──&gt; 寒武纪边缘版 / Hailo</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  └─&gt; 中等功耗（5~30W）──&gt; 昇腾边缘版 / 壁砺 BR104</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 737px;"></div><div class="CodeMirror-gutters" style="display: none; height: 737px;"></div></div></div></pre><h3 id='92-2026-年关键趋势'><span>9.2 2026 年关键趋势</span></h3><ol start='' ><li><p><strong><span>ASIC 出货量即将超越 GPU</span></strong><span>：2026 年 Google+Amazon+Meta 自研 ASIC 合计出货量有望超越 NVIDIA GPU</span></p></li><li><p><strong><span>端侧 NPU 成为标配</span></strong><span>：100~200 TOPS 的端侧 NPU 将支持百亿参数模型本地运行</span></p></li><li><p><strong><span>国产芯片加速替代</span></strong><span>：昇腾 2026 年目标 160 万枚，寒武纪已规模化盈利</span></p></li><li><p><strong><span>能效比成为核心指标</span></strong><span>：数据中心电力成本占 TCO 30%+，专用芯片能效优势凸显</span></p></li><li><p><strong><span>软件生态决定成败</span></strong><span>：硬件性能差距在缩小，编译器和框架成熟度成为关键</span></p></li></ol><hr /><h2 id='十总结'><span>十、总结</span></h2><p><span>专用 AI 芯片（NPU/TPU/ASIC）与 GPU 的竞争本质是&quot;专用 vs 通用&quot;的永恒博弈：</span></p><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>专用芯片（NPU/TPU/ASIC）</span></th><th><span>GPU</span></th></tr></thead><tbody><tr><td><strong><span>终极优势</span></strong></td><td><span>能效比、成本、特定场景性能</span></td><td><span>通用性、生态、灵活性</span></td></tr><tr><td><strong><span>最佳场景</span></strong></td><td><span>大规模推理、端侧 AI、特定 workload</span></td><td><span>训练、通用推理、快速原型</span></td></tr><tr><td><strong><span>市场趋势</span></strong></td><td><span>份额持续上升，2026 年 ASIC 出货量将超 GPU</span></td><td><span>仍占主导，但面临挑战</span></td></tr><tr><td><strong><span>生态壁垒</span></strong></td><td><span>低（各家独立）</span></td><td><strong><span>高</span></strong><span>（CUDA 锁定）</span></td></tr><tr><td><strong><span>投资重点</span></strong></td><td><span>软件栈、编译器、开发者工具</span></td><td><span>制程、架构、互联</span></td></tr></tbody></table></figure><p><span>当前（2026 年）的实用建议是：</span></p><ol start='' ><li><p><strong><span>训练场景</span></strong><span>：NVIDIA GPU 仍是首选，TPU 是 Google Cloud 用户的低成本替代</span></p></li><li><p><strong><span>推理场景</span></strong><span>：根据延迟要求选择——低延迟用 GPU，成本优先用 ASIC/国产 NPU</span></p></li><li><p><strong><span>端侧场景</span></strong><span>：NPU 是唯一选择，Apple/Qualcomm/Intel/AMD 各有优势</span></p></li><li><p><strong><span>国产替代</span></strong><span>：昇腾训练、寒武纪推理、海光快速迁移，登临通适低功耗，形成互补格局</span></p></li><li><p><strong><span>长期布局</span></strong><span>：关注自研 ASIC 的云厂商（Meta MTIA、Amazon Trainium）和国产 TPU（中昊芯英）</span></p></li></ol><p><span>专用芯片不会取代 GPU，但会在各自的优势领域形成&quot;分工协作&quot;的新格局——GPU 负责通用计算和训练，ASIC/NPU 负责大规模推理和端侧 AI，共同推动 AI 基础设施的多元化和成本优化。</span></p></div></div>
+</body>
+</html>

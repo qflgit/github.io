@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>MCP_Protocol_Specification</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='mcp-model-context-protocol-协议规范详解'><span>MCP (Model Context Protocol) 协议规范详解</span></h1><blockquote><p><span>版本：基于 MCP Specification 2025-11-25</span><br/><span>来源：modelcontextprotocol.io 官方规范</span></p></blockquote><hr /><h2 id='一概述'><span>一、概述</span></h2><p><strong><span>Model Context Protocol (MCP)</span></strong><span> 是由 Anthropic 于 2024 年 11 月推出的开放标准协议，旨在为 AI 应用（LLM）与外部数据源、工具和服务之间提供统一的集成接口。MCP 采用 </span><strong><span>JSON-RPC 2.0</span></strong><span> 作为通信协议，构建了一个有状态的会话协议，专注于上下文交换和采样协调。</span></p><p><span>MCP 的设计灵感来源于 Language Server Protocol (LSP)，但扩展了双向通信、动态发现和访问控制等能力。2025 年 12 月，Anthropic 将 MCP 捐赠给 Linux 基金会下的 Agentic AI Foundation (AAIF)，使其成为行业开放标准。</span></p><h3 id='核心设计原则'><span>核心设计原则</span></h3><ol start='' ><li><p><strong><span>Servers should be extremely easy to build</span></strong><span> — Host 负责复杂的编排，Server 专注于单一、明确的能力</span></p></li><li><p><strong><span>Servers should be highly composable</span></strong><span> — 每个 Server 独立提供功能，多个 Server 可无缝组合</span></p></li><li><p><strong><span>Servers should not be able to read the whole conversation, nor &quot;see into&quot; other servers</span></strong><span> — Server 只能接收必要的上下文信息，完整对话历史保留在 Host 中</span></p></li><li><p><strong><span>Features can be added to servers and clients progressively</span></strong><span> — 核心协议提供最小功能集，额外能力可通过协商逐步添加，保持向后兼容</span></p></li></ol><hr /><h2 id='二架构组件-architecture'><span>二、架构组件 (Architecture)</span></h2><p><span>MCP 采用 </span><strong><span>Host-Client-Server</span></strong><span> 三层架构，其中每个 Host 可以运行多个 Client 实例。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌─────────────────────────────────────────┐</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Host (宿主应用) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  ┌─────────┐ &nbsp;  ┌─────────┐ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  │ Client 1│◄──►│ Server 1│ (文件系统)  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  └─────────┘ &nbsp;  └─────────┘ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  ┌─────────┐ &nbsp;  ┌─────────┐ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  │ Client 2│◄──►│ Server 2│ (数据库) &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  └─────────┘ &nbsp;  └─────────┘ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  ┌─────────┐ &nbsp;  ┌─────────┐ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  │ Client 3│◄──►│ Server 3│ (API 网关)  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  └─────────┘ &nbsp;  └─────────┘ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─────────────────────────────────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 276px;"></div><div class="CodeMirror-gutters" style="display: none; height: 276px;"></div></div></div></pre><h3 id='21-host-宿主'><span>2.1 Host (宿主)</span></h3><p><span>Host 是 AI 应用本身（如 Claude Desktop、ChatGPT、VS Code with Copilot 等），作为容器和协调者：</span></p><ul><li><p><strong><span>创建和管理</span></strong><span>多个 Client 实例</span></p></li><li><p><strong><span>控制</span></strong><span> Client 的连接权限和生命周期</span></p></li><li><p><strong><span>执行</span></strong><span>安全策略和用户同意要求</span></p></li><li><p><strong><span>处理</span></strong><span>用户授权决策</span></p></li><li><p><strong><span>协调</span></strong><span> AI/LLM 集成和采样（Sampling）</span></p></li><li><p><strong><span>管理</span></strong><span>跨 Client 的上下文聚合</span></p></li></ul><p><span>Host 是&quot;餐厅经理&quot;，负责接收请求、决定调用哪些&quot;厨房工作站&quot;、协调最终响应。</span></p><h3 id='22-client-客户端'><span>2.2 Client (客户端)</span></h3><p><span>每个 Client 由 Host 创建，与特定 Server 维持 </span><strong><span>1:1 的隔离连接</span></strong><span>：</span></p><ul><li><p><strong><span>建立</span></strong><span>与 Server 的有状态会话（Stateful Session）</span></p></li><li><p><strong><span>处理</span></strong><span>协议协商和能力交换（Capability Exchange）</span></p></li><li><p><strong><span>双向路由</span></strong><span>协议消息（JSON-RPC 请求/响应/通知）</span></p></li><li><p><strong><span>管理</span></strong><span>订阅和通知（Subscriptions &amp; Notifications）</span></p></li><li><p><strong><span>维护</span></strong><span> Server 之间的安全边界</span></p></li></ul><p><span>Client 是&quot;服务员&quot;，负责在 Host 和特定 Server 之间传递消息，确保不同 Server 之间的隔离。</span></p><h3 id='23-server-服务端'><span>2.3 Server (服务端)</span></h3><p><span>Server 是提供专门化上下文和能力的服务进程：</span></p><ul><li><p><strong><span>暴露</span></strong><span> Resource、Tool 和 Prompt 等 MCP 原语</span></p></li><li><p><strong><span>独立运行</span></strong><span>，职责聚焦单一领域</span></p></li><li><p><strong><span>通过 Client 接口请求</span></strong><span>采样（Sampling）</span></p></li><li><p><strong><span>遵守</span></strong><span>安全约束</span></p></li><li><p><strong><span>可作为</span></strong><span>本地进程（STDIO）或远程服务（HTTP/SSE）运行</span></p></li></ul><p><span>Server 是&quot;厨房工作站&quot;（如烧烤站、备餐站、甜品站），每个站点有特定能力，但都说同一种语言（MCP 协议）。</span></p><hr /><h2 id='三核心原语-primitives'><span>三、核心原语 (Primitives)</span></h2><p><span>MCP 定义了三类服务端原语（Server-side Primitives）和三类客户端原语（Client-side Primitives）。</span></p><h3 id='31-server-端原语'><span>3.1 Server 端原语</span></h3><h4 id='311-tool-工具'><span>3.1.1 Tool (工具)</span></h4><p><strong><span>定义</span></strong><span>：Tool 是 Server 暴露的</span><strong><span>可执行函数</span></strong><span>，允许语言模型调用以与外部系统交互（如查询数据库、调用 API、执行计算）。</span></p><p><strong><span>交互模型</span></strong><span>：Tool 是 </span><strong><span>model-controlled（模型控制）</span></strong><span> 的，即语言模型可以基于上下文理解自动发现和调用工具。但出于安全考虑，实现中</span><strong><span>应当</span></strong><span>始终保留人工确认环节（human in the loop）。</span></p><p><strong><span>能力声明</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"capabilities"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"tools"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"listChanged"</span>: <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><p><strong><span>Tool 定义结构</span></strong><span>：</span></p><figure class='table-figure'><table><thead><tr><th><span>字段</span></th><th><span>类型</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><code>name</code></td><td><span>string</span></td><td><span>唯一标识符（1-128字符，区分大小写）</span></td></tr><tr><td><code>title</code></td><td><span>string</span></td><td><span>可选，人类可读的显示名称</span></td></tr><tr><td><code>description</code></td><td><span>string</span></td><td><span>功能描述</span></td></tr><tr><td><code>inputSchema</code></td><td><span>JSON Schema</span></td><td><span>定义输入参数（默认 JSON Schema 2020-12）</span></td></tr><tr><td><code>outputSchema</code></td><td><span>JSON Schema</span></td><td><span>可选，定义输出结构</span></td></tr><tr><td><code>icons</code></td><td><span>array</span></td><td><span>可选，UI 显示图标</span></td></tr><tr><td><code>annotations</code></td><td><span>object</span></td><td><span>可选，描述工具行为属性</span></td></tr><tr><td><code>execution</code></td><td><span>object</span></td><td><span>可选，执行相关属性（如 </span><code>taskSupport</code><span>）</span></td></tr></tbody></table></figure><p><strong><span>示例 Tool 定义</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"name"</span>: <span class="cm-string">"get_weather"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Weather Information Provider"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"description"</span>: <span class="cm-string">"Get current weather information for a location"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"inputSchema"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"type"</span>: <span class="cm-string">"object"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"properties"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"location"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"type"</span>: <span class="cm-string">"string"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"description"</span>: <span class="cm-string">"City name or zip code"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"required"</span>: [<span class="cm-string">"location"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"outputSchema"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"type"</span>: <span class="cm-string">"object"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"properties"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"temperature"</span>: { <span class="cm-string cm-property">"type"</span>: <span class="cm-string">"number"</span> },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"conditions"</span>: { <span class="cm-string cm-property">"type"</span>: <span class="cm-string">"string"</span> }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 507px;"></div><div class="CodeMirror-gutters" style="display: none; height: 507px;"></div></div></div></pre><p><strong><span>调用流程</span></strong><span>：</span></p><ol start='' ><li><p><strong><span>发现</span></strong><span>：Client 发送 </span><code>tools/list</code><span> 请求获取可用工具列表</span></p></li><li><p><strong><span>调用</span></strong><span>：Client 发送 </span><code>tools/call</code><span> 请求，携带工具名和参数</span></p></li><li><p><strong><span>响应</span></strong><span>：Server 返回执行结果，包含内容数组和错误标志</span></p></li></ol><p><strong><span>Tool 结果内容类型</span></strong><span>：</span></p><ul><li><p><code>text</code><span> — 文本内容</span></p></li><li><p><code>image</code><span> — Base64 编码的图片</span></p></li><li><p><code>audio</code><span> — Base64 编码的音频</span></p></li><li><p><code>resource_link</code><span> — 指向 Resource 的链接</span></p></li><li><p><code>resource</code><span> — 嵌入的 Resource 内容</span></p></li><li><p><code>structuredContent</code><span> — 结构化 JSON 输出（需同时提供文本序列化版本以保持兼容）</span></p></li></ul><p><strong><span>错误处理</span></strong><span>：</span></p><ul><li><p><strong><span>Protocol Errors</span></strong><span>：标准 JSON-RPC 错误（如未知工具、格式错误请求）</span></p></li><li><p><strong><span>Tool Execution Errors</span></strong><span>：</span><code>isError: true</code><span> 的结果（如 API 失败、输入验证错误、业务逻辑错误）</span></p></li></ul><hr /><h4 id='312-resource-资源'><span>3.1.2 Resource (资源)</span></h4><p><strong><span>定义</span></strong><span>：Resource 是 Server 暴露的</span><strong><span>只读数据源</span></strong><span>，通过 URI 寻址，为语言模型提供上下文信息（如文件内容、数据库记录、应用特定信息）。</span></p><p><strong><span>交互模型</span></strong><span>：Resource 是 </span><strong><span>application-driven（应用驱动）</span></strong><span> 的，Host 应用决定如何根据需要将资源纳入上下文。可通过 UI 树/列表展示、搜索过滤、或基于启发式自动包含。</span></p><p><strong><span>能力声明</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"capabilities"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"resources"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"subscribe"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"listChanged"</span>: <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><ul><li><p><code>subscribe</code><span>：Client 可订阅单个资源变更通知</span></p></li><li><p><code>listChanged</code><span>：Server 在资源列表变化时发送通知</span></p></li></ul><p><strong><span>Resource 定义结构</span></strong><span>：</span></p><figure class='table-figure'><table><thead><tr><th><span>字段</span></th><th><span>类型</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><code>uri</code></td><td><span>string</span></td><td><span>唯一标识符（URI 格式）</span></td></tr><tr><td><code>name</code></td><td><span>string</span></td><td><span>资源名称</span></td></tr><tr><td><code>title</code></td><td><span>string</span></td><td><span>可选，人类可读的显示名称</span></td></tr><tr><td><code>description</code></td><td><span>string</span></td><td><span>可选描述</span></td></tr><tr><td><code>mimeType</code></td><td><span>string</span></td><td><span>可选 MIME 类型</span></td></tr><tr><td><code>size</code></td><td><span>number</span></td><td><span>可选，大小（字节）</span></td></tr><tr><td><code>icons</code></td><td><span>array</span></td><td><span>可选，UI 显示图标</span></td></tr><tr><td><code>annotations</code></td><td><span>object</span></td><td><span>可选，受众/优先级/修改时间元数据</span></td></tr></tbody></table></figure><p><strong><span>Resource 内容类型</span></strong><span>：</span></p><ul><li><p><strong><span>Text Content</span></strong><span>：</span><code>{ &quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;...&quot; }</code></p></li><li><p><strong><span>Binary Content</span></strong><span>：</span><code>{ &quot;type&quot;: &quot;blob&quot;, &quot;blob&quot;: &quot;base64...&quot; }</code></p></li></ul><p><strong><span>Resource 模板 (Templates)</span></strong><span>：</span>
+<span>允许 Server 暴露参数化资源，使用 URI Template 语法。Client 可通过自动补全 API 填充参数。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"resourceTemplates"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"uriTemplate"</span>: <span class="cm-string">"file:///{path}"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"name"</span>: <span class="cm-string">"Project Files"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"description"</span>: <span class="cm-string">"Access files in the project directory"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"mimeType"</span>: <span class="cm-string">"application/octet-stream"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><p><strong><span>标准 URI Schemes</span></strong><span>：</span></p><ul><li><p><code>https://</code><span> — Web 资源（仅当 Client 可直接获取时使用）</span></p></li><li><p><code>file://</code><span> — 类文件系统资源（无需映射到物理文件系统）</span></p></li><li><p><code>git://</code><span> — Git 版本控制集成</span></p></li><li><p><span>自定义 Scheme — 必须符合 RFC 3986</span></p></li></ul><p><strong><span>Annotations（注解）</span></strong><span>：</span></p><ul><li><p><code>audience</code><span>：目标受众（</span><code>[&quot;user&quot;]</code><span>、</span><code>[&quot;assistant&quot;]</code><span> 或 </span><code>[&quot;user&quot;, &quot;assistant&quot;]</code><span>）</span></p></li><li><p><code>priority</code><span>：重要性（0.0 到 1.0，1.0 表示最重要）</span></p></li><li><p><code>lastModified</code><span>：ISO 8601 格式最后修改时间</span></p></li></ul><hr /><h4 id='313-prompt-提示模板'><span>3.1.3 Prompt (提示模板)</span></h4><p><strong><span>定义</span></strong><span>：Prompt 是 Server 暴露的</span><strong><span>可复用提示模板</span></strong><span>，提供与语言模型交互的结构化消息和指令。</span></p><p><strong><span>交互模型</span></strong><span>：Prompt 是 </span><strong><span>user-controlled（用户控制）</span></strong><span> 的，通过用户界面显式选择触发（如斜杠命令 </span><code>/git</code><span>）。</span></p><p><strong><span>能力声明</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"capabilities"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string cm-property">"prompts"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"listChanged"</span>: <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><p><strong><span>Prompt 定义结构</span></strong><span>：</span></p><figure class='table-figure'><table><thead><tr><th><span>字段</span></th><th><span>类型</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><code>name</code></td><td><span>string</span></td><td><span>唯一标识符</span></td></tr><tr><td><code>title</code></td><td><span>string</span></td><td><span>可选，人类可读的显示名称</span></td></tr><tr><td><code>description</code></td><td><span>string</span></td><td><span>可选描述</span></td></tr><tr><td><code>arguments</code></td><td><span>array</span></td><td><span>可选，参数列表（支持自动补全）</span></td></tr><tr><td><code>icons</code></td><td><span>array</span></td><td><span>可选，UI 显示图标</span></td></tr></tbody></table></figure><p><strong><span>Prompt 消息结构 (PromptMessage)</span></strong><span>：</span></p><ul><li><p><code>role</code><span>：</span><code>&quot;user&quot;</code><span> 或 </span><code>&quot;assistant&quot;</code><span>，表示发言者</span></p></li><li><p><code>content</code><span>：支持以下类型：</span></p><ul><li><p><code>text</code><span> — 纯文本</span></p></li><li><p><code>image</code><span> — Base64 编码图片（需 MIME 类型）</span></p></li><li><p><code>audio</code><span> — Base64 编码音频（需 MIME 类型）</span></p></li><li><p><code>resource</code><span> — 嵌入的 Resource 内容</span></p></li></ul></li></ul><p><strong><span>示例 Prompt 定义</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"name"</span>: <span class="cm-string">"code_review"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Request Code Review"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"description"</span>: <span class="cm-string">"Asks the LLM to analyze code quality and suggest improvements"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"arguments"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"name"</span>: <span class="cm-string">"code"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"description"</span>: <span class="cm-string">"The code to review"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"required"</span>: <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 276px;"></div><div class="CodeMirror-gutters" style="display: none; height: 276px;"></div></div></div></pre><p><strong><span>获取 Prompt 响应示例</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"description"</span>: <span class="cm-string">"Code review prompt"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string cm-property">"messages"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"role"</span>: <span class="cm-string">"user"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"content"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"type"</span>: <span class="cm-string">"text"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string cm-property">"text"</span>: <span class="cm-string">"Please review this Python code:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">def</span> <span class="cm-variable">hello</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">print</span>(<span class="cm-string">'world'</span>)<span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 323px;"></div><div class="CodeMirror-gutters" style="display: none; height: 323px;"></div></div></div></pre><hr /><h3 id='32-client-端原语'><span>3.2 Client 端原语</span></h3><h4 id='321-roots-根目录'><span>3.2.1 Roots (根目录)</span></h4><p><strong><span>定义</span></strong><span>：Roots 是 Client 定义的</span><strong><span>文件系统边界</span></strong><span>，指定 Server 可以访问的目录和文件范围。</span></p><p><strong><span>用途</span></strong><span>：确保 Server 在特定项目范围内操作（如 IDE 暴露当前项目目录），增强安全性和效率。支持动态更新，Client 可在根目录变化时通知 Server。</span></p><h4 id='322-sampling-采样'><span>3.2.2 Sampling (采样)</span></h4><p><strong><span>定义</span></strong><span>：Sampling 允许 Server 通过 Client 接口</span><strong><span>请求 Host LLM 进行文本生成或推理</span></strong><span>。</span></p><p><strong><span>用途</span></strong><span>：Server 可在任务中途暂停，向 Client 的 LLM 提出澄清问题或请求生成内容，支持真正的协作式工作流。这无需外部 API 密钥或临时通道，在同一会话内完成。</span></p><p><strong><span>能力要求</span></strong><span>：Client 必须在初始化时声明 </span><code>sampling</code><span> 能力。</span></p><h4 id='323-elicitation-诱导请求'><span>3.2.3 Elicitation (诱导/请求)</span></h4><p><strong><span>定义</span></strong><span>：Elicitation 允许 Server </span><strong><span>请求用户输入或引导用户交互</span></strong><span>。</span></p><p><strong><span>用途</span></strong><span>：当 Server 需要额外信息或用户确认时，通过 Client 向用户发起请求。URL 模式 Elicitation 可将敏感交互（如 API 密钥收集、第三方授权）重定向到 Server 托管的安全 URL，避免敏感数据通过 Client 传输。</span></p><hr /><h2 id='四会话生命周期-session-lifecycle'><span>四、会话生命周期 (Session Lifecycle)</span></h2><p><span>MCP 定义了严格的四阶段生命周期：</span></p><h3 id='41-初始化阶段-initialization'><span>4.1 初始化阶段 (Initialization)</span></h3><ol start='' ><li><p><span>Client 发送 </span><code>initialize</code><span> 请求，包含：</span></p><ul><li><p><span>支持的协议版本</span></p></li><li><p><span>Client 能力声明（sampling、elicitation、roots 等）</span></p></li><li><p><span>Client 实现元数据</span></p></li></ul></li><li><p><span>Server 响应，包含：</span></p><ul><li><p><span>匹配或兼容的协议版本</span></p></li><li><p><span>Server 能力声明（prompts、tools、resources 等）</span></p></li><li><p><span>Server 元数据</span></p></li></ul></li><li><p><span>Client 发送 </span><code>initialized</code><span> 通知确认就绪</span></p></li><li><p><span>双方能力协商完成，后续操作只能在协商范围内进行</span></p></li></ol><h3 id='42-运行阶段-operation'><span>4.2 运行阶段 (Operation)</span></h3><ul><li><p><span>双方根据协商的能力和协议版本交换请求、通知和响应</span></p></li><li><p><span>支持双向消息流：Client 可调用 </span><code>tools/list</code><span>、</span><code>resources/read</code><span> 等；Server 可发起 </span><code>sampling</code><span> 或 </span><code>elicitation</code><span> 请求</span></p></li><li><p><span>禁止调用未在初始化中协商的功能</span></p></li></ul><h3 id='43-关闭阶段-shutdown'><span>4.3 关闭阶段 (Shutdown)</span></h3><ul><li><p><span>无需特定协议消息，Client 或 Server 关闭底层传输连接即可</span></p></li><li><p><span>实现应强制执行请求超时和健壮的错误处理</span></p></li></ul><hr /><h2 id='五能力协商-capability-negotiation'><span>五、能力协商 (Capability Negotiation)</span></h2><p><span>MCP 使用基于能力的协商系统，Client 和 Server 在初始化时显式声明支持的功能。</span></p><p><strong><span>Server 能力</span></strong><span>：</span></p><ul><li><p><code>resources</code><span>：资源暴露（含 </span><code>subscribe</code><span>、</span><code>listChanged</code><span> 子能力）</span></p></li><li><p><code>tools</code><span>：工具支持（含 </span><code>listChanged</code><span> 子能力）</span></p></li><li><p><code>prompts</code><span>：提示模板（含 </span><code>listChanged</code><span> 子能力）</span></p></li><li><p><code>logging</code><span>：日志级别控制</span></p></li><li><p><code>completion</code><span>：参数自动补全</span></p></li></ul><p><strong><span>Client 能力</span></strong><span>：</span></p><ul><li><p><code>sampling</code><span>：支持 Server 请求 LLM 采样</span></p></li><li><p><code>roots</code><span>：支持文件系统根目录暴露</span></p></li><li><p><code>notification</code><span>：支持各类通知处理</span></p></li></ul><p><strong><span>协商规则</span></strong><span>：</span></p><ul><li><p><span>实现的功能必须在能力中广告</span></p></li><li><p><span>发送资源订阅通知需要 Server 声明 </span><code>subscribe</code><span> 支持</span></p></li><li><p><span>工具调用需要 Server 声明 </span><code>tools</code><span> 能力</span></p></li><li><p><span>采样需要 Client 声明 </span><code>sampling</code><span> 支持</span></p></li></ul><hr /><h2 id='六传输层-transport'><span>六、传输层 (Transport)</span></h2><p><span>MCP 定义了两种主要传输机制，所有传输都使用 UTF-8 编码的 JSON-RPC 2.0 消息格式。</span></p><h3 id='61-stdio-标准输入输出'><span>6.1 STDIO (标准输入输出)</span></h3><ul><li><p><span>使用操作系统的标准输入/输出流</span></p></li><li><p><span>适用于同一机器上的本地进程间通信</span></p></li><li><p><span>性能最佳（无网络开销）</span></p></li><li><p><span>是本地集成和原型开发的首选</span></p></li></ul><h3 id='62-streamable-http'><span>6.2 Streamable HTTP</span></h3><ul><li><p><span>使用 HTTP POST 和 GET 发送消息</span></p></li><li><p><span>通过 Server-Sent Events (SSE) 流式传输实时响应</span></p></li><li><p><span>支持多种 HTTP 认证选项（Bearer Token、API Key、自定义 Header）</span></p></li><li><p><span>推荐 OAuth 2.1 进行授权</span></p></li><li><p><span>适用于远程连接和云端部署</span></p></li><li><p><span>支持长轮询（Polling）机制，允许 Server 关闭连接后 Client 通过事件 ID 重新连接</span></p></li></ul><h3 id='63-授权-authorization'><span>6.3 授权 (Authorization)</span></h3><p><span>MCP 在 HTTP 传输层嵌入 OAuth 2.1 子集：</span></p><ul><li><p><span>Client 作为 OAuth 客户端，向授权服务器请求访问令牌</span></p></li><li><p><span>使用 PKCE 保护公共客户端（如 IDE 插件）</span></p></li><li><p><span>支持基于 Scope 的细粒度授权（如 </span><code>tools.read</code><span>、</span><code>tools.execute</code><span>、</span><code>resources.fs:read</code><span>）</span></p></li><li><p><span>支持增量 Scope 同意（Incremental Scope Consent），遵循最小权限原则</span></p></li><li><p><span>支持 OAuth Client ID Metadata Documents (CIMDs) 作为动态客户端注册的替代方案</span></p></li><li><p><span>STDIO 传输应使用环境变量获取凭证</span></p></li></ul><hr /><h2 id='七安全考量'><span>七、安全考量</span></h2><h3 id='71-server-安全要求'><span>7.1 Server 安全要求</span></h3><ul><li><p><strong><span>必须</span></strong><span>验证所有工具输入</span></p></li><li><p><strong><span>必须</span></strong><span>实现适当的访问控制</span></p></li><li><p><strong><span>应当</span></strong><span>对工具调用进行速率限制</span></p></li><li><p><strong><span>必须</span></strong><span>清理工具输出</span></p></li><li><p><strong><span>必须</span></strong><span>验证所有资源 URI</span></p></li><li><p><strong><span>应当</span></strong><span>对敏感资源实施访问控制</span></p></li><li><p><strong><span>必须</span></strong><span>正确编码二进制数据</span></p></li><li><p><strong><span>应当</span></strong><span>在操作前检查资源权限</span></p></li><li><p><strong><span>应当</span></strong><span>验证提示参数以防止注入攻击</span></p></li></ul><h3 id='72-client-安全要求'><span>7.2 Client 安全要求</span></h3><ul><li><p><strong><span>应当</span></strong><span>在敏感操作前提示用户确认</span></p></li><li><p><strong><span>应当</span></strong><span>在调用 Server 前向用户展示工具输入，防止数据泄露</span></p></li><li><p><strong><span>应当</span></strong><span>在传递给 LLM 前验证工具结果</span></p></li><li><p><strong><span>应当</span></strong><span>为工具调用实现超时机制</span></p></li><li><p><strong><span>应当</span></strong><span>记录工具使用日志以供审计</span></p></li><li><p><strong><span>必须</span></strong><span>将工具注解视为不可信（除非来自可信 Server）</span></p></li></ul><h3 id='73-架构安全原则'><span>7.3 架构安全原则</span></h3><ul><li><p><strong><span>隔离性</span></strong><span>：每个 Client-Server 连接维持独立会话，Server 无法读取完整对话或&quot;窥视&quot;其他 Server</span></p></li><li><p><strong><span>最小权限</span></strong><span>：Host 控制连接权限，Server 只能访问协商范围内的资源</span></p></li><li><p><strong><span>双向可控</span></strong><span>：Server 可请求采样和用户输入，但 Host 保留最终决策权</span></p></li><li><p><strong><span>审计追踪</span></strong><span>：所有工具调用、资源访问和采样请求都可关联到特定用户和会话</span></p></li></ul><hr /><h2 id='八常见实现模式'><span>八、常见实现模式</span></h2><figure class='table-figure'><table><thead><tr><th><span>模式</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><strong><span>Prompt Library Server</span></strong></td><td><span>集中管理最佳实践提示模板，通过斜杠命令暴露</span></td></tr><tr><td><strong><span>SaaS Platform Wrapper</span></strong></td><td><span>包装 Slack、Teams、Discord 等平台，暴露消息/频道工具</span></td></tr><tr><td><strong><span>Tool Catalog Server (Adapter Hub)</span></strong></td><td><span>代理多个底层 SaaS API，统一暴露为 MCP 工具</span></td></tr><tr><td><strong><span>Retrieval Server (RAG)</span></strong></td><td><span>提供文档检索、向量搜索等上下文增强能力</span></td></tr><tr><td><strong><span>Code Repository Server</span></strong></td><td><span>连接代码仓库，提供代码分析、文档生成、版本控制工具</span></td></tr><tr><td><strong><span>LLM-powered Tools Server</span></strong></td><td><span>Server 自身集成 LLM，提供需要推理的工具能力</span></td></tr><tr><td><strong><span>Clarification &amp; Review Server</span></strong></td><td><span>在关键操作前请求用户确认或提供审查界面</span></td></tr></tbody></table></figure><hr /><h2 id='九版本与演进'><span>九、版本与演进</span></h2><ul><li><p><strong><span>2024-11</span></strong><span> — Anthropic 首次发布 MCP</span></p></li><li><p><strong><span>2025-03</span></strong><span> — OpenAI 官方采纳 MCP</span></p></li><li><p><strong><span>2025-11-25</span></strong><span> — 当前规范版本（MCP Specification 2025-11-25）</span></p></li><li><p><strong><span>2025-12</span></strong><span> — 捐赠给 Linux Foundation / AAIF</span></p></li><li><p><strong><span>2026-03</span></strong><span> — Microsoft 发布 MCP C# SDK v1.0，支持最新规范</span></p></li></ul><p><span>主要演进特性：</span></p><ul><li><p><span>增强的授权服务器发现（三种元数据暴露方式）</span></p></li><li><p><span>工具/资源/提示的图标支持</span></p></li><li><p><span>增量 Scope 同意机制</span></p></li><li><p><span>URL 模式 Elicitation（敏感交互重定向）</span></p></li><li><p><span>采样中的工具调用支持</span></p></li><li><p><span>长轮询和 SSE 流存储</span></p></li><li><p><span>实验性 Task 支持（持久状态跟踪）</span></p></li></ul><hr /><h2 id='十总结'><span>十、总结</span></h2><p><span>MCP 协议通过标准化的 JSON-RPC 接口，将 AI 应用与外部工具、数据和服务的集成从&quot;N×M 问题&quot;简化为&quot;即插即用&quot;的生态系统。其核心架构（Host-Client-Server）确保了安全性、模块化和可组合性，而三类服务端原语（Tool、Resource、Prompt）和三类客户端原语（Roots、Sampling、Elicitation）共同构成了丰富的交互能力。随着主要 AI 平台（Anthropic、OpenAI、Google、Microsoft）的采纳和 Linux 基金会的标准化推动，MCP 正成为 AI 原生应用的基础连接协议。</span></p></div></div>
+</body>
+</html>

@@ -3,207 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>模型部署 - AI Knowledge Hub</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>大模型布局</title>
   <style>
-    .subpage-header { padding: 4rem 2rem 2rem; text-align: center; position: relative; z-index: 1; }
-    .subpage-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
-    .subpage-header h1 span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .subpage-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-    .article-list { max-width: 900px; margin: 0 auto; padding: 0 2rem 4rem; position: relative; z-index: 1; }
-    .article-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      transition: all 0.3s;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      animation: fadeInUp 0.5s ease-out backwards;
-    }
-    .article-item:hover {
-      transform: translateX(8px);
-      border-color: var(--primary-light);
-      box-shadow: var(--shadow);
-    }
-    .article-num {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--gradient-1);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .article-content h4 { font-size: 1.1rem; margin-bottom: 0.3rem; font-weight: 700; }
-    .article-content p { color: var(--text-muted); font-size: 0.9rem; }
-
-    .add-article {
-      border: 2px dashed var(--border);
-      background: transparent;
       justify-content: center;
-      color: var(--text-muted);
+      color: #fff;
     }
-    .add-article:hover {
-      border-color: var(--primary-light);
-      color: var(--text);
-      background: rgba(99, 102, 241, 0.05);
+    .container {
+      text-align: center;
+      padding: 2rem;
     }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      margin: 2rem;
-      position: relative;
-      z-index: 1;
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #e94560, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .back-btn:hover {
-      background: var(--gradient-1);
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+    .subtitle {
+      color: #a0a0a0;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
     }
-
-    .subpage-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-      margin: 0.25rem;
-    }
-
-    .sub-nav {
+    .deploys-grid {
       display: flex;
+      gap: 2rem;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      padding: 1rem 2rem;
-      position: relative;
-      z-index: 1;
+    }
+    .deploy-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      min-width: 220px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .deploy-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.1);
+      border-color: #e94560;
+      box-shadow: 0 20px 40px rgba(233,69,96,0.2);
+    }
+    .deploy-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .deploy-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .deploy-desc {
+      font-size: 0.9rem;
+      color: #a0a0a0;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 3rem;
+      color: #666;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
-  <div class="particles"></div>
+  <div class="container">
+    <h1>技能集</h1>
+    <p class="subtitle">点击卡片查看详细大模型布局文档</p>
 
-  <header>
-    <nav>
-      <div class="logo">
-        <div class="logo-icon">🧠</div>
-        AI Knowledge Hub
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">🏠 首页</a></li>
-        <li><a href="../index.html#topics">📚 知识库</a></li>
-        <li><a href="#" class="active">🚀 模型部署</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="deploys-grid">
+      <a href="deploy_docs/cloud_cost_optimization_strategy.html" class="deploy-card">
+        <div class="deploy-icon">🚀</div>
+        <div class="deploy-title">云成本优化策略</div>
+        <div class="deploy-desc">云资源管理与成本控制方法</div>
+      </a>
 
-  <a href="../index.html" class="back-btn">← 返回首页</a>
+      <a href="deploy_docs/edge_inference_guide.html" class="deploy-card">
+        <div class="deploy-icon">🤖</div>
+        <div class="deploy-title">边缘推理指南</div>
+        <div class="deploy-desc">边缘设备上的 AI 推理技术与实践 </div>
+      </a>
 
-  <section class="subpage-header">
-    <h1>🚀 <span>模型部署</span></h1>
-    <p>vLLM、TensorRT、量化压缩、推理优化与生产环境部署方案</p>
-    <div class="sub-nav" style="margin-top: 1.5rem;">
-      <span class="subpage-badge">📄 6 篇文章</span>
-      <span class="subpage-badge">🔖 可扩展模板</span>
-      <span class="subpage-badge">✏️ 点击编辑</span>
-    </div>
-  </section>
+      <a href="deploy_docs/model_serving_guide.html" class="deploy-card">
+        <div class="deploy-icon">🎨</div>
+        <div class="deploy-title">模型服务指南</div>
+        <div class="deploy-desc">模型部署、监控与优化</div>
+      </a>
 
-  <section class="article-list">
-    <div class="article-item" onclick="editArticle(1)">
-      <div class="article-num">1</div>
-      <div class="article-content">
-        <h4>vLLM 推理引擎</h4>
-        <p>PagedAttention、连续批处理与投机解码</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(2)">
-      <div class="article-num">2</div>
-      <div class="article-content">
-        <h4>TensorRT-LLM 优化</h4>
-        <p>内核融合、FP8 量化与多 GPU 并行</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(3)">
-      <div class="article-num">3</div>
-      <div class="article-content">
-        <h4>模型量化技术</h4>
-        <p>INT8/INT4、AWQ、GPTQ 与 SmoothQuant</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(4)">
-      <div class="article-num">4</div>
-      <div class="article-content">
-        <h4>服务化部署</h4>
-        <p>Triton、BentoML 与模型服务架构</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(5)">
-      <div class="article-num">5</div>
-      <div class="article-content">
-        <h4>边缘推理方案</h4>
-        <p>ONNX Runtime、TensorFlow Lite 与移动端部署</p>
-      </div>
-    </div>
-    <div class="article-item" onclick="editArticle(6)">
-      <div class="article-num">6</div>
-      <div class="article-content">
-        <h4>成本优化策略</h4>
-        <p>自动扩缩容、Spot 实例与推理成本分析</p>
-      </div>
-    </div>
-    <div class="article-item add-article" onclick="addArticle()">
-      <div style="font-size: 1.5rem; width: 44px; text-align: center;">+</div>
-      <div class="article-content">
-        <h4>添加新文章</h4>
-        <p>点击添加更多 模型部署 相关内容</p>
-      </div>
-    </div>
-  </section>
+      <a href="deploy_docs/llm_quantization_guide.html" class="deploy-card">
+        <div class="deploy-icon">🎨</div>
+        <div class="deploy-title">LLM 量化指南</div>
+        <div class="deploy-desc">大型语言模型的量化技术与实践</div>
+      </a>
 
-  <footer>
-    <p>🧠 AI Knowledge Hub — 模型部署 专题</p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;">使用此模板可自由扩展更多子话题与文章</p>
-  </footer>
+      <a href="deploy_docs/vLLM推理引擎详解_PagedAttention_连续批处理_投机解码.html" class="deploy-card">
+        <div class="deploy-icon">🎨</div>
+        <div class="deploy-title">vLLM 推理引擎详解</div>
+        <div class="deploy-desc">PagedAttention、连续批处理与投机解码</div>
+      </a>
 
-  <script src="../script.js"></script>
-  <script>
-    // 子页面独立功能
-    function editArticle(id) {
-      const titles = ['vLLM 推理引擎', 'TensorRT-LLM 优化', '模型量化技术', '服务化部署', '边缘推理方案', '成本优化策略'];
-      const newTitle = prompt('编辑文章标题：', titles[id-1]);
-      if (newTitle && newTitle !== titles[id-1]) {
-        alert('✅ 文章已更新为：' + newTitle + '（实际项目需连接后端保存）');
-      }
-    }
+      <a href="deploy_docs/TensorRT-LLM优化详解_内核融合_FP8量化_多GPU并行.html" class="deploy-card">
+        <div class="deploy-icon">🎨</div>
+        <div class="deploy-title">TensorRT-LLM 优化详解</div>
+        <div class="deploy-desc">内核融合、FP8 量化与多 GPU 并行</div>
+      </a>
 
-    function addArticle() {
-      const title = prompt('请输入新文章标题：');
-      if (title) {
-        const desc = prompt('请输入文章描述：') || '暂无描述';
-        alert('✅ 文章「' + title + '」已添加！\n描述：' + desc + '\n\n（实际项目可连接后端持久化）');
-      }
-    }
-  </script>
+
+
+    </div>
+
+    <footer>本地大模型布局文档中心 · 点击任意卡片开始阅读</footer>
+  </div>
 </body>
 </html>
