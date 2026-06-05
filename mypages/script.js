@@ -273,4 +273,10 @@ function createSubpageTemplate(topic) {
 // 粒子动画初始化
 document.addEventListener('DOMContentLoaded', () => {
   renderCards('all');
+
+    const path = document.location.pathname;
+    const hash = document.location.hash;
+
+    // 仅保留路径和哈希，移除所有查询参数
+    history.pushState({}, '', path + hash);
 });
