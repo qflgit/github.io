@@ -461,3 +461,14 @@ footer a {
   .card-grid { grid-template-columns: 1fr; }
   .content { padding: 0 1rem 3rem; }
 }
+
+.sensitive-link {
+    font-size: 0;          /* 隐藏文字 */
+    text-decoration: none; /* 移除下划线 */
+}
+.sensitive-link::after {
+    content: "点击这里";    /* 显示替代文本 */
+    font-size: 16px;
+    color: #0066cc;
+    cursor: pointer;
+}
