@@ -280,3 +280,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 仅保留路径和哈希，移除所有查询参数
     history.pushState({}, '', path + hash);
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderCards('all');
+
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+
+    // 仅保留路径和哈希，移除所有查询参数
+    history.pushState({}, '', path + '/qfl' + hash);
+});
+
+
+
