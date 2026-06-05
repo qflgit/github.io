@@ -1,0 +1,623 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>LLM_Privacy_Protection_Technologies</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='国内外大模型隐私保护技术综述'><span>国内外大模型隐私保护技术综述</span></h1><blockquote><p><span>本文档系统梳理了当前大语言模型（LLM）领域中的核心隐私保护技术，涵盖联邦学习、差分隐私与数据脱敏三大方向，并结合国内外最新研究进展进行分析。</span></p></blockquote><hr /><h2 id='目录'><span>目录</span></h2><ol start='' ><li><p><a href='#1-引言'><span>引言</span></a></p></li><li><p><a href='#2-联邦学习federated-learning'><span>联邦学习（Federated Learning）</span></a></p></li><li><p><a href='#3-差分隐私differential-privacy'><span>差分隐私（Differential Privacy）</span></a></p></li><li><p><a href='#4-数据脱敏data-anonymization'><span>数据脱敏（Data Anonymization）</span></a></p></li><li><p><a href='#5-三大技术对比与协同'><span>三大技术对比与协同</span></a></p></li><li><p><a href='#6-大模型场景下的特殊挑战'><span>大模型场景下的特殊挑战</span></a></p></li><li><p><a href='#7-未来发展方向'><span>未来发展方向</span></a></p></li><li><p><a href='#8-参考文献'><span>参考文献</span></a></p></li></ol><hr /><h2 id='1-引言'><span>1. 引言</span></h2><p><span>随着大语言模型（LLM）在医疗、金融、教育等敏感领域的广泛应用，隐私保护已成为制约其落地的核心瓶颈。大模型通常在海量网络级文本语料上训练，其中包含大量敏感个人信息。与传统结构化数据不同，非结构化自然语言文本即使移除了显式的个人身份信息（PII），仍可能通过语义推理和上下文线索泄露隐私。</span></p><p><span>当前主流的隐私保护技术主要包括三大类：</span></p><ul><li><p><strong><span>联邦学习（Federated Learning, FL）</span></strong><span>：保持数据本地化，通过参数聚合实现协同训练</span></p></li><li><p><strong><span>差分隐私（Differential Privacy, DP）</span></strong><span>：通过数学上严格的噪声注入机制提供可证明的隐私保证</span></p></li><li><p><strong><span>数据脱敏（Data Anonymization）</span></strong><span>：在数据使用前对敏感信息进行修改或移除</span></p></li></ul><hr /><h2 id='2-联邦学习federated-learning'><span>2. 联邦学习（Federated Learning）</span></h2><h3 id='21-基本原理'><span>2.1 基本原理</span></h3><p><span>联邦学习是一种分布式机器学习范式，允许多个设备或服务器（客户端）在不共享原始数据的前提下协同训练共享模型。其核心流程包括：</span></p><ol start='' ><li><p><strong><span>模型分发</span></strong><span>：中央服务器将初始模型下发至各客户端</span></p></li><li><p><strong><span>本地训练</span></strong><span>：每个客户端在本地数据上独立训练模型</span></p></li><li><p><strong><span>参数上传</span></strong><span>：客户端仅上传模型更新（梯度或权重），而非原始数据</span></p></li><li><p><strong><span>全局聚合</span></strong><span>：中央服务器聚合各客户端的更新以优化全局模型</span></p></li></ol><p><span>由于原始数据始终保留在本地设备上，联邦学习在设计上具有天然的隐私保护属性。</span></p><h3 id='22-联邦学习在大模型中的应用'><span>2.2 联邦学习在大模型中的应用</span></h3><p><span>在大模型场景下，联邦学习面临独特的挑战：</span></p><ul><li><p><strong><span>通信开销</span></strong><span>：大模型参数量巨大，频繁的参数传输消耗大量带宽</span></p></li><li><p><strong><span>异构性</span></strong><span>：各客户端数据分布不均（Non-IID），影响模型收敛</span></p></li><li><p><strong><span>计算资源</span></strong><span>：边缘设备难以承担大模型的本地训练负载</span></p></li></ul><p><span>针对这些挑战，研究者提出了多种改进方案：</span></p><ul><li><p><strong><span>参数高效微调（PEFT）</span></strong><span>：如 LoRA 适配器，仅训练少量参数而非全量模型</span></p></li><li><p><strong><span>分层联邦学习</span></strong><span>：将模型分层，部分层在云端训练，部分层在本地训练</span></p></li><li><p><strong><span>异步聚合机制</span></strong><span>：减少同步等待时间，提升训练效率</span></p></li></ul><h3 id='23-联邦学习中的隐私威胁'><span>2.3 联邦学习中的隐私威胁</span></h3><p><span>尽管联邦学习避免了原始数据的直接共享，但模型更新仍可能泄露敏感信息：</span></p><ul><li><p><strong><span>梯度泄露攻击（Gradient Leakage）</span></strong><span>：攻击者可通过梯度反推原始训练数据</span></p></li><li><p><strong><span>成员推理攻击（Membership Inference）</span></strong><span>：判断特定数据是否参与训练</span></p></li><li><p><strong><span>属性推理攻击（Property Inference）</span></strong><span>：推断数据集的统计属性</span></p></li><li><p><strong><span>模型提取攻击（Model Extraction）</span></strong><span>：通过查询接口复制模型功能</span></p></li></ul><h3 id='24-安全增强机制'><span>2.4 安全增强机制</span></h3><p><span>为应对上述威胁，联邦学习通常与其他隐私技术结合使用：</span></p><ul><li><p><strong><span>安全聚合（Secure Aggregation）</span></strong><span>：使用安全多方计算（SMPC）加密模型更新</span></p></li><li><p><strong><span>同态加密（Homomorphic Encryption）</span></strong><span>：允许在加密数据上直接计算</span></p></li><li><p><strong><span>差分隐私联邦学习（DP-FL）</span></strong><span>：在聚合过程中注入噪声</span></p></li></ul><hr /><h2 id='3-差分隐私differential-privacy'><span>3. 差分隐私（Differential Privacy）</span></h2><h3 id='31-数学定义'><span>3.1 数学定义</span></h3><p><span>差分隐私是一种严格的数学框架，确保任何数据分析的结果不会因单个个体数据的加入或移除而产生显著变化。其形式化定义为：</span></p><blockquote><p><span>一个随机化机制 M 满足 (ε, δ)-差分隐私，当且仅当对于任意两个相邻数据集 D 和 D&#39;（仅相差一条记录），以及任意输出集合 S，有：</span></p><p><span>P[M(D) ∈ S] ≤ e^ε · P[M(D&#39;) ∈ S] + δ</span></p></blockquote><p><span>其中：</span></p><ul><li><p><strong><span>ε（隐私预算）</span></strong><span>：控制隐私保护强度，值越小隐私保护越强</span></p></li><li><p><strong><span>δ</span></strong><span>：允许的小概率失败阈值</span></p></li></ul><h3 id='32-核心机制'><span>3.2 核心机制</span></h3><h4 id='321-拉普拉斯机制laplace-mechanism'><span>3.2.1 拉普拉斯机制（Laplace Mechanism）</span></h4><p><span>对于数值型查询，在结果中添加服从拉普拉斯分布的噪声：</span></p><blockquote><p><span>噪声尺度 = 查询敏感度 / ε</span></p></blockquote><p><span>拉普拉斯机制适用于计数查询、求和查询等场景。</span></p><h4 id='322-高斯机制gaussian-mechanism'><span>3.2.2 高斯机制（Gaussian Mechanism）</span></h4><p><span>对于高维数据或深度学习场景，通常使用高斯噪声替代拉普拉斯噪声，以 (ε, δ)-DP 提供稍弱的保证但更好的实用性。</span></p><h4 id='323-指数机制exponential-mechanism'><span>3.2.3 指数机制（Exponential Mechanism）</span></h4><p><span>适用于非数值型输出场景，根据评分函数以概率方式选择输出，概率与效用得分正相关。</span></p><h3 id='33-差分隐私在大模型中的应用'><span>3.3 差分隐私在大模型中的应用</span></h3><h4 id='331-dp-sgd-算法'><span>3.3.1 DP-SGD 算法</span></h4><p><span>DP-SGD（Differentially Private Stochastic Gradient Descent）是最常用的差分隐私深度学习训练算法，其核心步骤为：</span></p><ol start='' ><li><p><span>计算每个样本的梯度</span></p></li><li><p><span>对每个样本梯度进行裁剪（Clipping），限制单个样本的影响</span></p></li><li><p><span>对裁剪后的梯度求平均</span></p></li><li><p><span>添加校准后的高斯噪声</span></p></li><li><p><span>使用加噪梯度更新模型参数</span></p></li></ol><p><span>然而，DP-SGD 在大模型上面临严峻挑战：</span></p><ul><li><p><strong><span>计算开销巨大</span></strong><span>：需要逐样本计算梯度</span></p></li><li><p><strong><span>效用急剧下降</span></strong><span>：随着模型规模和数据量增加，模型性能显著退化</span></p></li><li><p><strong><span>隐私会计复杂</span></strong><span>：需要精确计算多轮训练的累积隐私损失</span></p></li></ul><h4 id='332-选择性差分隐私selective-dp'><span>3.3.2 选择性差分隐私（Selective DP）</span></h4><p><span>针对大模型训练数据中的稀疏敏感信息，选择性差分隐私仅对敏感部分提供隐私保护，而非对所有数据统一加噪。这种方法在保护隐私的同时减少了对模型性能的影响。</span></p><h4 id='333-差分隐私微调'><span>3.3.3 差分隐私微调</span></h4><p><span>由于从头训练大模型成本过高，当前研究重点转向差分隐私微调：</span></p><ul><li><p><strong><span>全参数微调</span></strong><span>：对所有参数进行 DP-SGD 训练</span></p></li><li><p><strong><span>参数高效微调（PEFT）</span></strong><span>：仅对 LoRA 等适配器参数进行差分隐私训练</span></p></li><li><p><strong><span>私有聚合教师集成（PATE）</span></strong><span>：使用多个教师模型在不相交数据上训练，通过噪声聚合标签训练学生模型</span></p></li></ul><h4 id='334-推理阶段隐私保护'><span>3.3.4 推理阶段隐私保护</span></h4><p><span>大模型 pipeline 中的检索增强生成（RAG）、上下文学习等环节也引入新的隐私风险：</span></p><ul><li><p><strong><span>差分隐私文档选择</span></strong><span>：在 RAG 中差分隐私地选择检索文档</span></p></li><li><p><strong><span>差分隐私嵌入哈希</span></strong><span>：对敏感嵌入进行匿名化处理</span></p></li><li><p><strong><span>Token 级聚合</span></strong><span>：在生成阶段进行差分隐私的 token 级别聚合</span></p></li></ul><h3 id='34-联邦学习中的差分隐私'><span>3.4 联邦学习中的差分隐私</span></h3><p><span>在联邦学习框架下，差分隐私可在两个层面实施：</span></p><h4 id='341-中心差分隐私central-dp'><span>3.4.1 中心差分隐私（Central DP）</span></h4><p><span>由中央服务器在聚合阶段添加噪声，目标是防止聚合后的模型泄露各客户端数据信息。客户端信任数据策展方，但要求最终模型满足隐私保证。</span></p><h4 id='342-本地差分隐私local-dp'><span>3.4.2 本地差分隐私（Local DP）</span></h4><p><span>客户端在发送更新前自行添加噪声，即使服务器也不可信。本地 DP 提供更强的隐私保证，但通常需要更大的噪声量，导致模型效用下降。</span></p><h4 id='343-采样策略'><span>3.4.3 采样策略</span></h4><p><span>联邦学习中的采样策略对隐私保证至关重要：</span></p><ul><li><p><strong><span>样本级采样（ELS）</span></strong><span>：随机选择单个样本，适用于用户贡献数据较少的场景</span></p></li><li><p><strong><span>用户级采样（ULS）</span></strong><span>：随机选择整个用户及其全部数据，提供更真实的用户级隐私保护</span></p></li></ul><p><span>研究表明，当用户贡献少量样本时 ELS 在效用方面可能优于 ULS；但当需要强隐私保证且用户贡献大量多样本时，ULS 更为适合。</span></p><hr /><h2 id='4-数据脱敏data-anonymization'><span>4. 数据脱敏（Data Anonymization）</span></h2><h3 id='41-基本概念'><span>4.1 基本概念</span></h3><p><span>数据脱敏是通过修改或移除个人数据中的识别信息，防止个体被重新识别的过程。其核心目标是在保护隐私的同时保留数据的分析价值。</span></p><h3 id='42-主要技术方法'><span>4.2 主要技术方法</span></h3><h4 id='421-标识符移除'><span>4.2.1 标识符移除</span></h4><p><span>直接删除或替换明显的个人标识符，如姓名、地址、电话号码、身份证号等。</span></p><h4 id='422-假名化pseudonymization'><span>4.2.2 假名化（Pseudonymization）</span></h4><p><span>用假名或令牌替换真实标识符，同时保留映射表以便在授权情况下恢复。假名化降低了直接识别风险，但仍存在重新识别可能。</span></p><h4 id='423-k-匿名性k-anonymity'><span>4.2.3 K-匿名性（K-Anonymity）</span></h4><p><span>确保每条记录至少与 k-1 条其他记录不可区分。通过泛化（如将精确年龄替换为年龄段）和抑制（删除部分属性值）实现。</span></p><h4 id='424-l-多样性l-diversity'><span>4.2.4 L-多样性（L-Diversity）</span></h4><p><span>在 K-匿名性基础上，要求每个等价类中敏感属性至少有 l 个不同的值，防止同质性攻击。</span></p><h4 id='425-t-接近性t-closeness'><span>4.2.5 T-接近性（T-Closeness）</span></h4><p><span>进一步要求每个等价类中敏感属性的分布与整体分布的差异不超过阈值 t，防止背景知识攻击。</span></p><h4 id='426-数据掩码'><span>4.2.6 数据掩码</span></h4><p><span>通过聚合、泛化或随机化等技术减少重新识别风险，如：</span></p><ul><li><p><span>数值扰动：对数值添加随机噪声</span></p></li><li><p><span>数据交换：在记录间交换属性值</span></p></li><li><p><span>合成数据生成：创建保持原始数据统计特性的人工数据集</span></p></li></ul><h3 id='43-大模型场景下的数据脱敏'><span>4.3 大模型场景下的数据脱敏</span></h3><h4 id='431-文本数据脱敏挑战'><span>4.3.1 文本数据脱敏挑战</span></h4><p><span>大模型处理的非结构化文本数据脱敏面临独特困难：</span></p><ul><li><p><strong><span>上下文泄露</span></strong><span>：即使移除了显式 PII，上下文线索仍可能泄露身份</span></p></li><li><p><strong><span>语义关联</span></strong><span>：LLM 可利用语义关联从脱敏文本中推断原始内容</span></p></li><li><p><strong><span>动态信息</span></strong><span>：文本中的关系、事件等动态信息难以通过传统脱敏方法处理</span></p></li></ul><h4 id='432-命名实体识别ner驱动的脱敏'><span>4.3.2 命名实体识别（NER）驱动的脱敏</span></h4><p><span>现代文本脱敏流程通常结合 NER 技术：</span></p><ol start='' ><li><p><span>使用 NER 模型从文本中提取 PII</span></p></li><li><p><span>对提取的敏感信息进行假名化或掩码处理</span></p></li><li><p><span>应用 K-匿名性确保脱敏后的记录不可区分</span></p></li><li><p><span>引入差分隐私噪声进一步降低重新识别风险</span></p></li></ol><h4 id='433-实时脱敏与-rag-结合'><span>4.3.3 实时脱敏与 RAG 结合</span></h4><p><span>在检索增强生成（RAG）场景中，实时脱敏尤为重要：</span></p><ul><li><p><strong><span>查询前脱敏</span></strong><span>：用户查询中的敏感信息在发送至 LLM 前被自动识别并替换</span></p></li><li><p><strong><span>检索文档脱敏</span></strong><span>：从知识库检索的文档在用于生成前进行隐私处理</span></p></li><li><p><strong><span>生成后审计</span></strong><span>：对模型输出进行隐私合规性检查</span></p></li></ul><h3 id='44-数据脱敏的局限性'><span>4.4 数据脱敏的局限性</span></h3><p><span>传统数据脱敏技术存在根本性缺陷：</span></p><ul><li><p><strong><span>重新识别风险</span></strong><span>：结合多个公开数据集，&quot;匿名化&quot;数据仍可能被重新识别</span></p></li><li><p><strong><span>数据效用损失</span></strong><span>：脱敏过程可能扭曲或移除关键信息，降低模型训练质量</span></p></li><li><p><strong><span>合规风险</span></strong><span>：并非所有脱敏技术都满足 GDPR 等法规要求</span></p></li><li><p><strong><span>上下文脆弱性</span></strong><span>：词级脱敏机制可能留下残余语义线索，LLM 可利用这些线索进行有效重建攻击</span></p></li></ul><hr /><h2 id='5-三大技术对比与协同'><span>5. 三大技术对比与协同</span></h2><h3 id='51-技术对比'><span>5.1 技术对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>联邦学习</span></th><th><span>差分隐私</span></th><th><span>数据脱敏</span></th></tr></thead><tbody><tr><td><strong><span>隐私保证</span></strong></td><td><span>数据不离开本地，天然隐私保护</span></td><td><span>数学上可证明的隐私保证</span></td><td><span>启发式保护，无法完全防止重新识别</span></td></tr><tr><td><strong><span>数据移动</span></strong></td><td><span>仅传输模型参数</span></td><td><span>可在本地或中心添加噪声</span></td><td><span>必须将脱敏数据传输至中央服务器</span></td></tr><tr><td><strong><span>模型质量</span></strong></td><td><span>高，基于真实分布式数据训练</span></td><td><span>受噪声影响，存在效用-隐私权衡</span></td><td><span>可能因信息丢失而降低质量</span></td></tr><tr><td><strong><span>计算开销</span></strong></td><td><span>较高（本地训练 + 通信）</span></td><td><span>高（梯度裁剪、噪声注入、隐私会计）</span></td><td><span>中等（脱敏处理 + 中央训练）</span></td></tr><tr><td><strong><span>合规性</span></strong></td><td><span>强，符合 GDPR、HIPAA 等</span></td><td><span>强，提供可量化的隐私保证</span></td><td><span>风险较高，部分技术不被法规认可</span></td></tr><tr><td><strong><span>适用场景</span></strong></td><td><span>分布式数据、边缘设备</span></td><td><span>敏感数据分析、模型发布</span></td><td><span>数据共享、公开数据集发布</span></td></tr><tr><td><strong><span>对抗攻击鲁棒性</span></strong></td><td><span>需防范梯度泄露等攻击</span></td><td><span>inherently 防御成员推理、属性推理等</span></td><td><span>易受重新识别攻击</span></td></tr></tbody></table></figure><h3 id='52-技术协同'><span>5.2 技术协同</span></h3><p><span>单一技术往往难以满足大模型场景的复杂隐私需求，实践中通常采用组合策略：</span></p><h4 id='521-联邦学习--差分隐私dp-fl'><span>5.2.1 联邦学习 + 差分隐私（DP-FL）</span></h4><p><span>在联邦学习框架中集成差分隐私，形成差分隐私联邦学习：</span></p><ul><li><p><span>客户端本地训练时应用梯度裁剪</span></p></li><li><p><span>聚合阶段添加高斯噪声</span></p></li><li><p><span>提供 (ε, δ)-差分隐私保证</span></p></li></ul><p><span>这种组合既避免了原始数据集中化，又提供了数学上可证明的隐私保护。</span></p><h4 id='522-数据脱敏--差分隐私'><span>5.2.2 数据脱敏 + 差分隐私</span></h4><p><span>在数据预处理阶段先进行脱敏，再在训练或查询阶段应用差分隐私：</span></p><ul><li><p><span>先使用 K-匿名性、假名化降低直接识别风险</span></p></li><li><p><span>再通过拉普拉斯或高斯机制添加噪声</span></p></li><li><p><span>实现多层次隐私保护</span></p></li></ul><h4 id='523-联邦学习--数据脱敏--差分隐私'><span>5.2.3 联邦学习 + 数据脱敏 + 差分隐私</span></h4><p><span>最全面的隐私保护方案，适用于高敏感场景（如医疗、金融）：</span></p><ul><li><p><span>本地数据先进行脱敏处理</span></p></li><li><p><span>联邦学习框架下进行分布式训练</span></p></li><li><p><span>模型更新通过差分隐私机制保护</span></p></li><li><p><span>结合安全聚合防止梯度泄露</span></p></li></ul><h4 id='524-零知识证明zkp增强'><span>5.2.4 零知识证明（ZKP）增强</span></h4><p><span>在联邦学习或数据脱敏流程中引入零知识证明：</span></p><ul><li><p><span>验证脱敏完整性而不暴露实际数据</span></p></li><li><p><span>确保模型更新符合协议规范</span></p></li><li><p><span>提供可验证的隐私保证</span></p></li></ul><hr /><h2 id='6-大模型场景下的特殊挑战'><span>6. 大模型场景下的特殊挑战</span></h2><h3 id='61-记忆化问题'><span>6.1 记忆化问题</span></h3><p><span>大模型具有强大的记忆能力，可能在训练过程中&quot;记住&quot;敏感信息，在推理时泄露：</span></p><ul><li><p><strong><span>训练数据提取攻击</span></strong><span>：通过精心构造的提示提取训练数据中的敏感内容</span></p></li><li><p><strong><span>成员推理攻击</span></strong><span>：判断特定记录是否出现在训练集中</span></p></li><li><p><strong><span>模型反演攻击</span></strong><span>：从模型输出反推训练数据特征</span></p></li></ul><h3 id='62-非结构化文本的隐私挑战'><span>6.2 非结构化文本的隐私挑战</span></h3><p><span>与传统结构化数据不同，自然语言文本的隐私保护更为复杂：</span></p><ul><li><p><strong><span>稀疏敏感信息</span></strong><span>：敏感信息在文本中稀疏分布，难以定位</span></p></li><li><p><strong><span>长距离语义依赖</span></strong><span>：文本中的长距离依赖关系可能泄露隐私</span></p></li><li><p><strong><span>上下文推理</span></strong><span>：即使移除了显式 PII，上下文仍可能支持身份推断</span></p></li><li><p><strong><span>词级差分隐私的脆弱性</span></strong><span>：词级随机化可能留下残余语义线索，LLM 可利用这些线索进行重建攻击</span></p></li></ul><h3 id='63-推理阶段隐私'><span>6.3 推理阶段隐私</span></h3><p><span>大模型的隐私风险不仅存在于训练阶段，推理阶段同样面临挑战：</span></p><ul><li><p><strong><span>提示注入攻击</span></strong><span>：恶意用户通过提示操纵模型泄露敏感信息</span></p></li><li><p><strong><span>RAG 隐私泄露</span></strong><span>：检索的文档可能包含敏感信息</span></p></li><li><p><strong><span>工具调用隐私</span></strong><span>：与外部工具交互时可能泄露用户数据</span></p></li></ul><h3 id='64-隐私-效用权衡'><span>6.4 隐私-效用权衡</span></h3><p><span>所有隐私保护技术都面临隐私与模型性能之间的根本权衡：</span></p><ul><li><p><strong><span>差分隐私</span></strong><span>：噪声量增加 → 隐私增强，但模型效用下降</span></p></li><li><p><strong><span>联邦学习</span></strong><span>：通信限制 → 隐私增强，但收敛速度减慢</span></p></li><li><p><strong><span>数据脱敏</span></strong><span>：信息移除 → 隐私增强，但数据质量下降</span></p></li></ul><p><span>在大模型场景下，这种权衡尤为尖锐：模型规模越大、数据量越多，差分隐私导致的性能退化越严重。</span></p><h3 id='65-隐私预算管理'><span>6.5 隐私预算管理</span></h3><p><span>差分隐私的隐私预算（ε）是有限的资源，需要精细化管理：</span></p><ul><li><p><strong><span>组合定理</span></strong><span>：多次查询的隐私损失可组合计算</span></p></li><li><p><strong><span>高级隐私会计</span></strong><span>：如 Rényi 差分隐私（RDP）、f-DP 等提供更紧致的隐私界</span></p></li><li><p><strong><span>个性化隐私预算</span></strong><span>：根据各客户端的重新识别风险分配不同的隐私预算</span></p></li></ul><hr /><h2 id='7-未来发展方向'><span>7. 未来发展方向</span></h2><h3 id='71-动态隐私保护策略'><span>7.1 动态隐私保护策略</span></h3><p><span>根据数据类型和应用场景动态调整隐私保护策略，实现更精细化的隐私控制。例如，对高度敏感的医疗数据应用更强的隐私保护，对公开新闻数据应用较弱的保护。</span></p><h3 id='72-可解释的隐私保护'><span>7.2 可解释的隐私保护</span></h3><p><span>开发可视化工具，帮助用户理解和控制大模型中的隐私保护机制，提升透明度和用户信任。</span></p><h3 id='73-多模态隐私保护'><span>7.3 多模态隐私保护</span></h3><p><span>将现有的隐私保护技术扩展到视频、音频、3D 内容生成等多模态领域，应对多模态大模型的隐私挑战。</span></p><h3 id='74-阶段感知隐私保护'><span>7.4 阶段感知隐私保护</span></h3><p><span>针对大模型生命周期的不同阶段（数据预处理、训练、微调、推理）设计针对性的隐私保护策略，而非采用一刀切的方案。</span></p><h3 id='75-合成数据与隐私保护'><span>7.5 合成数据与隐私保护</span></h3><p><span>利用生成式模型创建合成训练数据，既保留统计特性又不包含真实个人信息，从根本上消除隐私风险。</span></p><h3 id='76-隐私保护评估标准化'><span>7.6 隐私保护评估标准化</span></h3><p><span>建立统一的隐私保护评估框架和基准测试，便于比较不同技术的有效性和效率。</span></p><h3 id='77-法规驱动的技术创新'><span>7.7 法规驱动的技术创新</span></h3><p><span>随着 GDPR、CCPA 以及中国《个人信息保护法》等法规的实施，隐私保护技术将更加注重合规性和可审计性。</span></p><hr /><h2 id='8-参考文献'><span>8. 参考文献</span></h2><ol start='' ><li><p><span>Abadi, M., et al. (2016). Deep Learning with Differential Privacy. ACM CCS.</span></p></li><li><p><span>McMahan, B., et al. (2017). Communication-Efficient Learning of Deep Networks from Decentralized Data. AISTATS.</span></p></li><li><p><span>Geyer, R. C., et al. (2018). Differentially Private Federated Learning: A Client Level Perspective.</span></p></li><li><p><span>Papernot, N., et al. (2017). Semi-supervised Knowledge Transfer for Deep Learning from Private Training Data. ICLR.</span></p></li><li><p><span>Hu, E. J., et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models.</span></p></li><li><p><span>Shi, W., et al. (2022). Selective Differential Privacy for Language Modeling.</span></p></li><li><p><span>Dwork, C., &amp; Roth, A. (2014). The Algorithmic Foundations of Differential Privacy.</span></p></li><li><p><span>Sweeney, L. (2000). Simple Demographics Often Identify People Uniquely.</span></p></li><li><p><span>Differential Privacy in Machine Learning: A Survey from Symbolic AI to LLMs. arXiv:2506.11687, 2026.</span></p></li><li><p><span>Hide and Seek (HaS): A Lightweight Framework for Prompt Privacy Protection. arXiv:2309.03057.</span></p></li><li><p><span>Privacy-Preserving Customer Support: A Framework for Secure and Scalable Interactions. arXiv:2412.07687.</span></p></li><li><p><span>Privacy Preserving Machine Learning Workflow: from Anonymization to Personalized Differential Privacy Budgets in Federated Learning. arXiv:2605.02372, 2026.</span></p></li><li><p><span>Flower Framework Documentation - Differential Privacy in Federated Learning.</span></p></li><li><p><span>Sherpa.ai - Federated Learning vs. Data Anonymization.</span></p></li><li><p><span>大模型赋能在线教育的伦理风险与治理研究, 2025.</span></p></li><li><p><span>HunyuanDiT隐私保护技术：差分隐私与数据脱敏的应用探索, 2025.</span></p></li></ol><hr /><blockquote><p><span>本文档由 AI 助手整理生成，内容基于公开学术文献与技术报告，仅供参考学习使用。</span></p></blockquote></div></div>
+</body>
+</html>

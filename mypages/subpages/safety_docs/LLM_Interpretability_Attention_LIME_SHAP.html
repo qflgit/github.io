@@ -1,0 +1,1025 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-mathjax">
+mjx-container[overflow="scroll"][display] {
+  overflow: auto clip;
+  min-width: initial !important;
+}
+
+mjx-container[overflow="truncate"][display] {
+  overflow: hidden clip;
+  min-width: initial !important;
+}
+
+mjx-container[display] {
+  display: block;
+  text-align: center;
+  justify-content: center;
+  margin: .7em 0;
+  padding: .3em 2px;
+}
+
+mjx-container[display][width="full"] {
+  display: flex;
+}
+
+mjx-container[justify="left"] {
+  text-align: left;
+  justify-content: left;
+}
+
+mjx-container[justify="right"] {
+  text-align: right;
+  justify-content: right;
+}
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+  white-space: nowrap;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+rect[data-sre-highlighter-added]:has(+ .mjx-selected), rect[data-sre-highlighter-bbox].mjx-selected {
+  stroke: black;
+  stroke-width: 80px;
+}
+
+@media (prefers-color-scheme: dark) {
+  rect[data-sre-highlighter-added]:has(+ .mjx-selected), rect[data-sre-highlighter-bbox].mjx-selected {
+    stroke: #C8C8C8;
+  }
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: polygon(0 0, 0 1px, 1px 1px, 1px 0);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  text-indent: 0px ! important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"] mjx-break {
+  white-space: normal;
+  line-height: 0;
+  clip-path: rect(0 0 0 0);
+  font-family: MJX-ZERO ! important;
+}
+
+mjx-break[size="0"] {
+  letter-spacing: -0.999em;
+}
+
+mjx-break[size="1"] {
+  letter-spacing: -0.889em;
+}
+
+mjx-break[size="2"] {
+  letter-spacing: -0.833em;
+}
+
+mjx-break[size="3"] {
+  letter-spacing: -0.778em;
+}
+
+mjx-break[size="4"] {
+  letter-spacing: -0.722em;
+}
+
+mjx-break[size="5"] {
+  letter-spacing: -0.667em;
+}
+
+mjx-container[jax="SVG"] mjx-break[newline]::before {
+  white-space: pre;
+  content: "\A";
+}
+
+mjx-break[newline] + svg[width="0.054ex"] {
+  margin-right: -1px;
+}
+
+mjx-break[prebreak] {
+  letter-spacing: -.999em;
+}
+
+@font-face /* zero */ {
+  font-family: MJX-ZERO;
+  src: url(data:application/x-font-woff;charset=utf-8;base64,T1RUTwAJAIAAAwAQQ0ZGIGnFMZkAAARQAAAAlE9TLzJpUWOBAAABAAAAAGBjbWFwAAwAUwAABAQAAAAsaGVhZCFRvpAAAACcAAAANmhoZWEC8AD9AAAA1AAAACRobXR4A+gAAAAABOQAAAAIbWF4cAACUAAAAAD4AAAABm5hbWVNb8+2AAABYAAAAqNwb3N0AAMAAAAABDAAAAAgAAEAAAABAABVWOu4Xw889QADA+gAAAAA3ym+2AAAAADfKb7YAAAAAAPoAAAAAAADAAIAAAAAAAAAAQAAAu79EgAAA+gAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAFAAAAIAAAADA+gB9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABYWFhYAEAAIAAgAu79EgAAAu4C7gAAAAEAAAAAAXcAAAAgACAAAAAAACIBngABAAAAAAAAAAEAQQABAAAAAAABAAsAAAABAAAAAAACAAcAIQABAAAAAAADABUAxgABAAAAAAAEABMANgABAAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQQABAAAAAAAIAAEAQQABAAAAAAAJAAEAQQABAAAAAAAKAAEAQQABAAAAAAALAAEAQQABAAAAAAAMAAEAQQABAAAAAAANAAEAQQABAAAAAAAOAAEAQQABAAAAAAAQAAsAAAABAAAAAAARAAcAIQADAAEECQAAAAIAXwADAAEECQABABYACwADAAEECQACAA4AKAADAAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAXwADAAEECQAIAAIAXwADAAEECQAJAAIAXwADAAEECQAKAAIAXwADAAEECQALAAIAXwADAAEECQAMAAIAXwADAAEECQANAAIAXwADAAEECQAOAAIAXwADAAEECQAQABYACwADAAEECQARAA4AKG1qeC1sbS16ZXJvAG0AagB4AC0AbABtAC0AegBlAHIAb1JlZ3VsYXIAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvIFJlZ3VsYXIAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvUmVndWxhcgBtAGoAeAAtAGwAbQAtAHoAZQByAG8AUgBlAGcAdQBsAGEAclZlcnNpb24gMC4xAFYAZQByAHMAaQBvAG4AIAAwAC4AMSA6bWp4LWxtLXplcm8gUmVndWxhcgAgADoAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcgAAAAABAAMAAQAAAAwABAAgAAAABAAEAAEAAAAg//8AAAAg////4QABAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAQABAQETbWp4LWxtLXplcm9SZWd1bGFyAAEBASf4GwD4HAL4HQP4HgSLi/mC+nwFHQAAAIYPHQAAAIkRix0AAACUEgAFAQEMHyoxNlZlcnNpb24gMC4xbWp4LWxtLXplcm8gUmVndWxhcm1qeC1sbS16ZXJvUmVndWxhcnNwYWNlAAAAAYsAAgEBAwaLDvp8DgAAAAAD6AAA) format("woff");
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  line-height: 0;
+  padding: .2em;
+  border: 1px solid #888;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+g[data-mjx-collapsed] {
+  fill: #55F;
+}
+
+@media (prefers-color-scheme: dark) /* svg maction */ {
+  mjx-tool > mjx-tip {
+    background-color: #303030;
+      color: #E0E0E0;
+      box-shadow: 2px 2px 5px #000;
+  }
+  mjx-status {
+    background-color: #303030;
+      color: #E0E0E0;
+  }
+  g[data-mjx-collapsed] {
+    fill: #88F;
+  }
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+foreignObject[data-mjx-html] {
+  overflow: visible;
+}
+
+mjx-measure-xml {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  line-height: normal;
+  white-space: normal;
+}
+
+mjx-html {
+  display: inline-block;
+  line-height: normal;
+  text-align: initial;
+  white-space: initial;
+}
+
+mjx-html-holder {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+</style>
+<style type='text/css'  id="style-mathjax-ni">mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>LLM_Interpretability_Attention_LIME_SHAP</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='大语言模型可解释性-注意力可视化lime-与-shap-分析'><span>大语言模型可解释性: 注意力可视化、LIME 与 SHAP 分析</span></h1><blockquote><p><span>本文系统介绍大语言模型(LLM)可解释性的核心方法, 涵盖注意力机制可视化、LIME 局部解释与 SHAP 全局/局部归因分析, 并提供实践代码示例。</span></p></blockquote><hr /><h2 id='目录'><span>目录</span></h2><ol start='' ><li><p><a href='#1-可解释性概述'><span>可解释性概述</span></a></p></li><li><p><a href='#2-注意力机制可视化'><span>注意力机制可视化</span></a></p></li><li><p><a href='#3-lime-局部可解释模型无关解释'><span>LIME 局部可解释模型无关解释</span></a></p></li><li><p><a href='#4-shap-沙普利可加解释'><span>SHAP 沙普利可加解释</span></a></p></li><li><p><a href='#5-综合实践案例'><span>综合实践案例</span></a></p></li><li><p><a href='#6-方法对比与选型建议'><span>方法对比与选型建议</span></a></p></li><li><p><a href='#7-局限性与未来方向'><span>局限性与未来方向</span></a></p></li></ol><hr /><h2 id='1-可解释性概述'><span>1. 可解释性概述</span></h2><h3 id='11-为什么需要可解释性'><span>1.1 为什么需要可解释性</span></h3><p><span>大语言模型(如 GPT、BERT 系列)参数量动辄数十亿甚至数千亿, 其决策过程对人类而言几乎是一个&quot;黑箱&quot;。模型可解释性(Model Interpretability / Explainable AI, XAI)旨在回答以下核心问题:</span></p><ul><li><p><strong><span>模型为什么做出这个预测?</span></strong><span> 哪些输入特征(词元)对结果影响最大?</span></p></li><li><p><strong><span>模型是否存在偏见?</span></strong><span> 是否基于无关或敏感属性做决策?</span></p></li><li><p><strong><span>如何调试和优化模型?</span></strong><span> 定位错误决策的根源。</span></p></li><li><p><strong><span>如何建立用户信任?</span></strong><span> 在高风险领域(医疗、金融、法律)提供决策依据。</span></p></li></ul><h3 id='12-可解释性的四个维度'><span>1.2 可解释性的四个维度</span></h3><p><span>根据 Mumuni 等人提出的框架, LLM 可解释性可从以下四个维度进行结构化分析:</span></p><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>说明</span></th><th><span>示例</span></th></tr></thead><tbody><tr><td><strong><span>范围(Scope)</span></strong></td><td><span>全局解释 vs. 局部解释</span></td><td><span>全局: 模型整体注意力模式; 局部: 单个预测的归因</span></td></tr><tr><td><strong><span>实施阶段(Stage)</span></strong></td><td><span>事后解释(Post-hoc) vs. 内置解释(Ante-hoc)</span></td><td><span>Post-hoc: LIME、SHAP; Ante-hoc: 注意力机制本身</span></td></tr><tr><td><strong><span>适用性(Applicability)</span></strong></td><td><span>模型特定 vs. 模型无关</span></td><td><span>模型特定: 注意力可视化; 模型无关: LIME、SHAP</span></td></tr><tr><td><strong><span>规模与透明度</span></strong></td><td><span>参数量巨大导致内部逻辑难以符号化检查</span></td><td><span>需借助注意力权重、显著性图等代理指标近似推理</span></td></tr></tbody></table></figure><hr /><h2 id='2-注意力机制可视化'><span>2. 注意力机制可视化</span></h2><h3 id='21-自注意力机制原理'><span>2.1 自注意力机制原理</span></h3><p><span>Transformer 架构的核心是自注意力(Self-Attention)机制, 其数学表达为:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n61" cid="n61" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-math-container"><mjx-container class="MathJax" jax="SVG" overflow="overflow" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="48.573ex" height="2.583ex" role="img" focusable="false" viewBox="0 -891.7 21469.1 1141.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-1-NCM-I-1D434" d="M137 3C155 3 217 0 236 0C251 0 258 8 258 23C258 32 252 38 239 39C210 40 196 50 196 69C196 78 205 98 224 128C251 173 270 206 283 228L526 228C526 221 527 207 530 185C537 112 541 72 541 67C541 48 519 39 474 39C455 39 446 31 446 15C446 5 452 0 464 0C488 0 564 3 588 3C608 3 679 0 699 0C714 0 721 8 721 24C721 34 712 39 694 39C666 39 649 41 644 44C639 47 635 56 634 71L574 689C571 708 572 716 551 716C539 716 529 710 522 697L178 120C148 70 108 43 59 39C43 38 35 30 35 15C35 5 41 0 52 0C68 0 121 3 137 3M492 577L522 267L307 267Z"></path><path id="MJX-1-NCM-I-1D461" d="M330 419C330 428 320 433 299 433L218 433C244 537 257 591 257 595C257 616 246 626 225 626C202 626 188 613 182 587L145 433L56 433C34 433 23 432 23 411C23 400 33 395 54 395L135 395C86 200 62 97 62 84C62 28 100-11 156-11C194-11 227 6 256 41C280 70 297 98 308 125C312 136 314 142 314 145C314 154 309 159 299 159C291 159 285 154 281 143C247 60 206 19 157 19C140 19 131 33 131 60C131 75 133 91 137 107L208 395L297 395C323 395 330 397 330 419Z"></path><path id="MJX-1-NCM-I-1D452" d="M124 129C124 153 129 186 139 227L188 227C253 227 303 235 339 250C372 264 394 284 405 309C412 326 415 342 415 355C415 410 363 442 307 442C268 442 229 432 190 412C113 372 46 281 46 171C46 69 105-11 204-11C257-11 304 2 345 27C379 48 404 69 420 90C427 99 430 106 430 109C430 120 425 126 414 126C409 126 404 122 398 114C365 70 324 42 277 30C246 22 223 18 206 18C149 18 124 72 124 129M375 355C375 289 311 256 182 256L147 256C166 322 194 366 232 387C262 404 287 413 307 413C343 413 375 391 375 355Z"></path><path id="MJX-1-NCM-I-1D45B" d="M537 137C514 58 481 18 440 18C427 18 420 28 420 47C420 61 426 84 438 115C478 224 498 296 498 333C498 403 451 442 381 442C322 442 271 416 230 363C222 407 187 442 136 442C80 442 58 390 44 345C34 313 29 294 29 287C29 278 34 273 45 273C50 273 53 274 56 276C61 285 64 292 65 299C83 375 106 413 133 413C151 413 160 399 160 371C160 358 155 331 144 290L87 63C84 50 78 24 78 19C78-1 89-11 111-11C130-11 144-1 151 19C153 24 159 49 170 92L191 181L221 295C232 318 249 341 270 365C299 397 335 413 378 413C411 413 427 391 427 348C427 310 406 234 363 120C356 102 353 87 353 74C353 25 390-11 438-11C482-11 517 14 542 64C561 104 571 131 571 144C571 153 566 158 555 158C552 158 537 149 537 137Z"></path><path id="MJX-1-NCM-I-1D456" d="M284 621C284 648 271 661 244 661C216 661 188 633 188 605C188 578 202 565 229 565C257 565 284 593 284 621M259 138C237 59 205 19 164 19C151 19 144 28 144 47C144 64 173 150 232 306C240 329 244 347 244 360C244 409 210 445 161 445C118 445 84 420 59 369C39 328 29 301 29 288C29 279 34 275 45 275C58 275 60 281 64 295C87 375 118 415 158 415C171 415 178 406 178 387C178 373 175 357 168 338C145 275 121 208 101 155C86 115 78 88 78 74C78 25 114-11 162-11C205-11 239 14 264 64C283 103 293 130 293 145C293 154 288 159 277 159C274 159 259 150 259 138Z"></path><path id="MJX-1-NCM-I-1D45C" d="M308 442C239 442 176 412 122 353C68 294 41 229 41 159C41 63 106-11 202-11C272-11 334 19 388 78C442 137 469 201 469 272C469 369 405 442 308 442M389 310C389 287 384 255 374 213C353 130 319 73 272 42C248 26 225 18 203 18C149 18 121 65 121 122C121 180 155 288 178 324C216 383 259 413 307 413C361 413 389 367 389 310Z"></path><path id="MJX-1-NCM-N-28" d="M318-248C327-248 332-243 332-234C332-231 330-227 327-223C275-183 233-117 202-26C175 53 161 131 161 208L161 292C161 369 175 447 202 526C233 617 275 683 327 723C330 726 332 730 332 734C332 743 327 748 318 748C317 748 314 747 311 745C251 699 201 631 160 540C121 453 101 371 101 292L101 208C101 129 121 47 160-40C201-131 251-199 311-245C314-247 317-248 318-248Z"></path><path id="MJX-1-NCM-I-1D444" d="M306-24C335-24 366-19 399-10C396-48 395-72 395-81C395-156 424-194 481-194C542-194 589-145 612-100C637-48 650-14 650 2C650 11 645 16 635 16C628 16 623 12 620 3C605-43 564-90 508-90C457-90 450-49 442 6C526 39 597 96 654 178C711 260 740 345 740 434C740 513 717 577 670 628C623 679 561 705 484 705C431 705 378 692 325 665C217 612 138 528 87 415C62 358 49 302 49 245C49 88 151-24 306-24M645 466C645 405 630 335 600 254C565 161 511 92 436 48C432 70 426 90 418 108C405 138 381 153 346 153C291 153 241 103 241 48C241 39 242 30 244 23C177 54 144 117 144 213C144 255 152 306 169 366C204 493 267 583 358 636C401 660 441 672 478 672C588 672 645 581 645 466M346 123C383 123 402 96 402 43C402 34 399 29 393 27C365 15 338 9 312 9C284 9 270 22 270 48C270 86 308 123 346 123Z"></path><path id="MJX-1-NCM-N-2C" d="M139 106C107 106 86 82 86 50C86 20 109-5 139-5C153-5 165-1 174 8L175 0C175-63 154-117 112-160C105-168 101-174 101-178C101-188 105-193 114-193C123-193 135-181 152-158C186-110 203-57 203 0C203 53 185 106 139 106Z"></path><path id="MJX-1-NCM-I-1D43E" d="M804 680C783 680 715 683 694 683C679 683 671 675 671 659C671 651 678 646 692 643C706 640 714 635 714 628C714 617 703 602 680 585L302 296L379 602C384 623 393 636 406 641C412 643 429 644 458 644C484 644 496 644 496 668C496 678 490 683 478 683L351 680L223 683C207 684 199 676 199 660C199 649 210 644 232 644C252 644 293 647 293 631C293 629 292 623 289 613L156 82C151 60 141 47 126 42C119 40 101 39 70 39C48 39 38 37 38 16C38 5 44 0 57 0L183 3L246 2C257 2 299 0 310 0C326 0 334 8 334 24C334 34 324 39 303 39C262 39 242 43 242 52C242 57 245 72 251 95L290 249L433 359L546 98C553 81 557 70 557 65C557 48 541 39 510 39C492 39 484 35 484 15C484 5 490 0 502 0C524 0 600 3 622 3C641 3 701 0 720 0C734 0 741 8 741 24C741 33 733 38 718 39C677 39 667 50 653 81L512 404C511 409 509 413 508 416L708 570C757 608 799 631 833 639C857 643 889 642 889 668C889 678 884 683 874 683C860 683 818 680 804 680Z"></path><path id="MJX-1-NCM-I-1D449" d="M671 680C652 680 592 683 573 683C558 683 550 675 550 660C550 650 557 645 570 644C598 643 612 633 612 616C612 607 607 595 598 580L300 107L234 619C234 636 255 644 298 644C318 644 327 651 327 668C327 678 321 683 309 683C287 683 209 680 187 680C167 680 99 683 79 683C64 683 56 675 56 660C56 649 66 644 85 644C102 644 114 642 122 640C138 635 137 633 140 614L218 4C221-13 229-22 242-22C255-22 265-15 273-2L629 564C652 600 674 623 696 632C711 639 730 643 752 644C763 645 768 652 769 667C770 678 764 683 752 683C737 683 686 680 671 680Z"></path><path id="MJX-1-NCM-N-29" d="M78-245C138-199 188-131 229-40C268 47 288 129 288 208L288 292C288 371 268 453 229 540C188 631 138 699 78 745C75 747 72 748 71 748C62 748 57 743 57 734C57 730 59 726 62 723C114 683 156 617 187 526C214 447 228 369 228 292L228 208C228 131 214 53 187-26C156-117 114-183 62-223C59-227 57-231 57-234C57-243 62-248 71-248C72-248 75-247 78-245Z"></path><path id="MJX-1-NCM-N-3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path><path id="MJX-1-NCM-I-1D460" d="M420 354C420 411 362 442 300 442C237 442 192 423 165 385C142 352 130 322 130 295C130 242 165 208 234 193C263 188 285 181 302 173C323 164 333 147 333 123C333 105 325 85 308 62C287 33 250 18 197 18C143 18 108 33 92 62C124 61 151 87 151 119C151 144 138 157 111 157C75 157 52 124 52 88C52 22 124-11 196-11C271-11 325 11 357 56C384 93 397 126 397 156C397 199 376 231 335 252C304 263 280 270 265 273C230 282 194 285 194 328C194 381 244 413 300 413C342 413 369 400 382 375C360 371 337 352 337 327C337 306 348 295 371 295C402 295 420 323 420 354Z"></path><path id="MJX-1-NCM-I-1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path><path id="MJX-1-NCM-I-1D45A" d="M657 442C596 442 543 412 498 353C489 412 451 442 383 442C324 442 273 416 231 363C223 407 188 442 137 442C96 442 66 409 45 344C34 312 29 293 29 287C29 278 34 273 45 273C50 273 53 274 56 276C61 285 64 292 66 299C84 375 107 413 134 413C152 413 161 399 161 371C161 358 156 331 145 290L88 63C84 51 79 25 79 19C79-1 90-11 111-11C131-11 145-1 152 19C153 24 160 49 171 92L192 181L222 295C233 318 250 341 272 365C301 397 337 413 380 413C413 413 429 391 429 348C429 335 424 308 414 267L387 153C380 124 364 64 356 32C355 25 354 21 354 19C354-1 365-11 387-11C398-11 406-8 413-1C428 14 429 21 435 48L494 285C497 298 511 321 535 353C565 393 605 413 654 413C687 413 703 391 703 348C703 309 683 236 642 129C633 106 629 87 629 74C629 25 666-11 714-11C759-11 793 14 818 64C838 104 848 131 848 144C848 153 843 158 832 158C825 157 818 148 813 137C791 58 759 18 716 18C703 18 696 28 696 47C696 62 702 84 714 115C755 222 775 295 775 333C775 404 728 442 657 442Z"></path><path id="MJX-1-NCM-I-1D44E" d="M498 144C498 153 493 158 482 158C474 158 468 151 465 137C445 58 421 18 394 18C377 18 368 32 368 60C368 73 372 97 381 132L438 357C443 376 445 387 445 392C445 412 434 422 412 422C391 422 377 410 370 387C349 424 319 442 281 442C216 442 159 409 109 343C63 281 40 217 40 150C40 63 91-11 175-11C218-11 260 12 300 58C311 20 345-11 392-11C461-11 482 70 498 144M341 374C350 353 355 339 355 330C355 326 354 321 353 314L304 122C301 111 294 99 285 87C248 41 212 18 177 18C138 18 118 48 118 107C118 131 124 167 136 215C157 300 187 357 224 388C244 405 263 413 282 413C309 413 329 400 341 374Z"></path><path id="MJX-1-NCM-I-1D465" d="M527 373C527 419 482 442 432 442C389 442 355 419 329 373C308 419 273 442 222 442C173 442 133 419 101 374C74 335 60 306 60 287C60 278 65 273 75 273C84 273 90 278 92 287C111 345 153 413 220 413C253 413 269 392 269 351C269 330 251 252 216 118C199 51 169 18 126 18C112 18 99 21 88 26C114 36 127 54 127 80C127 106 114 119 87 119C54 119 29 91 29 58C29 12 76-11 125-11C167-11 201 12 228 58C247 12 283-11 335-11C383-11 423 12 455 57C482 96 496 125 496 144C496 153 491 158 481 158C472 158 467 153 464 144C447 87 402 18 337 18C304 18 287 38 287 79C287 92 292 120 303 165L337 300C356 375 387 413 431 413C445 413 458 410 469 405C442 396 429 378 429 351C429 325 443 312 470 312C502 312 527 341 527 373Z"></path><path id="MJX-1-NCM-I-1D447" d="M344 631C344 628 343 621 340 611L208 83C204 68 200 59 197 55C188 44 154 39 94 39C63 39 49 42 49 16C49 5 56 0 69 0C120 0 192 4 235 3L317 2C331 2 386 0 403 0C420 0 428 8 428 24C428 34 416 39 391 39C339 39 309 41 300 46C297 48 295 52 295 58L430 603C433 617 436 626 439 629C443 635 467 638 511 638C566 638 604 634 623 625C642 616 652 595 652 561C652 543 649 517 644 483C642 475 641 469 641 464C641 453 646 447 657 447C666 447 672 456 675 473L702 645C703 650 704 656 704 662C704 672 694 677 673 677L125 677C99 677 97 674 89 655L30 481C27 472 25 466 24 462C24 452 29 447 40 447C48 447 55 455 60 470C85 543 110 588 133 607C159 628 209 638 282 638L321 638C332 638 344 639 344 631Z"></path><path id="MJX-1-NCM-N-2F" d="M444 718C445 720 445 723 445 726C445 742 437 750 421 750C410 750 403 745 399 734L57-218C56-220 56-223 56-226C56-242 64-250 80-250C91-250 98-245 102-234Z"></path><path id="MJX-1-NCM-I-1D45E" d="M372 377C352 420 321 442 280 442C215 442 158 409 109 342C63 280 40 216 40 149C40 62 90-13 173-13C209-13 245 4 282 38L241-126C238-141 229-150 215-153C210-154 197-155 174-155C168-156 164-156 162-156C153-157 148-165 148-179L148-183C151-190 157-194 165-194C184-194 244-191 263-191C282-191 345-194 364-194C378-194 385-186 385-170C385-160 375-155 356-155C338-155 313-156 313-144C313-140 314-133 317-123L452 427C452 436 447 441 438 441C420 441 382 391 372 377M340 373C349 352 354 338 354 329C354 328 353 322 351 313L327 216C308 144 299 107 298 105C279 70 224 16 176 16C137 16 117 46 117 105C117 151 148 263 162 300C181 347 225 412 280 412C307 412 327 399 340 373Z"></path><path id="MJX-1-NCM-I-1D45F" d="M436 374C436 416 395 442 351 442C302 442 261 419 227 372C217 411 183 442 136 442C95 442 65 410 44 345C34 312 29 293 29 287C29 278 34 273 45 273C50 273 53 274 56 276C61 285 64 292 65 299C83 375 106 413 133 413C150 413 159 399 159 371C159 358 154 331 144 290L87 63C84 50 78 24 78 19C78-1 89-11 110-11C130-11 143-1 150 19L169 91C180 134 187 162 190 175L221 303C223 311 231 324 244 343C271 381 302 413 351 413C363 413 373 411 382 406C352 397 337 378 337 351C337 325 351 312 378 312C411 312 436 341 436 374Z"></path><path id="MJX-1-NCM-I-1D451" d="M429 632L370 389C349 426 320 445 281 445C216 445 159 412 109 345C63 283 40 218 40 151C40 63 91-11 175-11C218-11 260 12 300 59C311 21 345-11 392-11C461-11 483 71 498 145C498 154 493 159 483 159C474 159 468 152 465 138C445 59 421 19 394 19C377 19 368 33 368 60C368 75 370 91 374 107L516 679L516 683C513 690 507 694 499 694C476 694 434 690 374 683C363 682 357 674 357 660C357 650 366 645 384 645C403 645 429 646 429 632M341 376C351 355 356 341 356 332C355 328 354 323 353 316L304 122C301 111 294 99 285 87C248 42 212 19 177 19C138 19 118 49 118 108C118 132 124 168 136 216C157 301 187 359 224 390C244 407 263 415 282 415C309 415 329 402 341 376Z"></path><path id="MJX-1-NCM-I-1D458" d="M409 353C409 327 423 314 450 314C485 314 508 345 508 379C508 418 476 445 437 445C392 445 344 415 291 356C250 311 217 282 190 269L291 679C289 688 287 694 274 694C242 694 166 685 154 684C139 682 132 675 132 660C132 650 141 645 159 645C178 645 204 646 204 632L59 43C56 32 55 25 55 21C55 0 66-11 87-11C104-11 117-3 124 12C129 21 147 92 179 226C231 221 286 196 286 146C286 131 279 101 279 91C279 34 316-11 373-11C431-11 470 41 490 145C490 154 485 159 475 159C466 159 460 152 457 138C435 59 408 19 375 19C357 19 348 33 348 61C348 77 360 131 360 147C360 204 314 239 221 253C244 269 270 292 298 322C326 352 346 371 359 382C386 404 412 415 435 415C445 415 453 413 459 409C432 404 409 379 409 353Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V"><g data-mml-node="mi" data-latex="A"><use data-c="1D434" xlink:href="#MJX-1-NCM-I-1D434"></use></g><g data-mml-node="mi" data-latex="t" transform="translate(750,0)"><use data-c="1D461" xlink:href="#MJX-1-NCM-I-1D461"></use></g><g data-mml-node="mi" data-latex="t" transform="translate(1111,0)"><use data-c="1D461" xlink:href="#MJX-1-NCM-I-1D461"></use></g><g data-mml-node="mi" data-latex="e" transform="translate(1472,0)"><use data-c="1D452" xlink:href="#MJX-1-NCM-I-1D452"></use></g><g data-mml-node="mi" data-latex="n" transform="translate(1938,0)"><use data-c="1D45B" xlink:href="#MJX-1-NCM-I-1D45B"></use></g><g data-mml-node="mi" data-latex="t" transform="translate(2538,0)"><use data-c="1D461" xlink:href="#MJX-1-NCM-I-1D461"></use></g><g data-mml-node="mi" data-latex="i" transform="translate(2899,0)"><use data-c="1D456" xlink:href="#MJX-1-NCM-I-1D456"></use></g><g data-mml-node="mi" data-latex="o" transform="translate(3244,0)"><use data-c="1D45C" xlink:href="#MJX-1-NCM-I-1D45C"></use></g><g data-mml-node="mi" data-latex="n" transform="translate(3729,0)"><use data-c="1D45B" xlink:href="#MJX-1-NCM-I-1D45B"></use></g><g data-mml-node="mo" data-latex="(" transform="translate(4329,0)"><use data-c="28" xlink:href="#MJX-1-NCM-N-28"></use></g><g data-mml-node="mi" data-latex="Q" transform="translate(4718,0)"><use data-c="1D444" xlink:href="#MJX-1-NCM-I-1D444"></use></g><g data-mml-node="mo" data-latex="," transform="translate(5509,0)"><use data-c="2C" xlink:href="#MJX-1-NCM-N-2C"></use></g><g data-mml-node="mi" data-latex="K" transform="translate(5953.7,0)"><use data-c="1D43E" xlink:href="#MJX-1-NCM-I-1D43E"></use></g><g data-mml-node="mo" data-latex="," transform="translate(6842.7,0)"><use data-c="2C" xlink:href="#MJX-1-NCM-N-2C"></use></g><g data-mml-node="mi" data-latex="V" transform="translate(7287.3,0)"><use data-c="1D449" xlink:href="#MJX-1-NCM-I-1D449"></use></g><g data-mml-node="mo" data-latex=")" transform="translate(8057.3,0)"><use data-c="29" xlink:href="#MJX-1-NCM-N-29"></use></g><g data-mml-node="mo" data-latex="=" transform="translate(8724.1,0)"><use data-c="3D" xlink:href="#MJX-1-NCM-N-3D"></use></g><g data-mml-node="mi" data-latex="s" transform="translate(9779.9,0)"><use data-c="1D460" xlink:href="#MJX-1-NCM-I-1D460"></use></g><g data-mml-node="mi" data-latex="o" transform="translate(10248.9,0)"><use data-c="1D45C" xlink:href="#MJX-1-NCM-I-1D45C"></use></g><g data-mml-node="mi" data-latex="f" transform="translate(10733.9,0)"><use data-c="1D453" xlink:href="#MJX-1-NCM-I-1D453"></use></g><g data-mml-node="mi" data-latex="t" transform="translate(11285.9,0)"><use data-c="1D461" xlink:href="#MJX-1-NCM-I-1D461"></use></g><g data-mml-node="mi" data-latex="m" transform="translate(11646.9,0)"><use data-c="1D45A" xlink:href="#MJX-1-NCM-I-1D45A"></use></g><g data-mml-node="mi" data-latex="a" transform="translate(12524.9,0)"><use data-c="1D44E" xlink:href="#MJX-1-NCM-I-1D44E"></use></g><g data-mml-node="mi" data-latex="x" transform="translate(13053.9,0)"><use data-c="1D465" xlink:href="#MJX-1-NCM-I-1D465"></use></g><g data-mml-node="mo" data-latex="(" transform="translate(13625.9,0)"><use data-c="28" xlink:href="#MJX-1-NCM-N-28"></use></g><g data-mml-node="mi" data-latex="Q" transform="translate(14014.9,0)"><use data-c="1D444" xlink:href="#MJX-1-NCM-I-1D444"></use></g><g data-mml-node="msup" data-latex="K^T" transform="translate(14805.9,0)"><g data-mml-node="mi" data-latex="K"><use data-c="1D43E" xlink:href="#MJX-1-NCM-I-1D43E"></use></g><g data-mml-node="mi" transform="translate(974,413) scale(0.707)" data-latex="T"><use data-c="1D447" xlink:href="#MJX-1-NCM-I-1D447"></use></g></g><g data-mml-node="mo" data-latex="/" transform="translate(16327.7,0)"><use data-c="2F" xlink:href="#MJX-1-NCM-N-2F"></use></g><g data-mml-node="mi" data-latex="s" transform="translate(16827.7,0)"><use data-c="1D460" xlink:href="#MJX-1-NCM-I-1D460"></use></g><g data-mml-node="mi" data-latex="q" transform="translate(17296.7,0)"><use data-c="1D45E" xlink:href="#MJX-1-NCM-I-1D45E"></use></g><g data-mml-node="mi" data-latex="r" transform="translate(17748.7,0)"><use data-c="1D45F" xlink:href="#MJX-1-NCM-I-1D45F"></use></g><g data-mml-node="mi" data-latex="t" transform="translate(18199.7,0)"><use data-c="1D461" xlink:href="#MJX-1-NCM-I-1D461"></use></g><g data-mml-node="mo" data-latex="(" transform="translate(18560.7,0)"><use data-c="28" xlink:href="#MJX-1-NCM-N-28"></use></g><g data-mml-node="msub" data-latex="d_k" transform="translate(18949.7,0)"><g data-mml-node="mi" data-latex="d"><use data-c="1D451" xlink:href="#MJX-1-NCM-I-1D451"></use></g><g data-mml-node="mi" transform="translate(553,-150) scale(0.707)" data-latex="k"><use data-c="1D458" xlink:href="#MJX-1-NCM-I-1D458"></use></g></g><g data-mml-node="mo" data-latex=")" transform="translate(19921.1,0)"><use data-c="29" xlink:href="#MJX-1-NCM-N-29"></use></g><g data-mml-node="mo" data-latex=")" transform="translate(20310.1,0)"><use data-c="29" xlink:href="#MJX-1-NCM-N-29"></use></g><g data-mml-node="mi" data-latex="V" transform="translate(20699.1,0)"><use data-c="1D449" xlink:href="#MJX-1-NCM-I-1D449"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" data-latex="Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V" display="block"><mi data-latex="A">A</mi><mi data-latex="t">t</mi><mi data-latex="t">t</mi><mi data-latex="e">e</mi><mi data-latex="n">n</mi><mi data-latex="t">t</mi><mi data-latex="i">i</mi><mi data-latex="o">o</mi><mi data-latex="n">n</mi><mo data-latex="(" stretchy="false">(</mo><mi data-latex="Q">Q</mi><mo data-latex=",">,</mo><mi data-latex="K">K</mi><mo data-latex=",">,</mo><mi data-latex="V">V</mi><mo data-latex=")" stretchy="false">)</mo><mo data-latex="=">=</mo><mi data-latex="s">s</mi><mi data-latex="o">o</mi><mi data-latex="f">f</mi><mi data-latex="t">t</mi><mi data-latex="m">m</mi><mi data-latex="a">a</mi><mi data-latex="x">x</mi><mo data-latex="(" stretchy="false">(</mo><mi data-latex="Q">Q</mi><msup data-latex="K^T"><mi data-latex="K">K</mi><mi data-latex="T">T</mi></msup><mo data-latex="/">/</mo><mi data-latex="s">s</mi><mi data-latex="q">q</mi><mi data-latex="r">r</mi><mi data-latex="t">t</mi><mo data-latex="(" stretchy="false">(</mo><msub data-latex="d_k"><mi data-latex="d">d</mi><mi data-latex="k">k</mi></msub><mo data-latex=")" stretchy="false">)</mo><mo data-latex=")" stretchy="false">)</mo><mi data-latex="V">V</mi></math></mjx-assistive-mml></mjx-container></div></div><p><span>其中:</span></p><ul><li><p><strong><span>Q (Query)</span></strong><span>: 查询向量, 表示当前词元&quot;想查询什么信息&quot;</span></p></li><li><p><strong><span>K (Key)</span></strong><span>: 键向量, 表示每个词元&quot;提供什么信息&quot;</span></p></li><li><p><strong><span>V (Value)</span></strong><span>: 值向量, 表示每个词元的实际语义内容</span></p></li><li><p><strong><span>d_k</span></strong><span>: 键向量的维度, 用于缩放点积防止梯度消失</span></p></li></ul><p><span>注意力分数 A = softmax(QK^T / sqrt(d_k)) 表示每个词元对其他词元的关注强度, 可直接用于可视化。</span></p><h3 id='22-注意力权重提取与可视化'><span>2.2 注意力权重提取与可视化</span></h3><p><span>使用 Hugging Face Transformers 库可直接提取注意力权重:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">transformers</span> <span class="cm-keyword">import</span> <span class="cm-variable">AutoTokenizer</span>, <span class="cm-variable">AutoModel</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">matplotlib</span>.<span class="cm-property">pyplot</span> <span class="cm-keyword">as</span> <span class="cm-variable">plt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">seaborn</span> <span class="cm-keyword">as</span> <span class="cm-variable">sns</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">torch</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">visualize_attention</span>(<span class="cm-variable">model_name</span>, <span class="cm-variable">text</span>, <span class="cm-variable">layer</span><span class="cm-operator">=-</span><span class="cm-number">1</span>, <span class="cm-variable">head</span><span class="cm-operator">=</span><span class="cm-number">0</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoTokenizer</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_name</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">model</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoModel</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_name</span>, <span class="cm-variable">output_attentions</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>(<span class="cm-variable">text</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>.<span class="cm-property">convert_ids_to_tokens</span>(<span class="cm-variable">inputs</span>[<span class="cm-string">"input_ids"</span>][<span class="cm-number">0</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># attentions: tuple of (batch, num_heads, seq_len, seq_len)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">attention</span> <span class="cm-operator">=</span> <span class="cm-variable">outputs</span>.<span class="cm-property">attentions</span>[<span class="cm-variable">layer</span>][<span class="cm-number">0</span>, <span class="cm-variable">head</span>].<span class="cm-property">numpy</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">figure</span>(<span class="cm-variable">figsize</span><span class="cm-operator">=</span>(<span class="cm-number">12</span>, <span class="cm-number">10</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">sns</span>.<span class="cm-property">heatmap</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">attention</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">xticklabels</span><span class="cm-operator">=</span><span class="cm-variable">tokens</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">yticklabels</span><span class="cm-operator">=</span><span class="cm-variable">tokens</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">cmap</span><span class="cm-operator">=</span><span class="cm-string">"YlOrRd"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">annot</span><span class="cm-operator">=</span><span class="cm-keyword">False</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">fmt</span><span class="cm-operator">=</span><span class="cm-string">".2f"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">title</span>(<span class="cm-string">f"Layer </span>{<span class="cm-variable">layer</span>}<span class="cm-string">, Head </span>{<span class="cm-variable">head</span>}<span class="cm-string"> - Attention Heatmap"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">xlabel</span>(<span class="cm-string">"Key (被关注词元)"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">ylabel</span>(<span class="cm-string">"Query (关注词元)"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">tight_layout</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">show</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Example</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">visualize_attention</span>(<span class="cm-string">"bert-base-chinese"</span>, <span class="cm-string">"人工智能正在改变世界"</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 806px;"></div><div class="CodeMirror-gutters" style="display: none; height: 806px;"></div></div></div></pre><h3 id='23-多头注意力分析'><span>2.3 多头注意力分析</span></h3><p><span>Transformer 每层包含多个注意力头(如 BERT-Base 有 12 头), 不同头可能学习到不同的语言学模式:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">visualize_all_heads</span>(<span class="cm-variable">model_name</span>, <span class="cm-variable">text</span>, <span class="cm-variable">layer</span><span class="cm-operator">=-</span><span class="cm-number">1</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoTokenizer</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_name</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">model</span> <span class="cm-operator">=</span> <span class="cm-variable">AutoModel</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_name</span>, <span class="cm-variable">output_attentions</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>(<span class="cm-variable">text</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>.<span class="cm-property">convert_ids_to_tokens</span>(<span class="cm-variable">inputs</span>[<span class="cm-string">"input_ids"</span>][<span class="cm-number">0</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_heads</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span>.<span class="cm-property">config</span>.<span class="cm-property">num_attention_heads</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">attention</span> <span class="cm-operator">=</span> <span class="cm-variable">outputs</span>.<span class="cm-property">attentions</span>[<span class="cm-variable">layer</span>][<span class="cm-number">0</span>] &nbsp;<span class="cm-comment"># (num_heads, seq_len, seq_len)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">fig</span>, <span class="cm-variable">axes</span> <span class="cm-operator">=</span> <span class="cm-variable">plt</span>.<span class="cm-property">subplots</span>(<span class="cm-number">3</span>, <span class="cm-number">4</span>, <span class="cm-variable">figsize</span><span class="cm-operator">=</span>(<span class="cm-number">20</span>, <span class="cm-number">15</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">i</span>, <span class="cm-variable">ax</span> <span class="cm-keyword">in</span> <span class="cm-builtin">enumerate</span>(<span class="cm-variable">axes</span>.<span class="cm-property">flat</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">num_heads</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">sns</span>.<span class="cm-property">heatmap</span>(<span class="cm-variable">attention</span>[<span class="cm-variable">i</span>].<span class="cm-property">numpy</span>(), <span class="cm-variable">ax</span><span class="cm-operator">=</span><span class="cm-variable">ax</span>, <span class="cm-variable">cmap</span><span class="cm-operator">=</span><span class="cm-string">"viridis"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">xticklabels</span><span class="cm-operator">=</span><span class="cm-variable">tokens</span>, <span class="cm-variable">yticklabels</span><span class="cm-operator">=</span><span class="cm-variable">tokens</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">ax</span>.<span class="cm-property">set_title</span>(<span class="cm-string">f"Head </span>{<span class="cm-variable">i</span>}<span class="cm-string">"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">ax</span>.<span class="cm-property">tick_params</span>(<span class="cm-variable">axis</span><span class="cm-operator">=</span><span class="cm-string">"both"</span>, <span class="cm-variable">labelsize</span><span class="cm-operator">=</span><span class="cm-number">6</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">suptitle</span>(<span class="cm-string">f"Layer </span>{<span class="cm-variable">layer</span>}<span class="cm-string"> - All Attention Heads"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">tight_layout</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">show</span>()</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 530px;"></div><div class="CodeMirror-gutters" style="display: none; height: 530px;"></div></div></div></pre><h3 id='24-注意力聚合与模式识别'><span>2.4 注意力聚合与模式识别</span></h3><p><span>为获得更稳定的解释, 可对多层多头的注意力进行聚合:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">numpy</span> <span class="cm-keyword">as</span> <span class="cm-variable">np</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">aggregate_attention</span>(<span class="cm-variable">outputs</span>, <span class="cm-variable">aggregation</span><span class="cm-operator">=</span><span class="cm-string">"mean"</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">all_attentions</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">stack</span>(<span class="cm-variable">outputs</span>.<span class="cm-property">attentions</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">aggregation</span> <span class="cm-operator">==</span> <span class="cm-string">"mean"</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">aggregated</span> <span class="cm-operator">=</span> <span class="cm-variable">all_attentions</span>.<span class="cm-property">mean</span>(<span class="cm-variable">dim</span><span class="cm-operator">=</span>(<span class="cm-number">0</span>, <span class="cm-number">2</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">elif</span> <span class="cm-variable">aggregation</span> <span class="cm-operator">==</span> <span class="cm-string">"max"</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">aggregated</span> <span class="cm-operator">=</span> <span class="cm-variable">all_attentions</span>.<span class="cm-property">max</span>(<span class="cm-variable">dim</span><span class="cm-operator">=</span><span class="cm-number">2</span>)[<span class="cm-number">0</span>].<span class="cm-property">mean</span>(<span class="cm-variable">dim</span><span class="cm-operator">=</span><span class="cm-number">0</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">elif</span> <span class="cm-variable">aggregation</span> <span class="cm-operator">==</span> <span class="cm-string">"cls"</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">aggregated</span> <span class="cm-operator">=</span> <span class="cm-variable">all_attentions</span>[:, :, :, <span class="cm-number">0</span>, :].<span class="cm-property">mean</span>(<span class="cm-variable">dim</span><span class="cm-operator">=</span>(<span class="cm-number">0</span>, <span class="cm-number">2</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">aggregated</span>[<span class="cm-number">0</span>].<span class="cm-property">numpy</span>()</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 299px;"></div></div></div></pre><h3 id='25-注意力可视化的价值与局限'><span>2.5 注意力可视化的价值与局限</span></h3><p><strong><span>价值:</span></strong></p><ul><li><p><span>直观展示模型关注哪些词元及其关联关系</span></p></li><li><p><span>无需额外计算开销(模型前向传播时直接获取)</span></p></li><li><p><span>有助于发现语言学模式(如指代消解、句法依赖)</span></p></li></ul><p><strong><span>局限:</span></strong></p><ul><li><p><strong><span>注意力不等于解释</span></strong><span>: 注意力权重反映的是信息流动, 不一定等同于特征重要性</span></p></li><li><p><span>不同头的注意力模式可能相互矛盾</span></p></li><li><p><span>深层网络的注意力经过多层变换, 难以直接映射到输入</span></p></li></ul><hr /><h2 id='3-lime-局部可解释模型无关解释'><span>3. LIME 局部可解释模型无关解释</span></h2><h3 id='31-lime-核心思想'><span>3.1 LIME 核心思想</span></h3><p><span>LIME(Local Interpretable Model-agnostic Explanations)是一种事后(Post-hoc)、模型无关(Model-agnostic)的局部解释方法。其核心假设是: </span><strong><span>在单个样本的邻域内, 复杂模型的行为可以用一个简单的可解释模型(如线性模型)近似</span></strong><span>。</span></p><h3 id='32-lime-工作流程'><span>3.2 LIME 工作流程</span></h3><ol start='' ><li><p><strong><span>扰动生成</span></strong><span>: 在待解释样本周围生成扰动样本(如随机遮蔽文本中的某些词)</span></p></li><li><p><strong><span>模型预测</span></strong><span>: 用黑箱模型对扰动样本进行预测</span></p></li><li><p><strong><span>加权拟合</span></strong><span>: 根据扰动样本与原始样本的相似度赋予权重, 拟合一个局部线性模型</span></p></li><li><p><strong><span>特征归因</span></strong><span>: 线性模型的系数即为各特征的局部重要性</span></p></li></ol><h3 id='33-lime-文本解释实现'><span>3.3 LIME 文本解释实现</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">lime</span>.<span class="cm-property">lime_text</span> <span class="cm-keyword">import</span> <span class="cm-variable">LimeTextExplainer</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">numpy</span> <span class="cm-keyword">as</span> <span class="cm-variable">np</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">LIMETextExplainer</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">model</span>, <span class="cm-variable">tokenizer</span>, <span class="cm-variable">class_names</span><span class="cm-operator">=</span><span class="cm-keyword">None</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">model</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">class_names</span> <span class="cm-operator">=</span> <span class="cm-variable">class_names</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">explainer</span> <span class="cm-operator">=</span> <span class="cm-variable">LimeTextExplainer</span>(<span class="cm-variable">class_names</span><span class="cm-operator">=</span><span class="cm-variable">class_names</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">predict_proba</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">texts</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-builtin">isinstance</span>(<span class="cm-variable">texts</span>, <span class="cm-builtin">str</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">texts</span> <span class="cm-operator">=</span> [<span class="cm-variable">texts</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">results</span> <span class="cm-operator">=</span> []</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">text</span> <span class="cm-keyword">in</span> <span class="cm-variable">texts</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>(<span class="cm-variable">text</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>, </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">truncation</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>, <span class="cm-variable">padding</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">model</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">probs</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">softmax</span>(<span class="cm-variable">outputs</span>.<span class="cm-property">logits</span>, <span class="cm-variable">dim</span><span class="cm-operator">=-</span><span class="cm-number">1</span>).<span class="cm-property">cpu</span>().<span class="cm-property">numpy</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">results</span>.<span class="cm-property">append</span>(<span class="cm-variable">probs</span>[<span class="cm-number">0</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">np</span>.<span class="cm-property">array</span>(<span class="cm-variable">results</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">explain_instance</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>, <span class="cm-variable">num_features</span><span class="cm-operator">=</span><span class="cm-number">10</span>, <span class="cm-variable">num_samples</span><span class="cm-operator">=</span><span class="cm-number">500</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">exp</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">explainer</span>.<span class="cm-property">explain_instance</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">text</span>, <span class="cm-variable-2">self</span>.<span class="cm-property">predict_proba</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">num_features</span><span class="cm-operator">=</span><span class="cm-variable">num_features</span>, <span class="cm-variable">num_samples</span><span class="cm-operator">=</span><span class="cm-variable">num_samples</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">exp</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">show_explanation</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>, <span class="cm-variable">num_features</span><span class="cm-operator">=</span><span class="cm-number">10</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">exp</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">explain_instance</span>(<span class="cm-variable">text</span>, <span class="cm-variable">num_features</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"预测文本: </span>{<span class="cm-variable">text</span>}<span class="cm-string">"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"预测类别: </span>{<span class="cm-variable">exp</span>.<span class="cm-property">available_labels</span>()[<span class="cm-number">0</span>]}<span class="cm-string">"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">"Top 特征贡献:"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">feature</span>, <span class="cm-variable">weight</span> <span class="cm-keyword">in</span> <span class="cm-variable">exp</span>.<span class="cm-property">as_list</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">direction</span> <span class="cm-operator">=</span> <span class="cm-string">"正向"</span> <span class="cm-keyword">if</span> <span class="cm-variable">weight</span> <span class="cm-operator">&gt;</span> <span class="cm-number">0</span> <span class="cm-keyword">else</span> <span class="cm-string">"负向"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f" &nbsp;</span>{<span class="cm-variable">feature</span>}<span class="cm-string">: </span>{<span class="cm-variable">weight</span>:<span class="cm-number">.4</span><span class="cm-variable">f</span>}<span class="cm-string"> (</span>{<span class="cm-variable">direction</span>}<span class="cm-string">)"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">exp</span>.<span class="cm-property">as_html</span>()</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 991px;"></div><div class="CodeMirror-gutters" style="display: none; height: 991px;"></div></div></div></pre><h3 id='34-lime-的优缺点'><span>3.4 LIME 的优缺点</span></h3><figure class='table-figure'><table><thead><tr><th><span>特性</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>优点</span></strong></td><td><span>模型无关, 适用于任何黑箱模型; 实现简单; 解释直观</span></td></tr><tr><td><strong><span>缺点</span></strong></td><td><span>仅提供局部解释; 结果不稳定(随机扰动导致每次运行结果可能不同); 需要大量扰动样本</span></td></tr></tbody></table></figure><hr /><h2 id='4-shap-沙普利可加解释'><span>4. SHAP 沙普利可加解释</span></h2><h3 id='41-shap-理论基础'><span>4.1 SHAP 理论基础</span></h3><p><span>SHAP(SHapley Additive exPlanations)基于合作博弈论中的 </span><strong><span>Shapley 值</span></strong><span>, 将模型预测视为所有特征&quot;合作&quot;产生的&quot;收益&quot;, 然后公平地将收益分配给每个特征。</span></p><p><span>Shapley 值的计算考虑所有可能的特征子集组合, 衡量某个特征在所有组合中的边际贡献:</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n131" cid="n131" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-math-container"><mjx-container class="MathJax" jax="SVG" overflow="overflow" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="70.013ex" height="4.416ex" role="img" focusable="false" viewBox="0 -750 30945.7 1952" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.72ex;"><defs><path id="MJX-2-NCM-I-1D45D" d="M355 442C311 442 269 419 228 373C217 419 186 442 137 442C96 442 66 409 45 344C35 311 30 292 30 286C30 277 35 272 46 272C51 272 54 273 57 275C62 284 65 291 66 298C84 374 107 412 134 412C152 412 161 398 161 371C161 356 159 339 154 321L44-118C35-151 34-155-5-155C-23-155-32-163-32-178C-32-189-26-194-15-194C0-194 52-191 67-191C86-191 146-194 165-194C180-194 187-186 187-170C187-160 178-155 159-155C141-155 114-156 114-144C114-131 155 26 159 43C179 6 209-13 249-13C314-13 371 20 421 87C467 148 490 213 490 280C490 367 438 442 355 442M352 412C391 412 411 382 411 323C411 296 405 260 394 215C371 128 342 71 307 42C286 25 267 16 248 16C219 16 199 29 188 56C179 77 174 92 174 100L225 309C230 331 248 354 276 377C304 400 329 412 352 412Z"></path><path id="MJX-2-NCM-I-210E" d="M512 138C489 59 457 19 415 19C402 19 395 28 395 47C395 62 401 85 413 116C453 223 473 296 473 335C473 406 427 445 356 445C303 445 257 423 218 380L291 679C289 688 287 694 274 694C241 694 168 685 155 684C140 682 132 675 132 660C132 650 141 645 159 645C180 645 203 646 205 632L59 43C56 32 55 25 55 21C55 0 66-11 87-11C107-11 121-1 128 18L168 182C180 231 189 268 196 293C199 300 207 314 220 334C256 388 300 415 353 415C386 415 402 393 402 350C402 309 382 236 342 130C333 107 329 89 329 74C329 26 365-11 413-11C457-11 492 14 517 65C536 105 546 132 546 145C546 154 541 159 530 159C527 159 512 150 512 138Z"></path><path id="MJX-2-NCM-I-1D456" d="M284 621C284 648 271 661 244 661C216 661 188 633 188 605C188 578 202 565 229 565C257 565 284 593 284 621M259 138C237 59 205 19 164 19C151 19 144 28 144 47C144 64 173 150 232 306C240 329 244 347 244 360C244 409 210 445 161 445C118 445 84 420 59 369C39 328 29 301 29 288C29 279 34 275 45 275C58 275 60 281 64 295C87 375 118 415 158 415C171 415 178 406 178 387C178 373 175 357 168 338C145 275 121 208 101 155C86 115 78 88 78 74C78 25 114-11 162-11C205-11 239 14 264 64C283 103 293 130 293 145C293 154 288 159 277 159C274 159 259 150 259 138Z"></path><path id="MJX-2-NCM-I-1D457" d="M397 621C397 648 383 661 356 661C328 661 300 633 300 605C300 578 313 565 340 565C368 565 397 593 397 621M267 444C214 444 169 404 147 369C120 326 107 299 107 287C107 278 112 274 122 274C127 274 130 275 133 276C138 284 141 291 144 296C176 375 216 414 264 414C282 414 291 400 291 373C291 358 289 341 284 323L192-46C178-104 138-175 75-175C66-175 57-174 48-171C73-161 85-143 85-118C85-92 71-79 44-79C12-79-13-108-13-140C-13-184 30-205 77-205C120-205 160-190 197-160C232-131 254-94 265-51L356 311C359 324 361 337 361 349C361 404 322 444 267 444Z"></path><path id="MJX-2-NCM-N-28" d="M318-248C327-248 332-243 332-234C332-231 330-227 327-223C275-183 233-117 202-26C175 53 161 131 161 208L161 292C161 369 175 447 202 526C233 617 275 683 327 723C330 726 332 730 332 734C332 743 327 748 318 748C317 748 314 747 311 745C251 699 201 631 160 540C121 453 101 371 101 292L101 208C101 129 121 47 160-40C201-131 251-199 311-245C314-247 317-248 318-248Z"></path><path id="MJX-2-NCM-I-1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path><path id="MJX-2-NCM-N-29" d="M78-245C138-199 188-131 229-40C268 47 288 129 288 208L288 292C288 371 268 453 229 540C188 631 138 699 78 745C75 747 72 748 71 748C62 748 57 743 57 734C57 730 59 726 62 723C114 683 156 617 187 526C214 447 228 369 228 292L228 208C228 131 214 53 187-26C156-117 114-183 62-223C59-227 57-231 57-234C57-243 62-248 71-248C72-248 75-247 78-245Z"></path><path id="MJX-2-NCM-N-3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path><path id="MJX-2-NCM-I-1D460" d="M420 354C420 411 362 442 300 442C237 442 192 423 165 385C142 352 130 322 130 295C130 242 165 208 234 193C263 188 285 181 302 173C323 164 333 147 333 123C333 105 325 85 308 62C287 33 250 18 197 18C143 18 108 33 92 62C124 61 151 87 151 119C151 144 138 157 111 157C75 157 52 124 52 88C52 22 124-11 196-11C271-11 325 11 357 56C384 93 397 126 397 156C397 199 376 231 335 252C304 263 280 270 265 273C230 282 194 285 194 328C194 381 244 413 300 413C342 413 369 400 382 375C360 371 337 352 337 327C337 306 348 295 371 295C402 295 420 323 420 354Z"></path><path id="MJX-2-NCM-I-1D462" d="M543 144C543 153 538 158 527 158C518 158 513 151 510 137C505 118 500 99 493 80C480 39 462 18 440 18C422 18 413 32 413 60C413 77 420 111 433 161L460 267C469 303 477 328 483 359L489 386C491 393 492 398 492 401C492 421 481 431 459 431C437 431 423 419 417 394L343 98C342 95 338 88 330 76C314 50 275 18 235 18C197 18 178 44 178 95C178 136 196 202 231 294C242 324 248 345 248 357C248 407 213 442 163 442C118 442 83 417 58 367C39 328 29 301 29 287C29 278 34 273 45 273C58 273 60 279 64 293C87 373 119 413 160 413C174 413 181 403 181 384C181 369 175 348 164 319C126 218 107 148 107 111C107 34 155-11 232-11C275-11 314 9 347 50C361 9 391-11 437-11C506-11 527 70 543 144Z"></path><path id="MJX-2-NCM-I-1D45A" d="M657 442C596 442 543 412 498 353C489 412 451 442 383 442C324 442 273 416 231 363C223 407 188 442 137 442C96 442 66 409 45 344C34 312 29 293 29 287C29 278 34 273 45 273C50 273 53 274 56 276C61 285 64 292 66 299C84 375 107 413 134 413C152 413 161 399 161 371C161 358 156 331 145 290L88 63C84 51 79 25 79 19C79-1 90-11 111-11C131-11 145-1 152 19C153 24 160 49 171 92L192 181L222 295C233 318 250 341 272 365C301 397 337 413 380 413C413 413 429 391 429 348C429 335 424 308 414 267L387 153C380 124 364 64 356 32C355 25 354 21 354 19C354-1 365-11 387-11C398-11 406-8 413-1C428 14 429 21 435 48L494 285C497 298 511 321 535 353C565 393 605 413 654 413C687 413 703 391 703 348C703 309 683 236 642 129C633 106 629 87 629 74C629 25 666-11 714-11C759-11 793 14 818 64C838 104 848 131 848 144C848 153 843 158 832 158C825 157 818 148 813 137C791 58 759 18 716 18C703 18 696 28 696 47C696 62 702 84 714 115C755 222 775 295 775 333C775 404 728 442 657 442Z"></path><path id="MJX-2-NCM-I-1D446" d="M133 157C133 181 136 201 141 217C141 227 136 232 125 232C120 232 116 230 114 228C109 223 52 8 52-8C52-17 57-22 67-22C72-22 79-17 88-6L133 47C168 1 224-22 300-22C366-22 424 5 476 58C528 111 554 170 554 236C554 283 538 323 505 355C490 368 470 379 445 388C422 393 400 399 378 405L312 423C279 432 254 469 254 509C254 552 271 589 306 621C341 653 380 669 423 669C515 669 561 619 561 520C561 502 557 482 557 465L557 462C560 455 565 451 573 451C582 451 588 459 592 474L645 691C645 700 640 705 630 705C625 705 618 700 609 689L566 637C538 682 491 705 424 705C361 705 304 681 254 634C202 586 176 531 176 468C176 396 223 339 282 323L387 296C441 281 475 262 475 195C475 149 457 108 422 72C387 36 347 17 302 17C204 17 133 60 133 157Z"></path><path id="MJX-2-NCM-I-1D44F" d="M281 445C245 445 209 428 174 394L243 679C241 688 238 694 226 694C193 694 120 685 107 684C92 682 84 675 84 660C84 650 93 645 112 645C131 645 157 646 157 632C157 628 152 608 143 571L63 249C52 207 47 173 47 148C47 62 93-11 175-11C240-11 297 22 347 89C392 151 415 216 415 283C415 370 364 445 281 445M279 415C318 415 337 385 337 326C337 299 331 263 319 218C297 133 268 75 233 44C213 27 194 19 175 19C134 19 114 51 114 115C114 137 119 170 129 214L151 304C154 319 159 330 165 338C204 389 242 415 279 415Z"></path><path id="MJX-2-NCM-I-1D452" d="M124 129C124 153 129 186 139 227L188 227C253 227 303 235 339 250C372 264 394 284 405 309C412 326 415 342 415 355C415 410 363 442 307 442C268 442 229 432 190 412C113 372 46 281 46 171C46 69 105-11 204-11C257-11 304 2 345 27C379 48 404 69 420 90C427 99 430 106 430 109C430 120 425 126 414 126C409 126 404 122 398 114C365 70 324 42 277 30C246 22 223 18 206 18C149 18 124 72 124 129M375 355C375 289 311 256 182 256L147 256C166 322 194 366 232 387C262 404 287 413 307 413C343 413 375 391 375 355Z"></path><path id="MJX-2-NCM-I-1D461" d="M330 419C330 428 320 433 299 433L218 433C244 537 257 591 257 595C257 616 246 626 225 626C202 626 188 613 182 587L145 433L56 433C34 433 23 432 23 411C23 400 33 395 54 395L135 395C86 200 62 97 62 84C62 28 100-11 156-11C194-11 227 6 256 41C280 70 297 98 308 125C312 136 314 142 314 145C314 154 309 159 299 159C291 159 285 154 281 143C247 60 206 19 157 19C140 19 131 33 131 60C131 75 133 91 137 107L208 395L297 395C323 395 330 397 330 419Z"></path><path id="MJX-2-NCM-I-1D45E" d="M372 377C352 420 321 442 280 442C215 442 158 409 109 342C63 280 40 216 40 149C40 62 90-13 173-13C209-13 245 4 282 38L241-126C238-141 229-150 215-153C210-154 197-155 174-155C168-156 164-156 162-156C153-157 148-165 148-179L148-183C151-190 157-194 165-194C184-194 244-191 263-191C282-191 345-194 364-194C378-194 385-186 385-170C385-160 375-155 356-155C338-155 313-156 313-144C313-140 314-133 317-123L452 427C452 436 447 441 438 441C420 441 382 391 372 377M340 373C349 352 354 338 354 329C354 328 353 322 351 313L327 216C308 144 299 107 298 105C279 70 224 16 176 16C137 16 117 46 117 105C117 151 148 263 162 300C181 347 225 412 280 412C307 412 327 399 340 373Z"></path><path id="MJX-2-NCM-I-1D441" d="M864 683C845 683 783 680 764 680C745 680 682 683 663 683C648 683 641 675 641 659C641 650 648 645 663 644C705 644 726 631 726 605C726 599 725 592 724 585L616 157L401 662C393 681 391 683 366 683L233 683C209 683 200 681 200 659C200 649 211 644 232 644C274 644 295 643 296 640L163 110C154 71 131 49 95 42C69 39 39 43 39 15C39 5 45 0 56 0C74 0 136 3 155 3C174 3 238 0 257 0C272 0 279 8 279 24C279 33 271 38 255 39C214 40 194 53 194 78C194 83 195 90 197 100L326 611L576 21C582 7 590 0 599 0C608 0 614 8 618 24L757 574C770 625 798 643 860 644C874 645 881 653 881 669C878 678 877 683 864 683Z"></path><path id="MJX-2-NCM-N-7C" d="M139-250C152-250 159-242 159-226L159 726C159 742 152 750 139 750C126 750 119 742 119 726L119-226C119-242 126-250 139-250Z"></path><path id="MJX-2-NCM-N-21" d="M139 716C110 716 83 691 86 661L122 211C123 194 129 185 139 185C149 185 155 193 156 210L192 661C195 691 168 716 139 716M192 56C192 87 169 113 139 113C109 113 86 87 86 56C86 26 109 0 139 0C169 0 192 26 192 56Z"></path><path id="MJX-2-NCM-N-2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path><path id="MJX-2-NCM-N-31" d="M269 666C228 624 168 603 89 603L89 564C141 564 184 572 217 588L217 82C217 64 213 52 204 47C195 42 170 39 130 39L95 39L95 0C120 2 174 3 257 3C340 3 394 2 419 0L419 39L384 39C343 39 318 42 310 47C302 52 297 64 297 82L297 636C297 660 295 666 269 666Z"></path><path id="MJX-2-NCM-N-2F" d="M444 718C445 720 445 723 445 726C445 742 437 750 421 750C410 750 403 745 399 734L57-218C56-220 56-223 56-226C56-242 64-250 80-250C91-250 98-245 102-234Z"></path><path id="MJX-2-NCM-N-2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path><path id="MJX-2-NCM-N-5B" d="M233-202L159-202L159 702L233 702C248 702 256 710 256 726C256 742 248 750 233 750L114 750L114-250L233-250C248-250 256-242 256-226C256-214 245-202 233-202Z"></path><path id="MJX-2-NCM-I-1D45B" d="M537 137C514 58 481 18 440 18C427 18 420 28 420 47C420 61 426 84 438 115C478 224 498 296 498 333C498 403 451 442 381 442C322 442 271 416 230 363C222 407 187 442 136 442C80 442 58 390 44 345C34 313 29 294 29 287C29 278 34 273 45 273C50 273 53 274 56 276C61 285 64 292 65 299C83 375 106 413 133 413C151 413 160 399 160 371C160 358 155 331 144 290L87 63C84 50 78 24 78 19C78-1 89-11 111-11C130-11 144-1 151 19C153 24 159 49 170 92L191 181L221 295C232 318 249 341 270 365C299 397 335 413 378 413C411 413 427 391 427 348C427 310 406 234 363 120C356 102 353 87 353 74C353 25 390-11 438-11C482-11 517 14 542 64C561 104 571 131 571 144C571 153 566 158 555 158C552 158 537 149 537 137Z"></path><path id="MJX-2-NCM-I-1D45C" d="M308 442C239 442 176 412 122 353C68 294 41 229 41 159C41 63 106-11 202-11C272-11 334 19 388 78C442 137 469 201 469 272C469 369 405 442 308 442M389 310C389 287 384 255 374 213C353 130 319 73 272 42C248 26 225 18 203 18C149 18 121 65 121 122C121 180 155 288 178 324C216 383 259 413 307 413C361 413 389 367 389 310Z"></path><path id="MJX-2-NCM-N-5D" d="M45-250L164-250L164 750L45 750C30 750 22 742 22 726C22 710 30 702 45 702L119 702L119-202L45-202C30-202 22-210 22-226C22-242 30-250 45-250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="phi_j(f) = sum_{S subseteq N \\{j}} (|S|!(|N|-|S|-1)! / |N|!) * [f(S union {j}) - f(S)]"><g data-mml-node="mi" data-latex="p"><use data-c="1D45D" xlink:href="#MJX-2-NCM-I-1D45D"></use></g><g data-mml-node="mi" data-latex="h" transform="translate(503,0)"><use data-c="210E" xlink:href="#MJX-2-NCM-I-210E"></use></g><g data-mml-node="msub" data-latex="i_j" transform="translate(1079,0)"><g data-mml-node="mi" data-latex="i"><use data-c="1D456" xlink:href="#MJX-2-NCM-I-1D456"></use></g><g data-mml-node="mi" transform="translate(378,-150) scale(0.707)" data-latex="j"><use data-c="1D457" xlink:href="#MJX-2-NCM-I-1D457"></use></g></g><g data-mml-node="mo" data-latex="(" transform="translate(1798.3,0)"><use data-c="28" xlink:href="#MJX-2-NCM-N-28"></use></g><g data-mml-node="mi" data-latex="f" transform="translate(2187.3,0)"><use data-c="1D453" xlink:href="#MJX-2-NCM-I-1D453"></use></g><g data-mml-node="mo" data-latex=")" transform="translate(2739.3,0)"><use data-c="29" xlink:href="#MJX-2-NCM-N-29"></use></g><g data-mml-node="mo" data-latex="=" transform="translate(3406.1,0)"><use data-c="3D" xlink:href="#MJX-2-NCM-N-3D"></use></g><g data-mml-node="mi" data-latex="s" transform="translate(4461.9,0)"><use data-c="1D460" xlink:href="#MJX-2-NCM-I-1D460"></use></g><g data-mml-node="mi" data-latex="u" transform="translate(4930.9,0)"><use data-c="1D462" xlink:href="#MJX-2-NCM-I-1D462"></use></g><g data-mml-node="msub" data-latex="m_{S s u b s e t e q N\\{j}}" transform="translate(5502.9,0)"><g data-mml-node="mi" data-latex="m"><use data-c="1D45A" xlink:href="#MJX-2-NCM-I-1D45A"></use></g><g data-mml-node="TeXAtom" transform="translate(911,-176.7) scale(0.707)" data-latex="{S s u b s e t e q N\\{j}}" data-mjx-texclass="ORD"><g data-mjx-linestack="true"><g data-mjx-linebox="true" data-mjx-lineno="0"><g data-mml-node="mi" data-latex="S"><use data-c="1D446" xlink:href="#MJX-2-NCM-I-1D446"></use></g><g data-mml-node="mi" data-latex="s" transform="translate(645,0)"><use data-c="1D460" xlink:href="#MJX-2-NCM-I-1D460"></use></g><g data-mml-node="mi" data-latex="u" transform="translate(1114,0)"><use data-c="1D462" xlink:href="#MJX-2-NCM-I-1D462"></use></g><g data-mml-node="mi" data-latex="b" transform="translate(1686,0)"><use data-c="1D44F" xlink:href="#MJX-2-NCM-I-1D44F"></use></g><g data-mml-node="mi" data-latex="s" transform="translate(2115,0)"><use data-c="1D460" xlink:href="#MJX-2-NCM-I-1D460"></use></g><g data-mml-node="mi" data-latex="e" transform="translate(2584,0)"><use data-c="1D452" xlink:href="#MJX-2-NCM-I-1D452"></use></g><g data-mml-node="mi" data-latex="t" transform="translate(3050,0)"><use data-c="1D461" xlink:href="#MJX-2-NCM-I-1D461"></use></g><g data-mml-node="mi" data-latex="e" transform="translate(3411,0)"><use data-c="1D452" xlink:href="#MJX-2-NCM-I-1D452"></use></g><g data-mml-node="mi" data-latex="q" transform="translate(3877,0)"><use data-c="1D45E" xlink:href="#MJX-2-NCM-I-1D45E"></use></g><g data-mml-node="mi" data-latex="N" transform="translate(4329,0)"><use data-c="1D441" xlink:href="#MJX-2-NCM-I-1D441"></use></g><g data-mml-node="mspace" data-latex="\\" transform="translate(5210,0)"></g></g><g data-mjx-linebox="true" data-mjx-lineno="1" transform="translate(2399,-1200)"><g data-mml-node="mspace" data-latex="\\"></g><g data-mml-node="TeXAtom" data-latex="{j}" data-mjx-texclass="ORD"><g data-mml-node="mi" data-latex="j"><use data-c="1D457" xlink:href="#MJX-2-NCM-I-1D457"></use></g></g></g></g></g></g><g data-mml-node="mo" data-latex="(" transform="translate(10147.9,0)"><use data-c="28" xlink:href="#MJX-2-NCM-N-28"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(10536.9,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mi" data-latex="S" transform="translate(10814.9,0)"><use data-c="1D446" xlink:href="#MJX-2-NCM-I-1D446"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(11459.9,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mo" data-latex="!" transform="translate(11737.9,0)"><use data-c="21" xlink:href="#MJX-2-NCM-N-21"></use></g><g data-mml-node="mo" data-latex="(" transform="translate(12015.9,0)"><use data-c="28" xlink:href="#MJX-2-NCM-N-28"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(12404.9,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mi" data-latex="N" transform="translate(12682.9,0)"><use data-c="1D441" xlink:href="#MJX-2-NCM-I-1D441"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(13563.9,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mo" data-latex="-" transform="translate(14064.1,0)"><use data-c="2212" xlink:href="#MJX-2-NCM-N-2212"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(15064.4,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mi" data-latex="S" transform="translate(15342.4,0)"><use data-c="1D446" xlink:href="#MJX-2-NCM-I-1D446"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(15987.4,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mo" data-latex="-" transform="translate(16487.6,0)"><use data-c="2212" xlink:href="#MJX-2-NCM-N-2212"></use></g><g data-mml-node="mn" data-latex="1" transform="translate(17487.8,0)"><use data-c="31" xlink:href="#MJX-2-NCM-N-31"></use></g><g data-mml-node="mo" data-latex=")" transform="translate(17987.8,0)"><use data-c="29" xlink:href="#MJX-2-NCM-N-29"></use></g><g data-mml-node="mo" data-latex="!" transform="translate(18376.8,0)"><use data-c="21" xlink:href="#MJX-2-NCM-N-21"></use></g><g data-mml-node="mo" data-latex="/" transform="translate(18654.8,0)"><use data-c="2F" xlink:href="#MJX-2-NCM-N-2F"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(19154.8,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mi" data-latex="N" transform="translate(19432.8,0)"><use data-c="1D441" xlink:href="#MJX-2-NCM-I-1D441"></use></g><g data-mml-node="mo" data-latex="|" transform="translate(20313.8,0)"><use data-c="7C" xlink:href="#MJX-2-NCM-N-7C"></use></g><g data-mml-node="mo" data-latex="!" transform="translate(20591.8,0)"><use data-c="21" xlink:href="#MJX-2-NCM-N-21"></use></g><g data-mml-node="mo" data-latex=")" transform="translate(20869.8,0)"><use data-c="29" xlink:href="#MJX-2-NCM-N-29"></use></g><g data-mml-node="mo" data-latex="*" transform="translate(21481,0)"><use data-c="2217" xlink:href="#MJX-2-NCM-N-2217"></use></g><g data-mml-node="mo" data-latex="[" transform="translate(22203.2,0)"><use data-c="5B" xlink:href="#MJX-2-NCM-N-5B"></use></g><g data-mml-node="mi" data-latex="f" transform="translate(22481.2,0)"><use data-c="1D453" xlink:href="#MJX-2-NCM-I-1D453"></use></g><g data-mml-node="mo" data-latex="(" transform="translate(23033.2,0)"><use data-c="28" xlink:href="#MJX-2-NCM-N-28"></use></g><g data-mml-node="mi" data-latex="S" transform="translate(23422.2,0)"><use data-c="1D446" xlink:href="#MJX-2-NCM-I-1D446"></use></g><g data-mml-node="mi" data-latex="u" transform="translate(24067.2,0)"><use data-c="1D462" xlink:href="#MJX-2-NCM-I-1D462"></use></g><g data-mml-node="mi" data-latex="n" transform="translate(24639.2,0)"><use data-c="1D45B" xlink:href="#MJX-2-NCM-I-1D45B"></use></g><g data-mml-node="mi" data-latex="i" transform="translate(25239.2,0)"><use data-c="1D456" xlink:href="#MJX-2-NCM-I-1D456"></use></g><g data-mml-node="mi" data-latex="o" transform="translate(25584.2,0)"><use data-c="1D45C" xlink:href="#MJX-2-NCM-I-1D45C"></use></g><g data-mml-node="mi" data-latex="n" transform="translate(26069.2,0)"><use data-c="1D45B" xlink:href="#MJX-2-NCM-I-1D45B"></use></g><g data-mml-node="TeXAtom" data-latex="{j}" data-mjx-texclass="ORD" transform="translate(26669.2,0)"><g data-mml-node="mi" data-latex="j"><use data-c="1D457" xlink:href="#MJX-2-NCM-I-1D457"></use></g></g><g data-mml-node="mo" data-latex=")" transform="translate(27081.2,0)"><use data-c="29" xlink:href="#MJX-2-NCM-N-29"></use></g><g data-mml-node="mo" data-latex="-" transform="translate(27692.5,0)"><use data-c="2212" xlink:href="#MJX-2-NCM-N-2212"></use></g><g data-mml-node="mi" data-latex="f" transform="translate(28692.7,0)"><use data-c="1D453" xlink:href="#MJX-2-NCM-I-1D453"></use></g><g data-mml-node="mo" data-latex="(" transform="translate(29244.7,0)"><use data-c="28" xlink:href="#MJX-2-NCM-N-28"></use></g><g data-mml-node="mi" data-latex="S" transform="translate(29633.7,0)"><use data-c="1D446" xlink:href="#MJX-2-NCM-I-1D446"></use></g><g data-mml-node="mo" data-latex=")" transform="translate(30278.7,0)"><use data-c="29" xlink:href="#MJX-2-NCM-N-29"></use></g><g data-mml-node="mo" data-latex="]" transform="translate(30667.7,0)"><use data-c="5D" xlink:href="#MJX-2-NCM-N-5D"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" data-latex="phi_j(f) = sum_{S subseteq N \\{j}} (|S|!(|N|-|S|-1)! / |N|!) * [f(S union {j}) - f(S)]" display="block"><mi data-latex="p">p</mi><mi data-latex="h">h</mi><msub data-latex="i_j"><mi data-latex="i">i</mi><mi data-latex="j">j</mi></msub><mo data-latex="(" stretchy="false">(</mo><mi data-latex="f">f</mi><mo data-latex=")" stretchy="false">)</mo><mo data-latex="=">=</mo><mi data-latex="s">s</mi><mi data-latex="u">u</mi><msub data-latex="m_{S s u b s e t e q N\\{j}}"><mi data-latex="m">m</mi><mrow data-mjx-texclass="ORD" data-latex="{S s u b s e t e q N\\{j}}"><mi data-latex="S">S</mi><mi data-latex="s">s</mi><mi data-latex="u">u</mi><mi data-latex="b">b</mi><mi data-latex="s">s</mi><mi data-latex="e">e</mi><mi data-latex="t">t</mi><mi data-latex="e">e</mi><mi data-latex="q">q</mi><mi data-latex="N">N</mi><mspace linebreak="newline" data-latex="\\"></mspace><mrow data-mjx-texclass="ORD" data-latex="{j}"><mi data-latex="j">j</mi></mrow></mrow></msub><mo data-latex="(" stretchy="false">(</mo><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mi data-latex="S">S</mi><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mo data-latex="!">!</mo><mo data-latex="(" stretchy="false">(</mo><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mi data-latex="N">N</mi><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mo data-latex="-">−</mo><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mi data-latex="S">S</mi><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mo data-latex="-">−</mo><mn data-latex="1">1</mn><mo data-latex=")" stretchy="false">)</mo><mo data-latex="!">!</mo><mo data-latex="/">/</mo><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mi data-latex="N">N</mi><mo data-mjx-texclass="ORD" data-latex="|">|</mo><mo data-latex="!">!</mo><mo data-latex=")" stretchy="false">)</mo><mo data-latex="*">∗</mo><mo data-latex="[" stretchy="false">[</mo><mi data-latex="f">f</mi><mo data-latex="(" stretchy="false">(</mo><mi data-latex="S">S</mi><mi data-latex="u">u</mi><mi data-latex="n">n</mi><mi data-latex="i">i</mi><mi data-latex="o">o</mi><mi data-latex="n">n</mi><mrow data-mjx-texclass="ORD" data-latex="{j}"><mi data-latex="j">j</mi></mrow><mo data-latex=")" stretchy="false">)</mo><mo data-latex="-">−</mo><mi data-latex="f">f</mi><mo data-latex="(" stretchy="false">(</mo><mi data-latex="S">S</mi><mo data-latex=")" stretchy="false">)</mo><mo data-latex="]" stretchy="false">]</mo></math></mjx-assistive-mml></mjx-container></div></div><p><span>其中:</span></p><ul><li><p><span>N: 所有特征的集合</span></p></li><li><p><span>S: 不包含特征 j 的特征子集</span></p></li><li><p><span>f(S): 仅使用子集 S 中特征时的模型预测</span></p></li></ul><h3 id='42-shap-的公理化保证'><span>4.2 SHAP 的公理化保证</span></h3><p><span>SHAP 值满足以下三条核心公理:</span></p><ol start='' ><li><p><strong><span>局部准确性(Local Accuracy)</span></strong><span>: 所有特征的 SHAP 值之和等于模型预测值与基线值的差</span></p></li><li><p><strong><span>缺失性(Missingness)</span></strong><span>: 未使用的特征其 SHAP 值为零</span></p></li><li><p><strong><span>一致性(Consistency)</span></strong><span>: 若某特征在所有上下文中的边际贡献增加, 其 SHAP 值不会减少</span></p></li></ol><h3 id='43-shap-文本解释实现'><span>4.3 SHAP 文本解释实现</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">shap</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">SHAPTextExplainer</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">model</span>, <span class="cm-variable">tokenizer</span>, <span class="cm-variable">device</span><span class="cm-operator">=</span><span class="cm-string">"cpu"</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">model</span> <span class="cm-operator">=</span> <span class="cm-variable">model</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">device</span> <span class="cm-operator">=</span> <span class="cm-variable">device</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">model</span>.<span class="cm-property">to</span>(<span class="cm-variable">device</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">explainer</span> <span class="cm-operator">=</span> <span class="cm-variable">shap</span>.<span class="cm-property">Explainer</span>(<span class="cm-variable-2">self</span>.<span class="cm-property">_model_forward</span>, <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">_model_forward</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">texts</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-builtin">isinstance</span>(<span class="cm-variable">texts</span>, <span class="cm-builtin">str</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">texts</span> <span class="cm-operator">=</span> [<span class="cm-variable">texts</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">list</span>(<span class="cm-variable">texts</span>), <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">truncation</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>, <span class="cm-variable">padding</span><span class="cm-operator">=</span><span class="cm-keyword">True</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  ).<span class="cm-property">to</span>(<span class="cm-variable-2">self</span>.<span class="cm-property">device</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">model</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">outputs</span>.<span class="cm-property">logits</span>.<span class="cm-property">cpu</span>().<span class="cm-property">numpy</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">explain</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">texts</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-builtin">isinstance</span>(<span class="cm-variable">texts</span>, <span class="cm-builtin">str</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">texts</span> <span class="cm-operator">=</span> [<span class="cm-variable">texts</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable-2">self</span>.<span class="cm-property">explainer</span>(<span class="cm-variable">texts</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">plot_text</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">shap_values</span>, <span class="cm-variable">index</span><span class="cm-operator">=</span><span class="cm-number">0</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">shap</span>.<span class="cm-property">plots</span>.<span class="cm-property">text</span>(<span class="cm-variable">shap_values</span>[<span class="cm-variable">index</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">plot_summary</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">shap_values</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">shap</span>.<span class="cm-property">plots</span>.<span class="cm-property">bar</span>(<span class="cm-variable">shap_values</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">plot_waterfall</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">shap_values</span>, <span class="cm-variable">index</span><span class="cm-operator">=</span><span class="cm-number">0</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">shap</span>.<span class="cm-property">plots</span>.<span class="cm-property">waterfall</span>(<span class="cm-variable">shap_values</span>[<span class="cm-variable">index</span>])</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 852px;"></div><div class="CodeMirror-gutters" style="display: none; height: 852px;"></div></div></div></pre><h3 id='44-shap-可视化类型'><span>4.4 SHAP 可视化类型</span></h3><figure class='table-figure'><table><thead><tr><th><span>可视化类型</span></th><th><span>用途</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><strong><span>文本着色图(Text Plot)</span></strong></td><td><span>用红/蓝色标注每个词元的正负贡献</span></td><td><span>单个文本的局部解释</span></td></tr><tr><td><strong><span>摘要图(Summary Plot)</span></strong></td><td><span>展示所有特征的全局重要性排序</span></td><td><span>全局特征重要性分析</span></td></tr><tr><td><strong><span>瀑布图(Waterfall Plot)</span></strong></td><td><span>展示基线值如何通过各特征累积到最终预测</span></td><td><span>单个预测的详细归因</span></td></tr><tr><td><strong><span>力图(Force Plot)</span></strong></td><td><span>交互式展示推/拉预测的特征</span></td><td><span>交互式分析</span></td></tr><tr><td><strong><span>依赖图(Dependence Plot)</span></strong></td><td><span>展示特征值与其 SHAP 值的关系</span></td><td><span>特征交互分析</span></td></tr></tbody></table></figure><h3 id='45-shap-的优缺点'><span>4.5 SHAP 的优缺点</span></h3><figure class='table-figure'><table><thead><tr><th><span>特性</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>优点</span></strong></td><td><span>数学基础严谨(公理化保证); 支持全局和局部解释; 结果稳定可复现</span></td></tr><tr><td><strong><span>缺点</span></strong></td><td><span>计算成本高(特征子集组合呈指数级增长); 对大型语言模型需要近似算法</span></td></tr></tbody></table></figure><hr /><h2 id='5-综合实践案例'><span>5. 综合实践案例</span></h2><h3 id='51-情感分析可解释性分析'><span>5.1 情感分析可解释性分析</span></h3><p><span>以下案例展示如何综合使用三种方法对中文情感分析模型进行可解释性分析:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">torch</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">transformers</span> <span class="cm-keyword">import</span> <span class="cm-variable">BertTokenizer</span>, <span class="cm-variable">BertForSequenceClassification</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">shap</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">lime</span>.<span class="cm-property">lime_text</span> <span class="cm-keyword">import</span> <span class="cm-variable">LimeTextExplainer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">matplotlib</span>.<span class="cm-property">pyplot</span> <span class="cm-keyword">as</span> <span class="cm-variable">plt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">seaborn</span> <span class="cm-keyword">as</span> <span class="cm-variable">sns</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">numpy</span> <span class="cm-keyword">as</span> <span class="cm-variable">np</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-def">SentimentExplainer</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">__init__</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">model_path</span><span class="cm-operator">=</span><span class="cm-string">"bert-base-chinese"</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">BertTokenizer</span>.<span class="cm-property">from_pretrained</span>(<span class="cm-variable">model_path</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">model</span> <span class="cm-operator">=</span> <span class="cm-variable">BertForSequenceClassification</span>.<span class="cm-property">from_pretrained</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">model_path</span>, <span class="cm-variable">num_labels</span><span class="cm-operator">=</span><span class="cm-number">3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">model</span>.<span class="cm-property">eval</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">class_names</span> <span class="cm-operator">=</span> [<span class="cm-string">"负面"</span>, <span class="cm-string">"中性"</span>, <span class="cm-string">"正面"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">shap_explainer</span> <span class="cm-operator">=</span> <span class="cm-variable">shap</span>.<span class="cm-property">Explainer</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">_predict_proba_shap</span>, <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">lime_explainer</span> <span class="cm-operator">=</span> <span class="cm-variable">LimeTextExplainer</span>(<span class="cm-variable">class_names</span><span class="cm-operator">=</span><span class="cm-variable-2">self</span>.<span class="cm-property">class_names</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">_predict_proba_shap</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">texts</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-builtin">isinstance</span>(<span class="cm-variable">texts</span>, <span class="cm-builtin">str</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">texts</span> <span class="cm-operator">=</span> [<span class="cm-variable">texts</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>(<span class="cm-builtin">list</span>(<span class="cm-variable">texts</span>), <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">truncation</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>, <span class="cm-variable">padding</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">model</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">torch</span>.<span class="cm-property">softmax</span>(<span class="cm-variable">outputs</span>.<span class="cm-property">logits</span>, <span class="cm-variable">dim</span><span class="cm-operator">=-</span><span class="cm-number">1</span>).<span class="cm-property">cpu</span>().<span class="cm-property">numpy</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">predict</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>(<span class="cm-variable">text</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">model</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">probs</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">softmax</span>(<span class="cm-variable">outputs</span>.<span class="cm-property">logits</span>, <span class="cm-variable">dim</span><span class="cm-operator">=-</span><span class="cm-number">1</span>)[<span class="cm-number">0</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">pred_id</span> <span class="cm-operator">=</span> <span class="cm-variable">torch</span>.<span class="cm-property">argmax</span>(<span class="cm-variable">probs</span>).<span class="cm-property">item</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable-2">self</span>.<span class="cm-property">class_names</span>[<span class="cm-variable">pred_id</span>], <span class="cm-variable">probs</span>[<span class="cm-variable">pred_id</span>].<span class="cm-property">item</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">explain_attention</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>, <span class="cm-variable">layer</span><span class="cm-operator">=</span><span class="cm-number">11</span>, <span class="cm-variable">head</span><span class="cm-operator">=</span><span class="cm-number">0</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">inputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>(<span class="cm-variable">text</span>, <span class="cm-variable">return_tensors</span><span class="cm-operator">=</span><span class="cm-string">"pt"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">tokens</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">tokenizer</span>.<span class="cm-property">convert_ids_to_tokens</span>(<span class="cm-variable">inputs</span>[<span class="cm-string">"input_ids"</span>][<span class="cm-number">0</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">with</span> <span class="cm-variable">torch</span>.<span class="cm-property">no_grad</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">outputs</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">model</span>.<span class="cm-property">bert</span>(<span class="cm-operator">**</span><span class="cm-variable">inputs</span>, <span class="cm-variable">output_attentions</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">attention</span> <span class="cm-operator">=</span> <span class="cm-variable">outputs</span>.<span class="cm-property">attentions</span>[<span class="cm-variable">layer</span>][<span class="cm-number">0</span>, <span class="cm-variable">head</span>].<span class="cm-property">numpy</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">figure</span>(<span class="cm-variable">figsize</span><span class="cm-operator">=</span>(<span class="cm-number">12</span>, <span class="cm-number">10</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">sns</span>.<span class="cm-property">heatmap</span>(<span class="cm-variable">attention</span>, <span class="cm-variable">xticklabels</span><span class="cm-operator">=</span><span class="cm-variable">tokens</span>, <span class="cm-variable">yticklabels</span><span class="cm-operator">=</span><span class="cm-variable">tokens</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">cmap</span><span class="cm-operator">=</span><span class="cm-string">"YlOrRd"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">title</span>(<span class="cm-string">f"Attention - Layer </span>{<span class="cm-variable">layer</span>}<span class="cm-string">, Head </span>{<span class="cm-variable">head</span>}<span class="cm-string">"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">tight_layout</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">plt</span>.<span class="cm-property">show</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">explain_lime</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>, <span class="cm-variable">num_features</span><span class="cm-operator">=</span><span class="cm-number">8</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">exp</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">lime_explainer</span>.<span class="cm-property">explain_instance</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">text</span>, <span class="cm-variable-2">self</span>.<span class="cm-property">_predict_proba_shap</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">num_features</span><span class="cm-operator">=</span><span class="cm-variable">num_features</span>, <span class="cm-variable">num_samples</span><span class="cm-operator">=</span><span class="cm-number">500</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">"LIME Results:"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">feature</span>, <span class="cm-variable">weight</span> <span class="cm-keyword">in</span> <span class="cm-variable">exp</span>.<span class="cm-property">as_list</span>():</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">direction</span> <span class="cm-operator">=</span> <span class="cm-string">"正向"</span> <span class="cm-keyword">if</span> <span class="cm-variable">weight</span> <span class="cm-operator">&gt;</span> <span class="cm-number">0</span> <span class="cm-keyword">else</span> <span class="cm-string">"负向"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f" &nbsp;</span>{<span class="cm-variable">feature</span>}<span class="cm-string">: </span>{<span class="cm-variable">weight</span>:<span class="cm-number">.4</span><span class="cm-variable">f</span>}<span class="cm-string"> (</span>{<span class="cm-variable">direction</span>}<span class="cm-string">)"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">exp</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">explain_shap</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">shap_values</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">shap_explainer</span>([<span class="cm-variable">text</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">shap</span>.<span class="cm-property">plots</span>.<span class="cm-property">text</span>(<span class="cm-variable">shap_values</span>[<span class="cm-number">0</span>])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">shap_values</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">def</span> <span class="cm-def">comprehensive_analysis</span>(<span class="cm-variable-2">self</span>, <span class="cm-variable">text</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"文本: </span>{<span class="cm-variable">text</span>}<span class="cm-string">"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">label</span>, <span class="cm-variable">confidence</span> <span class="cm-operator">=</span> <span class="cm-variable-2">self</span>.<span class="cm-property">predict</span>(<span class="cm-variable">text</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"预测: </span>{<span class="cm-variable">label</span>}<span class="cm-string"> (置信度: </span>{<span class="cm-variable">confidence</span>:<span class="cm-number">.3</span><span class="cm-variable">f</span>}<span class="cm-string">)"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">"1. Attention Visualization"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">explain_attention</span>(<span class="cm-variable">text</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">"2. LIME Local Explanation"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">explain_lime</span>(<span class="cm-variable">text</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">"3. SHAP Attribution"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable-2">self</span>.<span class="cm-property">explain_shap</span>(<span class="cm-variable">text</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1935px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1935px;"></div></div></div></pre><h3 id='52-案例分析解读'><span>5.2 案例分析解读</span></h3><p><span>以文本 </span><strong><span>&quot;这个产品的质量很好, 但是价格太贵了&quot;</span></strong><span> 为例:</span></p><figure class='table-figure'><table><thead><tr><th><span>方法</span></th><th><span>关键发现</span></th></tr></thead><tbody><tr><td><strong><span>注意力可视化</span></strong></td><td><span>&quot;质量&quot;与&quot;很好&quot;之间有强注意力连接; &quot;但是&quot;作为转折词, 其注意力分布可能揭示模型如何处理语义转折</span></td></tr><tr><td><strong><span>LIME</span></strong></td><td><span>&quot;质量很好&quot;对正面情感贡献最大; &quot;价格太贵&quot;对负面情感贡献最大; &quot;但是&quot;作为转折提示词被赋予较高权重</span></td></tr><tr><td><strong><span>SHAP</span></strong></td><td><span>&quot;很好&quot;显示为红色(正向贡献); &quot;太贵&quot;显示为蓝色(负向贡献); 整体预测可能偏向中性或轻微正面</span></td></tr></tbody></table></figure><hr /><h2 id='6-方法对比与选型建议'><span>6. 方法对比与选型建议</span></h2><h3 id='61-三种方法对比'><span>6.1 三种方法对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>注意力可视化</span></th><th><span>LIME</span></th><th><span>SHAP</span></th></tr></thead><tbody><tr><td><strong><span>解释范围</span></strong></td><td><span>全局/局部</span></td><td><span>局部</span></td><td><span>全局 + 局部</span></td></tr><tr><td><strong><span>模型依赖</span></strong></td><td><span>模型特定</span></td><td><span>模型无关</span></td><td><span>模型无关</span></td></tr><tr><td><strong><span>计算成本</span></strong></td><td><span>低</span></td><td><span>中</span></td><td><span>高</span></td></tr><tr><td><strong><span>结果稳定性</span></strong></td><td><span>高</span></td><td><span>中</span></td><td><span>高</span></td></tr><tr><td><strong><span>数学保证</span></strong></td><td><span>无</span></td><td><span>无</span></td><td><span>有(公理化保证)</span></td></tr><tr><td><strong><span>可视化形式</span></strong></td><td><span>热力图</span></td><td><span>特征列表/高亮文本</span></td><td><span>文本着色/瀑布图/摘要图</span></td></tr><tr><td><strong><span>适用场景</span></strong></td><td><span>理解内部注意力模式</span></td><td><span>快速局部解释</span></td><td><span>合规审计、高精度归因</span></td></tr></tbody></table></figure><h3 id='62-企业选型决策框架'><span>6.2 企业选型决策框架</span></h3><figure class='table-figure'><table><thead><tr><th><span>应用场景</span></th><th><span>推荐方法</span></th><th><span>理由</span></th></tr></thead><tbody><tr><td><span>金融信贷审批(高合规)</span></td><td><span>SHAP + 可解释模型</span></td><td><span>SHAP 提供公理化保证, 满足监管要求</span></td></tr><tr><td><span>医疗诊断</span></td><td><span>SHAP + Grad-CAM</span></td><td><span>需要数学严谨的归因证据</span></td></tr><tr><td><span>NLP 情感分析/客服分类</span></td><td><span>SHAP 文本 / LIME</span></td><td><span>词级归因直观易懂</span></td></tr><tr><td><span>推荐系统(低合规)</span></td><td><span>LIME 或注意力</span></td><td><span>速度优先, 快速迭代</span></td></tr><tr><td><span>模型调试与偏见检测</span></td><td><span>SHAP 全局 + 注意力</span></td><td><span>全局模式 + 内部机制双重验证</span></td></tr><tr><td><span>合规报告/模型审计</span></td><td><span>SHAP(全局+局部)</span></td><td><span>同时满足全局重要性排序和个案解释需求</span></td></tr></tbody></table></figure><p><strong><span>核心原则</span></strong><span>: 合规要求越高, 越应选择具有数学保证的方法(SHAP &gt; LIME &gt; 注意力); 计算预算越紧, 越应选择轻量级方法(注意力 &gt; LIME &gt; SHAP)。</span></p><hr /><h2 id='7-局限性与未来方向'><span>7. 局限性与未来方向</span></h2><h3 id='71-当前局限性'><span>7.1 当前局限性</span></h3><ol start='' ><li><p><strong><span>注意力不等于因果解释</span></strong><span>: 注意力权重反映信息流动模式, 但不一定等同于特征对预测结果的因果影响。研究表明, 注意力权重可以被操纵而不改变模型预测。</span></p></li><li><p><strong><span>计算成本</span></strong><span>: SHAP 的精确计算需要遍历所有特征子集组合, 对于长文本和大词汇表不可行, 必须依赖近似算法。</span></p></li><li><p><strong><span>解释忠实度(Faithfulness)</span></strong><span>: LIME 和 SHAP 的解释都是基于代理模型的近似, 可能与真实模型的决策逻辑存在偏差。</span></p></li><li><p><strong><span>多语言与多模态</span></strong><span>: 当前大多数解释性工具针对英文优化, 中文等语言的分词特性增加了解释难度。多模态(文本+图像)解释仍处于早期阶段。</span></p></li><li><p><strong><span>幻觉解释</span></strong><span>: 解释方法本身可能产生&quot;幻觉&quot;——给出看似合理但与模型实际决策无关的解释。</span></p></li></ol><h3 id='72-未来研究方向'><span>7.2 未来研究方向</span></h3><ul><li><p><strong><span>因果可解释性</span></strong><span>: 从相关性归因迈向因果归因, 建立特征干预与模型输出变化的因果关系</span></p></li><li><p><strong><span>自解释模型(Self-rationalizing LLMs)</span></strong><span>: 在模型训练阶段内置解释生成能力, 如 Chain-of-Thought 推理</span></p></li><li><p><strong><span>概念级解释(Concept-based Explanation)</span></strong><span>: 不仅解释词元级特征, 还解释高层语义概念(如&quot;情感极性&quot;、&quot;主题类别&quot;)</span></p></li><li><p><strong><span>交互式解释界面</span></strong><span>: 开发支持人机协作的解释工具, 允许用户提问并获取针对性解释</span></p></li><li><p><strong><span>解释质量评估</span></strong><span>: 建立标准化的评估协议, 量化不同解释方法的忠实度和可用性</span></p></li></ul><hr /><h2 id='附录-关键库与工具'><span>附录: 关键库与工具</span></h2><figure class='table-figure'><table><thead><tr><th><span>工具/库</span></th><th><span>用途</span></th><th><span>链接</span></th></tr></thead><tbody><tr><td><strong><span>Transformers</span></strong></td><td><span>加载预训练模型, 提取注意力权重</span></td><td><span>huggingface.co/transformers</span></td></tr><tr><td><strong><span>SHAP</span></strong></td><td><span>SHAP 值计算与可视化</span></td><td><span>github.com/shap/shap</span></td></tr><tr><td><strong><span>LIME</span></strong></td><td><span>LIME 局部解释</span></td><td><span>github.com/marcotcr/lime</span></td></tr><tr><td><strong><span>Captum</span></strong></td><td><span>PyTorch 模型可解释性库(含 IG、LRP 等)</span></td><td><span>captum.ai</span></td></tr><tr><td><strong><span>BertViz</span></strong></td><td><span>BERT 注意力交互式可视化</span></td><td><span>github.com/jessevig/bertviz</span></td></tr><tr><td><strong><span>Ecco</span></strong></td><td><span>大语言模型内部机制分析</span></td><td><span>github.com/jalammar/ecco</span></td></tr></tbody></table></figure><hr /><blockquote><p><strong><span>总结</span></strong><span>: 注意力可视化、LIME 和 SHAP 是理解大语言模型决策过程的三大支柱技术。注意力可视化揭示模型内部的关注模式, LIME 提供快速的局部近似解释, SHAP 提供数学严谨的全局和局部归因。在实际应用中, 建议综合使用多种方法, 相互验证, 以获得对模型行为更全面、更可靠的理解。</span></p></blockquote></div></div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>技能集</title>
+  <title>AI 安全文档</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -34,13 +34,13 @@
       font-size: 1.1rem;
       margin-bottom: 3rem;
     }
-    .skills-grid {
+    .safetys-grid {
       display: flex;
       gap: 2rem;
       justify-content: center;
       flex-wrap: wrap;
     }
-    .skill-card {
+    .safety-card {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px;
@@ -52,23 +52,23 @@
       color: inherit;
       display: block;
     }
-    .skill-card:hover {
+    .safety-card:hover {
       transform: translateY(-8px);
       background: rgba(255,255,255,0.1);
       border-color: #e94560;
       box-shadow: 0 20px 40px rgba(233,69,96,0.2);
     }
-    .skill-icon {
+    .safety-icon {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
-    .skill-title {
+    .safety-title {
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       color: #fff;
     }
-    .skill-desc {
+    .safety-desc {
       font-size: 0.9rem;
       color: #a0a0a0;
       line-height: 1.5;
@@ -82,30 +82,51 @@
 </head>
 <body>
   <div class="container">
-    <h1>技能集</h1>
-    <p class="subtitle">点击卡片查看详细技能文档</p>
+    <h1>AI 安全文档</h1>
+    <p class="subtitle">点击卡片查看详细安全文档</p>
 
-    <div class="skills-grid">
-      <a href="docs/cuda-programming.md" class="skill-card">
-        <div class="skill-icon">🚀</div>
-        <div class="skill-title">CUDA 编程</div>
-        <div class="skill-desc">GPU 并行计算、内核优化与内存管理</div>
+    <div class="safetys-grid">
+
+      <a href="safety_docs/LLM_Alignment_Techniques_Overview.html" class="safety-card">
+        <div class="safety-icon">🚀</div>
+        <div class="safety-title">LLM 对齐技术概述</div>
+        <div class="safety-desc">大型语言模型的对齐方法与实践</div>
       </a>
 
-      <a href="docs/ai-agent-dev.md" class="skill-card">
-        <div class="skill-icon">🤖</div>
-        <div class="skill-title">AI Agent 开发</div>
-        <div class="skill-desc">智能体架构、工具调用与自主决策</div>
+      <a href="safety_docs/LLM_Bias_Fairness_Guide.html" class="safety-card">
+        <div class="safety-icon">🤖</div>
+        <div class="safety-title">LLM 偏见与公平性指南</div>
+        <div class="safety-desc">大型语言模型的偏见检测与公平性提升策略</div>
       </a>
 
-      <a href="docs/web-frontend.md" class="skill-card">
-        <div class="skill-icon">🎨</div>
-        <div class="skill-title">Web 前端</div>
-        <div class="skill-desc">现代 CSS、响应式布局与交互设计</div>
+      <a href="safety_docs/LLM_Red_Teaming_Methods_Guide.html" class="safety-card">
+        <div class="safety-icon">🎨</div>
+        <div class="safety-title">LLM 红队方法指南</div>
+        <div class="safety-desc">大型语言模型的红队测试与安全评估</div>
       </a>
+
+     <a href="safety_docs/AIGC_Content_Moderation_System_Guide.html" class="safety-card">
+        <div class="safety-icon">🚀</div>
+        <div class="safety-title">AIGC 内容审核系统指南</div>
+        <div class="safety-desc">生成式人工智能内容的审核与管理策略</div>
+      </a>
+
+      <a href="safety_docs/LLM_Privacy_Protection_Technologies.html" class="safety-card">
+        <div class="safety-icon">🤖</div>
+        <div class="safety-title">LLM 隐私保护技术</div>
+        <div class="safety-desc">大型语言模型的隐私保护方法与实践</div>
+      </a>
+
+      <a href="safety_docs/LLM_Interpretability_Attention_LIME_SHAP.html" class="safety-card">
+        <div class="safety-icon">🎨</div>
+        <div class="safety-title">LLM 可解释性</div>
+        <div class="safety-desc">大型语言模型的注意力机制与可解释性方法</div>
+      </a>
+
+
     </div>
 
-    <footer>本地技能文档中心 · 点击任意卡片开始阅读</footer>
+    <footer>本地安全文档中心 · 点击任意卡片开始阅读</footer>
   </div>
 </body>
 </html>

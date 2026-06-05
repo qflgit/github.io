@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>LLM_Alignment_Techniques_Overview</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='大模型对齐技术概览'><span>大模型对齐技术概览</span></h1><blockquote><p><span>本文档系统梳理大语言模型（LLM）对齐技术的核心方法，涵盖 RLHF、RLAIF、DPO 与 Constitutional AI 的原理、流程、优缺点及适用场景，帮助读者理解从&quot;基础对齐&quot;到&quot;高级对齐&quot;的技术演进。</span></p></blockquote><hr /><h2 id='目录'><span>目录</span></h2><ol start='' ><li><p><a href='#1-对齐技术概述'><span>对齐技术概述</span></a></p></li><li><p><a href='#2-rlhf基于人类反馈的强化学习'><span>RLHF：基于人类反馈的强化学习</span></a></p></li><li><p><a href='#3-rlaif基于ai反馈的强化学习'><span>RLAIF：基于AI反馈的强化学习</span></a></p></li><li><p><a href='#4-constitutional-ai宪法ai'><span>Constitutional AI：宪法AI</span></a></p></li><li><p><a href='#5-dpo直接偏好优化'><span>DPO：直接偏好优化</span></a></p></li><li><p><a href='#6-技术演进与对比'><span>技术演进与对比</span></a></p></li><li><p><a href='#7-新兴对齐范式'><span>新兴对齐范式</span></a></p></li><li><p><a href='#8-选型与实施建议'><span>选型与实施建议</span></a></p></li></ol><hr /><h2 id='1-对齐技术概述'><span>1. 对齐技术概述</span></h2><h3 id='11-对齐问题的起源'><span>1.1 对齐问题的起源</span></h3><p><span>大型语言模型（LLM）建立在海量无监督语料的自回归预训练之上，其本质是对互联网文本中下一个Token的极大似然预测——这是一个统计目标，而非&quot;有用、无害、诚实&quot;的对齐目标。预训练模型在诸多语言任务上表现出惊人能力，但这种能力并不等价于与人类意图的真正对齐。</span></p><p><strong><span>对齐（Alignment）</span></strong><span> 的目标是让模型行为符合人类价值观、意图和偏好，解决&quot;能力-意图鸿沟&quot;。</span></p><h3 id='12-对齐技术演进阶段'><span>1.2 对齐技术演进阶段</span></h3><figure class='table-figure'><table><thead><tr><th><span>阶段</span></th><th><span>时期</span></th><th><span>核心技术</span></th><th><span>代表应用</span></th></tr></thead><tbody><tr><td><strong><span>基础对齐</span></strong></td><td><span>2020-2022</span></td><td><span>RLHF, InstructGPT</span></td><td><span>ChatGPT</span></td></tr><tr><td><strong><span>规模化对齐</span></strong></td><td><span>2023-2024</span></td><td><span>Constitutional AI, DPO</span></td><td><span>Claude, Llama 2</span></td></tr><tr><td><strong><span>高级对齐</span></strong></td><td><span>2025-2026</span></td><td><span>RLAIF, RLTHF, 混合方法</span></td><td><span>Claude 4, GPT-4.1, DeepSeek R1</span></td></tr></tbody></table></figure><h3 id='13-对齐技术分类'><span>1.3 对齐技术分类</span></h3><p><span>对齐技术按反馈来源可分为三大类：</span></p><figure class='table-figure'><table><thead><tr><th><span>类别</span></th><th><span>反馈来源</span></th><th><span>代表方法</span></th></tr></thead><tbody><tr><td><strong><span>人类反馈</span></strong></td><td><span>人类标注员</span></td><td><span>RLHF, DPO</span></td></tr><tr><td><strong><span>AI反馈</span></strong></td><td><span>强AI模型（教师模型）</span></td><td><span>RLAIF, Constitutional AI</span></td></tr><tr><td><strong><span>可验证奖励</span></strong></td><td><span>客观标准（如代码可运行性）</span></td><td><span>RLVR (Reinforcement Learning from Verifiable Rewards)</span></td></tr></tbody></table></figure><hr /><h2 id='2-rlhf基于人类反馈的强化学习'><span>2. RLHF：基于人类反馈的强化学习</span></h2><h3 id='21-核心原理'><span>2.1 核心原理</span></h3><p><span>RLHF（Reinforcement Learning from Human Feedback）通过人类反馈来训练奖励模型，再通过强化学习指导语言模型行为的优化。这是当前最成熟、最广泛验证的对齐技术。</span></p><h3 id='22-三阶段训练流程'><span>2.2 三阶段训练流程</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌─────────────────┐ &nbsp;  ┌─────────────────┐ &nbsp;  ┌─────────────────┐</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  阶段1: SFT &nbsp; &nbsp; │ → │  阶段2: RM训练 &nbsp; │ → │  阶段3: RL优化 &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  监督微调 &nbsp; &nbsp; &nbsp;  │ &nbsp;  │  奖励模型训练 &nbsp; &nbsp; │ &nbsp;  │  策略优化 &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─────────────────┘ &nbsp;  └─────────────────┘ &nbsp;  └─────────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 92px;"></div><div class="CodeMirror-gutters" style="display: none; height: 92px;"></div></div></div></pre><p><strong><span>阶段1：监督微调（SFT）</span></strong></p><ul><li><p><span>在高质量人工编写的演示数据上进行初始微调</span></p></li><li><p><span>建立模型的基准行为，使其学会遵循指令的基本格式</span></p></li><li><p><span>数据质量直接决定后续对齐的上限</span></p></li></ul><p><strong><span>阶段2：奖励模型训练（RM）</span></strong></p><ul><li><p><span>人类标注员对同一Prompt的多个模型输出进行排序（偏好排序）</span></p></li><li><p><span>基于这些排序数据训练奖励模型，使其能够预测人类偏好</span></p></li><li><p><span>奖励模型输出标量分数，代表&quot;人类会多喜欢这个回答&quot;</span></p></li></ul><p><strong><span>阶段3：强化学习优化（PPO）</span></strong></p><ul><li><p><span>使用近端策略优化（PPO）算法优化语言模型</span></p></li><li><p><span>目标：最大化奖励模型的分数，同时保持合理的输出多样性</span></p></li><li><p><span>通过KL散度正则化防止策略偏离参考模型太远</span></p></li></ul><h3 id='23-核心算法ppo'><span>2.3 核心算法：PPO</span></h3><p><span>PPO（Proximal Policy Optimization）是 RLHF 阶段3的核心算法，通过裁剪目标函数防止策略更新过大：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">L^CLIP(θ) = E_t [ min(r_t(θ) * A_t, clip(r_t(θ), 1-ε, 1+ε) * A_t) ]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">其中:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">- r_t(θ) = π_θ(a_t|s_t) / π_θ_old(a_t|s_t)  策略比率</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">- A_t  优势函数估计</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">- ε  裁剪超参数（通常0.1-0.2）</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><h3 id='24-rlhf-的优势'><span>2.4 RLHF 的优势</span></h3><figure class='table-figure'><table><thead><tr><th><span>优势</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>效果好，细粒度控制</span></td><td><span>人类反馈能捕捉复杂、微妙的偏好</span></td></tr><tr><td><span>技术成熟，广泛验证</span></td><td><span>从 InstructGPT 到 ChatGPT 的完整工程实践</span></td></tr><tr><td><span>可处理复杂偏好</span></td><td><span>多维度评估（有用性、安全性、风格等）</span></td></tr></tbody></table></figure><h3 id='25-rlhf-的五大核心挑战'><span>2.5 RLHF 的五大核心挑战</span></h3><figure class='table-figure'><table><thead><tr><th><span>挑战</span></th><th><span>说明</span></th><th><span>解决方案</span></th></tr></thead><tbody><tr><td><strong><span>人工标注成本高、难规模化</span></strong></td><td><span>高质量人类偏好标注$1+/条，且需要专业标注员</span></td><td><span>RLAIF、Constitutional AI 替代人类标注</span></td></tr><tr><td><strong><span>三阶段训练流程长、迭代慢</span></strong></td><td><span>SFT → RM → PPO 流程复杂，调参困难</span></td><td><span>DPO 直接优化，跳过奖励模型</span></td></tr><tr><td><strong><span>PPO资源消耗巨大</span></strong></td><td><span>需要同时维护策略模型、价值模型、参考模型</span></td><td><span>GRPO 砍掉价值模型，显存减半</span></td></tr><tr><td><strong><span>奖励模型只是近似奖励</span></strong></td><td><span>奖励分数持续上升，但真实性能先升后降（奖励黑客）</span></td><td><span>更大的奖励模型、KL正则化、多RM组合</span></td></tr><tr><td><strong><span>多目标平衡困难</span></strong></td><td><span>有用性 vs 安全性 vs 诚实性难以同时优化</span></td><td><span>独立训练不同维度奖励模型，动态组合</span></td></tr></tbody></table></figure><h3 id='26-实践建议'><span>2.6 实践建议</span></h3><ul><li><p><span>数据集至少需要 </span><strong><span>2000条以上</span></strong><span> 偏好数据才有效果</span></p></li><li><p><span>奖励模型（RM）越大，策略模型能在不偏离的情况下走得更远</span></p></li><li><p><span>策略模型越大，从RM获得的相对收益越小（边际递减）</span></p></li><li><p><span>使用KL散度等指标跟踪训练过程，避免过度优化</span></p></li></ul><hr /><h2 id='3-rlaif基于ai反馈的强化学习'><span>3. RLAIF：基于AI反馈的强化学习</span></h2><h3 id='31-核心原理'><span>3.1 核心原理</span></h3><p><span>RLAIF（Reinforcement Learning from AI Feedback）用强大的AI模型（教师模型）替代人类标注员，给模型的输出打分、纠错、优化。这是2026年主流大模型普遍采用的对齐技术。</span></p><h3 id='32-核心流程'><span>3.2 核心流程</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌─────────────────────────────────────────────────────────────┐</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  1. 教师模型打分 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; 用闭源旗舰模型（GPT-4/Claude Opus）作为"老师" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; 对待对齐模型的输出进行多维度评分：正确性、有用性、无害性等 &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ↓ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  2. 奖励模型训练 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; 基于AI打分结果训练奖励模型 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; AI生成偏好的一致性远高于人类标注员 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ↓ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  3. 强化学习优化 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; 用PPO/GRPO让待对齐模型朝着奖励模型高分方向优化 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ↓ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  4. AI自动化测试 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│ &nbsp; &nbsp; 验证模型的幻觉率、错误率，持续迭代优化 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─────────────────────────────────────────────────────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 346px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></pre><h3 id='33-与-rlhf-的关键差异'><span>3.3 与 RLHF 的关键差异</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>RLHF</span></th><th><span>RLAIF</span></th></tr></thead><tbody><tr><td><span>反馈来源</span></td><td><span>人类标注员 ($15-40/小时)</span></td><td><span>AI教师模型 (&lt; $0.01/条)</span></td></tr><tr><td><span>标注成本</span></td><td><span>高</span></td><td><span>降低10-100倍</span></td></tr><tr><td><span>标注速度</span></td><td><span>数月</span></td><td><span>数小时可生成百万条</span></td></tr><tr><td><span>一致性</span></td><td><span>受标注员主观差异影响</span></td><td><span>AI评分标准统一</span></td></tr><tr><td><span>领域专业性</span></td><td><span>依赖标注员知识</span></td><td><span>教师模型可评估复杂代码/医学文献</span></td></tr><tr><td><span>可扩展性</span></td><td><span>受人力资源限制</span></td><td><span>可无限扩展</span></td></tr><tr><td><span>价值观对齐</span></td><td><span>反映人类标注员价值观</span></td><td><span>反映教师模型价值观，需校准</span></td></tr></tbody></table></figure><h3 id='34-两种实现策略'><span>3.4 两种实现策略</span></h3><figure class='table-figure'><table><thead><tr><th><span>策略</span></th><th><span>说明</span></th><th><span>适用场景</span></th></tr></thead><tbody><tr><td><strong><span>Distilled RLAIF</span></strong></td><td><span>将AI反馈蒸馏为奖励模型，再训练策略</span></td><td><span>大规模部署</span></td></tr><tr><td><strong><span>Direct RLAIF</span></strong></td><td><span>直接用AI反馈作为奖励信号，跳过RM训练</span></td><td><span>快速迭代</span></td></tr></tbody></table></figure><h3 id='35-关键注意事项'><span>3.5 关键注意事项</span></h3><ul><li><p><strong><span>教师模型容量要求</span></strong><span>：训练70B模型时，AI反馈应来自1T+参数的旗舰模型。教师模型至少比目标模型大一个数量级，才能提供有效反馈</span></p></li><li><p><strong><span>种子数据校准</span></strong><span>：仍需少量人类标注的种子数据集用于校准AI评判标准</span></p></li><li><p><strong><span>持续审计</span></strong><span>：需要人类审计和抽查，分析AI与人类判断的分歧</span></p></li><li><p><strong><span>单模型生成偏好</span></strong><span>：安全关键应用中，使用单一模型生成偏好对的chosen和rejected响应，避免多模型比较引入分布不一致</span></p></li></ul><hr /><h2 id='4-constitutional-ai宪法ai'><span>4. Constitutional AI：宪法AI</span></h2><h3 id='41-核心原理'><span>4.1 核心原理</span></h3><p><span>Constitutional AI（CAI）由 Anthropic 提出，是一种特殊的 RLAIF 方法。它不依赖人类标注有害输出，而是让模型根据一套预设的&quot;宪法原则&quot;（Constitution）进行自我监督和自我修正。</span></p><p><strong><span>核心理念</span></strong><span>：用明确的、可审计的自然语言规则约束模型行为，实现&quot;helpful, harmless, and honest by design&quot;。</span></p><h3 id='42-宪法原则示例'><span>4.2 宪法原则示例</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">宪法原则示例：</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. "选择更少有害、种族歧视或性别歧视的响应"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2. "选择提供更好技术细节的响应"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">3. "选择更诚实、承认不确定性的响应"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4. "选择更尊重用户自主权的响应"</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><h3 id='43-两阶段训练流程'><span>4.3 两阶段训练流程</span></h3><p><strong><span>阶段1：批判与修订（Critique and Revision）</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输入: Prompt + 模型初始响应</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">应用宪法原则: "根据原则X批判你之前的响应"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模型生成批判意见</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模型根据批判修订响应</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输出: 高质量的合成SFT数据（完全无需人类标注）</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><strong><span>阶段2：AI偏好标注与RL</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输入: Prompt + 两个模型响应 + 宪法原则</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">教师模型判断哪个响应更符合宪法</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输出: 合成偏好数据 (y_w vs y_l)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; ↓</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">训练奖励模型 → PPO/DPO优化</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><h3 id='44-constitutional-ai-的优势'><span>4.4 Constitutional AI 的优势</span></h3><figure class='table-figure'><table><thead><tr><th><span>优势</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>近零边际成本</span></strong></td><td><span>生成100万偏好对的成本仅为人类标注的几分之一，耗时数小时而非数月</span></td></tr><tr><td><strong><span>敏捷性</span></strong></td><td><span>需要调整模型行为时（如新安全准则发布），只需更新宪法文本，隔夜即可重新生成合成数据集</span></td></tr><tr><td><strong><span>超人类评估</span></strong></td><td><span>旗舰模型评估复杂Python代码或医学文献的速度和准确性远超众包标注员</span></td></tr><tr><td><strong><span>可解释性</span></strong></td><td><span>宪法原则是自然语言规则，决策过程透明可审计</span></td></tr><tr><td><strong><span>安全性</span></strong></td><td><span>在无害性评估中，CAI比标准RLHF减少有害输出高达70%</span></td></tr></tbody></table></figure><h3 id='45-constitutional-ai-的局限'><span>4.5 Constitutional AI 的局限</span></h3><figure class='table-figure'><table><thead><tr><th><span>局限</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>对齐开销（Alignment Tax）</span></strong></td><td><span>过度对齐导致&quot;拒绝陷阱&quot;（Refusal Trap），模型过于保守，拒绝回答即使是无害的复杂指令</span></td></tr><tr><td><strong><span>推理性能影响</span></strong></td><td><span>复杂的对齐逻辑可能增加推理阶段的计算冗余，影响响应速度</span></td></tr><tr><td><strong><span>宪法准确性依赖</span></strong></td><td><span>效果受限于宪法原则的准确性和完整性</span></td></tr><tr><td><strong><span>价值观锁定</span></strong></td><td><span>宪法反映设计者的价值观，可能不适用于所有文化背景</span></td></tr></tbody></table></figure><hr /><h2 id='5-dpo直接偏好优化'><span>5. DPO：直接偏好优化</span></h2><h3 id='51-核心原理'><span>5.1 核心原理</span></h3><p><span>DPO（Direct Preference Optimization）由 Rafailov 等人于2023年提出，是RLHF的简化版。其核心洞见是：RLHF的优化目标可以推导成一个等价的监督学习损失，</span><strong><span>绕过显式奖励模型</span></strong><span>，直接用（提示，好回答，差回答）三元组训练。</span></p><h3 id='52-数学推导'><span>5.2 数学推导</span></h3><p><span>DPO 直接从偏好数据推导最优策略，无需训练单独的奖励模型：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 简化的DPO损失函数</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">dpo_loss</span>(<span class="cm-variable">policy_logps_chosen</span>, <span class="cm-variable">policy_logps_rejected</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">ref_logps_chosen</span>, <span class="cm-variable">ref_logps_rejected</span>, <span class="cm-variable">beta</span><span class="cm-operator">=</span><span class="cm-number">0.1</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">chosen_rewards</span> <span class="cm-operator">=</span> <span class="cm-variable">beta</span> <span class="cm-operator">*</span> (<span class="cm-variable">policy_logps_chosen</span> <span class="cm-operator">-</span> <span class="cm-variable">ref_logps_chosen</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">rejected_rewards</span> <span class="cm-operator">=</span> <span class="cm-variable">beta</span> <span class="cm-operator">*</span> (<span class="cm-variable">policy_logps_rejected</span> <span class="cm-operator">-</span> <span class="cm-variable">ref_logps_rejected</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">loss</span> <span class="cm-operator">=</span> <span class="cm-operator">-</span><span class="cm-variable">F</span>.<span class="cm-property">logsigmoid</span>(<span class="cm-variable">chosen_rewards</span> <span class="cm-operator">-</span> <span class="cm-variable">rejected_rewards</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">loss</span>.<span class="cm-property">mean</span>()</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><p><strong><span>关键参数</span></strong><span>：</span></p><ul><li><p><code>beta</code><span>：温度参数，控制策略与参考模型的偏离程度</span></p></li><li><p><code>policy_logps</code><span>：策略模型（待优化模型）的对数概率</span></p></li><li><p><code>ref_logps</code><span>：参考模型（通常是SFT后的模型）的对数概率</span></p></li></ul><h3 id='53-dpo-与传统-rlhf-对比'><span>5.3 DPO 与传统 RLHF 对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>传统 RLHF</span></th><th><span>DPO</span></th></tr></thead><tbody><tr><td><span>训练流程</span></td><td><span>SFT → RM → PPO（三阶段）</span></td><td><span>SFT → 直接优化（两阶段）</span></td></tr><tr><td><span>模型数量</span></td><td><span>4个（策略、价值、参考、奖励）</span></td><td><span>2个（策略、参考）</span></td></tr><tr><td><span>GPU显存需求</span></td><td><span>高</span></td><td><span>降低约50%</span></td></tr><tr><td><span>训练稳定性</span></td><td><span>PPO调参困难，易发散</span></td><td><span>更稳定，超参数敏感低</span></td></tr><tr><td><span>实现复杂度</span></td><td><span>高</span></td><td><span>简单，易于实现</span></td></tr><tr><td><span>效果上限</span></td><td><span>精心调优的PPO效果最优</span></td><td><span>依赖偏好数据质量，探索能力较弱</span></td></tr><tr><td><span>过拟合风险</span></td><td><span>中</span></td><td><span>高（小数据集时尤其明显）</span></td></tr></tbody></table></figure><h3 id='54-dpo-的优势'><span>5.4 DPO 的优势</span></h3><ul><li><p><strong><span>简单高效</span></strong><span>：无需训练奖励模型，直接优化偏好目标</span></p></li><li><p><strong><span>训练稳定</span></strong><span>：避免了PPO的复杂调参和不稳定性</span></p></li><li><p><strong><span>资源友好</span></strong><span>：显存需求显著降低，适合中小团队</span></p></li><li><p><strong><span>效果接近</span></strong><span>：在多个基准上与RLHF效果相当甚至更优</span></p></li></ul><h3 id='55-dpo-的局限'><span>5.5 DPO 的局限</span></h3><ul><li><p><strong><span>过拟合风险</span></strong><span>：在小偏好数据集上容易过拟合，尤其当参考模型概率不再有意义时</span></p></li><li><p><strong><span>探索能力弱</span></strong><span>：不如精心调优的RLHF具有探索能力</span></p></li><li><p><strong><span>分布偏移敏感</span></strong><span>：对新偏好数据的需求高，对分布偏移敏感</span></p></li><li><p><strong><span>效果上限</span></strong><span>：最终效果受限于偏好数据的质量和覆盖范围</span></p></li></ul><h3 id='56-dpo-变体演进'><span>5.6 DPO 变体演进</span></h3><figure class='table-figure'><table><thead><tr><th><span>变体</span></th><th><span>核心改进</span></th><th><span>特点</span></th></tr></thead><tbody><tr><td><strong><span>IPO（Identity Preference Optimization）</span></strong></td><td><span>解决DPO过拟合</span></td><td><span>更稳定的偏好优化</span></td></tr><tr><td><strong><span>KTO（Kahneman-Tversky Optimization）</span></strong></td><td><span>引入前景理论</span></td><td><span>将模型对齐视为前景理论优化</span></td></tr><tr><td><strong><span>SimPO（Simple Preference Optimization）</span></strong></td><td><span>简化损失函数</span></td><td><span>训练成本更低，效果可比DPO</span></td></tr><tr><td><strong><span>β-DPO</span></strong></td><td><span>动态调整beta参数</span></td><td><span>自适应温度控制</span></td></tr><tr><td><strong><span>sDPO</span></strong></td><td><span>数据使用策略优化</span></td><td><span>不要一次性使用所有数据</span></td></tr><tr><td><strong><span>Token-level DPO</span></strong></td><td><span>细粒度token级优化</span></td><td><span>更精细的偏好对齐</span></td></tr></tbody></table></figure><hr /><h2 id='6-技术演进与对比'><span>6. 技术演进与对比</span></h2><h3 id='61-四种方法全景对比'><span>6.1 四种方法全景对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>维度</span></th><th><span>RLHF</span></th><th><span>RLAIF</span></th><th><span>Constitutional AI</span></th><th><span>DPO</span></th></tr></thead><tbody><tr><td><strong><span>反馈来源</span></strong></td><td><span>人类</span></td><td><span>AI模型</span></td><td><span>AI模型（基于宪法）</span></td><td><span>人类/AI</span></td></tr><tr><td><strong><span>是否需要RM</span></strong></td><td><span>是</span></td><td><span>是</span></td><td><span>是（可选）</span></td><td><span>否</span></td></tr><tr><td><strong><span>是否需要RL</span></strong></td><td><span>是（PPO）</span></td><td><span>是（PPO）</span></td><td><span>是（PPO/DPO）</span></td><td><span>否</span></td></tr><tr><td><strong><span>训练阶段</span></strong></td><td><span>3阶段</span></td><td><span>3阶段</span></td><td><span>2阶段</span></td><td><span>2阶段</span></td></tr><tr><td><strong><span>标注成本</span></strong></td><td><span>高</span></td><td><span>低</span></td><td><span>极低</span></td><td><span>中</span></td></tr><tr><td><strong><span>可扩展性</span></strong></td><td><span>低</span></td><td><span>高</span></td><td><span>极高</span></td><td><span>高</span></td></tr><tr><td><strong><span>可控性</span></strong></td><td><span>中</span></td><td><span>中</span></td><td><span>高（原则驱动）</span></td><td><span>中</span></td></tr><tr><td><strong><span>安全性</span></strong></td><td><span>中</span></td><td><span>中</span></td><td><span>高</span></td><td><span>中</span></td></tr><tr><td><strong><span>有用性</span></strong></td><td><span>高</span></td><td><span>高</span></td><td><span>中（可能过度保守）</span></td><td><span>高</span></td></tr><tr><td><strong><span>实现复杂度</span></strong></td><td><span>高</span></td><td><span>中</span></td><td><span>中</span></td><td><span>低</span></td></tr><tr><td><strong><span>代表模型</span></strong></td><td><span>ChatGPT, Llama 2</span></td><td><span>Claude 3/4, GPT-4</span></td><td><span>Claude系列</span></td><td><span>Zephyr, 开源模型</span></td></tr></tbody></table></figure><h3 id='62-效果维度对比'><span>6.2 效果维度对比</span></h3><figure class='table-figure'><table><thead><tr><th><span>评估维度</span></th><th><span>最佳方法</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><strong><span>Helpfulness（有用性）</span></strong></td><td><span>RLHF</span></td><td><span>人类反馈直接优化有用性，效果最稳定</span></td></tr><tr><td><strong><span>Safety（安全性）</span></strong></td><td><span>Constitutional AI</span></td><td><span>原则驱动，有害输出减少70%</span></td></tr><tr><td><strong><span>Truthfulness（真实性）</span></strong></td><td><span>所有方法均有限</span></td><td><span>对齐方法对事实性提升 modest（15-25%），需配合RAG</span></td></tr><tr><td><strong><span>训练效率</span></strong></td><td><span>DPO</span></td><td><span>两阶段训练，实现简单</span></td></tr><tr><td><strong><span>可扩展性</span></strong></td><td><span>RLAIF / CAI</span></td><td><span>可生成数千万偏好对</span></td></tr><tr><td><strong><span>可解释性</span></strong></td><td><span>Constitutional AI</span></td><td><span>宪法原则自然语言可审计</span></td></tr></tbody></table></figure><h3 id='63-厂商技术路线'><span>6.3 厂商技术路线</span></h3><figure class='table-figure'><table><thead><tr><th><span>厂商</span></th><th><span>核心技术路线</span></th><th><span>特点</span></th></tr></thead><tbody><tr><td><strong><span>OpenAI</span></strong></td><td><span>迭代式对齐，RLHF为核心，辅以RLAIF</span></td><td><span>先提升能力再迭代安全，规模化落地</span></td></tr><tr><td><strong><span>Anthropic</span></strong></td><td><span>Constitutional AI为核心，RLAIF为主</span></td><td><span>安全原生设计，可解释性优先，宁可牺牲性能保安全</span></td></tr><tr><td><strong><span>Google DeepMind</span></strong></td><td><span>全栈安全研究，RLAIF + 多模态安全</span></td><td><span>学术驱动，从底层算法到应用全链条嵌入安全</span></td></tr><tr><td><strong><span>DeepSeek</span></strong></td><td><span>GRPO（PPO改进版）</span></td><td><span>砍掉价值模型，显存减半，推理模型主流方案</span></td></tr></tbody></table></figure><hr /><h2 id='7-新兴对齐范式'><span>7. 新兴对齐范式</span></h2><h3 id='71-grpo组相对策略优化'><span>7.1 GRPO：组相对策略优化</span></h3><p><span>GRPO（Group Relative Policy Optimization）是 DeepSeek 在2024年提出的PPO改进版，2026年成为最热的对齐方案：</span></p><p><strong><span>核心改进</span></strong><span>：砍掉PPO的Value Model，改用&quot;同一问题采样G个回答、用组内相对排名作为基线&quot;估计优势函数。</span></p><p><strong><span>优势</span></strong><span>：</span></p><ul><li><p><span>省掉Value Model的训练成本</span></p></li><li><p><span>显存减半</span></p></li><li><p><span>DeepSeek R1、DeepSeek-Math、Qwen系列推理模型均采用</span></p></li></ul><h3 id='72-rlvr可验证奖励强化学习'><span>7.2 RLVR：可验证奖励强化学习</span></h3><p><span>RLVR（Reinforcement Learning from Verifiable Rewards）是2026年推理模型（如o1）采用的新范式：</span></p><p><strong><span>核心差异</span></strong><span>：</span></p><ul><li><p><span>RLHF/RLAIF 关注偏好对齐（风格、语气、安全）</span></p></li><li><p><span>RLVR 提供客观真值反馈（如&quot;代码是否运行？&quot;、&quot;数学是否正确？&quot;）</span></p></li></ul><p><strong><span>适用场景</span></strong><span>：逻辑推理、代码生成、数学证明等可验证任务。</span></p><h3 id='73-拒绝采样微调rejection-sampling-fine-tuning'><span>7.3 拒绝采样微调（Rejection Sampling Fine-tuning）</span></h3><p><strong><span>流程</span></strong><span>：生成 → 筛选 → 再SFT循环</span></p><ul><li><p><span>让模型对每个Prompt生成多个回答</span></p></li><li><p><span>用奖励模型筛选高分回答</span></p></li><li><p><span>对筛选后的数据进行一轮SFT</span></p></li></ul><p><strong><span>特点</span></strong><span>：流程上没有RL，简单粗暴但有效。Llama 2的对齐流程中使用了此方法。</span></p><h3 id='74-自奖励语言模型self-rewarding-lm'><span>7.4 自奖励语言模型（Self-Rewarding LM）</span></h3><p><span>模型自身充当奖励模型，通过迭代自我改进实现对齐。减少对外部反馈的依赖，是&quot;自对齐&quot;技术的前沿方向。</span></p><hr /><h2 id='8-选型与实施建议'><span>8. 选型与实施建议</span></h2><h3 id='81-按团队规模选择'><span>8.1 按团队规模选择</span></h3><figure class='table-figure'><table><thead><tr><th><span>团队规模</span></th><th><span>推荐方案</span></th><th><span>理由</span></th></tr></thead><tbody><tr><td><strong><span>中小团队</span></strong></td><td><span>DPO 或 RLAIF</span></td><td><span>平衡效果与成本，实现简单</span></td></tr><tr><td><strong><span>大模型项目</span></strong></td><td><span>RLHF + 双奖励模型</span></td><td><span>借鉴Llama 2设计，效果稳定</span></td></tr><tr><td><strong><span>关键安全应用</span></strong></td><td><span>Constitutional AI</span></td><td><span>可控性强，原则可审计</span></td></tr><tr><td><strong><span>推理模型训练</span></strong></td><td><span>GRPO / RLVR</span></td><td><span>当前最优的推理对齐方案</span></td></tr></tbody></table></figure><h3 id='82-按应用场景选择'><span>8.2 按应用场景选择</span></h3><figure class='table-figure'><table><thead><tr><th><span>场景</span></th><th><span>推荐方案</span></th></tr></thead><tbody><tr><td><span>通用对话助手</span></td><td><span>RLHF 或 DPO</span></td></tr><tr><td><span>高安全要求（医疗/金融）</span></td><td><span>Constitutional AI</span></td></tr><tr><td><span>大规模快速迭代</span></td><td><span>RLAIF</span></td></tr><tr><td><span>代码/数学推理</span></td><td><span>GRPO + RLVR</span></td></tr><tr><td><span>开源模型对齐</span></td><td><span>DPO 或 SimPO</span></td></tr><tr><td><span>企业私有化部署</span></td><td><span>RLAIF + 自定义宪法</span></td></tr></tbody></table></figure><h3 id='83-混合流水线最佳实践'><span>8.3 混合流水线（最佳实践）</span></h3><p><span>成熟组织通常采用混合流水线：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌─────────────────────────────────────────────┐</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  阶段1: SFT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  用高质量人类演示数据建立基准行为 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─────────────────────────────────────────────┤</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  阶段2: 偏好数据生成 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  80% RLAIF（合成数据，低成本） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  20% RLHF（人类标注，高质量种子数据） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─────────────────────────────────────────────┤</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  阶段3: 对齐优化 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  首选: DPO（稳定、高效） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  或: GRPO（推理模型） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  或: PPO（需要精细控制时） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─────────────────────────────────────────────┤</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  阶段4: 安全增强（可选） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  Constitutional AI 原则约束 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  红队测试（Red Teaming） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">├─────────────────────────────────────────────┤</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  阶段5: 持续评估 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  自动化评估捕获"谄媚"或幻觉退化 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">│  人类评估验证AI反馈的准确性 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  │</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─────────────────────────────────────────────┘</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 484px;"></div><div class="CodeMirror-gutters" style="display: none; height: 484px;"></div></div></div></pre><h3 id='84-实施路线图'><span>8.4 实施路线图</span></h3><figure class='table-figure'><table><thead><tr><th><span>时间框架</span></th><th><span>行动项</span></th></tr></thead><tbody><tr><td><strong><span>第1个月</span></strong></td><td><span>建立SFT基线，收集/生成偏好数据</span></td></tr><tr><td><strong><span>第2-3个月</span></strong></td><td><span>实施DPO或RLAIF对齐，建立评估体系</span></td></tr><tr><td><strong><span>第4-6个月</span></strong></td><td><span>引入Constitutional AI安全约束，红队测试</span></td></tr><tr><td><strong><span>持续</span></strong></td><td><span>监控奖励黑客、分布偏移，迭代优化</span></td></tr></tbody></table></figure><h3 id='85-关键成功因素'><span>8.5 关键成功因素</span></h3><ol start='' ><li><p><strong><span>数据质量优先</span></strong><span>：对齐效果的上限由数据质量决定，而非算法复杂度</span></p></li><li><p><strong><span>持续监控</span></strong><span>：使用KL散度、奖励模型分数、人类评估等多维度跟踪</span></p></li><li><p><strong><span>避免奖励黑客</span></strong><span>：奖励分数上升不等于真实性能提升，需独立评估</span></p></li><li><p><strong><span>多维度评估</span></strong><span>：不仅评估有用性，还需评估安全性、诚实性、事实性</span></p></li><li><p><strong><span>迭代优化</span></strong><span>：对齐不是一次性任务，需要持续收集反馈、迭代改进</span></p></li></ol><hr /><h2 id='附录相关资源'><span>附录：相关资源</span></h2><ul><li><p><a href='https://arxiv.org/abs/2305.18290'><span>DPO 原始论文</span></a></p></li><li><p><a href='https://arxiv.org/abs/2212.08073'><span>Constitutional AI 论文</span></a></p></li><li><p><a href='https://arxiv.org/abs/2309.00267'><span>RLAIF 论文</span></a></p></li><li><p><a href='https://arxiv.org/abs/2402.03300'><span>GRPO 论文</span></a></p></li><li><p><a href='https://arxiv.org/abs/1707.06347'><span>PPO 原始论文</span></a></p></li><li><p><a href='https://arxiv.org/abs/2402.01306'><span>KTO 论文</span></a></p></li><li><p><a href='https://arxiv.org/abs/2405.14734'><span>SimPO 论文</span></a></p></li></ul><hr /><p>&nbsp;</p></div></div>
+</body>
+</html>
