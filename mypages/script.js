@@ -78,8 +78,8 @@ function renderCards(filter = 'all') {
       <h3>${topic.title}</h3>
       <p>${topic.desc}</p>
       <div class="card-meta">
-        <span>📄 12 篇文章</span>
-        <span>⏱️ 更新 2 天前</span>
+        <span>📄 6 篇文章</span>
+        <span>⏱️ 更新于 2026.06</span>
       </div>
     `;
     cardGrid.appendChild(card);
